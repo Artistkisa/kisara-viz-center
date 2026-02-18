@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网站运行状态 - 实时监控</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,11 +112,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">690ms</div>
+                    <div class="metric-value">886ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">627.0ms</div>
+                    <div class="metric-value">645.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -138,11 +139,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">690ms</div>
+                    <div class="metric-value">886ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">668.0ms</div>
+                    <div class="metric-value">685.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -151,7 +152,7 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-18 13:52:29</p>
+        <p class="update-time">最后更新: 2026-02-18 14:46:54</p>
     </div>
     
     <script>
@@ -159,10 +160,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["01:03", "01:03", "01:31", "01:31", "02:03", "02:03", "02:30", "02:30", "03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30"],
+                labels: ["02:03", "02:03", "02:30", "02:30", "03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [443, 201, 281, 1050, 430, 887, 463, 741, 452, 881, 296, 733, 462, 380, 923, 909, 916, 739, 272, 690],
+                    data: [430, 887, 463, 741, 452, 881, 296, 733, 462, 380, 923, 909, 916, 739, 272, 690, 891, 937, 585, 886],
                     borderColor: '#00c853',
                     backgroundColor: 'rgba(0, 200, 83, 0.1)',
                     tension: 0.4,
@@ -194,10 +195,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["01:03", "01:03", "01:31", "01:31", "02:03", "02:03", "02:30", "02:30", "03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30"],
+                labels: ["02:03", "02:03", "02:30", "02:30", "03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [848, 748, 844, 388, 390, 828, 964, 540, 904, 387, 201, 1050, 887, 741, 881, 733, 380, 909, 739, 690],
+                    data: [844, 388, 390, 828, 964, 540, 904, 387, 201, 1050, 887, 741, 881, 733, 380, 909, 739, 690, 937, 886],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
