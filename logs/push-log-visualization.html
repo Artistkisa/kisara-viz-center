@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推送日志 - GitHub Pages 部署记录</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #8892b0;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #fff; }
+        
+        /* 统计卡片 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-top: 5px;
+        }
+        .stat-success { border-color: rgba(0, 200, 83, 0.3); }
+        .stat-failed { border-color: rgba(255, 23, 68, 0.3); }
+        .stat-git { border-color: rgba(102, 126, 234, 0.3); }
+        .stat-api { border-color: rgba(118, 75, 162, 0.3); }
+        
+        /* 日志表格 */
+        .log-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .log-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            color: #8892b0;
+            font-weight: normal;
+            font-size: 0.85rem;
+        }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        .time { color: #8892b0; font-size: 0.9rem; }
+        .file { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .method {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .method-git { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+        .method-api { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .success { color: #00c853; }
+        .failed { color: #ff1744; }
+        .retries { color: #8892b0; font-size: 0.9rem; }
+        .empty { text-align: center; color: #8892b0; padding: 40px; }
+        
+        .update-time {
+            text-align: center;
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回可视化中心</a>
+        <h1>📋 GitHub Pages 推送日志</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">0</div>
+                <div class="stat-label">总推送次数</div>
+            </div>
+            <div class="stat-card stat-success">
+                <div class="stat-value" style="color: #00c853;">0</div>
+                <div class="stat-label">成功</div>
+            </div>
+            <div class="stat-card stat-failed">
+                <div class="stat-value" style="color: #ff1744;">0</div>
+                <div class="stat-label">失败</div>
+            </div>
+            <div class="stat-card stat-git">
+                <div class="stat-value" style="color: #667eea;">0</div>
+                <div class="stat-label">Git 方式</div>
+            </div>
+            <div class="stat-card stat-api">
+                <div class="stat-value" style="color: #764ba2;">0</div>
+                <div class="stat-label">API 方式</div>
+            </div>
+        </div>
+        
+        <div class="log-section">
+            <h2>📜 最近推送记录</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>文件</th>
+                        <th>方式</th>
+                        <th>状态</th>
+                        <th>重试</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="empty">暂无推送记录</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="update-time">最后更新: 2026-02-18 14:07:18</p>
+    </div>
+</body>
+</html>
