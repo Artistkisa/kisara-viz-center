@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECS 服务器状态 - Kisara 可视化中心</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card h2 {
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-normal { background: #00c853; box-shadow: 0 0 10px #00c853; }
+        .status-warning { background: #ff9100; box-shadow: 0 0 10px #ff9100; }
+        .status-error { background: #ff1744; box-shadow: 0 0 10px #ff1744; }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            color: #888;
+        }
+        
+        .info-value {
+            font-weight: 500;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .task-status {
+            font-size: 0.85em;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .task-status.normal { background: rgba(0, 200, 83, 0.2); color: #00c853; }
+        .task-status.error { background: rgba(255, 23, 68, 0.2); color: #ff1744; }
+        .task-status.warning { background: rgba(255, 145, 0, 0.2); color: #ff9100; }
+        
+        .log-section {
+            margin-top: 20px;
+        }
+        
+        .log-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85em;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #a0a0a0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .update-time {
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        
+        <header>
+            <h1>🖥️ ECS 服务器状态</h1>
+            <p class="subtitle">数据采集节点实时监控</p>
+        </header>
+        
+        <div id="loading" class="loading">加载中...</div>
+        
+        <div id="content" style="display: none;">
+            <div class="grid">
+                <!-- 服务器信息 -->
+                <div class="card">
+                    <h2>
+                        <span class="status-dot" id="server-status-dot"></span>
+                        服务器信息
+                    </h2>
+                    <div class="info-row">
+                        <span class="info-label">名称</span>
+                        <span class="info-value" id="server-name">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">位置</span>
+                        <span class="info-value" id="server-location">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">状态</span>
+                        <span class="info-value" id="server-status">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最后更新</span>
+                        <span class="info-value" id="last-update">-</span>
+                    </div>
+                </div>
+                
+                <!-- 主服务器心跳 -->
+                <div class="card">
+                    <h2>
+                        <span class="status-dot" id="main-status-dot"></span>
+                        主服务器心跳
+                    </h2>
+                    <div class="info-row">
+                        <span class="info-label">状态</span>
+                        <span class="info-value" id="main-status">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">最后心跳</span>
+                        <span class="info-value" id="main-last">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">时间差</span>
+                        <span class="info-value" id="main-diff">-</span>
+                    </div>
+                </div>
+                
+                <!-- 备份统计 -->
+                <div class="card">
+                    <h2>💾 备份统计</h2>
+                    <div class="info-row">
+                        <span class="info-label">备份文件数</span>
+                        <span class="info-value" id="backup-count">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">总大小</span>
+                        <span class="info-value" id="backup-size">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">保留策略</span>
+                        <span class="info-value">30天</span>
+                    </div>
+                </div>
+                
+                <!-- 任务状态 -->
+                <div class="card" style="grid-column: 1 / -1;">
+                    <h2>📋 定时任务状态</h2>
+                    <ul class="task-list" id="task-list">
+                        <!-- 动态生成 -->
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="update-time">
+                数据每5分钟更新一次 · 最后更新: <span id="update-time">-</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function formatTime(isoString) {
+            if (!isoString) return '未知';
+            const date = new Date(isoString);
+            return date.toLocaleString('zh-CN');
+        }
+        
+        function getStatusClass(status) {
+            if (status === 'normal') return 'normal';
+            if (status === 'error') return 'error';
+            return 'warning';
+        }
+        
+        function getStatusText(status) {
+            if (status === 'normal') return '正常';
+            if (status === 'error') return '异常';
+            return '警告';
+        }
+        
+        fetch('../ecs-state.json')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+                // 服务器信息
+                document.getElementById('server-name').textContent = data.server.name;
+                document.getElementById('server-location').textContent = data.server.location;
+                document.getElementById('server-status').textContent = getStatusText(data.server.status);
+                document.getElementById('server-status-dot').className = 'status-dot status-' + data.server.status;
+                document.getElementById('last-update').textContent = formatTime(data.timestamp);
+                
+                // 主服务器心跳
+                const mainStatus = data.mainServer.status;
+                document.getElementById('main-status').textContent = getStatusText(mainStatus);
+                document.getElementById('main-status-dot').className = 'status-dot status-' + mainStatus;
+                document.getElementById('main-last').textContent = formatTime(data.mainServer.lastUpdate);
+                document.getElementById('main-diff').textContent = data.mainServer.hoursAgo + ' 小时前';
+                
+                // 备份统计
+                document.getElementById('backup-count').textContent = data.backup.count + ' 个';
+                document.getElementById('backup-size').textContent = data.backup.size;
+                
+                // 任务列表
+                const taskList = document.getElementById('task-list');
+                data.tasks.forEach(task => {
+                    const li = document.createElement('li');
+                    li.className = 'task-item';
+                    li.innerHTML = `
+                        <div class="task-name">
+                            <span class="status-dot status-${task.status}"></span>
+                            ${task.name}
+                        </div>
+                        <div>
+                            <span class="task-status ${getStatusClass(task.status)}">${getStatusText(task.status)}</span>
+                            <span style="color: #666; margin-left: 10px;">${task.interval}</span>
+                        </div>
+                    `;
+                    taskList.appendChild(li);
+                });
+                
+                document.getElementById('update-time').textContent = formatTime(data.timestamp);
+            })
+            .catch(err => {
+                document.getElementById('loading').textContent = '加载失败: ' + err.message;
+            });
+    </script>
+</body>
+</html>
