@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-02-18T13:09:36.157Z",
+  "server": {
+    "name": "ECS-Monitor",
+    "location": "阿里云-上海",
+    "status": "online"
+  },
+  "tasks": [
+    {
+      "name": "回南天监测",
+      "status": "normal",
+      "lastRun": "2026-02-18T13:00:03.346Z",
+      "interval": "每小时"
+    },
+    {
+      "name": "API健康检查",
+      "status": "normal",
+      "lastRun": "2026-02-18T13:00:05.542Z",
+      "interval": "每30分钟"
+    },
+    {
+      "name": "心跳监控",
+      "status": "normal",
+      "lastRun": "2026-02-18T13:05:11.344Z",
+      "interval": "每5分钟"
+    },
+    {
+      "name": "配置同步",
+      "status": "error",
+      "lastRun": null,
+      "interval": "每10分钟"
+    },
+    {
+      "name": "日志归档",
+      "status": "warning",
+      "lastRun": null,
+      "interval": "每天"
+    }
+  ],
+  "backup": {
+    "count": 0,
+    "size": "0.00 MB"
+  },
+  "mainServer": {
+    "status": "normal",
+    "lastUpdate": "2026-02-18 20:50:37",
+    "hoursAgo": 0
+  }
+}
