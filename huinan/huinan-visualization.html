@@ -230,15 +230,15 @@
         
         <div class="metrics">
             <div class="metric">
-                <div class="metric-value">0%</div>
+                <div class="metric-value">65%</div>
                 <div class="metric-label">💧 相对湿度</div>
             </div>
             <div class="metric">
-                <div class="metric-value">0°C</div>
+                <div class="metric-value">10°C</div>
                 <div class="metric-label">🌡️ 露点温度</div>
             </div>
             <div class="metric">
-                <div class="metric-value">0°C</div>
+                <div class="metric-value">18°C</div>
                 <div class="metric-label">🌡️ 空气温度</div>
             </div>
         </div>
@@ -314,17 +314,17 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-18 18:56:56 | 每天检测5次</p>
+        <p class="update-time">最后更新: 2026-02-18 19:09:10 | 每天检测5次</p>
     </div>
     
     <script>
         const ctx = document.getElementById('trendChart').getContext('2d');
         
         // 数据
-        const labels = [];
-        const humidityData = [];
-        const dewData = [];
-        const tempData = [];
+        const labels = ["11:09"];
+        const humidityData = [65];
+        const dewData = [10];
+        const tempData = [18];
         
         // 计算露点-温度差值，用于判断回南天区域
         const diffData = dewData.map((dew, i) => dew - (tempData[i] || 0) + 3);
@@ -465,6 +465,8 @@
                 },
                 scales: {
                     y: {
+                        min: 0,
+                        max: 100,
                         grid: {
                             color: 'rgba(255,255,255,0.05)',
                             drawBorder: false
