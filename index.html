@@ -217,13 +217,14 @@
             .then(r => r.json())
             .then(data => {
                 const card = document.querySelector('a[href="./huinan/huinan-visualization.html"] .card-meta');
-                if (card && data.isNanhui) {
+                if (card && data.humidity > 0) {
                     const levelText = {
                         'mild': '🟡轻度',
                         'moderate': '🟠中度',
                         'severe': '🔴重度'
                     };
-                    card.innerHTML = `<span>${levelText[data.level] || '正常'} ${data.humidity}%</span><span>📍 广州</span>`;
+                    const status = data.isNanhui ? (levelText[data.level] + ' ') : '';
+                    card.innerHTML = `<span>${status}${data.humidity}% 湿度</span><span>📍 广州</span>`;
                 }
             })
             .catch(() => {});
