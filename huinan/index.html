@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回南天监测 - 广州</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #8892b0;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #fff; }
+        
+        .status-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 3px solid;
+            margin-bottom: 30px;
+        }
+        .status-card.normal { border-color: #00c853; background: rgba(0,200,83,0.1); }
+        .status-card.mild { border-color: #feca57; background: rgba(254,202,87,0.1); }
+        .status-card.moderate { border-color: #ff9800; background: rgba(255,152,0,0.1); }
+        .status-card.severe { border-color: #ff1744; background: rgba(255,23,68,0.1); }
+        
+        .status-icon { font-size: 5rem; margin-bottom: 15px; }
+        .status-text { font-size: 1.8rem; font-weight: bold; margin-bottom: 10px; }
+        .status-card.normal .status-text { color: #00c853; }
+        .status-card.mild .status-text { color: #feca57; }
+        .status-card.moderate .status-text { color: #ff9800; }
+        .status-card.severe .status-text { color: #ff1744; }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .metric-label { font-size: 0.9rem; color: #8892b0; margin-top: 8px; }
+        
+        .year-stats {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        .year-stats h2 { margin-bottom: 25px; font-size: 1.3rem; text-align: center; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+        }
+        .stat-number { font-size: 2.2rem; font-weight: bold; color: #667eea; }
+        .stat-desc { font-size: 0.85rem; color: #8892b0; margin-top: 8px; }
+        
+        .chart-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        .chart-section h2 { margin-bottom: 25px; font-size: 1.3rem; }
+        .chart-container { height: 400px; position: relative; }
+        
+        .update-time {
+            text-align: center;
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回可视化中心</a>
+        <h1>🌫️ 回南天监测</h1>
+        
+        <div class="status-card normal">
+            <div class="status-icon">☀️</div>
+            <div class="status-text">正常</div>
+            <div style="color: #8892b0; font-size: 1.1rem;">✅ 空气湿度正常</div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">85%</div>
+                <div class="metric-label">💧 相对湿度</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">13°C</div>
+                <div class="metric-label">🌡️ 露点温度</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">17°C</div>
+                <div class="metric-label">🌡️ 空气温度</div>
+            </div>
+        </div>
+        
+        <div class="year-stats">
+            <h2>📊 2026年统计</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-desc">回南天次数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-desc">轻度天数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-desc">中度天数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-desc">重度天数</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-section">
+            <h2>📈 趋势分析</h2>
+            <div class="chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </div>
+        
+        <p class="update-time">最后更新: 2026-02-19 03:36:00 | 每30分钟更新</p>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('trendChart').getContext('2d');
+        
+        const labels = ["19:09", "19:10", "19:44", "22:00", "22:30", "22:48", "22:55", "23:01", "23:30", "23:44", "00:32", "00:56", "01:00", "01:32", "02:33"];
+        const humidityData = [65, 65, 74, 85, 85, 85, 85, 86, 86, 86, 0, 0, 0, 85, 85];
+        const dewData = [10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 0, 0, 0, 12, 13];
+        const tempData = [18, 18, 16, 14, 14, 14, 14, 13, 13, 13, 0, 0, 0, 13, 17];
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: '湿度 (%)',
+                        data: humidityData,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#667eea'
+                    },
+                    {
+                        label: '温度 (°C)',
+                        data: tempData,
+                        borderColor: '#feca57',
+                        backgroundColor: 'rgba(254, 202, 87, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: false,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#feca57'
+                    },
+                    {
+                        label: '露点 (°C)',
+                        data: dewData,
+                        borderColor: '#00c853',
+                        backgroundColor: 'rgba(0, 200, 83, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: false,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#00c853'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: {
+                        labels: { color: '#8892b0' }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100,
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#8892b0' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#8892b0', maxRotation: 45 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
