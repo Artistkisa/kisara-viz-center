@@ -29,10 +29,9 @@
         }
         .back-link:hover { color: #fff; }
         
-        /* 统计 */
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 30px;
         }
@@ -46,7 +45,6 @@
         .stat-value { font-size: 1.8rem; font-weight: bold; color: #fff; }
         .stat-label { font-size: 0.85rem; color: #8892b0; margin-top: 5px; }
         
-        /* 分区 */
         .section {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
@@ -60,7 +58,6 @@
             color: #fff;
         }
         
-        /* 番剧卡片 */
         .anime-card {
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
@@ -70,14 +67,12 @@
         }
         .anime-card.today { border-left-color: #ff6b6b; background: rgba(255,107,107,0.1); }
         .anime-card.tomorrow { border-left-color: #feca57; background: rgba(254,202,87,0.1); }
-        .anime-card.airing { border-left-color: #00c853; }
-        .anime-card.completed { border-left-color: #8892b0; opacity: 0.7; }
         
         .anime-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .anime-title { font-weight: bold; font-size: 1.1rem; }
         .badge {
@@ -88,31 +83,31 @@
         }
         .badge-today { background: rgba(255,107,107,0.3); color: #ff6b6b; }
         .badge-tomorrow { background: rgba(254,202,87,0.3); color: #feca57; }
-        .badge-airing { background: rgba(0,200,83,0.2); color: #00c853; }
-        .badge-completed { background: rgba(136,146,176,0.2); color: #8892b0; }
         
-        .anime-info, .anime-meta {
+        .anime-info {
             display: flex;
             justify-content: space-between;
             color: #8892b0;
             font-size: 0.9rem;
         }
-        .broadcast-time { color: #ff6b6b; font-weight: bold; }
+        .score { color: #feca57; }
         
-        /* 进度条 */
-        .progress-bar {
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            margin: 10px 0;
-            overflow: hidden;
+        .day-group {
+            margin-bottom: 20px;
         }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 3px;
-            transition: width 0.3s ease;
+        .day-group h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1rem;
         }
+        .anime-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .anime-item .name { color: #fff; }
+        .anime-item .meta { color: #8892b0; font-size: 0.85rem; }
         
         .empty-state {
             text-align: center;
@@ -126,6 +121,12 @@
             font-size: 0.9rem;
             margin-top: 30px;
         }
+        .data-source {
+            text-align: center;
+            color: #667eea;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -135,75 +136,660 @@
         
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-value">2</div>
-                <div class="stat-label">追番总数</div>
+                <div class="stat-value">91</div>
+                <div class="stat-label">本季新番</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" style="color: #00c853;">2</div>
-                <div class="stat-label">连载中</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" style="color: #8892b0;">0</div>
-                <div class="stat-label">已完结</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" style="color: #ff6b6b;">0</div>
+                <div class="stat-value" style="color: #ff6b6b;">11</div>
                 <div class="stat-label">今日更新</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: #feca57;">15</div>
+                <div class="stat-label">明日预告</div>
+            </div>
         </div>
         
         <div class="section">
-            <h2>🔔 今日更新</h2>
-            <div class="empty-state">今天没有番剧更新</div>
+            <h2>🔔 今日更新 (周三)</h2>
+            
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">航海王</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第1375集</span>
+                    <span class="score">⭐ 8.3</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">靠死亡游戏混饭吃。</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 6.4</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">【我推的孩子】 第三季</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 7.1</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">优雅贵族的休假指南。</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 5.1</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">贵族转生 ～得天眷顾一出生就获得最强力量～</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 4.8</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">地狱老师 第2部分</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 5.9</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">29岁单身冒险家的日常</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 5.9</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">奶龙搞怪大作战2</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第4集</span>
+                    <span class="score">⭐ 10</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">魔王的女儿太温柔了！！</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 5.6</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">mofusand</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 3.8</span>
+                </div>
+            </div>
+            <div class="anime-card today">
+                <div class="anime-header">
+                    <span class="anime-title">ゲルぴよ</span>
+                    <span class="badge badge-today">🔔 今日更新</span>
+                </div>
+                <div class="anime-info">
+                    <span>第5集</span>
+                    <span class="score">暂无评分</span>
+                </div>
+            </div>
         </div>
         
         <div class="section">
-            <h2>📅 明日预告</h2>
+            <h2>📅 明日预告 (周四)</h2>
             
             <div class="anime-card tomorrow">
                 <div class="anime-header">
-                    <span class="anime-title">迷宫饭</span>
+                    <span class="anime-title">中国奇谭 第二季</span>
                     <span class="badge badge-tomorrow">明天</span>
                 </div>
                 <div class="anime-info">
-                    <span>第9集</span>
-                    <span class="broadcast-time">⏰ 22:00</span>
+                    <span>第7集</span>
+                    <span class="score">⭐ 6.5</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">极限拯救</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第3集</span>
+                    <span class="score">⭐ 7.8</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">咒术回战 死灭回游 前篇</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 7.4</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">魔都精兵的奴隶 第二季</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 6.5</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">厄里斯的圣杯</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 5.4</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">透明男与人类女～不久成为夫妇的二人～</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 6.5</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">蘑菇魔女</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 5.6</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">终究、与你相恋。 第二季</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 4.5</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">「凭你也想讨伐魔王？」被勇者小队逐出队伍，只好在王都自在过活</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">⭐ 5.4</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">我们不可能成为恋人！绝对不行。 (※似乎可行？) 〜再次闪耀！〜</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 7.4</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">超时空辉夜姬！</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第4集</span>
+                    <span class="score">⭐ 8.1</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">棱镜恋曲</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第5集</span>
+                    <span class="score">⭐ 6.7</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">学园偶像大师 Story of Re;IRIS</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 6</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">ブラックジャックやねん</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第6集</span>
+                    <span class="score">暂无评分</span>
+                </div>
+            </div>
+            <div class="anime-card tomorrow">
+                <div class="anime-header">
+                    <span class="anime-title">Tales From Outer Suburbia</span>
+                    <span class="badge badge-tomorrow">明天</span>
+                </div>
+                <div class="anime-info">
+                    <span>第7集</span>
+                    <span class="score">⭐ 1</span>
                 </div>
             </div>
         </div>
         
         <div class="section">
-            <h2>📋 全部番剧</h2>
-            
-        <div class="anime-card airing">
-            <div class="anime-header">
-                <span class="anime-title">葬送的芙莉莲</span>
-                <span class="badge badge-airing">连载中</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 42%"></div>
-            </div>
-            <div class="anime-meta">
-                <span>进度: 12/28 集</span>
-                <span>周五 23:00</span>
-            </div>
-        </div>
-        <div class="anime-card airing">
-            <div class="anime-header">
-                <span class="anime-title">迷宫饭</span>
-                <span class="badge badge-airing">连载中</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 33%"></div>
-            </div>
-            <div class="anime-meta">
-                <span>进度: 8/24 集</span>
-                <span>周四 22:00</span>
-            </div>
-        </div>
+            <h2>📋 本季番剧时间表</h2>
+            <div class="day-group"><h3>星期一</h3>
+                <div class="anime-item">
+                    <span class="name">黄金神威 最终章</span>
+                    <span class="meta">第7集 | ⭐ 7.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">史上最强炼体老祖</span>
+                    <span class="meta">第4集 | ⭐ 2.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">公主大人“拷问”的时间到了 第二季</span>
+                    <span class="meta">第6集 | ⭐ 7.2</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">和青梅竹马之间不会有恋爱喜剧</span>
+                    <span class="meta">第7集 | ⭐ 6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">能帮我弄干净吗？</span>
+                    <span class="meta">第7集 | ⭐ 6.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">正义使者 -我的英雄学院之非法英雄- 第二季</span>
+                    <span class="meta">第7集 | ⭐ 5.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">史前战纪 第三季</span>
+                    <span class="meta">第6集 | ⭐ 8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">CHOPPER’s</span>
+                    <span class="meta">第7集 | ⭐ 7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">宝可梦动画图鉴 第四季 转瞬缤纷</span>
+                    <span class="meta">第5集 | ⭐ 6</span>
+                </div></div><div class="day-group"><h3>星期二</h3>
+                <div class="anime-item">
+                    <span class="name">达尔文事变</span>
+                    <span class="meta">第7集 | ⭐ 2.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">异世界的安泰全看社畜</span>
+                    <span class="meta">第7集 | ⭐ 5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">阿尔涅的事件簿</span>
+                    <span class="meta">第7集 | ⭐ 4.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">身为魔族的我想向勇者小队的可爱女孩告白。</span>
+                    <span class="meta">第7集 | ⭐ 5.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">午夜的倾心旋律</span>
+                    <span class="meta">第7集 | ⭐ 5.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">铠真传 武士军团</span>
+                    <span class="meta">第7集 | ⭐ 5.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">新大头儿子和小头爸爸——国宝小侦探</span>
+                    <span class="meta">第5集 | 暂无评分</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">武神主宰 异魔篇</span>
+                    <span class="meta">第7集 | ⭐ 6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">秘密結社 鷹の爪XX</span>
+                    <span class="meta">第7集 | ⭐ 6</span>
+                </div></div><div class="day-group"><h3>星期三</h3>
+                <div class="anime-item">
+                    <span class="name">航海王</span>
+                    <span class="meta">第1375集 | ⭐ 8.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">靠死亡游戏混饭吃。</span>
+                    <span class="meta">第7集 | ⭐ 6.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">【我推的孩子】 第三季</span>
+                    <span class="meta">第6集 | ⭐ 7.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">优雅贵族的休假指南。</span>
+                    <span class="meta">第7集 | ⭐ 5.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">贵族转生 ～得天眷顾一出生就获得最强力量～</span>
+                    <span class="meta">第7集 | ⭐ 4.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">地狱老师 第2部分</span>
+                    <span class="meta">第7集 | ⭐ 5.9</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">29岁单身冒险家的日常</span>
+                    <span class="meta">第7集 | ⭐ 5.9</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">奶龙搞怪大作战2</span>
+                    <span class="meta">第4集 | ⭐ 10</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">魔王的女儿太温柔了！！</span>
+                    <span class="meta">第7集 | ⭐ 5.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">mofusand</span>
+                    <span class="meta">第7集 | ⭐ 3.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">ゲルぴよ</span>
+                    <span class="meta">第5集 | 暂无评分</span>
+                </div></div><div class="day-group"><h3>星期四</h3>
+                <div class="anime-item">
+                    <span class="name">中国奇谭 第二季</span>
+                    <span class="meta">第7集 | ⭐ 6.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">极限拯救</span>
+                    <span class="meta">第3集 | ⭐ 7.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">咒术回战 死灭回游 前篇</span>
+                    <span class="meta">第6集 | ⭐ 7.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">魔都精兵的奴隶 第二季</span>
+                    <span class="meta">第6集 | ⭐ 6.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">厄里斯的圣杯</span>
+                    <span class="meta">第6集 | ⭐ 5.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">透明男与人类女～不久成为夫妇的二人～</span>
+                    <span class="meta">第6集 | ⭐ 6.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">蘑菇魔女</span>
+                    <span class="meta">第6集 | ⭐ 5.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">终究、与你相恋。 第二季</span>
+                    <span class="meta">第6集 | ⭐ 4.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">「凭你也想讨伐魔王？」被勇者小队逐出队伍，只好在王都自在过活</span>
+                    <span class="meta">第6集 | ⭐ 5.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">我们不可能成为恋人！绝对不行。 (※似乎可行？) 〜再次闪耀！〜</span>
+                    <span class="meta">第7集 | ⭐ 7.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">超时空辉夜姬！</span>
+                    <span class="meta">第4集 | ⭐ 8.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">棱镜恋曲</span>
+                    <span class="meta">第5集 | ⭐ 6.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">学园偶像大师 Story of Re;IRIS</span>
+                    <span class="meta">第7集 | ⭐ 6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">ブラックジャックやねん</span>
+                    <span class="meta">第6集 | 暂无评分</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">Tales From Outer Suburbia</span>
+                    <span class="meta">第7集 | ⭐ 1</span>
+                </div></div><div class="day-group"><h3>星期五</h3>
+                <div class="anime-item">
+                    <span class="name">大主宰 年番2</span>
+                    <span class="meta">第6集 | ⭐ 6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">深空彼岸</span>
+                    <span class="meta">第5集 | ⭐ 5.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">炎炎消防队 叁之章 第2部分</span>
+                    <span class="meta">第6集 | ⭐ 6.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">一人之下 第六季</span>
+                    <span class="meta">第7集 | ⭐ 6.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">DARK MOON -黑之月: 月之祭坛-</span>
+                    <span class="meta">第6集 | ⭐ 4.9</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">葬送的芙莉莲 第二季</span>
+                    <span class="meta">第5集 | ⭐ 8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">地狱模式 ～喜欢速通游戏的玩家在废设定异世界无双～</span>
+                    <span class="meta">第6集 | ⭐ 5.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">喜羊羊与灰太狼之古古怪界有古怪</span>
+                    <span class="meta">第4集 | ⭐ 6.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">和机器人啪啪啪能算在经验次数里吗？？</span>
+                    <span class="meta">第6集 | ⭐ 6.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">高校奇面组</span>
+                    <span class="meta">第6集 | ⭐ 4.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">Poppin-Play Kitchen</span>
+                    <span class="meta">第5集 | ⭐ 6.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">Gluttomy</span>
+                    <span class="meta">第4集 | ⭐ 6.2</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">ザ・ホラーズ・ホラー・ホーム</span>
+                    <span class="meta">第3集 | ⭐ 6</span>
+                </div></div><div class="day-group"><h3>星期六</h3>
+                <div class="anime-item">
+                    <span class="name">名侦探柯南</span>
+                    <span class="meta">第1572集 | ⭐ 7.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">枪神 观星之人</span>
+                    <span class="meta">第6集 | ⭐ 5.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">Fate/strange Fake</span>
+                    <span class="meta">第7集 | ⭐ 7.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">判处勇者刑 惩罚勇者9004队刑务纪录</span>
+                    <span class="meta">第7集 | ⭐ 6.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">现在多闻君是哪一面！？</span>
+                    <span class="meta">第7集 | ⭐ 7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">择天记</span>
+                    <span class="meta">第3集 | ⭐ 4.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">死亡账号</span>
+                    <span class="meta">第6集 | ⭐ 4.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">转生之后的我变成了龙蛋</span>
+                    <span class="meta">第6集 | ⭐ 4.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">勇者之屑</span>
+                    <span class="meta">第6集 | ⭐ 5.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">金牌得主 第二季</span>
+                    <span class="meta">第4集 | ⭐ 7.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">安逸领主的愉快领地防卫～以生产系魔术将无名小村打造成最强要塞都市～</span>
+                    <span class="meta">第6集 | ⭐ 5.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">2049：超能猩云队</span>
+                    <span class="meta">第3集 | 暂无评分</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">ほっぺちゃん ～サン王国と黒ほっぺ団の秘密～</span>
+                    <span class="meta">第6集 | ⭐ 2.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">非人学生与厌世教师</span>
+                    <span class="meta">第6集 | ⭐ 5.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">卡片战斗先导者 Divinez 幻真星战篇</span>
+                    <span class="meta">第6集 | ⭐ 5.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">扮演姐姐</span>
+                    <span class="meta">第3集 | ⭐ 7.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">低危营地生存秀 第五季</span>
+                    <span class="meta">第5集 | 暂无评分</span>
+                </div></div><div class="day-group"><h3>星期日</h3>
+                <div class="anime-item">
+                    <span class="name">地狱乐 第二季</span>
+                    <span class="meta">第6集 | ⭐ 6.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">异国日记</span>
+                    <span class="meta">第7集 | ⭐ 8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">花样少年少女</span>
+                    <span class="meta">第7集 | ⭐ 5.5</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">成何体统 第二季</span>
+                    <span class="meta">第4集 | ⭐ 7.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">神八小妹不可怕</span>
+                    <span class="meta">第6集 | ⭐ 5.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">相反的你和我</span>
+                    <span class="meta">第6集 | ⭐ 7.6</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">极速车魂 第三季</span>
+                    <span class="meta">第7集 | ⭐ 6.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">魔术师库诺看得见一切</span>
+                    <span class="meta">第7集 | ⭐ 5.9</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">火喰鸟 羽州褴褛鸢组</span>
+                    <span class="meta">第6集 | ⭐ 4.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">泛而不精的我被逐出了勇者队伍</span>
+                    <span class="meta">第7集 | ⭐ 5.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">有栖川炼原来是女孩子啊。</span>
+                    <span class="meta">第7集 | ⭐ 4.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">皎洁迎宵之月</span>
+                    <span class="meta">第6集 | ⭐ 5.4</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">打工仔的拷问日常</span>
+                    <span class="meta">第7集 | ⭐ 3.8</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">被邻国王子溺爱的反派女主</span>
+                    <span class="meta">第6集 | ⭐ 4.3</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">草莓哀歌</span>
+                    <span class="meta">第7集 | ⭐ 5.1</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">暗芝居 第十六季</span>
+                    <span class="meta">第6集 | ⭐ 5.7</span>
+                </div>
+                <div class="anime-item">
+                    <span class="name">肥志百科 第14季</span>
+                    <span class="meta">第4集 | 暂无评分</span>
+                </div></div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-18 14:29:25</p>
+        <p class="update-time">最后更新: 2026-02-18 14:35:11</p>
+        <p class="data-source">数据来源: Bangumi 番组计划</p>
     </div>
 </body>
 </html>
