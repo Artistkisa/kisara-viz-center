@@ -191,7 +191,7 @@
             </a>
             
             <!-- 回南天监测 -->
-            <a href="./nanhui/nanhui-visualization.html" class="card">
+            <a href="./huinan/huinan-visualization.html" class="card">
                 <div class="card-icon">🌫️</div>
                 <h2>回南天监测</h2>
                 <p>湿度、露点温度监测，回南天预警与防护提醒。</p>
@@ -223,10 +223,10 @@
         document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
         
         // 回南天状态显示
-        fetch('./nanhui/nanhui-data.json')
+        fetch('./huinan/huinan-data.json')
             .then(r => r.json())
             .then(data => {
-                const card = document.querySelector('a[href="./nanhui/nanhui-visualization.html"] .card-meta');
+                const card = document.querySelector('a[href="./huinan/huinan-visualization.html"] .card-meta');
                 if (card && data.isNanhui) {
                     const levelText = {
                         'mild': '🟡轻度',
