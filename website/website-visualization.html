@@ -1,11 +1,11 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;网站运行状态 - 实时监控&lt;/title&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
-    &lt;style&gt;
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站运行状态 - 实时监控</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -90,71 +90,71 @@
             font-size: 0.9rem;
             margin-top: 30px;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;a href="../" class="back-link"&gt;← 返回可视化中心&lt;/a&gt;
-        &lt;h1&gt;🌐 网站运行状态&lt;/h1&gt;
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回可视化中心</a>
+        <h1>🌐 网站运行状态</h1>
         
-        &lt;!-- Kisara 主站 --&gt;
-        &lt;div class="website-card"&gt;
-            &lt;div class="website-header"&gt;
-                &lt;span class="website-name"&gt;🌐 kisara.art (主站)&lt;/span&gt;
-                &lt;span class="status status-offline"&gt;
-                    ● 离线
-                &lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div class="metrics"&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;0.0%&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;24小时可用率&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;690ms&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;当前响应时间&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;627.0ms&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;平均响应时间&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="chart-container"&gt;
-                &lt;canvas id="kisaraChart"&gt;&lt;/canvas&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- Kisara 主站 -->
+        <div class="website-card">
+            <div class="website-header">
+                <span class="website-name">🌐 kisara.art (主站)</span>
+                <span class="status status-online">
+                    ● 在线
+                </span>
+            </div>
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">100.0%</div>
+                    <div class="metric-label">24小时可用率</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">690ms</div>
+                    <div class="metric-label">当前响应时间</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">627.0ms</div>
+                    <div class="metric-label">平均响应时间</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="kisaraChart"></canvas>
+            </div>
+        </div>
         
-        &lt;!-- Kisara 论坛 --&gt;
-        &lt;div class="website-card"&gt;
-            &lt;div class="website-header"&gt;
-                &lt;span class="website-name"&gt;💬 forum.kisara.art (论坛)&lt;/span&gt;
-                &lt;span class="status status-offline"&gt;
-                    ● 离线
-                &lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div class="metrics"&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;0.0%&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;24小时可用率&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;690ms&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;当前响应时间&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="metric"&gt;
-                    &lt;div class="metric-value"&gt;668.0ms&lt;/div&gt;
-                    &lt;div class="metric-label"&gt;平均响应时间&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="chart-container"&gt;
-                &lt;canvas id="forumChart"&gt;&lt;/canvas&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- Kisara 论坛 -->
+        <div class="website-card">
+            <div class="website-header">
+                <span class="website-name">💬 forum.kisara.art (论坛)</span>
+                <span class="status status-online">
+                    ● 在线
+                </span>
+            </div>
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">100.0%</div>
+                    <div class="metric-label">24小时可用率</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">690ms</div>
+                    <div class="metric-label">当前响应时间</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">668.0ms</div>
+                    <div class="metric-label">平均响应时间</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="forumChart"></canvas>
+            </div>
+        </div>
         
-        &lt;p class="update-time"&gt;最后更新: 2026-02-18 13:47:08&lt;/p&gt;
-    &lt;/div&gt;
+        <p class="update-time">最后更新: 2026-02-18 13:52:29</p>
+    </div>
     
-    &lt;script&gt;
+    <script>
         const ctx1 = document.getElementById('kisaraChart').getContext('2d');
         new Chart(ctx1, {
             type: 'line',
@@ -224,6 +224,6 @@
                 }
             }
         });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    </script>
+</body>
+</html>
