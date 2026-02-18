@@ -200,6 +200,17 @@
                     <span>📍 kisara.art</span>
                 </div>
             </a>
+            
+            <!-- ECS 状态 -->
+            <a href="#" class="card" onclick="return false;">
+                <div class="card-icon">🖥️</div>
+                <h2>ECS 服务器</h2>
+                <p>数据采集节点运行状态，任务监控，备份管理。</p>
+                <div class="card-meta" id="ecs-status">
+                    <span><span class="status"></span> 加载中...</span>
+                    <span>📍 阿里云</span>
+                </div>
+            </a>
         </div>
         
         <footer>
@@ -211,6 +222,27 @@
     <script>
         // 显示最后更新时间
         document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+        
+        // ECS 状态显示
+        fetch('./ecs-state.json')
+            .then(r => r.json())
+            .then(data => {
+                const card = document.getElementById('ecs-status');
+                if (card && data.server) {
+                    const healthyTasks = data.tasks.filter(t => t.status === 'normal').length;
+                    const totalTasks = data.tasks.length;
+                    const mainServerStatus = data.mainServer.status === 'normal' ? '●' : '●';
+                    const mainServerColor = data.mainServer.status === 'normal' ? '#00c853' : '#ff1744';
+                    
+                    card.innerHTML = `
+                        <span>${healthyTasks}/${totalTasks} 任务正常</span>
+                        <span style="color: ${mainServerColor};">${mainServerStatus} 主服务器</span>
+                    `;
+                }
+            })
+            .catch(() => {
+                document.getElementById('ecs-status').innerHTML = '<span>状态未知</span><span>📍 阿里云</span>';
+            });
         
         // 回南天状态显示
         fetch('./huinan/huinan-data.json')
