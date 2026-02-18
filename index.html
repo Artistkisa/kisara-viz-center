@@ -221,6 +221,22 @@
     <script>
         // 显示最后更新时间
         document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+        
+        // 回南天状态显示
+        fetch('./nanhui/nanhui-data.json')
+            .then(r => r.json())
+            .then(data => {
+                const card = document.querySelector('a[href="./nanhui/nanhui-visualization.html"] .card-meta');
+                if (card && data.isNanhui) {
+                    const levelText = {
+                        'mild': '🟡轻度',
+                        'moderate': '🟠中度',
+                        'severe': '🔴重度'
+                    };
+                    card.innerHTML = `<span>${levelText[data.level] || '正常'} ${data.humidity}%</span><span>📍 广州</span>`;
+                }
+            })
+            .catch(() => {});
     </script>
 </body>
 </html>
