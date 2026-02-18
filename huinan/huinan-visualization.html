@@ -251,7 +251,7 @@
                     <div class="stat-desc">回南天次数</div>
                 </div>
                 <div class="stat-item mild">
-                    <div class="stat-number">3</div>
+                    <div class="stat-number">1</div>
                     <div class="stat-desc">轻度天数</div>
                 </div>
                 <div class="stat-item moderate">
@@ -264,7 +264,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 20px; color: #8892b0; font-size: 1rem;">
-                累计影响 <strong style="color: #fff;">3</strong> 天
+                累计影响 <strong style="color: #fff;">1</strong> 天
             </div>
         </div>
         
@@ -314,17 +314,17 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-19 00:56:53 | 每天检测5次</p>
+        <p class="update-time">最后更新: 2026-02-19 01:00:46 | 每天检测5次</p>
     </div>
     
     <script>
         const ctx = document.getElementById('trendChart').getContext('2d');
         
         // 数据
-        const labels = ["19:09", "19:10", "19:44", "22:00", "22:30", "22:48", "22:55", "23:01", "23:30", "23:44", "00:32", "00:56"];
-        const humidityData = [65, 65, 74, 85, 85, 85, 85, 86, 86, 86, 0, 0];
-        const dewData = [10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 0, 0];
-        const tempData = [18, 18, 16, 14, 14, 14, 14, 13, 13, 13, 0, 0];
+        const labels = ["19:09", "19:10", "19:44", "22:00", "22:30", "22:48", "22:55", "23:01", "23:30", "23:44", "00:32", "00:56", "01:00"];
+        const humidityData = [65, 65, 74, 85, 85, 85, 85, 86, 86, 86, 0, 0, 0];
+        const dewData = [10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 0, 0, 0];
+        const tempData = [18, 18, 16, 14, 14, 14, 14, 13, 13, 13, 0, 0, 0];
         
         // 计算露点-温度差值，用于判断回南天区域
         const diffData = dewData.map((dew, i) => dew - (tempData[i] || 0) + 3);
