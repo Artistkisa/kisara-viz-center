@@ -73,7 +73,7 @@
         
         &lt;div class="stats"&gt;
             &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;4&lt;/div&gt;
+                &lt;div class="stat-value"&gt;5&lt;/div&gt;
                 &lt;div class="stat-label"&gt;数据点数&lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="stat-item"&gt;
@@ -81,7 +81,7 @@
                 &lt;div class="stat-label"&gt;最高置信度&lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;79%&lt;/div&gt;
+                &lt;div class="stat-value"&gt;74%&lt;/div&gt;
                 &lt;div class="stat-label"&gt;当前湿度&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -114,16 +114,16 @@
     &lt;/div&gt;
 
     &lt;script&gt;
-        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 01:00"];
-        const humidity = [76, 78, 82, 79];
-        const temp = [17, 16, 16, 16];
-        const dew = [12, 12, 12, 13];
-        const windDir = [0, 0, 0, 0];
-        const windSpeed = [1, 3.0, 3.0, 1.0];
-        const pressure = [1013, 1013, 1013, 1014];
-        const confidenceScores = [1, 2, 2, 2];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}];
-        const intensityLevels = ["none", "none", "none", "none"];
+        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 01:00", "02-20 02:00"];
+        const humidity = [76, 78, 82, 79, 74];
+        const temp = [17, 16, 16, 16, 16];
+        const dew = [12, 12, 12, 13, 13];
+        const windDir = [0, 0, 0, 0, 0];
+        const windSpeed = [1, 3.0, 3.0, 1.0, 4.0];
+        const pressure = [1013, 1013, 1013, 1014, 1014];
+        const confidenceScores = [1, 2, 2, 2, 2];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 3}];
+        const intensityLevels = ["none", "none", "none", "none", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
