@@ -124,6 +124,38 @@
         "dewLevel": "none"
       },
       "source": "ecs"
+    },
+    {
+      "time": "2026-02-20 02:00:04",
+      "humidity": 74,
+      "temp": 16,
+      "dew": 13,
+      "windDir": 0,
+      "windSpeed": 4.0,
+      "pressure": 1014,
+      "humidityChange3h": -2,
+      "pressureDrop6h": 6,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "tempDewDiff": 3,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8",
+          "\u6c14\u538b\u4e0b\u964d"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6",
+        "humidityLevel": "none",
+        "dewLevel": "none"
+      },
+      "source": "ecs"
     }
   ],
   "events": [],
