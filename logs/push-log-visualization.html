@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECS 推送日志 - 监控中心</title>
+    <title>推送日志 - GitHub Pages 部署记录</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -15,7 +14,7 @@
             color: #fff;
             padding: 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1000px; margin: 0 auto; }
         h1 {
             text-align: center;
             margin-bottom: 30px;
@@ -31,119 +30,80 @@
         }
         .back-link:hover { color: #fff; }
         
-        /* 状态概览 */
-        .overview {
+        /* 统计卡片 */
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .status-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .status-card h2 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #8892b0;
-        }
-        .status-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .status-value.success { color: #00c853; }
-        .status-value.warning { color: #ff9800; }
-        .status-value.error { color: #ff1744; }
-        .status-detail {
-            font-size: 0.9rem;
-            color: #8892b0;
-        }
-        
-        /* 统计网格 */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
         }
-        .stat-item {
+        .stat-card {
             background: rgba(255,255,255,0.05);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .stat-number {
+        .stat-value {
             font-size: 2rem;
             font-weight: bold;
-            color: #667eea;
+            color: #fff;
         }
         .stat-label {
             font-size: 0.85rem;
             color: #8892b0;
             margin-top: 5px;
         }
+        .stat-success { border-color: rgba(0, 200, 83, 0.3); }
+        .stat-failed { border-color: rgba(255, 23, 68, 0.3); }
+        .stat-git { border-color: rgba(102, 126, 234, 0.3); }
+        .stat-api { border-color: rgba(118, 75, 162, 0.3); }
         
         /* 日志表格 */
         .log-section {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
             padding: 25px;
-            margin-bottom: 30px;
             border: 1px solid rgba(255,255,255,0.1);
         }
         .log-section h2 {
             margin-bottom: 20px;
             font-size: 1.2rem;
         }
-        .log-table {
+        table {
             width: 100%;
             border-collapse: collapse;
         }
-        .log-table th,
-        .log-table td {
+        th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .log-table th {
+        th {
             color: #8892b0;
             font-weight: normal;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        .log-table tr:hover {
-            background: rgba(255,255,255,0.03);
-        }
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        tr:hover { background: rgba(255,255,255,0.03); }
+        .time { color: #8892b0; font-size: 0.9rem; }
+        .file { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .method {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: bold;
         }
-        .badge.success { background: rgba(0, 200, 83, 0.2); color: #00c853; }
-        .badge.warning { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
-        .badge.error { background: rgba(255, 23, 68, 0.2); color: #ff1744; }
-        
-        /* 图表容器 */
-        .chart-container {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
+        .method-git { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+        .method-api { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
         }
-        .chart-container h2 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        .chart-wrapper {
-            height: 300px;
-            position: relative;
-        }
+        .success { color: #00c853; }
+        .failed { color: #ff1744; }
+        .retries { color: #8892b0; font-size: 0.9rem; }
+        .empty { text-align: center; color: #8892b0; padding: 40px; }
         
         .update-time {
             text-align: center;
@@ -155,270 +115,401 @@
 </head>
 <body>
     <div class="container">
-        <a href="../" class="back-link">← 返回监控中心</a>
-        <h1>📊 ECS 推送日志监控</h1>
+        <a href="../" class="back-link">← 返回可视化中心</a>
+        <h1>📋 GitHub Pages 推送日志</h1>
         
-        <!-- 状态概览 -->
-        <div class="overview">
-            <div class="status-card">
-                <h2>🚀 推送服务状态</h2>
-                <div class="status-value success">
-                    ✓ 正常
-                </div>
-                <div class="status-detail">
-                    最近推送: 2026-02-20 04:05:06<br>
-                    成功率: 97.8%
-                </div>
-            </div>
-            <div class="status-card">
-                <h2>💓 心跳监控状态</h2>
-                <div class="status-value error">
-                    ✗ 异常
-                </div>
-                <div class="status-detail">
-                    最近检查: 无数据<br>
-                    成功率: 0.0%
-                </div>
-            </div>
-        </div>
-        
-        <!-- 推送统计 -->
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">409</div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">100</div>
                 <div class="stat-label">总推送次数</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">400</div>
-                <div class="stat-label">成功推送</div>
+            <div class="stat-card stat-success">
+                <div class="stat-value" style="color: #00c853;">100</div>
+                <div class="stat-label">成功</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">9</div>
-                <div class="stat-label">失败推送</div>
+            <div class="stat-card stat-failed">
+                <div class="stat-value" style="color: #ff1744;">0</div>
+                <div class="stat-label">失败</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">330</div>
-                <div class="stat-label">24小时内推送</div>
+            <div class="stat-card stat-git">
+                <div class="stat-value" style="color: #667eea;">0</div>
+                <div class="stat-label">Git 方式</div>
+            </div>
+            <div class="stat-card stat-api">
+                <div class="stat-value" style="color: #764ba2;">100</div>
+                <div class="stat-label">API 方式</div>
             </div>
         </div>
         
-        <!-- 最近推送记录 -->
         <div class="log-section">
-            <h2>🚀 最近推送记录 (最近20条)</h2>
-            <table class="log-table">
+            <h2>📜 最近推送记录</h2>
+            <table>
                 <thead>
                     <tr>
                         <th>时间</th>
+                        <th>文件</th>
+                        <th>方式</th>
                         <th>状态</th>
-                        <th>成功/总数</th>
-                        <th>文件列表</th>
+                        <th>重试</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                    <tr>
-                        <td>2026-02-20 04:05:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 04:00:22</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 04:00:16</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 04:00:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:55:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:50:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:45:07</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:40:07</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:35:07</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:30:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:25:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:20:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:15:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:10:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:05:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:00:22</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:00:16</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 03:00:07</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 02:55:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 02:50:06</td>
-                        <td><span class="badge success">
-                            成功
-                        </span></td>
-                        <td>3/3</td>
-                        <td>ecs-data/huinan-data.json, ecs-state.json, zblog-wordcloud.json</td>
-                    </tr>
-                    
+        <tr class="success">
+            <td class="time">02-20 04:15</td>
+            <td class="file" title="logs/main-server-log-viz.html">main-server-log-viz.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:05</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:05</td>
+            <td class="file" title="website/website-visualization.html">website-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="huinan/huinan-visualization.html">huinan-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="data/system-load-daily.json">system-load-daily.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="data/huinan-detailed.json">huinan-detailed.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 04:01</td>
+            <td class="file" title="data/huinan-data.json">huinan-data.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:45</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:45</td>
+            <td class="file" title="logs/main-server-log-viz.html">main-server-log-viz.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:35</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:35</td>
+            <td class="file" title="website/website-visualization.html">website-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="huinan/huinan-visualization.html">huinan-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="data/system-load-daily.json">system-load-daily.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="data/huinan-detailed.json">huinan-detailed.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="data/huinan-data.json">huinan-data.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="huinan/huinan-visualization.html">huinan-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:31</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/system-load-daily.json">system-load-daily.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/huinan-detailed.json">huinan-detailed.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/huinan-data.json">huinan-data.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="huinan/huinan-visualization.html">huinan-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/system-load-daily.json">system-load-daily.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/huinan-detailed.json">huinan-detailed.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:30</td>
+            <td class="file" title="data/huinan-data.json">huinan-data.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:15</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:15</td>
+            <td class="file" title="logs/main-server-log-viz.html">main-server-log-viz.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:05</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:05</td>
+            <td class="file" title="website/website-visualization.html">website-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:01</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:01</td>
+            <td class="file" title="huinan/huinan-visualization.html">huinan-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:00</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:00</td>
+            <td class="file" title="data/system-load-daily.json">system-load-daily.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:00</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:00</td>
+            <td class="file" title="data/huinan-detailed.json">huinan-detailed.json</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
+        <tr class="success">
+            <td class="time">02-20 03:00</td>
+            <td class="file" title="logs/push-log-visualization.html">push-log-visualization.html</td>
+            <td><span class="method method-api">API</span></td>
+            <td><span class="status-badge success">✅ 成功</span></td>
+            <td class="retries">1-10</td>
+        </tr>
                 </tbody>
             </table>
         </div>
         
-        <!-- 心跳监控记录 -->
-        <div class="log-section">
-            <h2>💓 心跳监控记录 (最近20条)</h2>
-            <table class="log-table">
-                <thead>
-                    <tr>
-                        <th>时间</th>
-                        <th>状态</th>
-                        <th>延迟</th>
-                        <th>错误信息</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
-        
-        <p class="update-time">最后更新: 2026-02-20 04:10:11 | 数据来源: ECS (47.116.201.2)</p>
+        <p class="update-time">最后更新: 2026-02-20 04:15:11</p>
     </div>
 </body>
 </html>
