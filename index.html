@@ -169,15 +169,19 @@
             </a>
             
             <!-- 推送日志 -->
-            <a href="./logs/push-log-visualization.html" class="card">
+            <div class="card" style="cursor: default;">
                 <div class="card-icon">📋</div>
                 <h2>推送日志</h2>
-                <p>GitHub Pages 部署记录，包含推送时间、方式、成功率统计。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 推送后自动更新</span>
-                    <span>📍 GitHub</span>
+                <p>服务器推送记录监控，包含 ECS 和主服务器的推送状态、成功率统计。</p>
+                <div class="card-meta" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                    <a href="./logs/push-log-visualization.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                        <span class="status"></span> ECS 推送日志 →
+                    </a>
+                    <a href="./logs/main-server-log-viz.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                        <span class="status"></span> 主服务器日志 →
+                    </a>
                 </div>
-            </a>
+            </div>
             
             <!-- 追番列表 -->
             <a href="./anime/anime-visualization.html" class="card">
