@@ -336,21 +336,10 @@
         <div class="chart-section">
             <h2>📈 趋势分析</h2>
             
-            <!-- 置信度色带 -->
-            <div style="margin-bottom: 10px;">
-                <div style="color: #8892b0; font-size: 12px; margin-bottom: 5px;">置信度色带</div>
-                <div class="confidence-bar"></div>
-                <div class="confidence-labels">
-                    <span>0分 (灰)</span>
-                    <span>1分 (浅蓝)</span>
-                    <span>2分 (中蓝)</span>
-                    <span>3分 (深蓝)</span>
-                </div>
-            </div>
-            
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
             </div>
+            
             <div class="legend">
                 <div class="legend-item">
                     <div class="legend-color" style="background: #667eea;"></div>
@@ -375,6 +364,18 @@
                 <div class="legend-item">
                     <div class="legend-color" style="background: rgba(147,112,219,0.2);"></div>
                     <span>疑似回南天</span>
+                </div>
+            </div>
+            
+            <!-- 置信度色带 -->
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="color: #8892b0; font-size: 12px; margin-bottom: 8px;">置信度色带</div>
+                <div class="confidence-bar"></div>
+                <div class="confidence-labels">
+                    <span>0分 (灰)</span>
+                    <span>1分 (浅蓝)</span>
+                    <span>2分 (中蓝)</span>
+                    <span>3分 (深蓝)</span>
                 </div>
             </div>
             
