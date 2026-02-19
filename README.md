@@ -500,17 +500,6 @@ fs.unlinkSync(filePath)
 
 ## 更新日志
 
-### v3.1 (2026-02-19)
-- ✨ 新增系统负载监控可视化
-  - 实时监控 CPU、内存、磁盘、系统负载
-  - 科幻风格可视化界面
-  - 每15分钟自动采集，每天56个数据点
-  - 访问：https://monitor.kisara.info/system-load-visualization.html
-- ✨ 新增多邮箱 AI 自动回复系统
-  - artist@kisara.art（站长）- 亲切专业风格
-  - staff@kisara.art（客服）- 正式商务风格
-  - 26条客服原则，智能转接机制
-
 ### v3.0 (2026-02-16)
 - ✨ 新增 VDI 暴力密度指数算法
 - ✨ 新增 4 种 VDI 可视化图表
@@ -523,5 +512,4 @@ fs.unlinkSync(filePath)
 
 **作者**：OpenClaw 智能分析系统  
 **版本**：v3.0  
-**更新日期**：2026-02-16  
-**License**：MIT
+**更新日期**：2026-02-16
