@@ -20,13 +20,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -52,13 +52,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -85,12 +85,12 @@
       "confidence": {
         "score": 1,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8"
+          "有风流动"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6"
+        "by": "湿度"
       }
     },
     {
@@ -113,13 +113,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -145,13 +145,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -177,13 +177,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -195,7 +195,7 @@
       "temp": 18,
       "dew": 11,
       "windDir": 0,
-      "windSpeed": 2.0,
+      "windSpeed": 2,
       "pressure": 1013,
       "humidityChange3h": -30,
       "pressureDrop6h": -1,
@@ -209,12 +209,12 @@
       "confidence": {
         "score": 1,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8"
+          "有风流动"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -241,12 +241,12 @@
       "confidence": {
         "score": 1,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8"
+          "有风流动"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6"
+        "by": "湿度"
       }
     },
     {
@@ -270,16 +270,45 @@
       "confidence": {
         "score": 1,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8"
+          "有风流动"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6"
+        "by": "湿度"
+      }
+    },
+    {
+      "time": "2026-02-20T04:00:48.000Z",
+      "humidity": 51,
+      "temp": 22,
+      "dew": 11,
+      "windDir": 0,
+      "windSpeed": 10,
+      "pressure": 1013,
+      "trends": {
+        "humidityChange3h": 6,
+        "pressureDrop6h": -4
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 11
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "有风流动"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
       }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-02-20T02:02:17.305Z"
+  "lastCheck": "2026-02-20T04:00:48.001Z"
 }
