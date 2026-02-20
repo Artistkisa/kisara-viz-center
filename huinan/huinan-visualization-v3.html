@@ -124,6 +124,48 @@
             <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.5)"></div><span>正式回南天</span></div>
             <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.2)"></div><span>疑似回南天</span></div>
         </div>
+        
+        <!-- 统计卡片区域 -->
+        <div class="stats-section" id="statsSection" style="margin-top: 40px; display: none;">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #fff;">📊 数据统计</h2>
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div class="stat-card" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-title" style="color: #888; font-size: 12px; margin-bottom: 10px;">累计监测天数</div>
+                    <div class="stat-number" id="totalDays" style="font-size: 24px; font-weight: bold; color: #00d9ff;">--</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-title" style="color: #888; font-size: 12px; margin-bottom: 10px;">回南天发生次数</div>
+                    <div class="stat-number" id="nanhuiCount" style="font-size: 24px; font-weight: bold; color: #e94560;">--</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-title" style="color: #888; font-size: 12px; margin-bottom: 10px;">平均湿度</div>
+                    <div class="stat-number" id="avgHumidity" style="font-size: 24px; font-weight: bold; color: #91cc75;">--</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="stat-title" style="color: #888; font-size: 12px; margin-bottom: 10px;">最高湿度记录</div>
+                    <div class="stat-number" id="maxHumidity" style="font-size: 24px; font-weight: bold; color: #fac858;">--</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 解释卡片 -->
+        <div class="info-section" style="margin-top: 40px;">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #fff;">📖 数据说明</h2>
+            <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="info-card" style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(102, 126, 234, 0.3);">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">🌡️ 六步算法</h3>
+                    <p style="color: #aaa; font-size: 14px; line-height: 1.6;">核心触发 → 置信度评分 → 强度分级 → 防抖 → 通知 → 统计。通过湿度、露点差、气压变化等多维度数据综合判断回南天风险。</p>
+                </div>
+                <div class="info-card" style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(102, 126, 234, 0.3);">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">💨 风向影响</h3>
+                    <p style="color: #aaa; font-size: 14px; line-height: 1.6;">南风（135°-225°）会加剧回南天，北风有助于缓解。图表中绿色背景表示有利于缓解回南天的风向时段。</p>
+                </div>
+                <div class="info-card" style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(102, 126, 234, 0.3);">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">📈 置信度评分</h3>
+                    <p style="color: #aaa; font-size: 14px; line-height: 1.6;">0分：无风险 | 1分：轻微 | 2分：中等 | 3分：严重。评分基于湿度、温差、气压趋势等多个因素综合计算。</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -167,6 +209,37 @@
                 <div class="stat-item"><div class="stat-value" style="color:${curHum>80?'#ff6b6b':'#00d9ff'}">${curHum}%</div><div class="stat-label">当前湿度</div></div>
             `;
             document.getElementById('updateTime').textContent = `最后更新: ${updTime}`;
+            
+            // 计算并显示详细统计
+            calculateDetailedStats(records);
+        }
+
+        function calculateDetailedStats(records) {
+            if (records.length === 0) return;
+            
+            // 累计监测天数
+            const times = records.map(r => new Date(r.time));
+            const minTime = new Date(Math.min(...times));
+            const maxTime = new Date(Math.max(...times));
+            const totalDays = Math.ceil((maxTime - minTime) / (1000 * 60 * 60 * 24)) + 1;
+            
+            // 回南天发生次数（置信度 >= 2）
+            const nanhuiCount = records.filter(r => (r.confidence?.score || 0) >= 2).length;
+            
+            // 平均湿度
+            const avgHumidity = Math.round(records.reduce((sum, r) => sum + (r.humidity || 0), 0) / records.length);
+            
+            // 最高湿度
+            const maxHumidity = Math.max(...records.map(r => r.humidity || 0));
+            
+            // 更新统计卡片
+            document.getElementById('totalDays').textContent = totalDays + '天';
+            document.getElementById('nanhuiCount').textContent = nanhuiCount + '次';
+            document.getElementById('avgHumidity').textContent = avgHumidity + '%';
+            document.getElementById('maxHumidity').textContent = maxHumidity + '%';
+            
+            // 显示统计区域
+            document.getElementById('statsSection').style.display = 'block';
         }
 
         function renderCharts(detailed) {
