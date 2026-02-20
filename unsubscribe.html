@@ -1,0 +1,101 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+
+$email = $_GET['email'] ?? '';
+
+// 简单的 HTML 模板
+?>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退订回南天预警</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            color: #8892b0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .email {
+            color: #00d9ff;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <?php
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo '<div class="icon">⚠️</div>';
+            echo '<h1>无效的邮箱地址</h1>';
+            echo '<p>请检查链接是否正确</p>';
+        } else {
+            $db = new mysqli('localhost', 'svh_64dplug', 'Ab123456@', 'svh_64dplug');
+            if ($db->connect_error) {
+                echo '<div class="icon">❌</div>';
+                echo '<h1>系统错误</h1>';
+                echo '<p>请稍后重试</p>';
+            } else {
+                $email_escaped = $db->real_escape_string($email);
+                $sql = "DELETE FROM zbp_huinan_subscribers WHERE email = '$email_escaped'";
+                
+                if ($db->query($sql) && $db->affected_rows > 0) {
+                    echo '<div class="icon">✅</div>';
+                    echo '<h1>退订成功</h1>';
+                    echo '<p>邮箱</p>';
+                    echo '<p class="email">' . htmlspecialchars($email) . '</p>';
+                    echo '<p>将不再收到回南天预警邮件</p>';
+                } else {
+                    echo '<div class="icon">ℹ️</div>';
+                    echo '<h1>未找到订阅</h1>';
+                    echo '<p>该邮箱可能未订阅或已退订</p>';
+                }
+                $db->close();
+            }
+        }
+        ?>
+        <a href="https://artistkisa.github.io/kisara-viz-center/huinan/huinan-visualization-v3.html" class="back-link">返回监测页面</a>
+    </div>
+</body>
+</html>
