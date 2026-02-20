@@ -187,6 +187,43 @@
             animation: heartbeat 2s infinite;
             display: inline-block;
         }
+        
+        /* 双向心跳流程 */
+        .heartbeat-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px 0;
+        }
+        .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .flow-icon {
+            font-size: 1.5rem;
+        }
+        .flow-text {
+            font-size: 0.9rem;
+        }
+        .flow-text strong {
+            color: #fff;
+            font-size: 1rem;
+        }
+        .flow-text small {
+            color: #8892b0;
+        }
+        .flow-arrow {
+            color: #64ffda;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -199,15 +236,15 @@
         <!-- 服务器状态 -->
         <div class="status-grid">
             <!-- 主服务器 -->
-            <div class="status-card online">
+            <div class="status-card warning">
                 <div class="card-header">
                     <div class="card-icon">🖥️</div>
                     <div class="card-title">
                         <h2>主服务器</h2>
                         <div class="location">📍 主节点 · OpenClaw</div>
                     </div>
-                    <span class="status-badge online">
-                        <span class="beating">💚</span> 在线
+                    <span class="status-badge warning">
+                        ❌ 延迟
                     </span>
                 </div>
                 <div class="info-row">
@@ -216,12 +253,18 @@
                 </div>
                 <div class="info-row">
                     <span class="label">心跳延迟:</span>
-                    <span class="value">6分钟前</span>
+                    <span class="value">14分钟前</span>
                 </div>
                 <div class="info-row">
                     <span class="label">心跳仓库:</span>
                     <span class="value">kisara-server-heartbeat</span>
                 </div>
+                
+            <div class="info-row">
+                <span class="label">ECS视角:</span>
+                <span class="value"><span class="badge success">✅ 正常</span> 2026-02-20 13:45:03</span>
+            </div>
+        
             </div>
             
             <!-- ECS -->
@@ -238,16 +281,56 @@
                 </div>
                 <div class="info-row">
                     <span class="label">最后推送:</span>
-                    <span class="value">无数据</span>
+                    <span class="value">2026-02-20T05:50:01.520Z</span>
                 </div>
                 <div class="info-row">
                     <span class="label">推送延迟:</span>
-                    <span class="value">未知</span>
+                    <span class="value">8小时3分钟前</span>
                 </div>
                 <div class="info-row">
                     <span class="label">任务状态:</span>
-                    <span class="value">0/0 正常</span>
+                    <span class="value">4/5 正常</span>
                 </div>
+            </div>
+        </div>
+        
+        <!-- 双向心跳流程 -->
+        <div class="section">
+            <h2>🔄 双向心跳流程</h2>
+            <div class="heartbeat-flow">
+                <div class="flow-item">
+                    <div class="flow-icon">🖥️</div>
+                    <div class="flow-text">
+                        <strong>主服务器</strong><br>
+                        <small>每5分钟推送心跳</small>
+                    </div>
+                </div>
+                <div class="flow-arrow">→ SSH →</div>
+                <div class="flow-item">
+                    <div class="flow-icon">🌐</div>
+                    <div class="flow-text">
+                        <strong>ECS</strong><br>
+                        <small>接收并同步到GitHub</small>
+                    </div>
+                </div>
+                <div class="flow-arrow">→ Git →</div>
+                <div class="flow-item">
+                    <div class="flow-icon">📦</div>
+                    <div class="flow-text">
+                        <strong>GitHub Pages</strong><br>
+                        <small>托管监控页面</small>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div class="flow-item" style="justify-content: center;">
+                    <div class="flow-icon">🌐</div>
+                    <div class="flow-arrow">← 检查心跳状态 ←</div>
+                    <div class="flow-icon">🖥️</div>
+                </div>
+                <p style="text-align: center; color: #8892b0; margin-top: 10px; font-size: 0.9rem;">
+                    ECS 同时检查主服务器心跳状态，实现双向监控
+                </p>
             </div>
         </div>
         
@@ -266,7 +349,7 @@
                 <div class="stat-label">失败</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value info">0</div>
+                <div class="stat-value info">5</div>
                 <div class="stat-label">ECS 任务数</div>
             </div>
         </div>
@@ -283,7 +366,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td colspan="3" class="empty">暂无任务数据</td></tr>
+                    
+            <tr>
+                <td>回南天监测</td>
+                <td><span class="badge success">✅ 正常</span></td>
+                <td>2026-02-20T05:00:05.645Z</td>
+            </tr>
+        
+            <tr>
+                <td>API健康检查</td>
+                <td><span class="badge success">✅ 正常</span></td>
+                <td>2026-02-20T05:30:03.817Z</td>
+            </tr>
+        
+            <tr>
+                <td>心跳监控</td>
+                <td><span class="badge success">✅ 正常</span></td>
+                <td>2026-02-20T05:45:01.251Z</td>
+            </tr>
+        
+            <tr>
+                <td>词云生成</td>
+                <td><span class="badge success">✅ 正常</span></td>
+                <td>2026-02-20T05:00:16.361Z</td>
+            </tr>
+        
+            <tr>
+                <td>日志归档</td>
+                <td><span class="badge error">❌ 异常</span></td>
+                <td>None</td>
+            </tr>
+        
                 </tbody>
             </table>
         </div>
@@ -294,12 +407,12 @@
             
             <div class="info-row">
                 <span class="label">最新推送:</span>
-                <span class="value">02-20 07:45 - push-log-visualization.html <span class="badge success">✅ 成功</span></span>
+                <span class="value">02-20 08:02 - huinan-data.json <span class="badge success">✅ 成功</span></span>
             </div>
         
         </div>
         
-        <p class="update-time">最后更新: 2026-02-20 13:45:08 | 数据来自 GitHub API</p>
+        <p class="update-time">最后更新: 2026-02-20 13:53:09 | 数据来自 GitHub API</p>
     </div>
 </body>
 </html>
