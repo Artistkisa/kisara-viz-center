@@ -1,0 +1,201 @@
+/* 回南天订阅组件样式 */
+.subscribe-section {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.subscribe-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.subscribe-subtitle {
+    color: #8892b0;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.subscribe-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px 20px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.subscribe-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.subscribe-input::placeholder {
+    color: #666;
+}
+
+.subscribe-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.subscribe-btn:active {
+    transform: translateY(0);
+}
+
+.subscribe-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.subscribe-btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.subscribe-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.subscribe-status {
+    margin-top: 20px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+.subscribe-status.success {
+    display: block;
+    background: rgba(0, 200, 83, 0.15);
+    border: 1px solid rgba(0, 200, 83, 0.3);
+    color: #00c853;
+}
+
+.subscribe-status.error {
+    display: block;
+    background: rgba(255, 23, 68, 0.15);
+    border: 1px solid rgba(255, 23, 68, 0.3);
+    color: #ff1744;
+}
+
+.subscribe-status.loading {
+    display: block;
+    background: rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #667eea;
+}
+
+.subscribe-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.subscribe-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8892b0;
+    font-size: 0.9rem;
+}
+
+.subscribe-feature-icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .subscribe-section {
+        padding: 30px 20px;
+    }
+    
+    .subscribe-title {
+        font-size: 1.4rem;
+    }
+    
+    .subscribe-form {
+        flex-direction: column;
+    }
+    
+    .subscribe-input {
+        min-width: 100%;
+    }
+    
+    .subscribe-btn {
+        width: 100%;
+    }
+}
