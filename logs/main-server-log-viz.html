@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主服务器日志 - 监控中心</title>
+    <title>回南天V3监控 - 监控中心</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +30,47 @@
         }
         .back-link:hover { color: #fff; }
         
-        /* 状态概览 */
+        /* 当前状态卡片 */
+        .current-status {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #00c853;
+            text-align: center;
+        }
+        .current-status h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #8892b0;
+        }
+        .status-big {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00c853;
+            margin-bottom: 10px;
+        }
+        .status-detail {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .status-item {
+            text-align: center;
+        }
+        .status-item .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .status-item .label {
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+        
+        /* 统计概览 */
         .overview {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -101,6 +141,10 @@
         .badge.error { background: rgba(255, 23, 68, 0.2); color: #ff1744; }
         .badge.info { background: rgba(102, 126, 234, 0.2); color: #667eea; }
         
+        .current-row {
+            background: rgba(102, 126, 234, 0.1) !important;
+        }
+        
         .update-time {
             text-align: center;
             color: #8892b0;
@@ -112,31 +156,51 @@
 <body>
     <div class="container">
         <a href="../" class="back-link">← 返回监控中心</a>
-        <h1>🖥️ 主服务器日志监控</h1>
+        <h1>🌧️ 回南天V3 监控系统</h1>
+        
+        <!-- 当前状态 -->
+        <div class="current-status">
+            <h2>当前状态</h2>
+            <div class="status-big">无风险</div>
+            <div class="status-detail">
+                <div class="status-item">
+                    <div class="value">51%</div>
+                    <div class="label">湿度</div>
+                </div>
+                <div class="status-item">
+                    <div class="value">22°C</div>
+                    <div class="label">温度</div>
+                </div>
+                <div class="status-item">
+                    <div class="value">11°C</div>
+                    <div class="label">露点</div>
+                </div>
+            </div>
+        </div>
         
         <!-- 统计概览 -->
         <div class="overview">
             <div class="status-card">
                 <h2>总记录数</h2>
-                <div class="status-value info">654</div>
+                <div class="status-value info">13</div>
             </div>
             <div class="status-card">
                 <h2>✅ 正常记录</h2>
-                <div class="status-value success">121</div>
+                <div class="status-value success">12</div>
             </div>
             <div class="status-card">
-                <h2>🚨 警报</h2>
-                <div class="status-value warning">315</div>
+                <h2>⚠️ 预警记录</h2>
+                <div class="status-value warning">0</div>
             </div>
             <div class="status-card">
-                <h2>❌ 错误</h2>
+                <h2>🚨 严重警报</h2>
                 <div class="status-value error">0</div>
             </div>
         </div>
         
         <!-- 最近日志记录 -->
         <div class="log-section">
-            <h2>📝 最近日志记录 (最近50条)</h2>
+            <h2>📝 监控日志 (最近50条)</h2>
             <table class="log-table">
                 <thead>
                     <tr>
@@ -147,411 +211,115 @@
                 </thead>
                 <tbody>
                     
-                    <tr>
-                        <td>2026-02-20 13:10:01</td>
+                    <tr class="current-row">
+                        <td>2026-02-20 13:00:32</td>
                         <td><span class="badge info">
-                            信息
+                            当前
                         </span></td>
-                        <td>---</td>
+                        <td>📊 当前状态正常 湿度51%, 温度22°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 13:10:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 13:00:05</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 回南天数据 61686秒未更新</td>
+                        <td>✅ 无回南天风险 湿度50%, 温度23°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 13:10:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 12:00:06</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
+                        <td>✅ 无回南天风险 湿度51%, 温度22°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 13:00:01</td>
-                        <td><span class="badge info">
-                            信息
+                    <tr class="">
+                        <td>2026-02-20 10:00:10</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>---</td>
+                        <td>✅ 无回南天风险 湿度60%, 温度18°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 13:00:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 05:00:14</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 回南天数据 61086秒未更新</td>
+                        <td>✅ 无回南天风险 湿度77%, 温度16°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 13:00:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 04:00:48</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
+                        <td>✅ 无回南天风险 湿度51%, 温度22°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:50:01</td>
-                        <td><span class="badge info">
-                            信息
+                    <tr class="">
+                        <td>2026-02-20 02:02:17</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>---</td>
+                        <td>✅ 无回南天风险 湿度60%, 温度18°, 露点11°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:50:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 02:00:04</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 回南天数据 60486秒未更新</td>
+                        <td>✅ 无回南天风险 湿度74%, 温度16°, 露点13°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:50:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-20 01:00:08</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
+                        <td>✅ 无回南天风险 湿度79%, 温度16°, 露点13°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:40:01</td>
-                        <td><span class="badge info">
-                            信息
+                    <tr class="">
+                        <td>2026-02-20 00:01:50</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>---</td>
+                        <td>✅ 无回南天风险 湿度70%, 温度15°, 露点10°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:40:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-19 21:00:03</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 回南天数据 59886秒未更新</td>
+                        <td>✅ 无回南天风险 湿度82%, 温度16°, 露点12°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:40:01</td>
-                        <td><span class="badge alert">
-                            警报
+                    <tr class="">
+                        <td>2026-02-19 20:00:19</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
+                        <td>✅ 无回南天风险 湿度78%, 温度16°, 露点12°</td>
                     </tr>
                     
-                    <tr>
-                        <td>2026-02-20 12:30:01</td>
-                        <td><span class="badge info">
-                            信息
+                    <tr class="">
+                        <td>2026-02-19 11:45:39</td>
+                        <td><span class="badge success">
+                            正常
                         </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:30:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 59286秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:30:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:20:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:20:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 58686秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:20:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:10:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:10:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 58086秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:10:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:00:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:00:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 57486秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 12:00:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:50:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:50:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 56886秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:50:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:40:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:40:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 56286秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:40:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:30:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:30:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 55686秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:30:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:20:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:20:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 55086秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:20:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:10:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:10:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 54486秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:10:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:00:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:00:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 53886秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 11:00:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:50:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:50:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 53286秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:50:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:40:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:40:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 52686秒未更新</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:40:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 心跳文件不存在</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:30:01</td>
-                        <td><span class="badge info">
-                            信息
-                        </span></td>
-                        <td>---</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>2026-02-20 10:30:01</td>
-                        <td><span class="badge alert">
-                            警报
-                        </span></td>
-                        <td>🚨 ALERT: 回南天数据 52086秒未更新</td>
+                        <td>✅ 无回南天风险 湿度76%, 温度17°, 露点12°</td>
                     </tr>
                     
                 </tbody>
             </table>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-20 13:15:15 | 数据来源: 主服务器</p>
+        <p class="update-time">最后更新: 2026-02-20 13:29:51 | 数据来源: 回南天V3系统</p>
     </div>
 </body>
 </html>
