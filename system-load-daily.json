@@ -1,28 +1,24 @@
 {
-  "generated_at": "2026-02-20T17:00:01.772205",
-  "record_count": 1,
-  "records": [
+  "generated_at": "2026-02-20T17:02:18.794083",
+  "total_points": 1,
+  "statistics": {
+    "cpu_avg": 57.1,
+    "memory_avg": 38.4
+  },
+  "data_points": [
     {
-      "timestamp": "2026-02-20T17:00:01.533702",
-      "cpu_percent": 8.7,
-      "memory_percent": 42.9,
-      "disk_percent": 34,
-      "load_average": {
-        "1min": 0.05,
-        "5min": 0.08,
-        "15min": 0.12
+      "timestamp": "2026-02-20T17:02:18.793973",
+      "cpu": {
+        "percent": 57.1,
+        "load1": 0.6,
+        "load5": 0.19,
+        "load15": 0.14
       },
-      "process_count": 138,
-      "openclaw": {
-        "running": true,
-        "pid": 267586,
-        "cpu": 7.6,
-        "mem": 23.6,
-        "rss": 971579392
+      "memory": {
+        "percent": 38.4
       },
-      "network": {
-        "tcp_listening": 10,
-        "udp_listening": 7
+      "disk": {
+        "percent": 34
       }
     }
   ]
