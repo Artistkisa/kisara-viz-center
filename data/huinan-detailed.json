@@ -6,7 +6,7 @@
       "temp": 16,
       "dew": 12,
       "windDir": 0,
-      "windSpeed": 3.0,
+      "windSpeed": 3,
       "pressure": 1013,
       "humidityChange3h": 30,
       "pressureDrop6h": 6,
@@ -20,13 +20,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -38,7 +38,7 @@
       "temp": 16,
       "dew": 12,
       "windDir": 0,
-      "windSpeed": 3.0,
+      "windSpeed": 3,
       "pressure": 1013,
       "humidityChange3h": 30,
       "pressureDrop6h": 6,
@@ -52,13 +52,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -85,12 +85,12 @@
       "confidence": {
         "score": 1,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8"
+          "有风流动"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6"
+        "by": "湿度"
       }
     },
     {
@@ -99,7 +99,7 @@
       "temp": 16,
       "dew": 13,
       "windDir": 0,
-      "windSpeed": 1.0,
+      "windSpeed": 1,
       "pressure": 1014,
       "humidityChange3h": 6,
       "pressureDrop6h": 6,
@@ -113,13 +113,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -131,7 +131,7 @@
       "temp": 16,
       "dew": 13,
       "windDir": 0,
-      "windSpeed": 4.0,
+      "windSpeed": 4,
       "pressure": 1014,
       "humidityChange3h": -2,
       "pressureDrop6h": 6,
@@ -145,13 +145,13 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
@@ -163,7 +163,7 @@
       "temp": 16,
       "dew": 11,
       "windDir": 0,
-      "windSpeed": 1.0,
+      "windSpeed": 1,
       "pressure": 1012,
       "humidityChange3h": -1,
       "pressureDrop6h": 3,
@@ -177,20 +177,49 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6",
+        "by": "湿度",
         "humidityLevel": "none",
         "dewLevel": "none"
       },
       "source": "ecs"
+    },
+    {
+      "time": "2026-02-20T00:01:50.620Z",
+      "humidity": 70,
+      "temp": 15,
+      "dew": 10,
+      "windDir": 0,
+      "windSpeed": 3,
+      "pressure": 1013,
+      "trends": {
+        "humidityChange3h": 16,
+        "pressureDrop6h": -5
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 5
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "有风流动"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-02-19T11:45:39.725Z"
+  "lastCheck": "2026-02-20T00:01:50.622Z"
 }
