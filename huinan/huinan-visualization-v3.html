@@ -73,7 +73,7 @@
         
         &lt;div class="stats"&gt;
             &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;9&lt;/div&gt;
+                &lt;div class="stat-value"&gt;10&lt;/div&gt;
                 &lt;div class="stat-label"&gt;数据点数&lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="stat-item"&gt;
@@ -114,16 +114,16 @@
     &lt;/div&gt;
 
     &lt;script&gt;
-        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 00:01", "02-20 01:00", "02-20 02:00", "02-20 02:02", "02-20 05:00", "02-20 10:00"];
-        const humidity = [76, 78, 82, 70, 79, 74, 60, 77, 60];
-        const temp = [17, 16, 16, 15, 16, 16, 18, 16, 18];
-        const dew = [12, 12, 12, 10, 13, 13, 11, 11, 11];
-        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        const windSpeed = [1, 3, 3, 3, 1, 4, 2, 1, 2.0];
-        const pressure = [1013, 1013, 1013, 1013, 1014, 1014, 1013, 1012, 1013];
-        const confidenceScores = [1, 2, 2, 1, 2, 2, 1, 2, 1];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 7}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none"];
+        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 00:01", "02-20 01:00", "02-20 02:00", "02-20 02:02", "02-20 04:00", "02-20 05:00", "02-20 10:00"];
+        const humidity = [76, 78, 82, 70, 79, 74, 60, 51, 77, 60];
+        const temp = [17, 16, 16, 15, 16, 16, 18, 22, 16, 18];
+        const dew = [12, 12, 12, 10, 13, 13, 11, 11, 11, 11];
+        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const windSpeed = [1, 3, 3, 3, 1, 4, 2, 10, 1, 2];
+        const pressure = [1013, 1013, 1013, 1013, 1014, 1014, 1013, 1013, 1012, 1013];
+        const confidenceScores = [1, 2, 2, 1, 2, 2, 1, 1, 2, 1];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 7}];
+        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
@@ -313,7 +313,7 @@
                 type: 'value',
                 name: '风速(km/h)',
                 min: 0,
-                max: 5,
+                max: 12.0,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
                 splitLine: { lineStyle: { color: '#333' } }
