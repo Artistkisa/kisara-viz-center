@@ -284,6 +284,34 @@
       "source": "ecs"
     },
     {
+      "time": "2026-02-20 14:01:21",
+      "humidity": 51,
+      "temp": 22,
+      "dew": 11,
+      "windDir": 0,
+      "windSpeed": 10,
+      "pressure": 1013,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 11
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "main"
+    },
+    {
       "time": "2026-02-20T00:01:50.620Z",
       "humidity": 70,
       "temp": 15,
