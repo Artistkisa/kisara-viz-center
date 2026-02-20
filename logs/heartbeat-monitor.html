@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向心跳监控 - Kisara 监控中心</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #8892b0;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #fff; }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8892b0;
+            margin-bottom: 40px;
+        }
+        
+        /* 状态卡片 */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .status-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .status-card:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .status-card.online { border-color: #00c853; }
+        .status-card.warning { border-color: #ff9800; }
+        .status-card.offline { border-color: #ff1744; }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+        }
+        .card-title {
+            flex: 1;
+        }
+        .card-title h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        .card-title .location {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .status-badge.online { background: rgba(0, 200, 83, 0.2); color: #00c853; }
+        .status-badge.warning { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
+        .status-badge.offline { background: rgba(255, 23, 68, 0.2); color: #ff1744; }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .info-row:last-child { border-bottom: none; }
+        .label { color: #8892b0; }
+        .value { font-weight: 500; }
+        
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .stat-value.success { color: #00c853; }
+        .stat-value.warning { color: #ff9800; }
+        .stat-value.error { color: #ff1744; }
+        .stat-label {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* 表格 */
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            color: #8892b0;
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .badge.success { background: rgba(0, 200, 83, 0.2); color: #00c853; }
+        .badge.error { background: rgba(255, 23, 68, 0.2); color: #ff1744; }
+        .badge.info { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+        
+        .empty {
+            text-align: center;
+            color: #8892b0;
+            padding: 20px;
+        }
+        
+        .update-time {
+            text-align: center;
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        
+        /* 心跳动画 */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .beating {
+            animation: heartbeat 2s infinite;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回监控中心</a>
+        
+        <h1>💓 双向心跳监控</h1>
+        <p class="subtitle">ECS 与主服务器互相心跳状态监测</p>
+        
+        <!-- 服务器状态 -->
+        <div class="status-grid">
+            <!-- 主服务器 -->
+            <div class="status-card online">
+                <div class="card-header">
+                    <div class="card-icon">🖥️</div>
+                    <div class="card-title">
+                        <h2>主服务器</h2>
+                        <div class="location">📍 主节点 · OpenClaw</div>
+                    </div>
+                    <span class="status-badge online">
+                        <span class="beating">💚</span> 在线
+                    </span>
+                </div>
+                <div class="info-row">
+                    <span class="label">最后心跳:</span>
+                    <span class="value">2026-02-20 13:38:41</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">心跳延迟:</span>
+                    <span class="value">6分钟前</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">心跳仓库:</span>
+                    <span class="value">kisara-server-heartbeat</span>
+                </div>
+            </div>
+            
+            <!-- ECS -->
+            <div class="status-card offline">
+                <div class="card-header">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-title">
+                        <h2>ECS 数据采集节点</h2>
+                        <div class="location">📍 阿里云 · 广州</div>
+                    </div>
+                    <span class="status-badge offline">
+                        ❌ 离线
+                    </span>
+                </div>
+                <div class="info-row">
+                    <span class="label">最后推送:</span>
+                    <span class="value">无数据</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">推送延迟:</span>
+                    <span class="value">未知</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">任务状态:</span>
+                    <span class="value">0/0 正常</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 推送统计 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">100</div>
+                <div class="stat-label">24小时推送</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value success">100</div>
+                <div class="stat-label">成功</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value error">0</div>
+                <div class="stat-label">失败</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value info">0</div>
+                <div class="stat-label">ECS 任务数</div>
+            </div>
+        </div>
+        
+        <!-- ECS 任务列表 -->
+        <div class="section">
+            <h2>📋 ECS 任务状态</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>任务名称</th>
+                        <th>状态</th>
+                        <th>最后运行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" class="empty">暂无任务数据</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 最近推送 -->
+        <div class="section">
+            <h2>📤 最近推送记录</h2>
+            
+            <div class="info-row">
+                <span class="label">最新推送:</span>
+                <span class="value">02-20 07:45 - push-log-visualization.html <span class="badge success">✅ 成功</span></span>
+            </div>
+        
+        </div>
+        
+        <p class="update-time">最后更新: 2026-02-20 13:45:08 | 数据来自 GitHub API</p>
+    </div>
+</body>
+</html>
