@@ -501,6 +501,35 @@
       "source": "ecs"
     },
     {
+      "time": "2026-02-20 23:00:04",
+      "humidity": 88,
+      "temp": 18.0,
+      "dew": 14.0,
+      "windDir": 42,
+      "windSpeed": 4.0,
+      "pressure": 1008,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 4.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "ecs"
+    },
+    {
       "time": "2026-02-20T00:01:50.620Z",
       "humidity": 70,
       "temp": 15,
