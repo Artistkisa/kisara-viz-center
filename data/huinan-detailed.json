@@ -734,6 +734,35 @@
         "by": "\u6e7f\u5ea6"
       },
       "source": "ecs"
+    },
+    {
+      "time": "2026-02-21 01:00:03",
+      "humidity": 91,
+      "temp": 18.0,
+      "dew": 15.0,
+      "windDir": 23,
+      "windSpeed": 3.0,
+      "pressure": 1008,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 3.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "ecs"
     }
   ],
   "events": [],
