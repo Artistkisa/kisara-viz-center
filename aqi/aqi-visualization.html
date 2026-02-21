@@ -80,18 +80,18 @@
         <div class="grid">
             <div class="card">
                 <h3>AQI 空气质量指数</h3>
-                <div class="value">43<span class="unit"></span></div>
-                <span class="level level-good">优</span>
+                <div class="value">None<span class="unit"></span></div>
+                <span class="level ">未知</span>
             </div>
             
             <div class="card">
                 <h3>PM2.5</h3>
-                <div class="value">29.67<span class="unit"> μg/m³</span></div>
+                <div class="value">None<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>PM10</h3>
-                <div class="value">38.67<span class="unit"> μg/m³</span></div>
+                <div class="value">None<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
@@ -108,7 +108,7 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-20 14:00:20</p>
+        <p class="update-time">最后更新: 2026-02-21 14:00:36</p>
     </div>
     
     <script>
@@ -116,10 +116,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["00:00", "06:00"],
+                labels: ["00:01", "06:00"],
                 datasets: [{
                     label: 'AQI',
-                    data: [41, 43],
+                    data: [67, 0],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -142,10 +142,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["00:00", "06:00"],
+                labels: ["00:01", "06:00"],
                 datasets: [{
                     label: 'PM2.5',
-                    data: [28.17, 29.67],
+                    data: [48, 0],
                     borderColor: '#f093fb',
                     backgroundColor: 'rgba(240, 147, 251, 0.1)',
                     tension: 0.4,
