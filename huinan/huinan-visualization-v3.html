@@ -399,5 +399,54 @@
             pressureChart.resize();
         });
     </script>
+    
+    <!-- 订阅区域 -->
+    <div style="max-width: 1400px; margin: 40px auto 20px; padding: 20px; background: #16213e; border-radius: 12px; text-align: center;">
+        <h3 style="color: #fff; margin-bottom: 15px;">📧 订阅回南天预警</h3>
+        <p style="color: #888; margin-bottom: 20px; font-size: 14px;">当广州出现回南天天气时，自动发送邮件通知</p>
+        <form id="subscribeForm" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <input type="email" id="emailInput" placeholder="输入您的邮箱" required 
+                style="padding: 12px 20px; border: 1px solid #333; border-radius: 6px; background: #1a1a2e; color: #fff; min-width: 250px; font-size: 14px;">
+            <button type="submit" 
+                style="padding: 12px 30px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; transition: background 0.3s;">
+                订阅
+            </button>
+        </form>
+        <p id="subscribeMsg" style="margin-top: 15px; font-size: 13px; color: #4ecca3; display: none;"></p>
+        <p style="margin-top: 20px; font-size: 12px; color: #555;">
+            <a href="https://www.kisara.art/unsubscribe.php" style="color: #667eea; text-decoration: none;">退订</a>
+        </p>
+    </div>
+    
+    <script>
+        document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const msg = document.getElementById('subscribeMsg');
+            
+            try {
+                const response = await fetch('https://www.kisara.art/subscribe.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, type: 'huinan' })
+                });
+                const data = await response.json();
+                
+                msg.style.display = 'block';
+                if (data.success) {
+                    msg.style.color = '#4ecca3';
+                    msg.textContent = '✅ 订阅成功！您将收到回南天预警邮件。';
+                    document.getElementById('emailInput').value = '';
+                } else {
+                    msg.style.color = '#e94560';
+                    msg.textContent = '❌ ' + (data.message || '订阅失败，请稍后重试');
+                }
+            } catch (err) {
+                msg.style.display = 'block';
+                msg.style.color = '#e94560';
+                msg.textContent = '❌ 网络错误，请稍后重试';
+            }
+        });
+    </script>
 </body>
 </html>
