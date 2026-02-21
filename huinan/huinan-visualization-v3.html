@@ -251,7 +251,25 @@
             padding: 20px;
             margin-bottom: 30px;
         }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .chart-box {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .chart-title {
+            color: #00d9ff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
         #mainChart { width: 100%; height: 400px; }
+        #pressureChart, #windChart { width: 100%; height: 250px; }
         
         /* 算法说明 */
         .algo-info {
@@ -410,6 +428,16 @@
         <!-- 图表 -->
         <div class="chart-container">
             <div id="mainChart"></div>
+            <div class="chart-grid">
+                <div class="chart-box">
+                    <div class="chart-title">📉 气压趋势 (hPa)</div>
+                    <div id="pressureChart"></div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">🌬️ 风向风速趋势</div>
+                    <div id="windChart"></div>
+                </div>
+            </div>
         </div>
         
         <!-- V5 算法说明 -->
@@ -444,7 +472,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:48</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:56</p>
         </div>
         
         <!-- 订阅区域 -->
@@ -512,7 +540,7 @@
             }
         });
         
-        // 图表
+        // 主图表
         const chart = echarts.init(document.getElementById('mainChart'));
         const option = {
             backgroundColor: 'transparent',
@@ -559,7 +587,107 @@
             ]
         };
         chart.setOption(option);
-        window.addEventListener('resize', () => chart.resize());
+        
+        // 气压趋势图
+        const pressureChart = echarts.init(document.getElementById('pressureChart'));
+        const pressureOption = {
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis' },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
+            xAxis: {
+                type: 'category',
+                data: ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 17:01", "02-21 18:00", "02-21 19:00", "02-21 20:00", "02-21 21:00", "02-21 22:00"],
+                axisLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#666', fontSize: 10 }
+            },
+            yAxis: {
+                type: 'value',
+                min: function(value) { return Math.floor(value.min - 5); },
+                max: function(value) { return Math.ceil(value.max + 5); },
+                axisLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#666', fontSize: 10 },
+                splitLine: { lineStyle: { color: '#222' } }
+            },
+            series: [{
+                name: '气压',
+                type: 'line',
+                data: [1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003.6, 1003.6, 1003.5, 1003.5, 1004.5, 1005.2, 1005.5],
+                smooth: true,
+                lineStyle: { color: '#a78bfa', width: 2 },
+                itemStyle: { color: '#a78bfa' },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(167, 139, 250, 0.3)' },
+                        { offset: 1, color: 'rgba(167, 139, 250, 0)' }
+                    ])
+                }
+            }]
+        };
+        pressureChart.setOption(pressureOption);
+        
+        // 风向风速图
+        const windChart = echarts.init(document.getElementById('windChart'));
+        const windDir = [55, 56, 58, 58, 58, 56, 74, 73, 47, 46, 49, 47, 46];
+        const windSpeed = [10.7, 4.4, 8.7, 4.5, 7.0, 5.4, 5.1, 5.1, 9.6, 6.4, 6.3, 6.6, 8.1];
+        const windOption = {
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['风速', '风向'], textStyle: { color: '#888', fontSize: 10 } },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
+            xAxis: {
+                type: 'category',
+                data: ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 17:01", "02-21 18:00", "02-21 19:00", "02-21 20:00", "02-21 21:00", "02-21 22:00"],
+                axisLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#666', fontSize: 10 }
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '风速(m/s)',
+                    nameTextStyle: { color: '#888', fontSize: 10 },
+                    axisLine: { lineStyle: { color: '#333' } },
+                    axisLabel: { color: '#666', fontSize: 10 },
+                    splitLine: { lineStyle: { color: '#222' } }
+                },
+                {
+                    type: 'value',
+                    name: '风向(°)',
+                    nameTextStyle: { color: '#888', fontSize: 10 },
+                    min: 0,
+                    max: 360,
+                    axisLine: { lineStyle: { color: '#333' } },
+                    axisLabel: { color: '#666', fontSize: 10 },
+                    splitLine: { show: false }
+                }
+            ],
+            series: [
+                {
+                    name: '风速',
+                    type: 'bar',
+                    data: windSpeed,
+                    itemStyle: { color: '#67e8f9' }
+                },
+                {
+                    name: '风向',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: windDir,
+                    smooth: true,
+                    lineStyle: { color: '#fbbf24', width: 2 },
+                    itemStyle: { color: '#fbbf24' },
+                    symbol: 'circle',
+                    symbolSize: 4
+                }
+            ]
+        };
+        windChart.setOption(windOption);
+        
+        // 响应式
+        window.addEventListener('resize', () => {
+            chart.resize();
+            pressureChart.resize();
+            windChart.resize();
+        });
     </script>
 </body>
 </html>
