@@ -59,7 +59,7 @@ async function loadDataComparison() {
                             <th style="text-align: left;">指标</th>
                             <th style="color: #91cc75;">🌤️ 和风 70%</th>
                             <th style="color: #fac858;">🌍 OM 30%</th>
-                            ${yr ? '<th style="color: #00d9ff;">🇳🇴 yr.no 校验</th>' : ''}
+                            ${yr ? '<th style="color: #00d9ff;">🇳🇴 yr.no 校验<br><span style="font-size: 10px; color: #666;">(仅气压，条件参与)</span></th>' : ''}
                             <th style="color: #e94560;">差异</th>
                         </tr>
                     </thead>
