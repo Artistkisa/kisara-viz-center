@@ -73,7 +73,7 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">7</div>
+                <div class="stat-value">8</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
@@ -112,7 +112,7 @@
         </div>
         
         <div class="legend">
-            <div class="legend-item"><div class="legend-color" style="background:#5470c6"></div><span>湿度</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#00d9ff"></div><span>湿度</span></div>
             <div class="legend-item"><div class="legend-color" style="background:#91cc75"></div><span>温度</span></div>
             <div class="legend-item"><div class="legend-color" style="background:#fac858"></div><span>露点</span></div>
             <div class="legend-item"><div class="legend-color" style="background:#e94560"></div><span>85%基线</span></div>
@@ -131,16 +131,16 @@
     </div>
 
     <script>
-        const times = ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44"];
-        const humidity = [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6];
-        const temp = [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0];
-        const dew = [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6];
-        const windDir = [55, 56, 58, 58, 58, 56, 74];
-        const windSpeed = [10.7, 4.4, 8.7, 4.5, 7.0, 5.4, 5.1];
-        const pressure = [1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003.0];
-        const confidenceScores = [2, 2, 2, 2, 3, 2, 1];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none"];
+        const times = ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 16:44"];
+        const humidity = [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6, 58.6];
+        const temp = [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0, 24.0];
+        const dew = [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6, 15.6];
+        const windDir = [55, 56, 58, 58, 58, 56, 74, 74];
+        const windSpeed = [10.7, 4.4, 8.7, 4.5, 7.0, 5.4, 5.1, 5.1];
+        const pressure = [1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003.0, 1003.0];
+        const confidenceScores = [2, 2, 2, 2, 3, 2, 1, 1];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
+        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
@@ -213,8 +213,8 @@
                     smooth: true,
                     symbol: 'circle',
                     symbolSize: 4,
-                    lineStyle: { color: '#5470c6', width: 2 },
-                    itemStyle: { color: '#5470c6' }
+                    lineStyle: { color: '#00d9ff', width: 3 },
+                    itemStyle: { color: '#00d9ff' }
                 },
                 {
                     name: '温度',
