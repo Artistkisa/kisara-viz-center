@@ -73,7 +73,7 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">2</div>
+                <div class="stat-value">1</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
@@ -158,16 +158,16 @@
     </div>
 
     <script>
-        const times = ["02-21 19:00", "02-21 19:30"];
-        const humidity = [62, 63.2];
-        const temp = [22.0, 22.3];
-        const dew = [16.0, 16.1];
-        const windDir = [221, 46];
-        const windSpeed = [4.0, 6.4];
-        const pressure = [1001, 1003.7];
-        const confidenceScores = [2, 2];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 6.0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none"];
+        const times = ["02-21 20:00"];
+        const humidity = [63.2];
+        const temp = [22.3];
+        const dew = [16.1];
+        const windDir = [46];
+        const windSpeed = [6.4];
+        const pressure = [1003.7];
+        const confidenceScores = [2];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
+        const intensityLevels = ["none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
@@ -413,7 +413,7 @@
             yAxis: {
                 type: 'value',
                 name: '气压(hPa)',
-                min: 996,
+                min: 998.7,
                 max: 1008.7,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
