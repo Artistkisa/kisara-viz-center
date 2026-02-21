@@ -267,7 +267,7 @@
         });
         
         // 添加置信度色带（底部）
-        const confColors = ['#666666', '#87ceeb', '#4169e1', '#000080'];
+        const confColors = ['#3a3a5c', '#87ceeb', '#4169e1', '#000080'];
         confidenceScores.forEach((score, idx) => {
             if (idx < times.length - 1) {
                 mainOption.series.push({
@@ -275,7 +275,7 @@
                     markArea: {
                         silent: true,
                         itemStyle: {
-                            color: confColors[score] || '#666666'
+                            color: confColors[score] || '#3a3a5c'
                         },
                         data: [[
                             { xAxis: times[idx] },
