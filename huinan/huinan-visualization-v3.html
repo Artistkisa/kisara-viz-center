@@ -1,11 +1,11 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;广州回南天监测 - v3&lt;/title&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"&gt;&lt;/script&gt;
-    &lt;style&gt;
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州回南天监测 - v3</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: #1a1a2e; 
@@ -64,22 +64,22 @@
         }
         .conf-item { display: flex; align-items: center; gap: 3px; }
         .conf-box { width: 15px; height: 8px; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;h1&gt;🌫️ 广州回南天监测&lt;/h1&gt;
-        &lt;p class="subtitle"&gt;六步算法：核心触发 → 置信度评分 → 强度分级 → 防抖 → 通知 → 统计&lt;/p&gt;
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌫️ 广州回南天监测</h1>
+        <p class="subtitle">六步算法：核心触发 → 置信度评分 → 强度分级 → 防抖 → 通知 → 统计</p>
         
-        &lt;div class="stats"&gt;
-            &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;41&lt;/div&gt;
-                &lt;div class="stat-label"&gt;数据点数&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;2/3&lt;/div&gt;
-                &lt;div class="stat-label"&gt;最高置信度&lt;/div&gt;
-            &lt;/div&gt;
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">41</div>
+                <div class="stat-label">数据点数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2/3</div>
+                <div class="stat-label">最高置信度</div>
+            </div>
             <div class="stat-item">
                 <div class="stat-value">81%</div>
                 <div class="stat-label">当前湿度</div>
@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    &lt;script&gt;
+    <script>
         const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 00:01", "02-20 01:00", "02-20 02:00", "02-20 02:02", "02-20 04:00", "02-20 05:00", "02-20 07:00", "02-20 10:00", "02-20 10:00", "02-20 12:00", "02-20 12:29", "02-20 13:00", "02-20 14:01", "02-20 15:00", "02-20 16:00", "02-20 17:00", "02-20 18:00", "02-20 19:00", "02-20 19:28", "02-20 19:28", "02-20 19:29", "02-20 22:01", "02-20 23:00", "02-21 00:00", "02-21 00:02", "02-21 01:00", "02-21 02:02", "02-21 02:39", "02-21 02:39", "02-21 02:39", "02-21 03:00", "02-21 04:00", "02-21 05:00", "02-21 06:00", "02-21 07:00", "02-21 08:00", "02-21 09:00", "02-21 10:01"];
         const humidity = [76, 78, 82, 70, 79, 74, 60, 51, 77, 45, 60, 50, 51, 80, 50, 51, 45, 44, 45, 50, 64, 94, 94, 94, 86, 88, 90, 95, 91, 81, 76, 76, 76, 93, 94, 94, 94, 95, 95, 93, 81];
         const temp = [17, 16, 16, 15, 16, 16, 18, 22, 16, 25, 18, 24, 22, 16, 23, 22, 25, 26, 25, 24, 20, 17, 17, 17, 15, 18, 18, 13, 18, 19, 20, 20, 20, 17, 17, 17, 13, 13, 13, 16, 19];
@@ -222,7 +222,7 @@
                 {
                     name: '85%基线',
                     type: 'line',
-                    data: times.map(() =&gt; 85),
+                    data: times.map(() => 85),
                     lineStyle: { color: '#e94560', type: 'dashed', width: 1 },
                     symbol: 'none',
                     silent: true
@@ -231,7 +231,7 @@
         };
         
         // 添加回南天高亮区域
-        nanhuiRegions.forEach(region =&gt; {
+        nanhuiRegions.forEach(region => {
             mainOption.series.push({
                 type: 'line',
                 markArea: {
@@ -250,7 +250,7 @@
         
         // 添加置信度色带（底部）
         const confColors = ['#666666', '#87ceeb', '#4169e1', '#000080'];
-        confidenceScores.forEach((score, idx) =&gt; {
+        confidenceScores.forEach((score, idx) => {
             if (idx < times.length - 1) {
                 mainOption.series.push({
                     type: 'line',
@@ -340,7 +340,7 @@
         const pressureChart = echarts.init(document.getElementById('pressureChart'));
         
         // 计算气压变化颜色
-        const pressureData = pressure.map((p, idx) =&gt; {
+        const pressureData = pressure.map((p, idx) => {
             let color = '#00d9ff';
             if (idx > 0) {
                 color = p >= pressure[idx-1] ? '#e94560' : '#4ecca3'; // 上升红，下降绿
@@ -393,11 +393,11 @@
         echarts.connect([mainChart, windChart, pressureChart]);
         
         // 响应式
-        window.addEventListener('resize', () =&gt; {
+        window.addEventListener('resize', () => {
             mainChart.resize();
             windChart.resize();
             pressureChart.resize();
         });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    </script>
+</body>
+</html>
