@@ -1,9 +1,9 @@
 {
   "humidity": 95,
-  "dew": 15.0,
-  "temp": 13.0,
-  "windDir": 341,
-  "windSpeed": 3.0,
+  "dew": 15,
+  "temp": 13,
+  "windDir": 0,
+  "windSpeed": 4,
   "pressure": 1006,
   "humidityChange3h": 0,
   "pressureDrop6h": 0,
@@ -11,18 +11,19 @@
     "humidityOK": true,
     "dewDiffOK": true,
     "humidityTrendOK": true,
-    "tempDewDiff": -2.0,
-    "allOK": true
+    "allOK": true,
+    "tempDewDiff": -2
   },
   "confidence": {
-    "score": 1,
+    "score": 2,
     "reasons": [
-      "\u6709\u98ce\u6d41\u52a8"
+      "\u6709\u98ce\u6d41\u52a8",
+      "\u6c14\u538b\u4e0b\u964d"
     ]
   },
   "intensity": {
     "level": "severe",
-    "by": "\u6e7f\u5ea6"
+    "by": "\u9732\u70b9\u5dee"
   },
-  "updatedAt": "2026-02-21T07:30:33.447800"
+  "updatedAt": "2026-02-21T08:02:49.736232"
 }
