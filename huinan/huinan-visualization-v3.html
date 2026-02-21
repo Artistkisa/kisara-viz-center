@@ -73,7 +73,7 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">9</div>
+                <div class="stat-value">7</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
@@ -81,7 +81,7 @@
                 <div class="stat-label">最高置信度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">59.0%</div>
+                <div class="stat-value">58.6%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-item">
@@ -122,25 +122,25 @@
         
         <div style="max-width: 1400px; margin: 20px auto; padding: 15px; background: #16213e; border-radius: 8px; text-align: center;">
             <p style="color: #888; font-size: 13px; margin-bottom: 10px;">
-                📊 数据来源：和风天气 + Open-Meteo 双源融合
+                📊 数据来源：和风天气 70% + Open-Meteo 30% + yr.no 校验
             </p>
             <p style="color: #666; font-size: 11px;">
-                融合策略：差异&lt;5%等权平均 | 5-10%和风加权70% | &gt;10%和风优先85%并标记冲突
+                融合策略：和风主导国内数据 | yr.no校验气压+风向 | 主源冲突时yr.no不参与
             </p>
         </div>
     </div>
 
     <script>
-        const times = ["02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:00"];
-        const humidity = [69, 67.5, 63.0, 60, 58.5, 58.0, 58.9, 62, 59.0];
-        const temp = [22.1, 22.6, 23.0, 24.1, 24.4, 24.5, 24.4, 23.0, 23.8];
-        const dew = [16.2, 16.1, 15.9, 15.9, 15.4, 15.3, 15.1, 15.0, 15.0];
-        const windDir = [182, 91, 93, 192, 97, 97, 58, 178, 56];
-        const windSpeed = [10.1, 10.6, 6.0, 10.3, 9.2, 6.2, 7.0, 4.0, 5.4];
-        const pressure = [1012, 1009.0, 1008.5, 1010, 1006.5, 1006.5, 1004.2, 1002, 1003.5];
-        const confidenceScores = [2, 3, 3, 2, 3, 3, 2, 2, 2];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 8.0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none"];
+        const times = ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44"];
+        const humidity = [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6];
+        const temp = [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0];
+        const dew = [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6];
+        const windDir = [55, 56, 58, 58, 58, 56, 74];
+        const windSpeed = [10.7, 4.4, 8.7, 4.5, 7.0, 5.4, 5.1];
+        const pressure = [1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003.0];
+        const confidenceScores = [2, 2, 2, 2, 3, 2, 1];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
+        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
@@ -329,7 +329,7 @@
                 type: 'value',
                 name: '风速(km/h)',
                 min: 0,
-                max: 12.719999999999999,
+                max: 12.839999999999998,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
                 splitLine: { lineStyle: { color: '#333' } }
@@ -386,8 +386,8 @@
             yAxis: {
                 type: 'value',
                 name: '气压(hPa)',
-                min: 997,
-                max: 1017,
+                min: 998.0,
+                max: 1012.8,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
                 splitLine: { lineStyle: { color: '#333' } }
