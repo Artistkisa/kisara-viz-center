@@ -1071,10 +1071,10 @@
     {
       "time": "2026-02-21 10:01:08",
       "humidity": 81,
-      "temp": 19.0,
-      "dew": 15.0,
+      "temp": 19,
+      "dew": 15,
       "windDir": 164,
-      "windSpeed": 3.0,
+      "windSpeed": 3,
       "pressure": 1007,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
@@ -1082,7 +1082,7 @@
         "humidityOK": false,
         "dewDiffOK": false,
         "humidityTrendOK": true,
-        "tempDewDiff": 4.0,
+        "tempDewDiff": 4,
         "allOK": false
       },
       "confidence": {
@@ -1158,16 +1158,110 @@
         "level": "none",
         "by": "\u6e7f\u5ea6"
       }
+    },
+    {
+      "time": "2026-02-21T02:39:22.462Z",
+      "humidity": 76,
+      "temp": 20,
+      "dew": 16,
+      "windDir": 0,
+      "windSpeed": 8,
+      "pressure": 1007,
+      "trends": {
+        "humidityChange3h": 22,
+        "pressureDrop6h": 1
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 4
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      }
+    },
+    {
+      "time": "2026-02-21T02:39:37.386Z",
+      "humidity": 76,
+      "temp": 20,
+      "dew": 16,
+      "windDir": 0,
+      "windSpeed": 8,
+      "pressure": 1007,
+      "trends": {
+        "humidityChange3h": 22,
+        "pressureDrop6h": 1
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 4
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      }
+    },
+    {
+      "time": "2026-02-21T02:39:39.745Z",
+      "humidity": 76,
+      "temp": 20,
+      "dew": 16,
+      "windDir": 0,
+      "windSpeed": 8,
+      "pressure": 1007,
+      "trends": {
+        "humidityChange3h": 22,
+        "pressureDrop6h": 1
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 4
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      }
     }
   ],
-  "events": [],
-  "currentEvent": {
-    "startTime": "2026-02-20T19:29:18.573Z",
-    "level": "moderate",
-    "maxHumidity": 95,
-    "minDewDiff": -2,
-    "maxLevel": "severe",
-    "confidenceAtStart": 2
-  },
-  "lastCheck": "2026-02-21T02:02:02.601Z"
+  "events": [
+    {
+      "startTime": "2026-02-20T19:29:18.573Z",
+      "level": "moderate",
+      "maxHumidity": 95,
+      "minDewDiff": -2,
+      "maxLevel": "severe",
+      "confidenceAtStart": 2,
+      "endTime": "2026-02-21T02:39:37.387Z",
+      "duration": 7
+    }
+  ],
+  "currentEvent": null,
+  "lastCheck": "2026-02-21T02:39:39.746Z"
 }
