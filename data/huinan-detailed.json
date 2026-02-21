@@ -1,25 +1,26 @@
 {
   "records": [
     {
-      "time": "2026-02-21 15:00:11",
-      "humidity": 61,
-      "temp": 24.0,
+      "time": "2026-02-21 16:00:03",
+      "humidity": 62,
+      "temp": 23.0,
       "dew": 15.0,
-      "windDir": 133,
-      "windSpeed": 6.0,
-      "pressure": 1003,
+      "windDir": 178,
+      "windSpeed": 4.0,
+      "pressure": 1002,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {
         "humidityOK": false,
         "dewDiffOK": false,
         "humidityTrendOK": true,
-        "tempDewDiff": 9.0,
+        "tempDewDiff": 8.0,
         "allOK": false
       },
       "confidence": {
-        "score": 1,
+        "score": 2,
         "reasons": [
+          "\u5357\u98ce",
           "\u6709\u98ce\u6d41\u52a8"
         ]
       },
@@ -127,6 +128,6 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-02-21T15:15:23.441358",
+  "lastCheck": "2026-02-21T15:45:19.298201",
   "multi_source": true
 }
