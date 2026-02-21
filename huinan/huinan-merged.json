@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-22T03:01:37.689267",
-  "total_records": 20,
+  "generated_at": "2026-02-22T03:15:27.323454",
+  "total_records": 21,
   "multi_source": true,
   "source_weights": {
     "qweather": 0.7,
@@ -2025,6 +2025,112 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-02-22T03:01:14.025132",
+      "temp": 19.1,
+      "humidity": 86.2,
+      "dew": 17.1,
+      "windDir": 203,
+      "windSpeed": 3.2,
+      "pressure": 1006.2,
+      "outlier_check": {
+        "qweather": {
+          "valid": true,
+          "weight_factor": 1.0,
+          "note": ""
+        },
+        "openmeteo": {
+          "valid": true,
+          "weight_factor": 1.0,
+          "note": ""
+        },
+        "yrno": {
+          "valid": true,
+          "weight_factor": 1.0,
+          "note": ""
+        }
+      },
+      "weights": {
+        "qweather": 0.7,
+        "openmeteo": 0.3,
+        "yrno": 0.1
+      },
+      "confidence": "medium",
+      "confidence_score": 2.5,
+      "conflict": false,
+      "source_count": 3,
+      "source_diff": {
+        "humidity": 4,
+        "dew": 0.5,
+        "pressure": 8.3
+      },
+      "raw_sources": {
+        "qweather": {
+          "source": "qweather",
+          "timestamp": "2026-02-22T03:00:10.044601",
+          "temp": 19.0,
+          "humidity": 85,
+          "dew": 17.0,
+          "pressure": 1004,
+          "windDir": 244,
+          "windSpeed": 3.0,
+          "raw": {
+            "obsTime": "2026-02-22T02:58+08:00",
+            "temp": "19",
+            "feelsLike": "19",
+            "icon": "151",
+            "text": "\u591a\u4e91",
+            "wind360": "244",
+            "windDir": "\u897f\u5357\u98ce",
+            "windScale": "1",
+            "windSpeed": "3",
+            "humidity": "85",
+            "precip": "0.0",
+            "pressure": "1004",
+            "vis": "14",
+            "cloud": "10",
+            "dew": "17"
+          }
+        },
+        "openmeteo": {
+          "source": "openmeteo",
+          "timestamp": "2026-02-22T03:01:13.201746",
+          "temp": 19.3,
+          "humidity": 89,
+          "dew": 17.5,
+          "pressure": 1009,
+          "windDir": 107,
+          "windSpeed": 3.8,
+          "raw": {
+            "time": "2026-02-22T03:00",
+            "interval": 900,
+            "temperature_2m": 19.3,
+            "relative_humidity_2m": 89,
+            "dew_point_2m": 17.5,
+            "surface_pressure": 1009.2,
+            "wind_direction_10m": 107,
+            "wind_speed_10m": 3.8
+          }
+        },
+        "yrno": {
+          "source": "yrno",
+          "timestamp": "2026-02-22T03:01:14.025003",
+          "temp": 18.3,
+          "humidity": 93.5,
+          "pressure": 1012.3,
+          "windDir": 127.8,
+          "windSpeed": 1.9,
+          "raw": {
+            "air_pressure_at_sea_level": 1012.3,
+            "air_temperature": 18.3,
+            "cloud_area_fraction": 88.3,
+            "relative_humidity": 93.5,
+            "wind_from_direction": 127.8,
+            "wind_speed": 1.9
+          }
+        }
+      }
     }
   ],
   "nanhui_detection": {
@@ -2034,12 +2140,12 @@
     "message": "\u56de\u5357\u5929\u98ce\u9669\uff1a\u4e2a\u522b\u6761\u4ef6\u6ee1\u8db3\uff0c\u5173\u6ce8\u8d8b\u52bf",
     "current": {
       "temp": 19.1,
-      "humidity": 84.2,
+      "humidity": 86.2,
       "dew": 17.1,
       "pressure": 1006.2,
-      "windDir": 158,
-      "windSpeed": 5.3,
-      "timestamp": "2026-02-22T02:00:13.209637"
+      "windDir": 203,
+      "windSpeed": 3.2,
+      "timestamp": "2026-02-22T03:01:14.025132"
     },
     "conditions": {
       "cold_base": {
@@ -2065,8 +2171,8 @@
       "warm_moist": {
         "satisfied": false,
         "high_temp": false,
-        "high_humidity": false,
-        "reason": "\u6e29\u5ea619.1\u2103\u226420\u2103, \u6e7f\u5ea684.2%<85%"
+        "high_humidity": true,
+        "reason": "\u6e29\u5ea619.1\u2103\u226420\u2103, \u6e7f\u5ea686.2%\u226585%"
       },
       "warm_transport": {
         "satisfied": false,
@@ -2075,23 +2181,23 @@
       },
       "pressure_falling": {
         "satisfied": false,
-        "pressure_change": 1.5,
+        "pressure_change": 0.7,
         "threshold": -2,
-        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316+1.5hPa \u2265 -2hPa"
+        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316+0.7hPa \u2265 -2hPa"
       }
     },
     "prediction": {
       "available": true,
       "6h": {
-        "humidity": 85.7,
+        "humidity": 87.7,
         "temp": 18.9,
-        "dew": 17.2,
+        "dew": 17.1,
         "may_trigger": false,
         "confidence": 0.3
       },
       "trends": {
         "humidity_per_6h": 1.5,
-        "temp_per_6h": -0.2
+        "temp_per_6h": -0.22
       },
       "warnings": []
     }
