@@ -33,11 +33,45 @@
             font-size: 12px;
             color: #888;
             border: 1px solid #333;
+            transition: all 0.3s ease;
         }
         .flow-step.active {
             background: #00d9ff22;
             border-color: #00d9ff;
             color: #00d9ff;
+        }
+        /* 可点击卡片的流动轮廓动画 */
+        .flow-step.clickable {
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        .flow-step.clickable::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 22px;
+            background: linear-gradient(90deg, #00d9ff, #91cc75, #fac858, #00d9ff);
+            background-size: 300% 100%;
+            z-index: -1;
+            animation: flow-border 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .flow-step.clickable:hover::before {
+            opacity: 1;
+        }
+        .flow-step.clickable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+        }
+        @keyframes flow-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
         }
         .flow-arrow { color: #555; line-height: 40px; }
         
@@ -166,11 +200,11 @@
         
         <!-- V5 流程 -->
         <div class="v5-flow">
-            <div class="flow-step active" onclick="window.location.href='huinan-sources-comparison.html'" style="cursor:pointer;" title="点击查看三源数据对比">
+            <div class="flow-step active clickable" onclick="window.location.href='huinan-sources-comparison.html'" title="点击查看三源数据对比">
                 🔍 异常检测
             </div>
             <span class="flow-arrow">→</span>
-            <div class="flow-step active" onclick="window.location.href='huinan-sources-comparison.html'" style="cursor:pointer;" title="点击查看三源数据对比">
+            <div class="flow-step active clickable" onclick="window.location.href='huinan-sources-comparison.html'" title="点击查看三源数据对比">
                 ⚖️ 智能融合
             </div>
             <span class="flow-arrow">→</span>
@@ -319,7 +353,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:12</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:14</p>
         </div>
         
         <!-- 订阅区域 -->
