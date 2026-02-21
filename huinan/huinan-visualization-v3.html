@@ -81,16 +81,16 @@
                 <div class="stat-label">最高置信度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">58.6%</div>
+                <div class="stat-value">60.8%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" style="color: #4ecca3">2</div>
+                <div class="stat-value" style="color: #4ecca3">3</div>
                 <div class="stat-label">数据源</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" style="color: #e94560">⚠️</div>
-                <div class="stat-label">数据冲突</div>
+                <div class="stat-value" style="color: #4ecca3">✓</div>
+                <div class="stat-label">数据一致</div>
             </div>
         </div>
         
@@ -128,18 +128,45 @@
                 yr.no 仅参与气压校验（主源无冲突且气压差异<10hPa时）| 主源冲突时 yr.no 不参与
             </p>
         </div>
+        
+        <div style="max-width: 1400px; margin: 20px auto; padding: 20px; background: #1a1a2e; border-radius: 8px;">
+            <h4 style="color: #00d9ff; margin-bottom: 15px; text-align: center;">🧮 置信度评分公式（满分 3 分）</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; font-size: 12px; color: #888;">
+                <div style="background: #16213e; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #4ecca3;">核心触发（基础分 2 分）</strong><br/>
+                    • 湿度 ≥ 85%：+1 分<br/>
+                    • 温差 ≤ 2.5°C：+1 分
+                </div>
+                <div style="background: #16213e; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #fac858;">风向验证（最高 1.5 分）</strong><br/>
+                    • 主源（和风）风向 135-225°：+1 分<br/>
+                    • 次源（OM）风向 135-225°：+0.5 分<br/>
+                    • yr.no 风向 135-225°：+0.5 分<br/>
+                    • 三源风向一致：额外 +0.5 分
+                </div>
+                <div style="background: #16213e; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #00d9ff;">气压校验（0.5 分）</strong><br/>
+                    • 三源气压差异 < 5hPa：+0.5 分<br/>
+                    • 差异 5-10hPa：不加分<br/>
+                    • 差异 > 10hPa：yr.no 不参与
+                </div>
+            </div>            
+            <div style="margin-top: 15px; padding: 10px; background: #0f0f1e; border-radius: 6px; font-family: monospace; font-size: 11px; color: #666; text-align: center;">
+                总分 = 湿度分 + 温差分 + 风向分 + 气压分 | <span style="color: #4ecca3;">≥2 分：高置信度</span> | <span style="color: #fac858;">1-2 分：中等</span> | <span style="color: #e94560;"><1 分：低</span>
+            </div>
+        </div>
     </div>
 
     <script>
-        const times = ["02-21 10:01", "02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 17:01"];
-        const humidity = [62, 66.9, 62.6, 59.1, 58.8, 58.9, 59, 58.6, 58.6];
-        const temp = [23, 22.7, 23, 24.3, 24.3, 24.4, 23.8, 24, 24];
-        const dew = [16, 16.1, 15.9, 15.2, 15.2, 15.1, 15, 15.6, 15.6];
-        const windDir = [0, 55, 56, 58, 58, 58, 56, 74, 73];
-        const windSpeed = [10, 10.7, 4.4, 8.7, 4.5, 7, 5.4, 5.1, 5.1];
-        const pressure = [1001, 1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003, 1003];
-        const confidenceScores = [2, 2, 2, 2, 2, 3, 2, 1, 1];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
+        const times = ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 17:01", "02-21 18:00"];
+        const humidity = [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6, 58.6, 60.8];
+        const temp = [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0, 24.0, 23.4];
+        const dew = [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6, 15.6, 15.9];
+        const windDir = [55, 56, 58, 58, 58, 56, 74, 73, 47];
+        const windSpeed = [10.7, 4.4, 8.7, 4.5, 7.0, 5.4, 5.1, 5.1, 9.6];
+        const pressure = [1007.8, 1007.5, 1005.5, 1005.5, 1004.2, 1003.5, 1003.0, 1003.0, 1003.6];
+        const confidenceScores = [2, 2, 2, 2, 3, 2, 1, 1, 2];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
         const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none"];
         
         // 计算回南天区域
@@ -386,7 +413,7 @@
             yAxis: {
                 type: 'value',
                 name: '气压(hPa)',
-                min: 996,
+                min: 998.0,
                 max: 1012.8,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
