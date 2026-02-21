@@ -1,1 +1,362 @@
-<!DOCTYPE html><html><body style='background:#1a1a2e;color:#fff;text-align:center;padding:50px;'><h1>⏳ 数据采集中...</h1><p>已有 1 条数据，请稍后再试</p></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州回南天监测 V5</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { text-align: center; color: #00d9ff; margin-bottom: 10px; font-size: 28px; }
+        .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 30px; }
+        
+        /* V5 流程指示器 */
+        .v5-flow {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .flow-step {
+            background: #16213e;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #888;
+            border: 1px solid #333;
+        }
+        .flow-step.active {
+            background: #00d9ff22;
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+        .flow-arrow { color: #555; line-height: 40px; }
+        
+        /* 状态卡片 */
+        .status-card {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid #4ecca3;
+        }
+        .status-level {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4ecca3;
+            margin-bottom: 10px;
+        }
+        .status-message { font-size: 16px; color: #ccc; margin-bottom: 15px; }
+        .status-confidence { 
+            display: inline-block;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        /* 统计网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-value { font-size: 32px; font-weight: bold; color: #00d9ff; }
+        .stat-label { font-size: 12px; color: #888; margin-top: 5px; }
+        
+        /* 条件检查 */
+        .conditions {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .cond-title { 
+            color: #00d9ff; 
+            font-size: 16px; 
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cond-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        .cond-item {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cond-name { font-size: 13px; color: #aaa; }
+        .cond-status { 
+            font-size: 12px; 
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        .cond-status.ok { background: #4ecca333; color: #4ecca3; }
+        .cond-status.fail { background: #e9456033; color: #e94560; }
+        .cond-detail { font-size: 11px; color: #666; margin-top: 5px; }
+        
+        /* 图表 */
+        .chart-container {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        #mainChart { width: 100%; height: 400px; }
+        
+        /* 算法说明 */
+        .algo-info {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .algo-title { color: #00d9ff; margin-bottom: 15px; }
+        .algo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            font-size: 12px;
+        }
+        .algo-card {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .algo-card h5 { color: #fac858; margin-bottom: 8px; }
+        .algo-card p { color: #888; line-height: 1.6; }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 12px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌫️ 广州回南天监测 V5</h1>
+        <p class="subtitle">全流程可视化：异常检测 → 智能融合 → 气象检测 → 状态管理 → 分级通知</p>
+        
+        <!-- V5 流程 -->
+        <div class="v5-flow">
+            <div class="flow-step active">🔍 异常检测</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step active">⚖️ 智能融合</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step active">🧮 气象检测</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step ">📊 状态管理</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step ">🔔 分级通知</div>
+        </div>
+        
+        <!-- 状态卡片 -->
+        <div class="status-card">
+            <div class="status-level">NONE</div>
+            <div class="status-message">无风险：前期不够冷，建筑物未冷透</div>
+            <div class="status-confidence">置信度: 90%</div>
+        </div>
+        
+        <!-- 统计数据 -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">21.3°C</div>
+                <div class="stat-label">当前温度</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">68.9%</div>
+                <div class="stat-label">当前湿度</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">16.1°C</div>
+                <div class="stat-label">露点温度</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">1005</div>
+                <div class="stat-label">气压(hPa)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">23.6</div>
+                <div class="stat-label">48h均温(°C)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">None</div>
+                <div class="stat-label">24h升温(°C)</div>
+            </div>
+        </div>
+        
+        <!-- 核心条件检查 -->
+        <div class="conditions">
+            <div class="cond-title">🔴 核心条件（3个需全部满足）</div>
+            <div class="cond-grid">
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">前期低温</div>
+                        <div class="cond-detail">不够冷（48h均温>14℃）</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">24h升温</div>
+                        <div class="cond-detail">无24小时前数据</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">露点接近</div>
+                        <div class="cond-detail">露点16.1℃ vs 表面估计18.3℃(偏移-3.0℃) 差-2.2℃</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 增强条件 -->
+        <div class="conditions">
+            <div class="cond-title">🟡 增强条件（提升置信度）</div>
+            <div class="cond-grid">
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">暖湿气流</div>
+                        <div class="cond-detail">温度21.3℃>20℃, 湿度68.9%<85%</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">暖湿输送</div>
+                        <div class="cond-detail">南风占比<50%且露点上升<2℃/3h</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+                <div class="cond-item">
+                    <div>
+                        <div class="cond-name">气压下降</div>
+                        <div class="cond-detail">6小时气压变化-0.8hPa ≥ -2hPa</div>
+                    </div>
+                    <span class="cond-status fail">✗</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 图表 -->
+        <div class="chart-container">
+            <div id="mainChart"></div>
+        </div>
+        
+        <!-- V5 算法说明 -->
+        <div class="algo-info">
+            <div class="algo-title">🧠 V5 算法架构</div>
+            <div class="algo-grid">
+                <div class="algo-card">
+                    <h5>1️⃣ 异常检测 (B+C)</h5>
+                    <p>• 和风优先保护：偏离降权60%，永不剔除<br/>
+                       • OM偏离：降权至30%<br/>
+                       • yr.no偏离：严重剔除，轻微降权50%</p>
+                </div>
+                <div class="algo-card">
+                    <h5>2️⃣ 智能融合</h5>
+                    <p>• 基础权重 × 异常因子<br/>
+                       • 冲突时和风主导60%<br/>
+                       • 正常时和风70% + OM30%</p>
+                </div>
+                <div class="algo-card">
+                    <h5>3️⃣ 气象检测</h5>
+                    <p>• 动态表面温度：2-4℃偏移<br/>
+                       • 季节自适应：2-4月48h窗口<br/>
+                       • 升温联动：6/7/8℃阈值</p>
+                </div>
+                <div class="algo-card">
+                    <h5>4️⃣ 状态管理</h5>
+                    <p>• 3核心 + 3增强条件<br/>
+                       • formal细分：轻度/中度/重度<br/>
+                       • 状态变更触发通知</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 20:53</p>
+        </div>
+    </div>
+    
+    <script>
+        const chart = echarts.init(document.getElementById('mainChart'));
+        const option = {
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['湿度', '温度', '露点'], textStyle: { color: '#888' } },
+            grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+            xAxis: {
+                type: 'category',
+                data: ["02-21 11:20", "02-21 12:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 16:00", "02-21 16:44", "02-21 17:01", "02-21 18:00", "02-21 19:00", "02-21 20:00"],
+                axisLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#666', rotate: 45 }
+            },
+            yAxis: {
+                type: 'value',
+                axisLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#666' },
+                splitLine: { lineStyle: { color: '#222' } }
+            },
+            series: [
+                {
+                    name: '湿度',
+                    type: 'line',
+                    data: [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6, 58.6, 60.8, 63.2, 68.9],
+                    smooth: true,
+                    lineStyle: { color: '#00d9ff', width: 3 },
+                    itemStyle: { color: '#00d9ff' }
+                },
+                {
+                    name: '温度',
+                    type: 'line',
+                    data: [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0, 24.0, 23.4, 22.3, 21.3],
+                    smooth: true,
+                    lineStyle: { color: '#91cc75' },
+                    itemStyle: { color: '#91cc75' }
+                },
+                {
+                    name: '露点',
+                    type: 'line',
+                    data: [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6, 15.6, 15.9, 16.1, 16.1],
+                    smooth: true,
+                    lineStyle: { color: '#fac858' },
+                    itemStyle: { color: '#fac858' }
+                }
+            ]
+        };
+        chart.setOption(option);
+        window.addEventListener('resize', () => chart.resize());
+    </script>
+</body>
+</html>
