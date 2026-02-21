@@ -64,6 +64,24 @@
         }
         .conf-item { display: flex; align-items: center; gap: 3px; }
         .conf-box { width: 15px; height: 8px; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .data-table th, .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        .data-table th {
+            background: #1a1a2e;
+            text-align: left;
+        }
+        .data-table tr:nth-child(even) {
+            background: #1a1a2e;
+        }
     </style>
 </head>
 <body>
@@ -73,19 +91,19 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">7</div>
+                <div class="stat-value">8</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">2/3</div>
+                <div class="stat-value">1/3</div>
                 <div class="stat-label">最高置信度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">58%</div>
+                <div class="stat-value">61%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" style="color: #4ecca3">2</div>
+                <div class="stat-value" style="color: #fac858">1</div>
                 <div class="stat-label">数据源</div>
             </div>
             <div class="stat-item">
@@ -120,7 +138,6 @@
             <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.2)"></div><span>疑似回南天</span></div>
         </div>
         
-        <!-- 数据源说明 -->
         <div style="max-width: 1400px; margin: 20px auto; padding: 15px; background: #16213e; border-radius: 8px; text-align: center;">
             <p style="color: #888; font-size: 13px; margin-bottom: 10px;">
                 📊 数据来源：和风天气 + Open-Meteo 双源融合
@@ -132,18 +149,17 @@
     </div>
 
     <script>
-        const times = ["02-21 07:00", "02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00", "02-21 13:51", "02-21 14:01"];
-        const humidity = [61, 69, 67.5, 63, 60, 58.5, 58];
-        const temp = [24, 22.1, 22.6, 23, 24.1, 24.4, 24.5];
-        const dew = [15, 16.2, 16.1, 15.9, 15.9, 15.4, 15.3];
-        const windDir = [0, 182, 91, 93, 192, 97, 97];
-        const windSpeed = [6, 10.1, 10.6, 6, 10.3, 9.2, 6.2];
-        const pressure = [1003, 1012, 1009, 1008.5, 1010, 1006.5, 1006.5];
-        const confidenceScores = [2, 0.6, 0.9, 0.9, 0.6, 0.9, 0.9];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 9}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none"];
+        const times = ["02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00", "02-21 13:51", "02-21 14:01", "02-21 15:00", "02-21 15:00"];
+        const humidity = [69, 67.5, 63.0, 60, 58.5, 58.0, 58.9, 61];
+        const temp = [22.1, 22.6, 23.0, 24.1, 24.4, 24.5, 24.4, 24.0];
+        const dew = [16.2, 16.1, 15.9, 15.9, 15.4, 15.3, 15.1, 15.0];
+        const windDir = [182, 91, 93, 192, 97, 97, 58, 133];
+        const windSpeed = [10.1, 10.6, 6.0, 10.3, 9.2, 6.2, 7.0, 6.0];
+        const pressure = [1012, 1009.0, 1008.5, 1010, 1006.5, 1006.5, 1004.2, 1003];
+        const confidenceScores = [0.6, 0.9, 0.9, 0.6, 0.9, 0.9, 0.6, 1];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 9.0}];
+        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none"];
         
-        // 计算回南天区域
         const nanhuiRegions = [];
         let startIdx = null;
         let isFormal = false;
@@ -169,7 +185,6 @@
             }
         }
         
-        // 主图
         const mainChart = echarts.init(document.getElementById('mainChart'));
         const mainOption = {
             backgroundColor: 'transparent',
@@ -248,7 +263,6 @@
             ]
         };
         
-        // 添加回南天高亮区域
         nanhuiRegions.forEach(region => {
             mainOption.series.push({
                 type: 'line',
@@ -266,7 +280,6 @@
             });
         });
         
-        // 添加置信度色带（底部）
         const confColors = ['#3a3a5c', '#87ceeb', '#4169e1', '#000080'];
         confidenceScores.forEach((score, idx) => {
             if (idx < times.length - 1) {
@@ -289,10 +302,8 @@
         
         mainChart.setOption(mainOption);
         
-        // 风向风速图
         const windChart = echarts.init(document.getElementById('windChart'));
         
-        // 风向背景色数据
         const windMarkAreas = [];
         let windStartIdx = null;
         for (let i = 0; i < windDir.length; i++) {
@@ -354,14 +365,12 @@
         };
         windChart.setOption(windOption);
         
-        // 气压图
         const pressureChart = echarts.init(document.getElementById('pressureChart'));
         
-        // 计算气压变化颜色
         const pressureData = pressure.map((p, idx) => {
             let color = '#00d9ff';
             if (idx > 0) {
-                color = p >= pressure[idx-1] ? '#e94560' : '#4ecca3'; // 上升红，下降绿
+                color = p >= pressure[idx-1] ? '#e94560' : '#4ecca3';
             }
             return {
                 value: p,
@@ -407,10 +416,8 @@
         };
         pressureChart.setOption(pressureOption);
         
-        // 联动
         echarts.connect([mainChart, windChart, pressureChart]);
         
-        // 响应式
         window.addEventListener('resize', () => {
             mainChart.resize();
             windChart.resize();
@@ -418,7 +425,8 @@
         });
     </script>
     
-    <!-- 订阅区域 -->
+    <script src="comparison.js"></script>
+    
     <div style="max-width: 1400px; margin: 40px auto 20px; padding: 20px; background: #16213e; border-radius: 12px; text-align: center;">
         <h3 style="color: #fff; margin-bottom: 15px;">📧 订阅回南天预警</h3>
         <p style="color: #888; margin-bottom: 20px; font-size: 14px;">当广州出现回南天天气时，自动发送邮件通知</p>
@@ -470,7 +478,6 @@
             }
         });
         
-        // 退订链接处理
         document.getElementById('unsubscribeLink').addEventListener('click', (e) => {
             e.preventDefault();
             const email = document.getElementById('emailInput').value;
