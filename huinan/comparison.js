@@ -9,11 +9,10 @@ async function loadDataComparison() {
     try {
         // 尝试从多个源加载数据
         const urls = [
-            // 同源路径
-            'sources-data.json',
-            '/huinan/sources/sources-data.json',
-            // GitHub Pages 路径
-            'https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json'
+            // 当前目录下的数据源
+            'sources/sources-data.json',
+            // 上一级目录
+            '../huinan/sources/sources-data.json'
         ];
         
         let response = null;
