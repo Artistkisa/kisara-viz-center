@@ -414,7 +414,7 @@
         </form>
         <p id="subscribeMsg" style="margin-top: 15px; font-size: 13px; color: #4ecca3; display: none;"></p>
         <p style="margin-top: 20px; font-size: 12px; color: #555;">
-            <a href="https://www.kisara.art/unsubscribe.php" style="color: #667eea; text-decoration: none;">退订</a>
+            <a href="#" id="unsubscribeLink" style="color: #667eea; text-decoration: none;">退订</a>
         </p>
     </div>
     
@@ -449,6 +449,18 @@
                 msg.style.display = 'block';
                 msg.style.color = '#e94560';
                 msg.textContent = '❌ 网络错误，请稍后重试';
+            }
+        });
+        
+        // 退订链接处理
+        document.getElementById('unsubscribeLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            if (email) {
+                window.open('https://www.kisara.art/unsubscribe.php?email=' + encodeURIComponent(email), '_blank');
+            } else {
+                alert('请先输入要退订的邮箱地址');
+                document.getElementById('emailInput').focus();
             }
         });
     </script>
