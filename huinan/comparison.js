@@ -7,11 +7,13 @@ async function loadDataComparison() {
     }
     
     try {
-        // 尝试多个路径
+        // 尝试从多个源加载数据
         const urls = [
-            'https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json',
-            '../huinan/sources/sources-data.json',
-            'sources/sources-data.json'
+            // 同源路径
+            'sources-data.json',
+            '/huinan/sources/sources-data.json',
+            // GitHub Pages 路径
+            'https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json'
         ];
         
         let response = null;
@@ -20,8 +22,11 @@ async function loadDataComparison() {
         for (const url of urls) {
             try {
                 console.log('Trying to fetch:', url);
-                response = await fetch(url, { mode: 'cors' });
-                if (response.ok) break;
+                response = await fetch(url);
+                if (response.ok) {
+                    console.log('Success with:', url);
+                    break;
+                }
             } catch (e) {
                 lastError = e;
                 console.log('Failed:', url, e.message);
@@ -29,7 +34,7 @@ async function loadDataComparison() {
         }
         
         if (!response || !response.ok) {
-            throw new Error('All fetch attempts failed: ' + (lastError?.message || 'Unknown error'));
+            throw new Error('无法加载数据，可能是跨域限制');
         }
         
         const data = await response.json();
@@ -177,7 +182,25 @@ async function loadDataComparison() {
         container.innerHTML = html;
         
     } catch (err) {
-        container.innerHTML = `<p style="text-align: center; color: #e94560;">加载失败: ${err.message}</p>`;
+        container.innerHTML = `
+        <div style="text-align: center; padding: 30px;">
+            <p style="color: #e94560; margin-bottom: 15px;">❌ 加载失败: ${err.message}</p>
+            <p style="color: #888; font-size: 13px; margin-bottom: 20px;">
+                可能是跨域限制导致无法获取数据源数据<br>
+                请直接访问 
+                <a href="https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json" 
+                   target="_blank" 
+                   style="color: #667eea;">
+                   数据源 JSON
+                </a>
+                查看原始数据
+            </p>
+            <button onclick="loadDataComparison()" 
+                    style="padding: 10px 20px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
+                🔄 重试加载
+            </button>
+        </div>
+        `;
     }
 }
 
