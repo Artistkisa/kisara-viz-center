@@ -81,12 +81,12 @@
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            border: 2px solid #4ecca3;
+            border: 2px solid #888;
         }
         .status-level {
             font-size: 48px;
             font-weight: bold;
-            color: #4ecca3;
+            color: #888;
             margin-bottom: 10px;
         }
         .status-message { font-size: 16px; color: #ccc; margin-bottom: 15px; }
@@ -209,16 +209,16 @@
             <span class="flow-arrow">→</span>
             <div class="flow-step active">🧮 气象检测</div>
             <span class="flow-arrow">→</span>
-            <div class="flow-step ">📊 状态管理</div>
+            <div class="flow-step active">📊 状态管理</div>
             <span class="flow-arrow">→</span>
-            <div class="flow-step ">🔔 分级通知</div>
+            <div class="flow-step active">🔔 分级通知</div>
         </div>
         
         <!-- 状态卡片 -->
         <div class="status-card">
-            <div class="status-level">NONE</div>
-            <div class="status-message">无风险：前期不够冷，建筑物未冷透</div>
-            <div class="status-confidence">置信度: 90%</div>
+            <div class="status-level">WATCH</div>
+            <div class="status-message">回南天风险：个别条件满足，关注趋势</div>
+            <div class="status-confidence">置信度: 30%</div>
             
             <!-- 三源对比入口 -->
             <div style="margin-top: 20px;">
@@ -234,23 +234,23 @@
         <!-- 统计数据 -->
         <div class="stats-grid">
             <div class="stat-box">
-                <div class="stat-value">21.0°C</div>
+                <div class="stat-value">20.8°C</div>
                 <div class="stat-label">当前温度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">75.0%</div>
+                <div class="stat-value">75.6%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">16.0°C</div>
+                <div class="stat-value">16.1°C</div>
                 <div class="stat-label">露点温度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">1003</div>
+                <div class="stat-value">1006</div>
                 <div class="stat-label">气压(hPa)</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">23.6</div>
+                <div class="stat-value">23.4</div>
                 <div class="stat-label">48h均温(°C)</div>
             </div>
             <div class="stat-box">
@@ -280,9 +280,9 @@
                 <div class="cond-item">
                     <div>
                         <div class="cond-name">露点接近</div>
-                        <div class="cond-detail">露点16.1℃ vs 表面估计18.3℃(偏移-3.0℃) 差-2.2℃</div>
+                        <div class="cond-detail">露点16.1℃ vs 表面估计17.8℃(偏移-3.0℃) 差-1.7℃</div>
                     </div>
-                    <span class="cond-status fail">✗</span>
+                    <span class="cond-status ok">✓</span>
                 </div>
             </div>
         </div>
@@ -294,7 +294,7 @@
                 <div class="cond-item">
                     <div>
                         <div class="cond-name">暖湿气流</div>
-                        <div class="cond-detail">温度21.3℃>20℃, 湿度68.9%<85%</div>
+                        <div class="cond-detail">温度20.8℃>20℃, 湿度75.6%<85%</div>
                     </div>
                     <span class="cond-status fail">✗</span>
                 </div>
@@ -308,7 +308,7 @@
                 <div class="cond-item">
                     <div>
                         <div class="cond-name">气压下降</div>
-                        <div class="cond-detail">6小时气压变化-0.8hPa ≥ -2hPa</div>
+                        <div class="cond-detail">6小时气压变化+2.0hPa ≥ -2hPa</div>
                     </div>
                     <span class="cond-status fail">✗</span>
                 </div>
@@ -352,7 +352,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:32</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:35</p>
         </div>
         
         <!-- 订阅区域 -->
@@ -443,7 +443,7 @@
                 {
                     name: '湿度',
                     type: 'line',
-                    data: [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6, 58.6, 60.8, 63.2, 68.9, 74, 75],
+                    data: [66.9, 62.6, 59.1, 58.8, 58.9, 59.0, 58.6, 58.6, 60.8, 63.2, 68.9, 74.0, 75.6],
                     smooth: true,
                     lineStyle: { color: '#00d9ff', width: 3 },
                     itemStyle: { color: '#00d9ff' }
@@ -451,7 +451,7 @@
                 {
                     name: '温度',
                     type: 'line',
-                    data: [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0, 24.0, 23.4, 22.3, 21.3, 21.0, 21.0],
+                    data: [22.7, 23.0, 24.3, 24.3, 24.4, 23.8, 24.0, 24.0, 23.4, 22.3, 21.3, 21.0, 20.8],
                     smooth: true,
                     lineStyle: { color: '#91cc75' },
                     itemStyle: { color: '#91cc75' }
@@ -459,7 +459,7 @@
                 {
                     name: '露点',
                     type: 'line',
-                    data: [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6, 15.6, 15.9, 16.1, 16.1, 16.0, 16.0],
+                    data: [16.1, 15.9, 15.2, 15.2, 15.1, 15.0, 15.6, 15.6, 15.9, 16.1, 16.1, 16.1, 16.1],
                     smooth: true,
                     lineStyle: { color: '#fac858' },
                     itemStyle: { color: '#fac858' }
