@@ -106,12 +106,21 @@
         }
         /* watch - 灰色扫描线 */
         .status-card.level-watch::before {
-            background: linear-gradient(90deg, transparent 0%, #88888840 50%, transparent 100%);
-            animation: scan-watch 3s linear infinite;
+            background: linear-gradient(90deg, transparent 0%, #88888880 50%, transparent 100%);
+            animation: scan-watch 2s linear infinite;
         }
         @keyframes scan-watch {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+        .status-card.level-watch {
+            box-shadow: 0 0 30px rgba(136, 136, 136, 0.3);
+            animation: border-pulse-watch 2s ease-in-out infinite;
+        }
+        @keyframes border-pulse-watch {
+            0%, 100% { border-color: #666; box-shadow: 0 0 20px rgba(136, 136, 136, 0.2); }
+            50% { border-color: #aaa; box-shadow: 0 0 40px rgba(136, 136, 136, 0.5); }
         }
         /* warning - 黄色闪烁 */
         .status-card.level-warning::before {
@@ -435,7 +444,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:45</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-21 22:48</p>
         </div>
         
         <!-- 订阅区域 -->
