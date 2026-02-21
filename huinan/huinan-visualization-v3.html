@@ -73,57 +73,57 @@
         
         &lt;div class="stats"&gt;
             &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;38&lt;/div&gt;
+                &lt;div class="stat-value"&gt;41&lt;/div&gt;
                 &lt;div class="stat-label"&gt;数据点数&lt;/div&gt;
             &lt;/div&gt;
             &lt;div class="stat-item"&gt;
                 &lt;div class="stat-value"&gt;2/3&lt;/div&gt;
                 &lt;div class="stat-label"&gt;最高置信度&lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="stat-item"&gt;
-                &lt;div class="stat-value"&gt;81%&lt;/div&gt;
-                &lt;div class="stat-label"&gt;当前湿度&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="stat-item">
+                <div class="stat-value">81%</div>
+                <div class="stat-label">当前湿度</div>
+            </div>
+        </div>
         
-        &lt;div class="chart-container"&gt;
-            &lt;div id="mainChart" class="main-chart"&gt;&lt;/div&gt;
+        <div class="chart-container">
+            <div id="mainChart" class="main-chart"></div>
             
-            &lt;div class="confidence-legend"&gt;
-                &lt;span style="color:#888"&gt;置信度：&lt;/span&gt;
-                &lt;div class="conf-item"&gt;&lt;div class="conf-box" style="background:#666"&gt;&lt;/div&gt;&lt;span&gt;0分&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="conf-item"&gt;&lt;div class="conf-box" style="background:#87ceeb"&gt;&lt;/div&gt;&lt;span&gt;1分&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="conf-item"&gt;&lt;div class="conf-box" style="background:#4169e1"&gt;&lt;/div&gt;&lt;span&gt;2分&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="conf-item"&gt;&lt;div class="conf-box" style="background:#000080"&gt;&lt;/div&gt;&lt;span&gt;3分&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="confidence-legend">
+                <span style="color:#888">置信度：</span>
+                <div class="conf-item"><div class="conf-box" style="background:#666"></div><span>0分</span></div>
+                <div class="conf-item"><div class="conf-box" style="background:#87ceeb"></div><span>1分</span></div>
+                <div class="conf-item"><div class="conf-box" style="background:#4169e1"></div><span>2分</span></div>
+                <div class="conf-item"><div class="conf-box" style="background:#000080"></div><span>3分</span></div>
+            </div>
             
-            &lt;div class="sub-charts"&gt;
-                &lt;div id="windChart" class="sub-chart"&gt;&lt;/div&gt;
-                &lt;div id="pressureChart" class="sub-chart"&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="sub-charts">
+                <div id="windChart" class="sub-chart"></div>
+                <div id="pressureChart" class="sub-chart"></div>
+            </div>
+        </div>
         
-        &lt;div class="legend"&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:#5470c6"&gt;&lt;/div&gt;&lt;span&gt;湿度&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:#91cc75"&gt;&lt;/div&gt;&lt;span&gt;温度&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:#fac858"&gt;&lt;/div&gt;&lt;span&gt;露点&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:#e94560"&gt;&lt;/div&gt;&lt;span&gt;85%基线&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:rgba(147,112,219,0.5)"&gt;&lt;/div&gt;&lt;span&gt;正式回南天&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="legend-item"&gt;&lt;div class="legend-color" style="background:rgba(147,112,219,0.2)"&gt;&lt;/div&gt;&lt;span&gt;疑似回南天&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color" style="background:#5470c6"></div><span>湿度</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#91cc75"></div><span>温度</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#fac858"></div><span>露点</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#e94560"></div><span>85%基线</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.5)"></div><span>正式回南天</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.2)"></div><span>疑似回南天</span></div>
+        </div>
+    </div>
 
     &lt;script&gt;
-        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 00:01", "02-20 01:00", "02-20 02:00", "02-20 02:02", "02-20 04:00", "02-20 05:00", "02-20 07:00", "02-20 10:00", "02-20 10:00", "02-20 12:00", "02-20 12:29", "02-20 13:00", "02-20 14:01", "02-20 15:00", "02-20 16:00", "02-20 17:00", "02-20 18:00", "02-20 19:00", "02-20 19:28", "02-20 19:28", "02-20 19:29", "02-20 22:01", "02-20 23:00", "02-21 00:00", "02-21 00:02", "02-21 01:00", "02-21 02:02", "02-21 03:00", "02-21 04:00", "02-21 05:00", "02-21 06:00", "02-21 07:00", "02-21 08:00", "02-21 09:00", "02-21 10:01"];
-        const humidity = [76, 78, 82, 70, 79, 74, 60, 51, 77, 45, 60, 50, 51, 80, 50, 51, 45, 44, 45, 50, 64, 94, 94, 94, 86, 88, 90, 95, 91, 81, 93, 94, 94, 94, 95, 95, 93, 81];
-        const temp = [17, 16, 16, 15, 16, 16, 18, 22, 16, 25, 18, 24, 22, 16, 23, 22, 25, 26, 25, 24, 20, 17, 17, 17, 15, 18, 18, 13, 18, 19, 17, 17, 17, 13, 13, 13, 16, 19.0];
-        const dew = [12, 12, 12, 10, 13, 13, 11, 11, 11, 12, 11, 12, 11, 13, 11, 11, 12, 12, 12, 12, 12, 15, 15, 15, 13, 14, 14, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15.0];
-        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 42, 23, 0, 23, 0, 47, 357, 357, 339, 341, 19, 93, 164];
-        const windSpeed = [1, 3, 3, 3, 1, 4, 2, 10, 1, 5, 2, 2, 10, 2, 5, 10, 5, 4, 5, 2, 1, 3, 3, 3, 4, 4, 3, 4, 3, 3, 3, 2, 2, 3, 3, 4, 2, 3.0];
-        const pressure = [1013, 1013, 1013, 1013, 1014, 1014, 1013, 1013, 1012, 1009, 1013, 1007, 1013, 1007, 1012, 1013, 1009, 1008, 1007, 1007, 1007, 1007, 1007, 1007, 1008, 1008, 1008, 1006, 1008, 1007, 1007, 1007, 1006, 1006, 1006, 1006, 1007, 1007];
-        const confidenceScores = [1, 2, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 14}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 8}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 1}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4.0}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "moderate", "moderate", "moderate", "mild", "none", "none", "severe", "none", "none", "moderate", "moderate", "moderate", "moderate", "severe", "severe", "moderate", "none"];
+        const times = ["02-19 11:45", "02-19 20:00", "02-19 21:00", "02-20 00:01", "02-20 01:00", "02-20 02:00", "02-20 02:02", "02-20 04:00", "02-20 05:00", "02-20 07:00", "02-20 10:00", "02-20 10:00", "02-20 12:00", "02-20 12:29", "02-20 13:00", "02-20 14:01", "02-20 15:00", "02-20 16:00", "02-20 17:00", "02-20 18:00", "02-20 19:00", "02-20 19:28", "02-20 19:28", "02-20 19:29", "02-20 22:01", "02-20 23:00", "02-21 00:00", "02-21 00:02", "02-21 01:00", "02-21 02:02", "02-21 02:39", "02-21 02:39", "02-21 02:39", "02-21 03:00", "02-21 04:00", "02-21 05:00", "02-21 06:00", "02-21 07:00", "02-21 08:00", "02-21 09:00", "02-21 10:01"];
+        const humidity = [76, 78, 82, 70, 79, 74, 60, 51, 77, 45, 60, 50, 51, 80, 50, 51, 45, 44, 45, 50, 64, 94, 94, 94, 86, 88, 90, 95, 91, 81, 76, 76, 76, 93, 94, 94, 94, 95, 95, 93, 81];
+        const temp = [17, 16, 16, 15, 16, 16, 18, 22, 16, 25, 18, 24, 22, 16, 23, 22, 25, 26, 25, 24, 20, 17, 17, 17, 15, 18, 18, 13, 18, 19, 20, 20, 20, 17, 17, 17, 13, 13, 13, 16, 19];
+        const dew = [12, 12, 12, 10, 13, 13, 11, 11, 11, 12, 11, 12, 11, 13, 11, 11, 12, 12, 12, 12, 12, 15, 15, 15, 13, 14, 14, 15, 15, 15, 16, 16, 16, 15, 15, 15, 15, 15, 15, 15, 15];
+        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 42, 23, 0, 23, 0, 0, 0, 0, 47, 357, 357, 339, 341, 19, 93, 164];
+        const windSpeed = [1, 3, 3, 3, 1, 4, 2, 10, 1, 5, 2, 2, 10, 2, 5, 10, 5, 4, 5, 2, 1, 3, 3, 3, 4, 4, 3, 4, 3, 3, 8, 8, 8, 3, 2, 2, 3, 3, 4, 2, 3];
+        const pressure = [1013, 1013, 1013, 1013, 1014, 1014, 1013, 1013, 1012, 1009, 1013, 1007, 1013, 1007, 1012, 1013, 1009, 1008, 1007, 1007, 1007, 1007, 1007, 1007, 1008, 1008, 1008, 1006, 1008, 1007, 1007, 1007, 1007, 1007, 1007, 1006, 1006, 1006, 1006, 1007, 1007];
+        const confidenceScores = [1, 2, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 5}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 7}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 11}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 14}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 13}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 12}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 8}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": false, "humidityOK": true, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 3}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": -2}, {"allOK": true, "humidityOK": true, "dewDiffOK": true, "humidityTrendOK": true, "tempDewDiff": 1}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 4}];
+        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "moderate", "moderate", "moderate", "mild", "none", "none", "severe", "none", "none", "none", "none", "none", "moderate", "moderate", "moderate", "moderate", "severe", "severe", "moderate", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
