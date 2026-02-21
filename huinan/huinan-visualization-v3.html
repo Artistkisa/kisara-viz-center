@@ -73,16 +73,24 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">5</div>
+                <div class="stat-value">4</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">2/3</div>
+                <div class="stat-value">0.9/3</div>
                 <div class="stat-label">最高置信度</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value">60%</div>
                 <div class="stat-label">当前湿度</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" style="color: #fac858">1</div>
+                <div class="stat-label">数据源</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" style="color: #4ecca3">✓</div>
+                <div class="stat-label">数据一致</div>
             </div>
         </div>
         
@@ -111,19 +119,29 @@
             <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.5)"></div><span>正式回南天</span></div>
             <div class="legend-item"><div class="legend-color" style="background:rgba(147,112,219,0.2)"></div><span>疑似回南天</span></div>
         </div>
+        
+        <!-- 数据源说明 -->
+        <div style="max-width: 1400px; margin: 20px auto; padding: 15px; background: #16213e; border-radius: 8px; text-align: center;">
+            <p style="color: #888; font-size: 13px; margin-bottom: 10px;">
+                📊 数据来源：和风天气 + Open-Meteo 双源融合
+            </p>
+            <p style="color: #666; font-size: 11px;">
+                融合策略：差异&lt;5%等权平均 | 5-10%和风加权70% | &gt;10%和风优先85%并标记冲突
+            </p>
+        </div>
     </div>
 
     <script>
-        const times = ["02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00", "02-21 13:00"];
-        const humidity = [69, 67.5, 63.0, 61, 60];
-        const temp = [22.1, 22.6, 23.0, 24.0, 24.1];
-        const dew = [16.2, 16.1, 15.9, 16.0, 15.9];
-        const windDir = [182, 91, 93, 182, 192];
-        const windSpeed = [10.1, 10.6, 6.0, 3.0, 10.3];
-        const pressure = [1012, 1009.0, 1008.5, 1005, 1010];
-        const confidenceScores = [0.6, 0.9, 0.9, 2, 0.6];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": true, "tempDewDiff": 8.0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none", "none", "none", "none"];
+        const times = ["02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00"];
+        const humidity = [69, 67.5, 63.0, 60];
+        const temp = [22.1, 22.6, 23.0, 24.1];
+        const dew = [16.2, 16.1, 15.9, 15.9];
+        const windDir = [182, 91, 93, 192];
+        const windSpeed = [10.1, 10.6, 6.0, 10.3];
+        const pressure = [1012, 1009.0, 1008.5, 1010];
+        const confidenceScores = [0.6, 0.9, 0.9, 0.6];
+        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
+        const intensityLevels = ["none", "none", "none", "none"];
         
         // 计算回南天区域
         const nanhuiRegions = [];
@@ -371,7 +389,7 @@
             yAxis: {
                 type: 'value',
                 name: '气压(hPa)',
-                min: 1000,
+                min: 1003.5,
                 max: 1017,
                 axisLine: { lineStyle: { color: '#555' } },
                 axisLabel: { color: '#888' },
