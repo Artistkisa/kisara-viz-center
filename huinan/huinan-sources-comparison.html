@@ -227,12 +227,12 @@
                     pressure: r.pressure || 0,
                     windDir: r.windDir || 0,
                     windSpeed: r.windSpeed || 0,
-                    qw: r.raw_sources?.qweather || {},
-                    om: r.raw_sources?.openmeteo || {},
-                    yr: r.raw_sources?.yrno || {},
-                    qw_check: r.outlier_check?.qweather || {},
-                    om_check: r.outlier_check?.openmeteo || {},
-                    yr_check: r.outlier_check?.yrno || {},
+                    qw: (r.raw_sources && r.raw_sources.qweather) || {},
+                    om: (r.raw_sources && r.raw_sources.openmeteo) || {},
+                    yr: (r.raw_sources && r.raw_sources.yrno) || {},
+                    qw_check: (r.outlier_check && r.outlier_check.qweather) || {},
+                    om_check: (r.outlier_check && r.outlier_check.openmeteo) || {},
+                    yr_check: (r.outlier_check && r.outlier_check.yrno) || {},
                     weights: r.weights || {}
                 }));
                 
