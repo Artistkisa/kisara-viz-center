@@ -1,11 +1,39 @@
 // 多源数据对比脚本
 async function loadDataComparison() {
     const container = document.getElementById('comparisonContent');
-    if (!container) return;
+    if (!container) {
+        console.error('comparisonContent element not found');
+        return;
+    }
     
     try {
-        const response = await fetch('https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json');
+        // 尝试多个路径
+        const urls = [
+            'https://artistkisa.github.io/kisara-viz-center/huinan/sources/sources-data.json',
+            '../huinan/sources/sources-data.json',
+            'sources/sources-data.json'
+        ];
+        
+        let response = null;
+        let lastError = null;
+        
+        for (const url of urls) {
+            try {
+                console.log('Trying to fetch:', url);
+                response = await fetch(url, { mode: 'cors' });
+                if (response.ok) break;
+            } catch (e) {
+                lastError = e;
+                console.log('Failed:', url, e.message);
+            }
+        }
+        
+        if (!response || !response.ok) {
+            throw new Error('All fetch attempts failed: ' + (lastError?.message || 'Unknown error'));
+        }
+        
         const data = await response.json();
+        console.log('Data loaded:', data.length, 'records');
         
         if (!data || data.length === 0) {
             container.innerHTML = '<p style="text-align: center; color: #888;">暂无多源数据</p>';
