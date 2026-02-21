@@ -82,6 +82,11 @@
         .data-table tr:nth-child(even) {
             background: #1a1a2e;
         }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -91,24 +96,24 @@
         
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-value">7</div>
+                <div class="stat-value" id="statCount">7</div>
                 <div class="stat-label">数据点数</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">0.9/3</div>
+                <div class="stat-value" id="statConfidence">-</div>
                 <div class="stat-label">最高置信度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">58.9%</div>
+                <div class="stat-value" id="statHumidity">58.9%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" style="color: #4ecca3">2</div>
+                <div class="stat-value" id="statSources">-</div>
                 <div class="stat-label">数据源</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value" style="color: #e94560">⚠️</div>
-                <div class="stat-label">数据冲突</div>
+                <div class="stat-value" id="statConflict">-</div>
+                <div class="stat-label">数据一致性</div>
             </div>
         </div>
         
@@ -117,7 +122,7 @@
             
             <div class="confidence-legend">
                 <span style="color:#888">置信度：</span>
-                <div class="conf-item"><div class="conf-box" style="background:#666"></div><span>0分</span></div>
+                <div class="conf-item"><div class="conf-box" style="background:#3a3a5c"></div><span>0分</span></div>
                 <div class="conf-item"><div class="conf-box" style="background:#87ceeb"></div><span>1分</span></div>
                 <div class="conf-item"><div class="conf-box" style="background:#4169e1"></div><span>2分</span></div>
                 <div class="conf-item"><div class="conf-box" style="background:#000080"></div><span>3分</span></div>
@@ -149,280 +154,324 @@
     </div>
 
     <script>
-        const times = ["02-21 11:20", "02-21 11:20", "02-21 12:00", "02-21 13:00", "02-21 13:51", "02-21 14:01", "02-21 15:00"];
-        const humidity = [69, 67.5, 63.0, 60, 58.5, 58.0, 58.9];
-        const temp = [22.1, 22.6, 23.0, 24.1, 24.4, 24.5, 24.4];
-        const dew = [16.2, 16.1, 15.9, 15.9, 15.4, 15.3, 15.1];
-        const windDir = [182, 91, 93, 192, 97, 97, 58];
-        const windSpeed = [10.1, 10.6, 6.0, 10.3, 9.2, 6.2, 7.0];
-        const pressure = [1012, 1009.0, 1008.5, 1010, 1006.5, 1006.5, 1004.2];
-        const confidenceScores = [0.6, 0.9, 0.9, 0.6, 0.9, 0.9, 0.6];
-        const coreTriggers = [{"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}, {"allOK": false, "humidityOK": false, "dewDiffOK": false, "humidityTrendOK": false, "tempDewDiff": 0}];
-        const intensityLevels = ["none", "none", "none", "none", "none", "none", "none"];
-        
-        const nanhuiRegions = [];
-        let startIdx = null;
-        let isFormal = false;
-        let level = 'none';
-        
-        for (let i = 0; i < times.length; i++) {
-            const isNanhui = coreTriggers[i].allOK;
-            const currentLevel = intensityLevels[i];
-            const confidence = confidenceScores[i];
-            
-            if (isNanhui && startIdx === null) {
-                startIdx = i;
-                isFormal = confidence >= 1;
-                level = currentLevel;
-            } else if ((!isNanhui || i === times.length - 1) && startIdx !== null) {
-                nanhuiRegions.push({
-                    start: times[startIdx],
-                    end: times[i],
-                    formal: isFormal,
-                    level: level
-                });
-                startIdx = null;
+        // 从JSON文件异步加载数据
+        async function loadChartData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                return data;
+            } catch (err) {
+                console.error('加载数据失败:', err);
+                document.getElementById('mainChart').innerHTML = '<div class="loading">加载数据失败，请刷新重试</div>';
+                return null;
             }
         }
         
-        const mainChart = echarts.init(document.getElementById('mainChart'));
-        const mainOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { type: 'cross' },
-                backgroundColor: 'rgba(22,33,62,0.95)',
-                borderColor: '#e94560',
-                textStyle: { color: '#eee' }
-            },
-            legend: {
-                data: ['湿度', '温度', '露点', '85%基线'],
-                textStyle: { color: '#eee' },
-                top: 10
-            },
-            grid: {
-                left: '3%', right: '4%', bottom: '12%', top: '15%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                data: times,
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { 
-                    color: '#888',
-                    rotate: 45,
-                    fontSize: 10
+        // 初始化图表
+        async function initCharts() {
+            const data = await loadChartData();
+            if (!data || !data.records || data.records.length === 0) return;
+            
+            const records = data.records;
+            
+            // 提取数据
+            const times = records.map(r => r._formatted_time || r.time);
+            const humidity = records.map(r => r.humidity);
+            const temp = records.map(r => r.temp);
+            const dew = records.map(r => r.dew);
+            const windDir = records.map(r => r.windDir || 0);
+            const windSpeed = records.map(r => r.windSpeed || 0);
+            const pressure = records.map(r => r.pressure);
+            
+            // 处理置信度
+            const confidenceScores = records.map(r => {
+                const conf = r.confidence;
+                if (typeof conf === 'number') return conf;
+                if (typeof conf === 'string') {
+                    const map = {'high': 3, 'medium': 2, 'low': 1};
+                    return map[conf] || 0;
                 }
-            },
-            yAxis: {
-                type: 'value',
-                name: '数值',
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { color: '#888' },
-                splitLine: { lineStyle: { color: '#333' } }
-            },
-            series: [
-                {
-                    name: '湿度',
-                    type: 'line',
-                    data: humidity,
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 4,
-                    lineStyle: { color: '#5470c6', width: 2 },
-                    itemStyle: { color: '#5470c6' }
-                },
-                {
-                    name: '温度',
-                    type: 'line',
-                    data: temp,
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 4,
-                    lineStyle: { color: '#91cc75', width: 2 },
-                    itemStyle: { color: '#91cc75' }
-                },
-                {
-                    name: '露点',
-                    type: 'line',
-                    data: dew,
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 4,
-                    lineStyle: { color: '#fac858', width: 2 },
-                    itemStyle: { color: '#fac858' }
-                },
-                {
-                    name: '85%基线',
-                    type: 'line',
-                    data: times.map(() => 85),
-                    lineStyle: { color: '#e94560', type: 'dashed', width: 1 },
-                    symbol: 'none',
-                    silent: true
-                }
-            ]
-        };
-        
-        nanhuiRegions.forEach(region => {
-            mainOption.series.push({
-                type: 'line',
-                markArea: {
-                    silent: true,
-                    itemStyle: {
-                        color: region.formal ? 'rgba(147,112,219,0.3)' : 'rgba(147,112,219,0.15)'
-                    },
-                    data: [[
-                        { xAxis: region.start },
-                        { xAxis: region.end }
-                    ]]
-                },
-                data: []
+                return 0;
             });
-        });
-        
-        const confColors = ['#3a3a5c', '#87ceeb', '#4169e1', '#000080'];
-        confidenceScores.forEach((score, idx) => {
-            if (idx < times.length - 1) {
+            
+            // 更新统计
+            document.getElementById('statCount').textContent = records.length;
+            document.getElementById('statConfidence').textContent = Math.max(...confidenceScores) + '/3';
+            
+            const latest = records[records.length - 1];
+            document.getElementById('statHumidity').textContent = latest.humidity + '%';
+            document.getElementById('statSources').textContent = latest.source_count || 1;
+            document.getElementById('statSources').style.color = (latest.source_count || 1) >= 2 ? '#4ecca3' : '#fac858';
+            document.getElementById('statConflict').textContent = latest.conflict ? '⚠️' : '✓';
+            document.getElementById('statConflict').style.color = latest.conflict ? '#e94560' : '#4ecca3';
+            
+            // 计算核心触发
+            const coreTriggers = records.map(r => ({
+                allOK: r.coreTrigger?.allOK || false,
+                humidityOK: r.coreTrigger?.humidityOK || false,
+                dewDiffOK: r.coreTrigger?.dewDiffOK || false,
+                humidityTrendOK: r.coreTrigger?.humidityTrendOK || false,
+                tempDewDiff: r.coreTrigger?.tempDewDiff || 0
+            }));
+            
+            const intensityLevels = records.map(r => r.intensity?.level || 'none');
+            
+            // 计算回南天区域
+            const nanhuiRegions = [];
+            let startIdx = null;
+            let isFormal = false;
+            let level = 'none';
+            
+            for (let i = 0; i < times.length; i++) {
+                const isNanhui = coreTriggers[i].allOK;
+                const currentLevel = intensityLevels[i];
+                const confidence = confidenceScores[i];
+                
+                if (isNanhui && startIdx === null) {
+                    startIdx = i;
+                    isFormal = confidence >= 1;
+                    level = currentLevel;
+                } else if ((!isNanhui || i === times.length - 1) && startIdx !== null) {
+                    nanhuiRegions.push({
+                        start: times[startIdx],
+                        end: times[i],
+                        formal: isFormal,
+                        level: level
+                    });
+                    startIdx = null;
+                }
+            }
+            
+            // 计算Y轴范围
+            const windMax = Math.max(...windSpeed, 10) * 1.2;
+            const pressureMin = Math.max(Math.min(...pressure) - 5, 980);
+            const pressureMax = Math.min(Math.max(...pressure) + 5, 1040);
+            
+            // 主图
+            const mainChart = echarts.init(document.getElementById('mainChart'));
+            const mainOption = {
+                backgroundColor: 'transparent',
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'cross' },
+                    backgroundColor: 'rgba(22,33,62,0.95)',
+                    borderColor: '#e94560',
+                    textStyle: { color: '#eee' }
+                },
+                legend: {
+                    data: ['湿度', '温度', '露点', '85%基线'],
+                    textStyle: { color: '#eee' },
+                    top: 10
+                },
+                grid: {
+                    left: '3%', right: '4%', bottom: '12%', top: '15%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: times,
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { color: '#888', rotate: 45, fontSize: 10 }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '数值',
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { color: '#888' },
+                    splitLine: { lineStyle: { color: '#333' } }
+                },
+                series: [
+                    {
+                        name: '湿度',
+                        type: 'line',
+                        data: humidity,
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 4,
+                        lineStyle: { color: '#5470c6', width: 2 },
+                        itemStyle: { color: '#5470c6' }
+                    },
+                    {
+                        name: '温度',
+                        type: 'line',
+                        data: temp,
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 4,
+                        lineStyle: { color: '#91cc75', width: 2 },
+                        itemStyle: { color: '#91cc75' }
+                    },
+                    {
+                        name: '露点',
+                        type: 'line',
+                        data: dew,
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 4,
+                        lineStyle: { color: '#fac858', width: 2 },
+                        itemStyle: { color: '#fac858' }
+                    },
+                    {
+                        name: '85%基线',
+                        type: 'line',
+                        data: times.map(() => 85),
+                        lineStyle: { color: '#e94560', type: 'dashed', width: 1 },
+                        symbol: 'none',
+                        silent: true
+                    }
+                ]
+            };
+            
+            // 添加回南天区域
+            nanhuiRegions.forEach(region => {
                 mainOption.series.push({
                     type: 'line',
                     markArea: {
                         silent: true,
                         itemStyle: {
-                            color: confColors[score] || '#3a3a5c'
+                            color: region.formal ? 'rgba(147,112,219,0.3)' : 'rgba(147,112,219,0.15)'
                         },
-                        data: [[
-                            { xAxis: times[idx] },
-                            { xAxis: times[idx + 1] }
-                        ]]
+                        data: [[{ xAxis: region.start }, { xAxis: region.end }]]
                     },
                     data: []
                 });
+            });
+            
+            // 添加置信度色带
+            const confColors = ['#3a3a5c', '#87ceeb', '#4169e1', '#000080'];
+            confidenceScores.forEach((score, idx) => {
+                if (idx < times.length - 1) {
+                    mainOption.series.push({
+                        type: 'line',
+                        markArea: {
+                            silent: true,
+                            itemStyle: { color: confColors[score] || '#3a3a5c' },
+                            data: [[{ xAxis: times[idx] }, { xAxis: times[idx + 1] }]]
+                        },
+                        data: []
+                    });
+                }
+            });
+            
+            mainChart.setOption(mainOption);
+            
+            // 风向风速图
+            const windChart = echarts.init(document.getElementById('windChart'));
+            const windMarkAreas = [];
+            let windStartIdx = null;
+            for (let i = 0; i < windDir.length; i++) {
+                const isGoodWind = windDir[i] >= 135 && windDir[i] <= 225;
+                if (isGoodWind && windStartIdx === null) {
+                    windStartIdx = i;
+                } else if ((!isGoodWind || i === windDir.length - 1) && windStartIdx !== null) {
+                    windMarkAreas.push([{ xAxis: times[windStartIdx] }, { xAxis: times[i] }]);
+                    windStartIdx = null;
+                }
             }
-        });
-        
-        mainChart.setOption(mainOption);
-        
-        const windChart = echarts.init(document.getElementById('windChart'));
-        
-        const windMarkAreas = [];
-        let windStartIdx = null;
-        for (let i = 0; i < windDir.length; i++) {
-            const isGoodWind = windDir[i] >= 135 && windDir[i] <= 225;
-            if (isGoodWind && windStartIdx === null) {
-                windStartIdx = i;
-            } else if ((!isGoodWind || i === windDir.length - 1) && windStartIdx !== null) {
-                windMarkAreas.push([{ xAxis: times[windStartIdx] }, { xAxis: times[i] }]);
-                windStartIdx = null;
-            }
+            
+            const windOption = {
+                backgroundColor: 'transparent',
+                title: { text: '风向风速', left: 'center', textStyle: { color: '#eee', fontSize: 14 } },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(22,33,62,0.95)',
+                    borderColor: '#e94560',
+                    textStyle: { color: '#eee' },
+                    formatter: function(params) {
+                        const idx = params[0].dataIndex;
+                        return times[idx] + '<br/>风速: ' + windSpeed[idx] + ' km/h<br/>风向: ' + windDir[idx] + '°';
+                    }
+                },
+                grid: { left: '3%', right: '4%', bottom: '10%', top: '25%', containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: times,
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { show: false }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '风速(km/h)',
+                    min: 0,
+                    max: Math.max(windMax, 5),
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { color: '#888' },
+                    splitLine: { lineStyle: { color: '#333' } }
+                },
+                series: [{
+                    name: '风速',
+                    type: 'line',
+                    data: windSpeed,
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 3,
+                    lineStyle: { color: '#00d9ff', width: 2 },
+                    areaStyle: { color: 'rgba(0,217,255,0.1)' },
+                    markArea: {
+                        silent: true,
+                        itemStyle: { color: 'rgba(78,204,163,0.2)' },
+                        data: windMarkAreas
+                    }
+                }]
+            };
+            windChart.setOption(windOption);
+            
+            // 气压图
+            const pressureChart = echarts.init(document.getElementById('pressureChart'));
+            const pressureData = pressure.map((p, idx) => {
+                let color = '#00d9ff';
+                if (idx > 0) color = p >= pressure[idx-1] ? '#e94560' : '#4ecca3';
+                return { value: p, itemStyle: { color: color }, lineStyle: { color: color } };
+            });
+            
+            const pressureOption = {
+                backgroundColor: 'transparent',
+                title: { text: '气压', left: 'center', textStyle: { color: '#eee', fontSize: 14 } },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(22,33,62,0.95)',
+                    borderColor: '#e94560',
+                    textStyle: { color: '#eee' }
+                },
+                grid: { left: '3%', right: '4%', bottom: '10%', top: '25%', containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: times,
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { show: false }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '气压(hPa)',
+                    min: pressureMin,
+                    max: pressureMax,
+                    axisLine: { lineStyle: { color: '#555' } },
+                    axisLabel: { color: '#888' },
+                    splitLine: { lineStyle: { color: '#333' } }
+                },
+                series: [{
+                    name: '气压',
+                    type: 'line',
+                    data: pressureData,
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 3,
+                    lineStyle: { width: 2 }
+                }]
+            };
+            pressureChart.setOption(pressureOption);
+            
+            echarts.connect([mainChart, windChart, pressureChart]);
+            
+            window.addEventListener('resize', () => {
+                mainChart.resize();
+                windChart.resize();
+                pressureChart.resize();
+            });
         }
         
-        const windOption = {
-            backgroundColor: 'transparent',
-            title: { text: '风向风速', left: 'center', textStyle: { color: '#eee', fontSize: 14 } },
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(22,33,62,0.95)',
-                borderColor: '#e94560',
-                textStyle: { color: '#eee' },
-                formatter: function(params) {
-                    const idx = params[0].dataIndex;
-                    return times[idx] + '<br/>' +
-                           '风速: ' + windSpeed[idx] + ' km/h<br/>' +
-                           '风向: ' + windDir[idx] + '°';
-                }
-            },
-            grid: { left: '3%', right: '4%', bottom: '10%', top: '25%', containLabel: true },
-            xAxis: {
-                type: 'category',
-                data: times,
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { show: false }
-            },
-            yAxis: {
-                type: 'value',
-                name: '风速(km/h)',
-                min: 0,
-                max: 12.719999999999999,
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { color: '#888' },
-                splitLine: { lineStyle: { color: '#333' } }
-            },
-            series: [{
-                name: '风速',
-                type: 'line',
-                data: windSpeed,
-                smooth: true,
-                symbol: 'circle',
-                symbolSize: 3,
-                lineStyle: { color: '#00d9ff', width: 2 },
-                areaStyle: { color: 'rgba(0,217,255,0.1)' },
-                markArea: {
-                    silent: true,
-                    itemStyle: { color: 'rgba(78,204,163,0.2)' },
-                    data: windMarkAreas
-                }
-            }]
-        };
-        windChart.setOption(windOption);
-        
-        const pressureChart = echarts.init(document.getElementById('pressureChart'));
-        
-        const pressureData = pressure.map((p, idx) => {
-            let color = '#00d9ff';
-            if (idx > 0) {
-                color = p >= pressure[idx-1] ? '#e94560' : '#4ecca3';
-            }
-            return {
-                value: p,
-                itemStyle: { color: color },
-                lineStyle: { color: color }
-            };
-        });
-        
-        const pressureOption = {
-            backgroundColor: 'transparent',
-            title: { text: '气压', left: 'center', textStyle: { color: '#eee', fontSize: 14 } },
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(22,33,62,0.95)',
-                borderColor: '#e94560',
-                textStyle: { color: '#eee' }
-            },
-            grid: { left: '3%', right: '4%', bottom: '10%', top: '25%', containLabel: true },
-            xAxis: {
-                type: 'category',
-                data: times,
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { show: false }
-            },
-            yAxis: {
-                type: 'value',
-                name: '气压(hPa)',
-                min: 999.2,
-                max: 1017,
-                axisLine: { lineStyle: { color: '#555' } },
-                axisLabel: { color: '#888' },
-                splitLine: { lineStyle: { color: '#333' } }
-            },
-            series: [{
-                name: '气压',
-                type: 'line',
-                data: pressureData,
-                smooth: true,
-                symbol: 'circle',
-                symbolSize: 3,
-                lineStyle: { width: 2 }
-            }]
-        };
-        pressureChart.setOption(pressureOption);
-        
-        echarts.connect([mainChart, windChart, pressureChart]);
-        
-        window.addEventListener('resize', () => {
-            mainChart.resize();
-            windChart.resize();
-            pressureChart.resize();
-        });
+        // 页面加载完成后初始化
+        initCharts();
     </script>
     
     <!-- 数据对比区域 -->
@@ -433,8 +482,9 @@
         </div>
     </div>
     
-    <script src="comparison.js?v=2"></script>
+    <script src="comparison.js?v=3"></script>
     
+    <!-- 订阅区域 -->
     <div style="max-width: 1400px; margin: 40px auto 20px; padding: 20px; background: #16213e; border-radius: 12px; text-align: center;">
         <h3 style="color: #fff; margin-bottom: 15px;">📧 订阅回南天预警</h3>
         <p style="color: #888; margin-bottom: 20px; font-size: 14px;">当广州出现回南天天气时，自动发送邮件通知</p>
