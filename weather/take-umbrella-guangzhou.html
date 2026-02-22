@@ -401,6 +401,22 @@
             transition: color 0.3s;
         }
         .back-link:hover { color: #fff; }
+        .history-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            border-radius: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .history-link:hover {
+            background: rgba(102, 126, 234, 0.4);
+            color: #fff;
+        }
     </style>
     
     <!-- Schema.org 结构化数据 - WeatherObservation -->
@@ -451,6 +467,7 @@
         <header>
             <h1>🌤️ 广州天气 · 带伞提醒</h1>
             <p class="subtitle">2026-02-22 更新 · 保留一年历史数据</p>
+            <a href="./take-umbrella-history.html" class="history-link">📊 查看历史数据</a>
         </header>
         
         <!-- 当前天气 -->
@@ -607,7 +624,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-02-22 17:01:41</p>
+            <p>生成时间: 2026-02-22 17:24:24</p>
         </footer>
     </div>
     
