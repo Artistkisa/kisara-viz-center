@@ -345,12 +345,70 @@
         "value": "N/A",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-22T16:04:54.835856",
+      "observationDate": "2026-02-22T16:12:41.726185",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
         "url": "https://monitor.kisara.info"
       }
+    }
+    </script>
+    
+    <!-- Schema.org 结构化数据 - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什么是回南天？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "回南天是华南地区春季常见的天气现象。当冷空气过后，暖湿气流迅速反扑，空气湿度接近饱和，水汽在冰冷的物体表面凝结成水珠，导致墙壁、地板'出水'。常见于2-4月，广州地区尤为明显。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "V5算法如何检测回南天？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "V5算法采用6条件综合判断：3个核心条件（前期低温建筑物冷透、24小时快速升温8°C以上、露点温度接近物体表面温度）和3个增强条件（暖湿气流、南风主导、气压下降）。同时融合和风天气、Open-Meteo、yr.no三源数据，通过异常检测和智能融合提高准确率。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "回南天数据从哪里来？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "数据来自三个权威气象源：和风天气（中国气象局授权，权重最高）、Open-Meteo（欧洲中期天气预报中心ECMWF数据）、yr.no（挪威气象研究所）。系统每15分钟采集一次，自动异常检测和融合，确保数据可靠性。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "检测准确率如何？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "V5算法通过多源数据融合和异常检测，置信度通常在70%-95%之间。系统会显示当前检测的置信度百分比。但气象预测存在不确定性，建议结合官方天气预报综合判断。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "免责声明",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "本系统仅供参考，不构成专业气象建议。数据来源于第三方气象服务，可能存在延迟或误差。重要决策请以中国气象局官方预报为准。因使用本系统数据造成的任何损失，开发者不承担责任。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何防护回南天？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1. 关闭门窗，特别是朝南窗户；2. 使用除湿机或空调除湿模式；3. 衣物用烘干机或风扇吹干；4. 地面铺报纸或防滑垫；5. 电器定期通电防潮；6. 食品密封保存。当系统检测到回南天风险时会自动发送邮件提醒。"
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -524,7 +582,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-22 16:04</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-22 16:12</p>
         </div>
         
         <!-- 订阅区域 -->
