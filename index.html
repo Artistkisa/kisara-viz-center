@@ -195,7 +195,7 @@
             </a>
             
             <!-- 回南天监测 -->
-            <a href="./huinan/huinan-visualization-v3.html" class="card">
+            <a href="./huinan/huinan-visualization-v5.html" class="card">
                 <div class="card-icon">💧</div>
                 <h2>回南天监测</h2>
                 <p>湿度、露点温度监测，回南天预警与防护提醒。V5 多源数据融合，智能检测算法。</p>
@@ -322,7 +322,7 @@
         fetch('./data/huinan-data.json')
             .then(r => r.json())
             .then(data => {
-                const card = document.querySelector('a[href="./huinan/huinan-visualization-v3.html"] .card-meta');
+                const card = document.querySelector('a[href="./huinan/huinan-visualization-v5.html"] .card-meta');
                 if (card && data.humidity > 0) {
                     const level = data.intensity?.level || 'none';
                     const levelText = {
