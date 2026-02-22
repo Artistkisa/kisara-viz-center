@@ -87,6 +87,64 @@
         }
         .back-link:hover { color: #fff; }
     </style>
+    
+    <!-- Schema.org 结构化数据 - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什么是AQI？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AQI（Air Quality Index，空气质量指数）是定量描述空气质量状况的无量纲指数。它将复杂的空气质量数据简化为一个数值，范围0-500，数值越高表示空气污染越严重，对健康影响越大。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AQI等级如何划分？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AQI分为6个等级：0-50优（绿色）、51-100良（黄色）、101-150轻度污染（橙色）、151-200中度污染（红色）、201-300重度污染（紫色）、300以上严重污染（褐红色）。等级越高，建议减少户外活动。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "PM2.5和PM10有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PM2.5是直径≤2.5微米的细颗粒物，可深入肺泡进入血液，对健康危害最大。PM10是直径≤10微米的可吸入颗粒物，主要沉积在上呼吸道。PM2.5通常比PM10更难防护，需要N95口罩才能有效过滤。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "紫外线指数怎么看？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "紫外线指数0-2为低（安全）、3-5中等（需防护）、6-7高（避免正午外出）、8-10很高（必须防护）、11+极高（尽量避免外出）。指数≥3时建议涂抹防晒霜，指数≥6时建议戴太阳镜和遮阳帽。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "空气质量数据从哪里来？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "数据来自和风天气API，整合中国环境监测总站和各地环保部门的实时监测数据。系统每2小时更新一次，保留24小时历史记录用于趋势分析。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "免责声明",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "本系统仅供参考，数据来源于第三方气象服务，可能存在延迟或误差。空气质量监测结果不代表官方发布，重要健康决策请以中国环境监测总站官方数据为准。因使用本系统数据造成的任何损失，开发者不承担责任。"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -124,7 +182,7 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-22 16:05:09</p>
+        <p class="update-time">最后更新: 2026-02-22 16:38:15</p>
     </div>
     
     <script>
