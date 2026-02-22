@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站运行状态 - 实时监控</title>
+    <title>网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心</title>
+    <meta name="description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测。">
+    <meta name="keywords" content="网站监控,可用性监测,响应时间,服务器状态,网站运行状态">
+    <link rel="canonical" href="https://monitor.kisara.info/website/website-visualization.html">
+    <meta property="og:title" content="网站运行状态监控 - 实时监测">
+    <meta property="og:description" content="网站可用率、响应时间实时监控">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/website/website-visualization.html">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -112,11 +119,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">983ms</div>
+                    <div class="metric-value">777ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">670.0ms</div>
+                    <div class="metric-value">669.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -139,11 +146,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">983ms</div>
+                    <div class="metric-value">777ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">753.0ms</div>
+                    <div class="metric-value">766.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -152,7 +159,7 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-22 15:35:11</p>
+        <p class="update-time">最后更新: 2026-02-22 16:05:13</p>
     </div>
     
     <script>
@@ -160,10 +167,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30", "07:00", "07:00", "07:30", "07:30"],
+                labels: ["03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30", "07:00", "07:00", "07:30", "07:30", "08:00", "08:00"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [1147, 903, 411, 437, 985, 421, 267, 919, 427, 874, 494, 1325, 432, 363, 419, 747, 872, 256, 298, 983],
+                    data: [411, 437, 985, 421, 267, 919, 427, 874, 494, 1325, 432, 363, 419, 747, 872, 256, 298, 983, 284, 777],
                     borderColor: '#00c853',
                     backgroundColor: 'rgba(0, 200, 83, 0.1)',
                     tension: 0.4,
@@ -195,10 +202,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["03:00", "03:00", "03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30", "07:00", "07:00", "07:30", "07:30"],
+                labels: ["03:30", "03:30", "04:00", "04:00", "04:30", "04:30", "05:00", "05:00", "05:30", "05:30", "06:00", "06:00", "06:30", "06:30", "07:00", "07:00", "07:30", "07:30", "08:00", "08:00"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [736, 351, 245, 718, 444, 906, 350, 959, 951, 747, 903, 437, 421, 919, 874, 1325, 363, 747, 256, 983],
+                    data: [351, 245, 718, 444, 906, 350, 959, 951, 747, 903, 437, 421, 919, 874, 1325, 363, 747, 256, 983, 777],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
