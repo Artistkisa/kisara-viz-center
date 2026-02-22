@@ -445,7 +445,7 @@
             // 反转数据（按时间正序）
             const sorted = [...records].reverse();
             
-            const labels = sorted.map(r => r.date.substring(5)); // 只显示 MM-DD
+            const labels = sorted.map(r => r.date.substring(5) + ' ' + r.time.substring(0, 5)); // 显示 MM-DD HH:MM
             const temps = sorted.map(r => r.temp);
             const humidities = sorted.map(r => r.humidity);
             
