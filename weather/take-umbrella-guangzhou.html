@@ -391,6 +391,42 @@
             .weather-details { gap: 20px; }
         }
     </style>
+    
+    <!-- Schema.org 结构化数据 - WeatherObservation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WeatherObservation",
+      "name": "广州天气监测 - 带伞提醒",
+      "description": "广州天气实时监控，自动检测雨天并发送带伞提醒",
+      "observationAbout": {
+        "@type": "City",
+        "name": "广州",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "广州",
+          "addressRegion": "广东",
+          "addressCountry": "CN"
+        }
+      },
+      "temperature": {
+        "@type": "QuantitativeValue",
+        "value": "27",
+        "unitCode": "CEL"
+      },
+      "humidity": {
+        "@type": "QuantitativeValue",
+        "value": "53",
+        "unitCode": "P1"
+      },
+      "observationDate": "2026-02-22T15:11:26.002797",
+      "provider": {
+        "@type": "Organization",
+        "name": "Kisara 可视化中心",
+        "url": "https://monitor.kisara.info"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- 背景粒子 -->
@@ -559,7 +595,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-02-22 16:01:41</p>
+            <p>生成时间: 2026-02-22 16:04:48</p>
         </footer>
     </div>
     
