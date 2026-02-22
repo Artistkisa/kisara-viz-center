@@ -1,0 +1,228 @@
+/**
+ * 带伞提醒订阅样式
+ * 路径: umbrella-subscribe.css
+ */
+
+/* 订阅区域容器 */
+.umbrella-subscribe-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.umbrella-subscribe-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 雨天状态 - 红色边框 */
+.umbrella-subscribe-section.alert {
+    border-color: rgba(231, 76, 60, 0.5);
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.05));
+}
+
+/* 安全状态 - 绿色边框 */
+.umbrella-subscribe-section.safe {
+    border-color: rgba(46, 204, 113, 0.5);
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
+}
+
+/* 已订阅状态 */
+.umbrella-subscribe-section.already-subscribed {
+    border-color: rgba(52, 152, 219, 0.5);
+}
+
+/* 天气状态条 */
+.umbrella-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.alert .umbrella-status {
+    background: rgba(231, 76, 60, 0.2);
+    color: #ff6b6b;
+}
+
+.safe .umbrella-status {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
+
+.umbrella-status-icon {
+    font-size: 1.5rem;
+}
+
+/* 标题 */
+.subscribe-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.subscribe-subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+}
+
+/* 表单 */
+.subscribe-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.subscribe-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.subscribe-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.subscribe-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-btn {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.subscribe-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.subscribe-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 状态提示 */
+.subscribe-status {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.subscribe-status.success {
+    opacity: 1;
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.subscribe-status.error {
+    opacity: 1;
+    background: rgba(231, 76, 60, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.subscribe-status.loading {
+    opacity: 1;
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+/* 特性列表 */
+.subscribe-features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.subscribe-feature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.subscribe-feature-icon {
+    font-size: 1.1rem;
+}
+
+/* 底部说明 */
+.subscribe-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-note a {
+    color: #00d9ff;
+    text-decoration: none;
+}
+
+.subscribe-note a:hover {
+    text-decoration: underline;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .umbrella-subscribe-section {
+        padding: 25px 20px;
+        margin: 20px 15px;
+    }
+    
+    .subscribe-form {
+        flex-direction: column;
+    }
+    
+    .subscribe-btn {
+        width: 100%;
+    }
+    
+    .subscribe-features {
+        gap: 15px;
+    }
+    
+    .subscribe-title {
+        font-size: 1.2rem;
+    }
+}
