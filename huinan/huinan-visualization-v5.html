@@ -317,6 +317,16 @@
             font-size: 12px;
             padding: 20px;
         }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #00d9ff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .back-link:hover { opacity: 1; }
     </style>
     
     <!-- Schema.org 结构化数据 - WeatherObservation -->
@@ -346,7 +356,7 @@
         "value": "N/A",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-22T17:01:27.303122",
+      "observationDate": "2026-02-22T17:03:24.435413",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -415,6 +425,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="../" class="back-link">← 返回监控中心</a>
         <h1>🌫️ 广州回南天监测 V5</h1>
         <p class="subtitle">全流程可视化：异常检测 → 智能融合 → 气象检测 → 状态管理 → 分级通知</p>
         
@@ -583,7 +594,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-22 17:01</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-22 17:03</p>
         </div>
         
         <!-- 订阅区域 -->
