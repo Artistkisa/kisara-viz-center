@@ -375,6 +375,19 @@
             .weather-icon { font-size: 4rem; }
             .weather-details { gap: 20px; }
         }
+
+        /* 返回链接 */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -385,6 +398,7 @@
     <div class="rain " id="rain"></div>
     
     <div class="container">
+        <a href="https://monitor.kisara.info/" class="back-link">← 返回监控中心</a>
         <header>
             <h1>🌤️ 广州天气 · 带伞提醒</h1>
             <p class="subtitle">2026-02-22 更新 · 保留一年历史数据</p>
