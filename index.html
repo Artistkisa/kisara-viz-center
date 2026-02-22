@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kisara 可视化中心</title>
+    <title>Kisara 可视化中心 - 实时监控仪表盘</title>
+    <meta name="description" content="Kisara 可视化中心，提供回南天监测、带伞提醒、空气质量、台风追踪、追番列表等实时数据可视化服务。">
+    <meta name="keywords" content="Kisara,可视化,监控,回南天,带伞提醒,空气质量,台风,追番">
+    <link rel="canonical" href="https://monitor.kisara.info/">
+    <meta property="og:title" content="Kisara 可视化中心">
+    <meta property="og:description" content="实时监控数据可视化仪表盘">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <style>
         * {
@@ -158,10 +165,10 @@
             </a>
             
             <!-- 回南天监测 -->
-            <a href="./huinan/huinan-visualization.html" class="card">
+            <a href="./huinan/huinan-visualization-v3.html" class="card">
                 <div class="card-icon">💧</div>
                 <h2>回南天监测</h2>
-                <p>湿度、露点温度监测，回南天预警与防护提醒。</p>
+                <p>湿度、露点温度监测，回南天预警与防护提醒。V5 多源数据融合，智能检测算法。</p>
                 <div class="card-meta">
                     <span><span class="status"></span> 每天5次检测</span>
                     <span>📍 广州</span>
@@ -285,7 +292,7 @@
         fetch('./data/huinan-data.json')
             .then(r => r.json())
             .then(data => {
-                const card = document.querySelector('a[href="./huinan/huinan-visualization.html"] .card-meta');
+                const card = document.querySelector('a[href="./huinan/huinan-visualization-v3.html"] .card-meta');
                 if (card && data.humidity > 0) {
                     const level = data.intensity?.level || 'none';
                     const levelText = {
