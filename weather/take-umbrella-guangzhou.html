@@ -20,6 +20,8 @@
     <meta name="twitter:title" content="广州天气带伞提醒">
     <meta name="twitter:description" content="实时监控广州天气，雨天自动提醒带伞">
     
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    
     <!-- 订阅组件样式 -->
     <link rel="stylesheet" href="https://monitor.kisara.info/umbrella/umbrella-subscribe.css">
     <style>
@@ -31,7 +33,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #7f8c8d 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #f39c12 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #fff;
@@ -54,7 +56,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #95a5a6;
+            background: #f39c12;
             border-radius: 50%;
             opacity: 0.3;
             animation: float 15s infinite;
@@ -115,7 +117,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(149, 165, 166, 0.5);
+            text-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
         }
         
         .subtitle {
@@ -131,14 +133,14 @@
             padding: 40px;
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(243, 156, 18, 0.5);
             text-align: center;
             transition: all 0.3s ease;
         }
         
         .current-weather:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(243, 156, 18, 0.5);
         }
         
         .weather-icon {
@@ -185,7 +187,7 @@
         .detail-value {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #95a5a6;
+            color: #f39c12;
         }
         
         .detail-label {
@@ -250,7 +252,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #95a5a6;
+            color: #f39c12;
         }
         
         .stat-label {
@@ -296,7 +298,7 @@
         
         .bar {
             width: 40px;
-            background: linear-gradient(to top, #95a5a6, rgba(255,255,255,0.3));
+            background: linear-gradient(to top, #f39c12, rgba(255,255,255,0.3));
             border-radius: 10px 10px 0 0;
             transition: all 0.3s;
             position: relative;
@@ -416,10 +418,10 @@
       },
       "humidity": {
         "@type": "QuantitativeValue",
-        "value": "53",
+        "value": "51",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-22T15:11:26.002797",
+      "observationDate": "2026-02-22T16:41:25.502387",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -444,12 +446,12 @@
         <!-- 当前天气 -->
         <div class="current-weather">
         
-            <span class="weather-icon">☁️</span>
+            <span class="weather-icon">☀️</span>
             <div class="temperature">27<span>°C</span></div>
-            <div class="weather-desc">多云 · 体感 27°C</div>
+            <div class="weather-desc">晴 · 体感 26°C</div>
             <div class="weather-details">
                 <div class="detail-item">
-                    <div class="detail-value">53% </div>
+                    <div class="detail-value">51% </div>
                     <div class="detail-label">湿度</div>
                 </div>
                 <div class="detail-item">
@@ -457,7 +459,7 @@
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">15:11:26</div>
+                    <div class="detail-value">16:41:25</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -469,7 +471,7 @@
         
             <div class="umbrella-icon">🌤️</div>
             <div class="umbrella-text">今天不用带伞</div>
-            <div class="umbrella-sub">多云 · 27°C · 湿度53%</div>
+            <div class="umbrella-sub">晴 · 27°C · 湿度51%</div>
         
         </div>
         
@@ -558,9 +560,9 @@
                     
                     <div class="day-card ">
                         <div class="day-date">02/22 周六</div>
-                        <div class="day-icon">☁️</div>
+                        <div class="day-icon">☀️</div>
                         <div class="day-temp">27°C</div>
-                        <div class="day-weather">多云</div>
+                        <div class="day-weather">晴</div>
                     </div>
                     
             </div>
@@ -595,7 +597,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-02-22 16:33:30</p>
+            <p>生成时间: 2026-02-22 16:57:14</p>
         </footer>
     </div>
     
@@ -618,7 +620,7 @@
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
+         data-weather-level="sunny"
          data-need-umbrella="false"
     ></div>
     
