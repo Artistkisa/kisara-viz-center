@@ -3299,13 +3299,13 @@
       }
     },
     {
-      "time": "2026-02-22 22:00:04",
-      "humidity": 89,
+      "time": "2026-02-22 23:00:04",
+      "humidity": 90,
       "temp": 18.0,
       "dew": 16.0,
-      "windDir": 0,
-      "windSpeed": 5.0,
-      "pressure": 1003,
+      "windDir": 340,
+      "windSpeed": 1.0,
+      "pressure": 1004,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {
@@ -3322,7 +3322,7 @@
         ]
       },
       "intensity": {
-        "level": "mild",
+        "level": "moderate",
         "by": "\u6e7f\u5ea6"
       },
       "source": "ecs"
@@ -3351,7 +3351,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-02-22T22:15:35.955286",
+  "lastCheck": "2026-02-22T22:45:36.437738",
   "multi_source": true,
   "source_weights": {
     "qweather": 0.7,
@@ -3402,8 +3402,8 @@
       "warm_transport": {
         "satisfied": true,
         "method": "south_wind",
-        "ratio": 90.2,
-        "reason": "\u5357\u98ce\u8bb0\u5f5592/102 (90%) \u2265 50%"
+        "ratio": 87.7,
+        "reason": "\u5357\u98ce\u8bb0\u5f55100/114 (88%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
