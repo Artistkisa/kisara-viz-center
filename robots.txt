@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://monitor.kisara.info/sitemap.xml
+
+# 主要页面
+Allow: /huinan/
+Allow: /weather/
+Allow: /typhoon/
+Allow: /aqi/
+Allow: /website/
+Allow: /logs/
+Allow: /anime/
+
+#  disallow 管理后台等敏感页面（如果有）
+# Disallow: /admin/
