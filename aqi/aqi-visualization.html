@@ -108,7 +108,7 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-22 15:19:34</p>
+        <p class="update-time">最后更新: 2026-02-22 15:21:28</p>
     </div>
     
     <script>
@@ -116,10 +116,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["00:00", "06:00"],
+                labels: ["12:00", "00:00", "06:00"],
                 datasets: [{
                     label: 'AQI',
-                    data: [0, 30],
+                    data: [33, 0, 30],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -142,10 +142,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["00:00", "06:00"],
+                labels: ["12:00", "00:00", "06:00"],
                 datasets: [{
                     label: 'PM2.5',
-                    data: [0, 18.67],
+                    data: [20, 0, 18.67],
                     borderColor: '#f093fb',
                     backgroundColor: 'rgba(240, 147, 251, 0.1)',
                     tension: 0.4,
