@@ -12,6 +12,36 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://monitor.kisara.info/">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    
+    <!-- Schema.org 结构化数据 - WebSite + Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Kisara 可视化中心",
+          "url": "https://monitor.kisara.info/",
+          "description": "实时监控数据可视化仪表盘，提供天气、空气质量、回南天、台风、追番等数据服务",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://monitor.kisara.info/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "Kisara 可视化中心",
+          "url": "https://monitor.kisara.info/",
+          "logo": "https://monitor.kisara.info/favicon.svg",
+          "sameAs": [
+            "https://github.com/artistkisa"
+          ]
+        }
+      ]
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
