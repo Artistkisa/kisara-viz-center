@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回南天监测 V5 - safe 演示</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #00d9ff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        h1 { text-align: center; color: #00d9ff; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        /* 状态卡片 - 动态效果 */
+        .status-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid;
+            animation: border-pulse 2s ease-in-out infinite;
+        }
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+        }
+        
+        /* safe - 绿色 */
+        .status-card.level-safe { border-color: #4ecca3; }
+        .status-card.level-safe::before {
+            background: radial-gradient(circle at 50% 50%, #4ecca3 0%, transparent 70%);
+            animation: pulse-safe 4s ease-in-out infinite;
+        }
+        @keyframes pulse-safe {
+            0%, 100% { transform: scale(0.8); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+        
+        /* watch - 灰色 */
+        .status-card.level-watch { border-color: #888; }
+        .status-card.level-watch::before {
+            background: linear-gradient(90deg, transparent 0%, #88888880 50%, transparent 100%);
+            animation: scan-watch 2s linear infinite;
+        }
+        @keyframes scan-watch {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+        
+        /* warning - 黄色 */
+        .status-card.level-warning { border-color: #fac858; }
+        .status-card.level-warning::before {
+            background: radial-gradient(circle at 30% 30%, #fac858 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, #ff9500 0%, transparent 50%);
+            animation: glow-warning 2s ease-in-out infinite;
+        }
+        @keyframes glow-warning {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+        
+        /* formal-mild - 红色 */
+        .status-card.level-formal-mild { border-color: #e94560; }
+        .status-card.level-formal-mild::before {
+            background: linear-gradient(45deg, #e94560 0%, #ff6b6b 50%, #e94560 100%);
+            background-size: 200% 200%;
+            animation: flow-mild 3s ease infinite;
+        }
+        @keyframes flow-mild {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* formal-moderate - 深红 */
+        .status-card.level-formal-moderate { border-color: #c41e3a; }
+        .status-card.level-formal-moderate::before {
+            background: radial-gradient(circle at 50% 50%, #c41e3a 0%, #8b000000 70%);
+            animation: alert-moderate 1s ease-in-out infinite;
+        }
+        @keyframes alert-moderate {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        /* formal-severe - 血红色 */
+        .status-card.level-formal-severe { border-color: #8b0000; }
+        .status-card.level-formal-severe::before {
+            background: radial-gradient(circle at 50% 50%, #8b0000 0%, #ff0000 30%, transparent 70%);
+            animation: alert-severe 0.5s ease-in-out infinite;
+        }
+        @keyframes alert-severe {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.3); }
+        }
+        
+        .status-level {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .status-message {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .status-confidence {
+            display: inline-block;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-value { font-size: 24px; font-weight: bold; color: #00d9ff; }
+        .stat-label { font-size: 12px; color: #888; margin-top: 5px; }
+        
+        .demo-info {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid #00d9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: center;
+            color: #00d9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back-link">← 返回监控中心</a>
+        <h1>🌫️ 回南天监测 V5 - 演示</h1>
+        <p class="subtitle">等级: safe</p>
+        
+        <div class="status-card level-safe">
+            <div class="status-level">SAFE</div>
+            <div class="status-message">无风险：前期不够冷，建筑物未冷透</div>
+            <div class="status-confidence">置信度: 90%</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">27.0°C</div>
+                <div class="stat-label">温度</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">52.6%</div>
+                <div class="stat-label">湿度</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">16.3°C</div>
+                <div class="stat-label">露点</div>
+            </div>
+        </div>
+        
+        <div class="demo-info">
+            📊 这是模拟数据演示页面，仅用于展示视觉效果
+        </div>
+    </div>
+</body>
+</html>
