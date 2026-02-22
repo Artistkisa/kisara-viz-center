@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-22T16:45:22.725253",
+  "generated_at": "2026-02-22T17:01:27.279798",
   "total_records": 34,
   "multi_source": true,
   "source_weights": {
@@ -3554,10 +3554,9 @@
         "reason": "\u6e29\u5ea627.1\u2103>20\u2103, \u6e7f\u5ea652.0%<85%"
       },
       "warm_transport": {
-        "satisfied": true,
-        "method": "south_wind",
-        "ratio": 50.0,
-        "reason": "\u5357\u98ce\u8bb0\u5f5560/120 (50%) \u2265 50%"
+        "satisfied": false,
+        "method": "none",
+        "reason": "\u5357\u98ce\u5360\u6bd4<50%\u4e14\u9732\u70b9\u4e0a\u5347<2\u2103/3h"
       },
       "pressure_falling": {
         "satisfied": true,
