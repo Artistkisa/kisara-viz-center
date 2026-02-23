@@ -209,7 +209,7 @@
         </div>
         
         <div class="footer">
-            <p>数据实时读取自 huinan-merged.json | 算法版本：V5.1</p>
+            <p>数据实时读取自 MySQL 数据库 | 算法版本：V5.1 | 更新频率：30分钟</p>
             <p><a href="huinan-visualization-v5.html" style="color: #00d9ff;">← 返回主监测页面</a></p>
         </div>
     </div>
@@ -217,15 +217,20 @@
     <script>
         let records = [];
         let idx = 0;
-        const JSON_URL = 'https://monitor.kisara.info/huinan/huinan-merged.json';
+        // 使用 PHP API 替代 JSON 文件
+        const API_URL = 'https://li.kisara.info/query.php';
         
         // 加载数据
         async function fetchData() {
             document.getElementById('content').innerHTML = '<div class="loading">正在加载数据...</div>';
             
             try {
-                const response = await fetch(JSON_URL + '?t=' + Date.now()); // 防止缓存
+                const response = await fetch(API_URL + '?action=latest&limit=168&t=' + Date.now());
                 const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.error || 'Unknown error');
+                }
                 
                 // 处理数据
                 records = (data.records || []).map(r => ({
@@ -239,9 +244,6 @@
                     qw: (r.raw_sources && r.raw_sources.qweather) || {},
                     om: (r.raw_sources && r.raw_sources.openmeteo) || {},
                     yr: (r.raw_sources && r.raw_sources.yrno) || {},
-                    qw_check: (r.outlier_check && r.outlier_check.qweather) || {},
-                    om_check: (r.outlier_check && r.outlier_check.openmeteo) || {},
-                    yr_check: (r.outlier_check && r.outlier_check.yrno) || {},
                     weights: r.weights || {}
                 }));
                 
