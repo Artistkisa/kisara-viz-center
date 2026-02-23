@@ -4572,6 +4572,36 @@
           }
         }
       }
+    },
+    {
+      "time": "2026-02-23 14:01:10",
+      "humidity": 50,
+      "temp": 27.0,
+      "dew": 15.0,
+      "windDir": 224,
+      "windSpeed": 8.0,
+      "pressure": 1005,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 12.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "\u5357\u98ce",
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u65e0"
+      },
+      "source": "ecs"
     }
   ],
   "events": [
@@ -4597,7 +4627,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-02-23T13:15:33.471798",
+  "lastCheck": "2026-02-23T13:45:44.684961",
   "multi_source": true,
   "source_weights": {
     "qweather": 0.7,
@@ -4649,7 +4679,7 @@
         "satisfied": true,
         "method": "south_wind",
         "ratio": 100.0,
-        "reason": "\u5357\u98ce\u8bb0\u5f5570/70 (100%) \u2265 50%"
+        "reason": "\u5357\u98ce\u8bb0\u5f5582/82 (100%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
