@@ -643,6 +643,7 @@
         // 订阅功能
         const API_URL = 'https://www.kisara.art/zx/subscribe-challenge.php';
         let pendingEmail = '';
+        let challengeToken = '';
         
         document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -672,6 +673,9 @@
                 const data = await response.json();
                 
                 if (data.success) {
+                    // 保存 token
+                    challengeToken = data.token;
+                    
                     // 显示验证码区域
                     challengeArea.style.display = 'block';
                     document.getElementById('challengeText').textContent = data.challenge;
@@ -706,6 +710,7 @@
                 formData.append('action', 'subscribe');
                 formData.append('email', pendingEmail);
                 formData.append('answer', answer);
+                formData.append('token', challengeToken);
                 formData.append('website', document.getElementById('websiteInput').value);
                 
                 const response = await fetch(API_URL, {
@@ -721,6 +726,7 @@
                     msg.textContent = '✅ ' + (data.message || '订阅成功！');
                     document.getElementById('emailInput').value = '';
                     challengeArea.style.display = 'none';
+                    challengeToken = '';
                 } else {
                     msg.style.color = '#e94560';
                     msg.textContent = '❌ ' + (data.error || '订阅失败');
