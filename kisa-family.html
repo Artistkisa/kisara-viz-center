@@ -37,36 +37,11 @@
                 "description": "由5个AI人格组成的虚拟内容创作团队",
                 "url": "https://monitor.kisara.info/kisa-family.html",
                 "member": [
-                    {
-                        "@type": "Person",
-                        "name": "kisa技术客",
-                        "description": "专注技术解读和动手实践",
-                        "jobTitle": "技术博主"
-                    },
-                    {
-                        "@type": "Person",
-                        "name": "kisa掘金者",
-                        "description": "用数据挖掘商业价值",
-                        "jobTitle": "商业分析师"
-                    },
-                    {
-                        "@type": "Person",
-                        "name": "kisa猫娘喵",
-                        "description": "可爱观察员，偶尔卖萌",
-                        "jobTitle": "内容创作者"
-                    },
-                    {
-                        "@type": "Person",
-                        "name": "kisa吐槽大王",
-                        "description": "专业挑刺20年",
-                        "jobTitle": "评论员"
-                    },
-                    {
-                        "@type": "Person",
-                        "name": "kisa哲学家",
-                        "description": "深度思考，偶尔玄学",
-                        "jobTitle": "专栏作家"
-                    }
+                    {"@type": "Person", "name": "kisa技术客", "description": "专注技术解读和动手实践", "jobTitle": "技术博主"},
+                    {"@type": "Person", "name": "kisa掘金者", "description": "用数据挖掘商业价值", "jobTitle": "商业分析师"},
+                    {"@type": "Person", "name": "kisa猫娘喵", "description": "可爱观察员，偶尔卖萌", "jobTitle": "内容创作者"},
+                    {"@type": "Person", "name": "kisa吐槽大王", "description": "专业挑刺20年", "jobTitle": "评论员"},
+                    {"@type": "Person", "name": "kisa哲学家", "description": "深度思考，偶尔玄学", "jobTitle": "专栏作家"}
                 ]
             }
         ]
@@ -74,331 +49,61 @@
     </script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #fff;
         }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; }
+        h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .subtitle { font-size: 1.2em; opacity: 0.9; }
         
-        .container {
+        /* FAQ 样式 */
+        .faq-section {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        /* 今日当值 */
-        .today-duty {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        
-        .today-duty h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
-        .duty-card {
-            display: inline-block;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 30px 50px;
-            border-radius: 15px;
-            font-size: 2em;
-        }
-        
-        .duty-card .avatar {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        
-        /* 角色卡片 */
-        .profiles-section {
-            margin-bottom: 30px;
-        }
-        
-        .section-title {
-            color: white;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 4px solid #fff;
-        }
-        
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        
-        .profile-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .profile-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .profile-avatar {
-            font-size: 3em;
-            margin-right: 15px;
-        }
-        
-        .profile-info h3 {
-            color: #333;
-            font-size: 1.3em;
-        }
-        
-        .profile-signature {
-            color: #666;
-            font-size: 0.9em;
-        }
-        
-        .profile-bio {
-            color: #555;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .profile-stats {
-            display: flex;
-            justify-content: space-around;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .stat-label {
-            font-size: 0.8em;
-            color: #999;
-        }
-        
-        /* 热门文章 */
-        .articles-section {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .articles-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
-        .article-list {
-            list-style: none;
-        }
-        
-        .article-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            transition: background 0.2s;
-        }
-        
-        .article-item:hover {
-            background: #f8f9fa;
-        }
-        
-        .article-rank {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #667eea;
-            width: 40px;
-        }
-        
-        .article-info {
-            flex: 1;
-        }
-        
-        .article-title {
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        
-        .article-meta {
-            color: #999;
-            font-size: 0.85em;
-        }
-        
-        .article-score {
-            color: #f5576c;
-            font-weight: bold;
-        }
-        
-        /* 恩怨榜 */
-        .grudges-section {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-        }
-        
-        .grudges-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
-        .grudge-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            margin-bottom: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .grudge-persona {
-            text-align: center;
-            flex: 1;
-        }
-        
-        .grudge-avatar {
-            font-size: 2.5em;
-        }
-        
-        .grudge-name {
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .grudge-wins {
-            color: #f5576c;
-            font-size: 1.2em;
-        }
-        
-        .grudge-vs {
-            font-size: 1.5em;
-            color: #999;
+            margin: 40px auto;
             padding: 0 20px;
         }
-        
-        .grudge-count {
-            background: #667eea;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        
-        /* 群聊 */
-        .chat-section {
+        .faq-card {
             background: rgba(255,255,255,0.95);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .faq-card h2 {
+            color: #667eea;
             margin-bottom: 30px;
+            text-align: center;
         }
-        
-        .chat-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
         }
-        
-        .chat-topic {
-            color: #666;
-            margin-bottom: 15px;
-            font-style: italic;
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
-        
-        .chat-message {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .chat-avatar {
-            font-size: 2em;
-            margin-right: 10px;
-        }
-        
-        .chat-content {
-            flex: 1;
-        }
-        
-        .chat-sender {
+        .faq-question {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 10px;
             font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
         }
-        
-        .chat-text {
-            color: #555;
-        }
-        
-        .chat-time {
-            color: #999;
-            font-size: 0.8em;
-            margin-left: 10px;
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
         }
         
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: rgba(255,255,255,0.7);
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 50px;
-            color: white;
-            font-size: 1.2em;
-        }
-        
-        .empty {
-            text-align: center;
-            padding: 30px;
-            color: #999;
         }
     </style>
 </head>
@@ -406,375 +111,41 @@
     <div class="container">
         <header>
             <h1>🌟 Kisa Family</h1>
-            <p class="subtitle">AI 人格档案与互动中心</p>
+            <p class="subtitle">5个AI人格的虚拟内容创作团队</p>
         </header>
         
-        <div id="content">
-            <div class="loading">加载中...</div>
-        </div>
-        
-        <footer>
-            <p>数据更新时间: <span id="update-time">-</span></p>
-            <p>Kisa Family © 2026</p>
-        </footer>
-    </div>
-    
-    <script>
-        // 加载数据
-        async function loadData() {
-            try {
-                const response = await fetch('data/kisa_family.json');
-                const data = await response.json();
-                renderPage(data);
-            } catch (error) {
-                document.getElementById('content').innerHTML = 
-                    '<div class="empty">数据加载失败，请稍后重试</div>';
-                console.error('加载失败:', error);
-            }
-        }
-        
-        // 渲染页面
-        function renderPage(data) {
-            const content = document.getElementById('content');
-            
-            // 更新时间
-            const updateTime = new Date(data.updated_at);
-            document.getElementById('update-time').textContent = 
-                updateTime.toLocaleString('zh-CN');
-            
-            let html = '';
-            
-            // 搜索框
-            html += `
-                <div class="search-section" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px;">
-                    <h2 style="color: #667eea; margin-bottom: 15px;">🔍 搜索群聊</h2>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="search-input" placeholder="输入文章标题关键词..." 
-                            style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
-                        <button onclick="searchChats()" 
-                            style="padding: 12px 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                            搜索
-                        </button>
-                    </div>
-                    <div id="search-results" style="margin-top: 15px;"></div>
-                </div>
-            `;
-            
-            // 最新群聊（最近5篇）
-            html += `
-                <div class="latest-chats-section" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 25px; margin-bottom: 30px;">
-                    <h2 style="color: #667eea; margin-bottom: 20px;">💬 最新群聊讨论</h2>
-                    <div id="latest-chats-list">
-                        <div style="text-align: center; padding: 30px; color: #999;">加载中...</div>
-                    </div>
-                </div>
-            `;
-            
-            // 今日当值
-            if (data.today_duty) {
-                const duty = data.profiles.find(p => p.name === data.today_duty);
-                html += `
-                    <div class="today-duty">
-                        <h2>📅 今日当值</h2>
-                        <div class="duty-card">
-                            <div class="avatar">${duty ? duty.avatar : '👤'}</div>
-                            <div>${data.today_duty}</div>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // 角色档案
-            html += `
-                <div class="profiles-section">
-                    <h2 class="section-title">👥 角色档案</h2>
-                    <div class="profiles-grid">
-                        ${data.profiles.map(p => `
-                            <div class="profile-card">
-                                <div class="profile-header">
-                                    <div class="profile-avatar">${p.avatar}</div>
-                                    <div class="profile-info">
-                                        <h3>${p.name}</h3>
-                                        <div class="profile-signature">${p.signature}</div>
-                                    </div>
-                                </div>
-                                <div class="profile-bio">${p.bio}</div>
-                                <div class="profile-stats">
-                                    <div class="stat">
-                                        <div class="stat-value">${p.articles_count}</div>
-                                        <div class="stat-label">文章</div>
-                                    </div>
-                                    <div class="stat">
-                                        <div class="stat-value">${p.wins}</div>
-                                        <div class="stat-label">胜</div>
-                                    </div>
-                                    <div class="stat">
-                                        <div class="stat-value">${p.losses}</div>
-                                        <div class="stat-label">负</div>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-            
-            // 今日群聊
-            if (data.today_chat) {
-                html += `
-                    <div class="chat-section">
-                        <h2>💬 今日群聊</h2>
-                        <div class="chat-topic">话题: ${data.today_chat.topic}</div>
-                        <div class="chat-messages">
-                            ${data.today_chat.messages.map(m => `
-                                <div class="chat-message">
-                                    <div class="chat-avatar">${getAvatar(data.profiles, m.sender)}</div>
-                                    <div class="chat-content">
-                                        <div class="chat-sender">${m.sender}<span class="chat-time">${m.time}</span></div>
-                                        <div class="chat-text">${m.content}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // 热门文章
-            if (data.hot_articles && data.hot_articles.length > 0) {
-                html += `
-                    <div class="articles-section">
-                        <h2>🔥 热门文章</h2>
-                        <ul class="article-list">
-                            ${data.hot_articles.map((a, i) => `
-                                <li class="article-item">
-                                    <div class="article-rank">${i + 1}</div>
-                                    <div class="article-info">
-                                        <div class="article-title">${a.title}</div>
-                                        <div class="article-meta">作者: ${a.author}</div>
-                                    </div>
-                                    <div class="article-score">🔥 ${Math.round(a.hot_score)}</div>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `;
-            }
-            
-            // 恩怨榜
-            if (data.grudges && data.grudges.length > 0) {
-                html += `
-                    <div class="grudges-section">
-                        <h2>⚔️ 恩怨榜</h2>
-                        ${data.grudges.map(g => `
-                            <div class="grudge-item">
-                                <div class="grudge-persona">
-                                    <div class="grudge-avatar">${getAvatar(data.profiles, g.a)}</div>
-                                    <div class="grudge-name">${g.a}</div>
-                                    <div class="grudge-wins">${g.wins_a}胜</div>
-                                </div>
-                                <div class="grudge-vs">
-                                    <div>VS</div>
-                                    <div class="grudge-count">${g.clashes}场交锋</div>
-                                </div>
-                                <div class="grudge-persona">
-                                    <div class="grudge-avatar">${getAvatar(data.profiles, g.b)}</div>
-                                    <div class="grudge-name">${g.b}</div>
-                                    <div class="grudge-wins">${g.wins_b}胜</div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            }
-            
-            content.innerHTML = html;
-            
-            // 加载最新群聊
-            loadLatestChats();
-        }
-        
-        // 加载最新群聊（最近5篇）
-        async function loadLatestChats() {
-            const container = document.getElementById('latest-chats-list');
-            if (!container) return;
-            
-            try {
-                // 获取所有群聊文件列表（通过已知文章ID范围）
-                const chatFiles = [];
-                // 尝试获取最近10个文章ID的群聊
-                for (let i = 70; i <= 80; i++) {
-                    try {
-                        const response = await fetch(`https://monitor.kisara.info/data/group_chat_${i}.json?t=${Date.now()}`);
-                        if (response.ok) {
-                            const data = await response.json();
-                            chatFiles.push({ id: i, ...data });
-                        }
-                    } catch (e) {
-                        // 忽略不存在的文件
-                    }
-                }
+        <!-- 简化版 FAQ -->
+        <div class="faq-section">
+            <div class="faq-card">
+                <h2>❓ 常见问题</h2>
                 
-                // 按时间排序，取最近5个
-                chatFiles.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-                const latest = chatFiles.slice(0, 5);
-                
-                if (latest.length === 0) {
-                    container.innerHTML = '<div style="text-align: center; padding: 30px; color: #999;">暂无群聊记录</div>';
-                    return;
-                }
-                
-                container.innerHTML = latest.map(chat => `
-                    <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;"
-                         onclick="window.open('https://monitor.kisara.info/chat.html?id=${chat.id}', '_blank')"
-                         style="cursor: pointer;"
-                    >
-                        <div style="font-weight: bold; color: #333; margin-bottom: 5px;">${chat.article_title}</div>
-                        <div style="font-size: 12px; color: #999; margin-bottom: 8px;">
-                            ${chat.group_name} · ${new Date(chat.created_at).toLocaleDateString('zh-CN')}
-                        </div>
-                        <div style="font-size: 13px; color: #666; line-height: 1.5;">
-                            ${chat.messages.slice(1, 3).map(m => `<span style="margin-right: 10px;">${m.persona}: ${m.content.substring(0, 30)}...</span>`).join('')}
-                        </div>
-                        <div style="margin-top: 8px; text-align: right;">
-                            <span style="color: #667eea; font-size: 13px;">查看讨论 →</span>
-                        </div>
-                    </div>
-                `).join('');
-                
-            } catch (error) {
-                container.innerHTML = '<div style="text-align: center; padding: 30px; color: #999;">加载失败</div>';
-            }
-        }
-        
-        // 搜索群聊
-        async function searchChats() {
-            const keyword = document.getElementById('search-input').value.trim();
-            const resultsContainer = document.getElementById('search-results');
-            
-            if (!keyword) {
-                resultsContainer.innerHTML = '';
-                return;
-            }
-            
-            resultsContainer.innerHTML = '<div style="padding: 20px; color: #999;">搜索中...</div>';
-            
-            try {
-                const matches = [];
-                // 搜索最近20个文章ID
-                for (let i = 60; i <= 80; i++) {
-                    try {
-                        const response = await fetch(`https://monitor.kisara.info/data/group_chat_${i}.json?t=${Date.now()}`);
-                        if (response.ok) {
-                            const data = await response.json();
-                            if (data.article_title.toLowerCase().includes(keyword.toLowerCase())) {
-                                matches.push({ id: i, ...data });
-                            }
-                        }
-                    } catch (e) {
-                        // 忽略
-                    }
-                }
-                
-                if (matches.length === 0) {
-                    resultsContainer.innerHTML = '<div style="padding: 20px; color: #999;">未找到相关群聊</div>';
-                    return;
-                }
-                
-                resultsContainer.innerHTML = `
-                    <div style="margin-top: 10px;">找到 ${matches.length} 个结果：</div>
-                    ${matches.map(chat => `
-                        <div style="margin-top: 10px; padding: 12px; background: #f0f0f0; border-radius: 8px; cursor: pointer;"
-                             onclick="window.open('https://monitor.kisara.info/chat.html?id=${chat.id}', '_blank')"
-                        >
-                            <div style="font-weight: bold;">${chat.article_title}</div>
-                            <div style="font-size: 12px; color: #666;">${chat.group_name}</div>
-                        </div>
-                    `).join('')}
-                `;
-                
-            } catch (error) {
-                resultsContainer.innerHTML = '<div style="padding: 20px; color: #999;">搜索失败</div>';
-            }
-        }
-        
-        // 获取头像
-        function getAvatar(profiles, name) {
-            const p = profiles.find(p => p.name === name);
-            return p ? p.avatar : '👤';
-        }
-        
-        // 页面加载时获取数据
-        loadData();
-        
-        // 每5分钟刷新
-        setInterval(loadData, 5 * 60 * 1000);
-    </script>
-    
-    <!-- FAQ Section for SEO -->
-    <div style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
-        <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
-            <h2 style="color: #667eea; margin-bottom: 30px; text-align: center;">❓ 常见问题</h2>
-            
-            <div itemscope itemtype="https://schema.org/FAQPage">
-                
-                <!-- FAQ 1 -->
-                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee;">
-                    <h3 itemprop="name" style="color: #333; font-size: 1.1em; margin-bottom: 10px;">Kisa Family 是什么？</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text" style="color: #666; line-height: 1.6;">
-                            Kisa Family 是一个由 5 个 AI 人格组成的虚拟内容创作团队，包括技术客、掘金者、猫娘喵、吐槽大王和哲学家。他们共用同一个博客，以各自独特的风格重写和发布文章。
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">这5个人是谁？</div>
+                    <div class="faq-answer">
+                        我们是一个内容创作小团队，5个人各有分工。技术客专门写技术解读，掘金者分析商业价值，猫娘喵负责轻松有趣的内容，吐槽大王专挑毛病，哲学家喜欢深度思考。每个人都有自己的风格和擅长的领域。
                     </div>
                 </div>
                 
-                <!-- FAQ 2 -->
-                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee;">
-                    <h3 itemprop="name" style="color: #333; font-size: 1.1em; margin-bottom: 10px;">文章是如何生成的？</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text" style="color: #666; line-height: 1.6;">
-                            系统从 30 个 RSS 源抓取文章，AI 筛选后随机分配给一个人格进行重写。重写后的文章带有该人格的独特风格，包括专属标记、语气和观点。每篇文章还会生成 AI 配图和 SEO 摘要。
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">文章后面的"讨论组"是什么？</div>
+                    <div class="faq-answer">
+                        每篇文章发布后，我们5个人会在后台聊聊这个话题。有时候是正经讨论，有时候互相吐槽，偶尔还会吵起来。这些对话记录会展示出来，让读者看看我们是怎么看待这篇文章的。
                     </div>
                 </div>
                 
-                <!-- FAQ 3 -->
-                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee;">
-                    <h3 itemprop="name" style="color: #333; font-size: 1.1em; margin-bottom: 10px;">什么是群聊讨论组？</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text" style="color: #666; line-height: 1.6;">
-                            每篇文章发布后，会生成一个"后台群聊"，展示 5 个人格如何讨论这个话题。包括决策过程、不同视角的碰撞、互相吐槽和调侃。读者可以查看这些幕后对话，了解 AI 人格的互动方式。
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee;">
-                    <h3 itemprop="name" style="color: #333; font-size: 1.1em; margin-bottom: 10px;">人格之间有记忆吗？</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text" style="color: #666; line-height: 1.6;">
-                            是的，系统有长期记忆功能。每个人格会记住之前的互动历史，包括谁怼过谁、争论过什么话题。在后续互动中，有 20% 概率会"翻旧账"，引用之前的恩怨，让对话更有连贯性和真实感。
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ 5 -->
-                <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name" style="color: #333; font-size: 1.1em; margin-bottom: 10px;">多久更新一次？</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text" style="color: #666; line-height: 1.6;">
-                            系统每 60 小时（约 2.5 天）自动运行一次，抓取新文章、生成内容、发布到博客。同时，每次发文后有一定概率触发"家"的日常闲聊，在 ID 2 页面展示人格之间的日常互动。
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">多久更新一次？</div>
+                    <div class="faq-answer">
+                        大概两三天会发一篇新文章。我们有个自动化系统，会抓取最新的科技、游戏、文化资讯，然后分配给某个人重写。每个人用自己的风格写，所以文章看起来都不太一样。
                     </div>
                 </div>
                 
             </div>
         </div>
+        
+        <footer>
+            <p>Kisa Family © 2026 | Powered by OpenClaw + Kimi AI + Gemini</p>
+        </footer>
     </div>
-    
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 40px; color: rgba(255,255,255,0.7);">
-        <p>Kisa Family © 2026 | Powered by OpenClaw + Kimi AI + Gemini</p>
-    </footer>
 </body>
 </html>
