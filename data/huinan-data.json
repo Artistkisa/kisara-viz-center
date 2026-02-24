@@ -1,14 +1,28 @@
 {
-  "humidity": 85.0,
-  "dew": 17.9,
-  "temp": 21.2,
-  "windDir": 182,
-  "windSpeed": 2.4,
-  "pressure": 1009.0,
+  "humidity": 88,
+  "dew": 18.0,
+  "temp": 21.0,
+  "windDir": 311,
+  "windSpeed": 2.0,
+  "pressure": 1006,
   "humidityChange3h": 0,
   "pressureDrop6h": 0,
-  "coreTrigger": {},
-  "confidence": "high",
-  "intensity": {},
-  "updatedAt": "2026-02-24T22:31:19.963578"
+  "coreTrigger": {
+    "humidityOK": true,
+    "dewDiffOK": false,
+    "humidityTrendOK": true,
+    "tempDewDiff": 3.0,
+    "allOK": false
+  },
+  "confidence": {
+    "score": 1,
+    "reasons": [
+      "\u6709\u98ce\u6d41\u52a8"
+    ]
+  },
+  "intensity": {
+    "level": "none",
+    "by": "\u6e7f\u5ea6"
+  },
+  "updatedAt": "2026-02-24T23:00:49.628034"
 }
