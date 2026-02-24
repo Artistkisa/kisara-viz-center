@@ -7972,6 +7972,35 @@
           }
         }
       }
+    },
+    {
+      "time": "2026-02-25 07:01:07",
+      "humidity": 89,
+      "temp": 19.0,
+      "dew": 17.0,
+      "windDir": 355,
+      "windSpeed": 4.0,
+      "pressure": 1006,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "tempDewDiff": 2.0,
+        "allOK": true
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "mild",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "ecs"
     }
   ],
   "multi_source": true,
@@ -8024,14 +8053,14 @@
       "warm_transport": {
         "satisfied": true,
         "method": "south_wind",
-        "ratio": 58.2,
-        "reason": "\u5357\u98ce\u8bb0\u5f5539/67 (58%) \u2265 50%"
+        "ratio": 60.6,
+        "reason": "\u5357\u98ce\u8bb0\u5f5543/71 (61%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
-        "pressure_change": 0.0,
+        "pressure_change": -1.0,
         "threshold": -2,
-        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316+0.0hPa \u2265 -2hPa"
+        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316-1.0hPa \u2265 -2hPa"
       }
     },
     "prediction": {
@@ -8050,5 +8079,5 @@
       "warnings": []
     }
   },
-  "lastCheck": "2026-02-25T06:15:27.388875"
+  "lastCheck": "2026-02-25T06:45:21.827135"
 }
