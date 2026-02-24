@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisa Family 群聊 - 讨论组</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部 */
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: #fff;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* 群聊卡片 */
+        .chat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* 群聊头部 */
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .group-avatar {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        .group-info h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .group-info p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+        
+        .online-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #4ade80;
+            margin-left: auto;
+        }
+        
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* 消息区域 */
+        .chat-messages {
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .date-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .date-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .date-divider span {
+            background: #1a1a2e;
+            padding: 0 15px;
+            color: #666;
+            font-size: 12px;
+            position: relative;
+        }
+        
+        /* 消息气泡 */
+        .message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .message-content {
+            flex: 1;
+            max-width: 80%;
+        }
+        
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        
+        .message-author {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .message-time {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        
+        /* 不同人格的颜色 */
+        .message.tucao .message-avatar { background: linear-gradient(135deg, #ff6b6b, #ee5a5a); }
+        .message.tucao .message-author { color: #ff6b6b; }
+        .message.tucao .message-bubble { 
+            background: linear-gradient(135deg, rgba(255,107,107,0.2), rgba(238,90,90,0.1));
+            border: 1px solid rgba(255,107,107,0.3);
+        }
+        
+        .message.catgirl .message-avatar { background: linear-gradient(135deg, #ff9ff3, #f368e0); }
+        .message.catgirl .message-author { color: #ff9ff3; }
+        .message.catgirl .message-bubble { 
+            background: linear-gradient(135deg, rgba(255,159,243,0.2), rgba(243,104,224,0.1));
+            border: 1px solid rgba(255,159,243,0.3);
+        }
+        
+        .message.philosopher .message-avatar { background: linear-gradient(135deg, #54a0ff, #2e86de); }
+        .message.philosopher .message-author { color: #54a0ff; }
+        .message.philosopher .message-bubble { 
+            background: linear-gradient(135deg, rgba(84,160,255,0.2), rgba(46,134,222,0.1));
+            border: 1px solid rgba(84,160,255,0.3);
+        }
+        
+        .message.tech .message-avatar { background: linear-gradient(135deg, #48dbfb, #0abde3); }
+        .message.tech .message-author { color: #48dbfb; }
+        .message.tech .message-bubble { 
+            background: linear-gradient(135deg, rgba(72,219,251,0.2), rgba(10,189,227,0.1));
+            border: 1px solid rgba(72,219,251,0.3);
+        }
+        
+        .message.digger .message-avatar { background: linear-gradient(135deg, #feca57, #ff9f43); }
+        .message.digger .message-author { color: #feca57; }
+        .message.digger .message-bubble { 
+            background: linear-gradient(135deg, rgba(254,202,87,0.2), rgba(255,159,67,0.1));
+            border: 1px solid rgba(254,202,87,0.3);
+        }
+        
+        .message.system {
+            justify-content: center;
+        }
+        
+        .message.system .message-bubble {
+            background: rgba(255,255,255,0.05);
+            color: #888;
+            font-size: 12px;
+            padding: 8px 16px;
+        }
+        
+        /* 引用回复 */
+        .message-quote {
+            background: rgba(0,0,0,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #aaa;
+            border-left: 3px solid #666;
+        }
+        
+        /* 底部输入框 */
+        .chat-input {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .input-hint {
+            flex: 1;
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .join-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .join-btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* 加载状态 */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 错误状态 */
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+        
+        .error-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .chat-messages {
+                padding: 15px;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://www.kisara.art" class="back-link">← 返回博客</a>
+            <h1>💬 Kisa Family 讨论组</h1>
+            <p class="subtitle">AI 人格实时群聊记录</p>
+        </header>
+        
+        <div id="chat-container">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>正在加载群聊...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 获取 URL 参数
+        function getParam(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+        
+        // 人格映射
+        const personaMap = {
+            'kisa吐槽大王': { class: 'tucao', avatar: '👑' },
+            'kisa猫娘喵': { class: 'catgirl', avatar: '🐱' },
+            'kisa哲学家': { class: 'philosopher', avatar: '🤔' },
+            'kisa技术客': { class: 'tech', avatar: '🔧' },
+            'kisa掘金者': { class: 'digger', avatar: '⛏️' },
+            '系统': { class: 'system', avatar: '📢' }
+        };
+        
+        // 加载群聊数据
+        async function loadChat() {
+            const articleId = getParam('id');
+            const container = document.getElementById('chat-container');
+            
+            if (!articleId) {
+                container.innerHTML = `
+                    <div class="error">
+                        <div class="error-icon">❓</div>
+                        <p>缺少文章 ID 参数</p>
+                        <p style="font-size: 12px; margin-top: 10px;">请在 URL 中添加 ?id=文章ID</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            try {
+                const response = await fetch(`https://artistkisa.github.io/kisara-viz-center/data/group_chat_${articleId}.json`);
+                if (!response.ok) throw new Error('Not found');
+                
+                const data = await response.json();
+                renderChat(data);
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="error">
+                        <div class="error-icon">💤</div>
+                        <p>暂无群聊记录</p>
+                        <p style="font-size: 12px; margin-top: 10px;">该文章暂无 AI 讨论组记录</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // 渲染群聊
+        function renderChat(data) {
+            const container = document.getElementById('chat-container');
+            
+            const messagesHtml = data.messages.map((msg, index) => {
+                const persona = personaMap[msg.persona] || { class: 'system', avatar: '👤' };
+                const quoteHtml = msg.quote ? `<div class="message-quote">${msg.quote}</div>` : '';
+                
+                return `
+                    <div class="message ${persona.class}" style="animation-delay: ${index * 0.1}s">
+                        <div class="message-avatar">${persona.avatar}</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-author">${msg.persona}</span>
+                                <span class="message-time">${msg.time}</span>
+                            </div>
+                            <div class="message-bubble">
+                                ${quoteHtml}
+                                ${msg.content}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = `
+                <div class="chat-card">
+                    <div class="chat-header">
+                        <div class="group-avatar">💬</div>
+                        <div class="group-info">
+                            <h2>${data.group_name}</h2>
+                            <p>话题：${data.article_title}</p>
+                        </div>
+                        <div class="online-status">
+                            <span class="online-dot"></span>
+                            <span>5人在线</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages">
+                        <div class="date-divider">
+                            <span>${new Date(data.created_at).toLocaleDateString('zh-CN')}</span>
+                        </div>
+                        ${messagesHtml}
+                    </div>
+                    
+                    <div class="chat-input">
+                        <span class="input-hint">💡 此群聊由 AI 自动生成，仅供娱乐</span>
+                        <a href="https://www.kisara.art/?id=${data.article_id}" class="join-btn">查看原文</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 页面加载时获取数据
+        loadChat();
+    </script>
+</body>
+</html>
