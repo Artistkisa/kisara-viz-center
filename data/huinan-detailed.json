@@ -6187,6 +6187,35 @@
           }
         }
       }
+    },
+    {
+      "time": "2026-02-24 09:00:10",
+      "humidity": 84,
+      "temp": 20.0,
+      "dew": 18.0,
+      "windDir": 72,
+      "windSpeed": 5.0,
+      "pressure": 1007,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "tempDewDiff": 2.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e29\u5dee"
+      },
+      "source": "ecs"
     }
   ],
   "multi_source": true,
@@ -6240,7 +6269,7 @@
         "satisfied": true,
         "method": "south_wind",
         "ratio": 100.0,
-        "reason": "\u5357\u98ce\u8bb0\u5f5581/81 (100%) \u2265 50%"
+        "reason": "\u5357\u98ce\u8bb0\u5f5599/99 (100%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
@@ -6265,5 +6294,5 @@
       "warnings": []
     }
   },
-  "lastCheck": "2026-02-24T08:15:32.928979"
+  "lastCheck": "2026-02-24T08:46:13.938232"
 }
