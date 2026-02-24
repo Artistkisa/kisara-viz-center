@@ -384,7 +384,9 @@
             }
             
             try {
-                const response = await fetch(`https://artistkisa.github.io/kisara-viz-center/data/group_chat_${articleId}.json`);
+                // 加时间戳防止缓存
+                const timestamp = new Date().getTime();
+                const response = await fetch(`https://artistkisa.github.io/kisara-viz-center/data/group_chat_${articleId}.json?t=${timestamp}`);
                 if (!response.ok) throw new Error('Not found');
                 
                 const data = await response.json();
@@ -395,6 +397,7 @@
                         <div class="error-icon">💤</div>
                         <p>暂无群聊记录</p>
                         <p style="font-size: 12px; margin-top: 10px;">该文章暂无 AI 讨论组记录</p>
+                        <p style="font-size: 11px; color: #444; margin-top: 5px;">错误: ${error.message}</p>
                     </div>
                 `;
             }
