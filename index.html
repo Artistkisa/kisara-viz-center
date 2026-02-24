@@ -3,54 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kisara 可视化中心 - 实时监控仪表盘</title>
-    <meta name="description" content="Kisara 可视化中心，提供回南天监测、带伞提醒、空气质量、台风追踪、追番列表等实时数据可视化服务。">
-    <meta name="keywords" content="Kisara,可视化,监控,回南天,带伞提醒,空气质量,台风,追番">
-    <link rel="canonical" href="https://monitor.kisara.info/">
-    <meta property="og:title" content="Kisara 可视化中心">
-    <meta property="og:description" content="实时监控数据可视化仪表盘">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://monitor.kisara.info/">
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JLQB2PE73Z');
-    </script>
-    
-    <!-- Schema.org 结构化数据 - WebSite + Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "name": "Kisara 可视化中心",
-          "url": "https://monitor.kisara.info/",
-          "description": "实时监控数据可视化仪表盘，提供天气、空气质量、回南天、台风、追番等数据服务",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://monitor.kisara.info/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "Organization",
-          "name": "Kisara 可视化中心",
-          "url": "https://monitor.kisara.info/",
-          "logo": "https://monitor.kisara.info/favicon.svg",
-          "sameAs": [
-            "https://github.com/artistkisa"
-          ]
-        }
-      ]
-    }
-    </script>
-    
+    <title>Kisara 可视化中心</title>
     <style>
         * {
             margin: 0;
@@ -59,49 +12,51 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             color: #fff;
+            padding: 20px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 60px;
+            padding: 60px 20px;
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .subtitle {
-            color: #8892b0;
-            font-size: 1.1rem;
+            font-size: 1.2em;
+            opacity: 0.8;
         }
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
@@ -110,240 +65,94 @@
         
         .card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.08);
         }
         
         .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3em;
+            margin-bottom: 15px;
         }
         
         .card h2 {
-            font-size: 1.5rem;
+            font-size: 1.5em;
             margin-bottom: 10px;
             color: #fff;
         }
         
         .card p {
-            color: #8892b0;
+            opacity: 0.7;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
         
-        .card-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 0.85rem;
-            color: #64ffda;
-        }
-        
-        .card-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .status {
+        .card-badge {
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #64ffda;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 15px;
         }
         
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #8892b0;
+            padding: 40px;
+            opacity: 0.5;
+            font-size: 14px;
         }
         
-        .update-time {
-            font-size: 0.9rem;
-            margin-top: 10px;
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌐 Kisara 可视化中心</h1>
-            <p class="subtitle">实时监控数据可视化仪表盘</p>
+            <h1>🌟 Kisara 可视化中心</h1>
+            <p class="subtitle">数据可视化与 AI 实验项目</p>
         </header>
         
         <div class="grid">
-            <!-- 台风监控 -->
-            <a href="./typhoon/" class="card">
-                <div class="card-icon">🌀</div>
-                <h2>台风监控</h2>
-                <p>实时台风追踪、路径预报、风圈半径可视化。整合和风天气 API，提供完整的台风生命周期档案。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 台风来临时生成</span>
-                    <span>📍 西北太平洋</span>
-                </div>
+            <!-- Kisa Family -->
+            <a href="kisa-family.html" class="card">
+                <div class="card-icon">👥</div>
+                <h2>Kisa*Family</h2>
+                <p>5个AI人格的虚拟内容创作团队。查看角色档案、互怼战绩、群聊讨论记录。</p>
+                <span class="card-badge">AI 人格实验</span>
             </a>
             
-            <!-- 空气质量 -->
-            <a href="./aqi/aqi-visualization.html" class="card">
-                <div class="card-icon">🌫️</div>
-                <h2>广州空气质量</h2>
-                <p>AQI、PM2.5、PM10 实时监测，24小时趋势分析，紫外线指数预警。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每天5次推送</span>
-                    <span>📍 广州</span>
-                </div>
+            <!-- 群聊讨论 -->
+            <a href="chat.html" class="card">
+                <div class="card-icon">💬</div>
+                <h2>群聊讨论组</h2>
+                <p>查看每篇文章背后的AI人格讨论。技术客、哲学家、吐槽大王、猫娘喵、掘金者的幕后对话。</p>
+                <span class="card-badge">幕后花絮</span>
             </a>
             
-            <!-- 回南天监测 -->
-            <a href="./huinan/huinan-visualization-v5.html" class="card">
-                <div class="card-icon">💧</div>
-                <h2>回南天监测</h2>
-                <p>湿度、露点温度监测，回南天预警与防护提醒。V5 多源数据融合，智能检测算法。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每天5次检测</span>
-                    <span>📍 广州</span>
-                </div>
+            <!-- 博客主页 -->
+            <a href="https://www.kisara.art" class="card" target="_blank">
+                <div class="card-icon">📝</div>
+                <h2>Kisara 博客</h2>
+                <p>AI自动生成的科技、游戏、文化文章。多源RSS聚合，人格化重写，自动配图。</p>
+                <span class="card-badge">主站</span>
             </a>
             
-            <!-- 带伞提醒 -->
-            <a href="./weather/take-umbrella-guangzhou.html" class="card">
-                <div class="card-icon">☂️</div>
-                <h2>带伞提醒</h2>
-                <p>广州天气实时监测，下雨自动提醒，历史数据分析，支持邮件订阅。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每90分钟检测</span>
-                    <span>📍 广州</span>
-                </div>
-            </a>
-            
-            <!-- 推送日志 -->
-            <div class="card" style="cursor: default;">
-                <div class="card-icon">📋</div>
-                <h2>推送日志监控</h2>
-                <p>服务器推送记录监控，包含 ECS 和主服务器的推送状态、成功率统计。</p>
-                <div class="card-meta" style="flex-direction: column; align-items: flex-start; gap: 10px;">
-                    <a href="./logs/push-log-visualization.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span class="status"></span> ECS 推送日志 →
-                    </a>
-                    <a href="./logs/heartbeat-monitor.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span class="status"></span> 💓 双向心跳监控 →
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 追番列表 -->
-            <a href="./anime/anime-visualization.html" class="card">
-                <div class="card-icon">📺</div>
-                <h2>追番列表</h2>
-                <p>动漫更新追踪，今日更新提醒，播出时间表，观看进度管理。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每天更新</span>
-                    <span>📺 新番</span>
-                </div>
-            </a>
-            
-            <!-- 网站监控 -->
-            <a href="./website/website-visualization.html" class="card">
-                <div class="card-icon">🌐</div>
-                <h2>网站运行状态</h2>
-                <p>Kisara 主站和论坛的实时监控，包含可用率、响应时间趋势分析。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每天5次推送</span>
-                    <span>📍 kisara.art</span>
-                </div>
-            </a>
-            
-            <!-- 词云 -->
-            <a href="./zblog-wordcloud.html" class="card">
-                <div class="card-icon">☁️</div>
-                <h2>博客词云</h2>
-                <p>基于 Zblog 文章生成的 4K 词云图，展示热门关键词和标签。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每小时更新</span>
-                    <span>📊 100词</span>
-                </div>
-            </a>
-            
-            <!-- 系统负载监控 -->
-            <a href="./system-load-visualization.html" class="card">
-                <div class="card-icon">📈</div>
-                <h2>系统负载监控</h2>
-                <p>主服务器实时性能监控，CPU、内存、磁盘、系统负载趋势分析。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> 每15分钟</span>
-                    <span>🖥️ 主服务器</span>
-                </div>
-            </a>
-            
-            <!-- ECS 状态 -->
-            <a href="./ecs-status.html" class="card">
-                <div class="card-icon">🖥️</div>
-                <h2>ECS 服务器</h2>
-                <p>数据采集节点运行状态，任务监控，备份管理。</p>
-                <div class="card-meta" id="ecs-status">
-                    <span><span class="status"></span> 加载中...</span>
-                    <span>📍 阿里云</span>
-                </div>
+            <!-- 系统状态 -->
+            <a href="data/system-load-daily.json" class="card" target="_blank">
+                <div class="card-icon">📊</div>
+                <h2>系统数据</h2>
+                <p>服务器负载、运行状态等系统监控数据。JSON格式，实时更新。</p>
+                <span class="card-badge">API</span>
             </a>
         </div>
         
         <footer>
-            <p>Powered by OpenClaw · 数据来自和风天气 / Bangumi 番组计划 · <a href="https://www.kisara.art" target="_blank" style="color: #64ffda; text-decoration: none;">📝 个人博客</a></p>
-            <p class="update-time">最后更新: <span id="updateTime">-</span></p>
+            <p>Kisara 可视化中心 © 2026</p>
+            <p style="margin-top: 10px; font-size: 12px;">Powered by OpenClaw + Kimi AI + Gemini</p>
         </footer>
     </div>
-    
-    <script>
-        // 显示最后更新时间
-        document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
-        
-        // ECS 状态显示
-        fetch('./ecs-state.json')
-            .then(r => r.json())
-            .then(data => {
-                const card = document.getElementById('ecs-status');
-                if (card && data.server) {
-                    const healthyTasks = data.tasks.filter(t => t.status === 'normal').length;
-                    const totalTasks = data.tasks.length;
-                    const mainServerStatus = data.mainServer.status === 'normal' ? '●' : '●';
-                    const mainServerColor = data.mainServer.status === 'normal' ? '#00c853' : '#ff1744';
-                    
-                    card.innerHTML = `
-                        <span>${healthyTasks}/${totalTasks} 任务正常</span>
-                        <span style="color: ${mainServerColor};">${mainServerStatus} 主服务器</span>
-                    `;
-                }
-            })
-            .catch(() => {
-                document.getElementById('ecs-status').innerHTML = '<span>状态未知</span><span>📍 阿里云</span>';
-            });
-        
-        // 回南天状态显示
-        fetch('./data/huinan-data.json')
-            .then(r => r.json())
-            .then(data => {
-                const card = document.querySelector('a[href="./huinan/huinan-visualization-v5.html"] .card-meta');
-                if (card && data.humidity > 0) {
-                    const level = data.intensity?.level || 'none';
-                    const levelText = {
-                        'mild': '🟡轻度',
-                        'moderate': '🟠中度', 
-                        'severe': '🔴重度'
-                    };
-                    const status = level !== 'none' ? (levelText[level] + ' ') : '';
-                    card.innerHTML = `<span>${status}${data.humidity}% 湿度</span><span>📍 广州</span>`;
-                }
-            })
-            .catch(() => {});
-    </script>
 </body>
 </html>
