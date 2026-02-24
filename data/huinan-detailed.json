@@ -7292,6 +7292,35 @@
           }
         }
       }
+    },
+    {
+      "time": "2026-02-24 23:00:02",
+      "humidity": 88,
+      "temp": 21.0,
+      "dew": 18.0,
+      "windDir": 311,
+      "windSpeed": 2.0,
+      "pressure": 1006,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 3.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "ecs"
     }
   ],
   "multi_source": true,
@@ -7369,5 +7398,5 @@
       "warnings": []
     }
   },
-  "lastCheck": "2026-02-24T22:15:35.162788"
+  "lastCheck": "2026-02-24T22:45:33.578898"
 }
