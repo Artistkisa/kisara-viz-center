@@ -6612,6 +6612,35 @@
           }
         }
       }
+    },
+    {
+      "time": "2026-02-24 14:00:24",
+      "humidity": 69,
+      "temp": 24.0,
+      "dew": 18.0,
+      "windDir": 93,
+      "windSpeed": 2.0,
+      "pressure": 1006,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "tempDewDiff": 6.0,
+        "allOK": false
+      },
+      "confidence": {
+        "score": 1,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u65e0"
+      },
+      "source": "ecs"
     }
   ],
   "multi_source": true,
@@ -6619,7 +6648,7 @@
     "qweather": 0.7,
     "openmeteo": 0.3
   },
-  "lastCheck": "2026-02-24T13:15:22.598930",
+  "lastCheck": "2026-02-24T13:45:38.959487",
   "nanhui_detection": {
     "status": "safe",
     "level": "none",
@@ -6665,8 +6694,8 @@
       "warm_transport": {
         "satisfied": true,
         "method": "south_wind",
-        "ratio": 54.7,
-        "reason": "\u5357\u98ce\u8bb0\u5f5529/53 (55%) \u2265 50%"
+        "ratio": 59.3,
+        "reason": "\u5357\u98ce\u8bb0\u5f5535/59 (59%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
