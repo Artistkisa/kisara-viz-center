@@ -1,7 +1,7 @@
 {
-  "time": "2026-02-25 00:01:08",
-  "humidity": 86,
-  "temp": 21.0,
+  "time": "2026-02-25 01:00:03",
+  "humidity": 87,
+  "temp": 20.0,
   "dew": 18.0,
   "windDir": 309,
   "windSpeed": 5.0,
@@ -10,10 +10,10 @@
   "pressureDrop6h": 0,
   "coreTrigger": {
     "humidityOK": true,
-    "dewDiffOK": false,
+    "dewDiffOK": true,
     "humidityTrendOK": true,
-    "tempDewDiff": 3.0,
-    "allOK": false
+    "tempDewDiff": 2.0,
+    "allOK": true
   },
   "confidence": {
     "score": 1,
@@ -22,7 +22,7 @@
     ]
   },
   "intensity": {
-    "level": "none",
+    "level": "mild",
     "by": "\u6e7f\u5ea6"
   }
 }
