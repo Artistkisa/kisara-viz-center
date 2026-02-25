@@ -356,7 +356,7 @@
         "value": "N/A",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-25T18:32:17.171287",
+      "observationDate": "2026-02-25T18:47:24.080170",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -490,7 +490,7 @@
                 <div class="stat-label">气压(hPa)</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">21.9</div>
+                <div class="stat-value">22.0</div>
                 <div class="stat-label">48h均温(°C)</div>
             </div>
             <div class="stat-box">
@@ -541,7 +541,7 @@
                 <div class="cond-item">
                     <div>
                         <div class="cond-name">暖湿输送</div>
-                        <div class="cond-detail">南风记录36/63 (57%) ≥ 50%</div>
+                        <div class="cond-detail">南风记录44/77 (57%) ≥ 50%</div>
                     </div>
                     <span class="cond-status ok">✓</span>
                 </div>
@@ -602,21 +602,40 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-25 18:32</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-02-25 18:47</p>
         </div>
         
         <!-- 订阅区域 -->
         <div style="max-width: 600px; margin: 40px auto; padding: 30px; background: #16213e; border-radius: 12px; text-align: center;">
             <h3 style="color: #00d9ff; margin-bottom: 15px;">📧 订阅回南天预警</h3>
             <p style="color: #888; margin-bottom: 20px; font-size: 14px;">当广州出现回南天天气时，自动发送邮件通知</p>
+            
             <form id="subscribeForm" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                 <input type="email" id="emailInput" placeholder="输入您的邮箱" required 
                     style="padding: 12px 20px; border: 1px solid #333; border-radius: 6px; background: #1a1a2e; color: #fff; min-width: 250px;">
-                <button type="submit" 
+                <button type="submit" id="submitBtn"
                     style="padding: 12px 30px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
-                    订阅
+                    获取验证码
                 </button>
             </form>
+            
+            <!-- 验证码区域 -->
+            <div id="captchaArea" style="display: none; margin-top: 20px;">
+                <p style="color: #888; margin-bottom: 15px; font-size: 14px;">请回答以下问题以完成验证：</p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; align-items: center;">
+                    <span id="mathQuestion" style="color: #00d9ff; font-size: 18px; font-weight: bold; padding: 12px 20px; background: #1a1a2e; border-radius: 6px;"></span>
+                    <input type="number" id="mathAnswer" placeholder="答案" required 
+                        style="padding: 12px 20px; border: 1px solid #333; border-radius: 6px; background: #1a1a2e; color: #fff; width: 100px; text-align: center; font-size: 16px;">
+                    <button type="button" id="verifyBtn"
+                        style="padding: 12px 30px; background: #4ecca3; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
+                        提交
+                    </button>
+                </div>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    <a href="#" id="changeEmailLink" style="color: #667eea; text-decoration: none;">更换邮箱</a>
+                </p>
+            </div>
+            
             <p id="subscribeMsg" style="margin-top: 15px; font-size: 13px; display: none;"></p>
             <p style="margin-top: 15px; font-size: 12px;">
                 <a href="#" id="unsubscribeLink" style="color: #667eea; text-decoration: none;">退订</a>
@@ -625,18 +644,84 @@
     </div>
     
     <script>
-        // 订阅功能
+        // 订阅功能 - 数学题验证码
+        const API_URL = 'https://www.kisara.art/zx/subscribe-challenge.php';
+        let pendingEmail = '';
+        let challengeToken = '';
+        
         document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('emailInput').value;
             const msg = document.getElementById('subscribeMsg');
+            const captchaArea = document.getElementById('captchaArea');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            pendingEmail = email;
             
             try {
-                const formData = new URLSearchParams();
-                formData.append('email', email);
-                formData.append('type', 'huinan');
+                // 获取数学题验证码
+                submitBtn.disabled = true;
+                submitBtn.textContent = '获取中...';
                 
-                const response = await fetch('https://www.kisara.art/subscribe.php', {
+                const formData = new URLSearchParams();
+                formData.append('action', 'get_challenge');
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    // 保存 token
+                    challengeToken = data.token;
+                    
+                    // 显示数学题
+                    document.getElementById('mathQuestion').textContent = data.challenge;
+                    captchaArea.style.display = 'block';
+                    document.getElementById('subscribeForm').style.display = 'none';
+                    document.getElementById('mathAnswer').value = '';
+                    document.getElementById('mathAnswer').focus();
+                    msg.style.display = 'none';
+                } else {
+                    msg.style.display = 'block';
+                    msg.style.color = '#e94560';
+                    msg.textContent = '❌ ' + (data.message || data.error || '获取失败');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '获取验证码';
+                }
+            } catch (err) {
+                msg.style.display = 'block';
+                msg.style.color = '#e94560';
+                msg.textContent = '❌ 网络错误，请稍后重试';
+                submitBtn.disabled = false;
+                submitBtn.textContent = '获取验证码';
+            }
+        });
+        
+        // 提交答案
+        document.getElementById('verifyBtn').addEventListener('click', async () => {
+            const answer = document.getElementById('mathAnswer').value;
+            const msg = document.getElementById('subscribeMsg');
+            const verifyBtn = document.getElementById('verifyBtn');
+            
+            if (!answer) {
+                alert('请输入答案');
+                return;
+            }
+            
+            try {
+                verifyBtn.disabled = true;
+                verifyBtn.textContent = '提交中...';
+                
+                const formData = new URLSearchParams();
+                formData.append('action', 'subscribe');
+                formData.append('email', pendingEmail);
+                formData.append('answer', answer);
+                formData.append('token', challengeToken);
+                
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
@@ -646,17 +731,51 @@
                 msg.style.display = 'block';
                 if (data.success) {
                     msg.style.color = '#4ecca3';
-                    msg.textContent = '✅ 订阅成功！您将收到回南天预警邮件。';
+                    msg.textContent = '✅ ' + (data.message || '订阅成功！');
+                    document.getElementById('captchaArea').style.display = 'none';
+                    document.getElementById('subscribeForm').style.display = 'flex';
                     document.getElementById('emailInput').value = '';
+                    document.getElementById('mathAnswer').value = '';
+                    challengeToken = '';
+                    verifyBtn.disabled = false;
+                    verifyBtn.textContent = '提交';
                 } else {
                     msg.style.color = '#e94560';
-                    msg.textContent = '❌ ' + (data.message || data.error || '订阅失败');
+                    msg.textContent = '❌ ' + (data.error || '订阅失败');
+                    verifyBtn.disabled = false;
+                    verifyBtn.textContent = '提交';
+                    // 如果答案错误，重新获取验证码
+                    if (data.error && data.error.includes('答案')) {
+                        document.getElementById('mathAnswer').value = '';
+                        document.getElementById('mathAnswer').focus();
+                    }
                 }
             } catch (err) {
                 msg.style.display = 'block';
                 msg.style.color = '#e94560';
                 msg.textContent = '❌ 网络错误，请稍后重试';
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = '提交';
             }
+        });
+        
+        // 回车键提交验证
+        document.getElementById('mathAnswer').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('verifyBtn').click();
+            }
+        });
+        
+        // 更换邮箱
+        document.getElementById('changeEmailLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('captchaArea').style.display = 'none';
+            document.getElementById('subscribeForm').style.display = 'flex';
+            document.getElementById('mathAnswer').value = '';
+            document.getElementById('subscribeMsg').style.display = 'none';
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').textContent = '获取验证码';
+            challengeToken = '';
         });
         
         document.getElementById('unsubscribeLink').addEventListener('click', (e) => {
