@@ -8447,9 +8447,10 @@
         "reason": "\u6e29\u5ea623.6\u2103>20\u2103, \u6e7f\u5ea673.0%<85%"
       },
       "warm_transport": {
-        "satisfied": false,
-        "method": "none",
-        "reason": "\u5357\u98ce\u5360\u6bd4<50%\u4e14\u9732\u70b9\u4e0a\u5347<2\u2103/3h"
+        "satisfied": true,
+        "method": "south_wind",
+        "ratio": 50.0,
+        "reason": "\u5357\u98ce\u8bb0\u5f5536/72 (50%) \u2265 50%"
       },
       "pressure_falling": {
         "satisfied": false,
@@ -8474,5 +8475,5 @@
       "warnings": []
     }
   },
-  "lastCheck": "2026-02-25T11:31:19.789822"
+  "lastCheck": "2026-02-25T11:45:42.486680"
 }
