@@ -162,23 +162,23 @@
         <div class="grid">
             <div class="card">
                 <h3>AQI 空气质量指数</h3>
-                <div class="value">57<span class="unit"></span></div>
+                <div class="value">53<span class="unit"></span></div>
                 <span class="level level-moderate">良</span>
             </div>
             
             <div class="card">
                 <h3>PM2.5</h3>
-                <div class="value">33.17<span class="unit"> μg/m³</span></div>
+                <div class="value">37<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>PM10</h3>
-                <div class="value">62.5<span class="unit"> μg/m³</span></div>
+                <div class="value">54<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>紫外线指数</h3>
-                <div class="value">2<span class="unit"></span></div>
+                <div class="value">3<span class="unit"></span></div>
             </div>
         </div>
         
@@ -190,7 +190,7 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-24 20:00:07</p>
+        <p class="update-time">最后更新: 2026-02-25 08:00:46</p>
     </div>
     
     <script>
@@ -198,10 +198,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["12:01", "00:00", "06:01", "12:00"],
+                labels: ["06:01", "12:00", "00:00"],
                 datasets: [{
                     label: 'AQI',
-                    data: [41, 49, 55, 57],
+                    data: [55, 57, 53],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -224,10 +224,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["12:01", "00:00", "06:01", "12:00"],
+                labels: ["06:01", "12:00", "00:00"],
                 datasets: [{
                     label: 'PM2.5',
-                    data: [25.17, 24.17, 31.17, 33.17],
+                    data: [31.17, 33.17, 37],
                     borderColor: '#f093fb',
                     backgroundColor: 'rgba(240, 147, 251, 0.1)',
                     tension: 0.4,
