@@ -9445,7 +9445,7 @@
   "nanhui_detection": {
     "status": "risk",
     "level": "watch",
-    "confidence": 0.6499999999999999,
+    "confidence": 0.75,
     "message": "\u56de\u5357\u5929\u98ce\u9669\uff1a\u4e2a\u522b\u6761\u4ef6\u6ee1\u8db3\uff0c\u5173\u6ce8\u8d8b\u52bf",
     "current": {
       "temp": 20.1,
@@ -9488,13 +9488,13 @@
         "satisfied": true,
         "method": "south_wind",
         "ratio": 100.0,
-        "reason": "\u5357\u98ce\u8bb0\u5f5564/64 (100%) \u2265 50%"
+        "reason": "\u5357\u98ce\u8bb0\u5f5568/68 (100%) \u2265 50%"
       },
       "pressure_falling": {
-        "satisfied": false,
-        "pressure_change": -1.4,
+        "satisfied": true,
+        "pressure_change": -2.7,
         "threshold": -2,
-        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316-1.4hPa \u2265 -2hPa"
+        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316-2.7hPa < -2hPa"
       }
     },
     "prediction": {
@@ -9513,5 +9513,5 @@
       "warnings": []
     }
   },
-  "lastCheck": "2026-02-26T06:15:31.264880"
+  "lastCheck": "2026-02-26T06:45:20.674450"
 }
