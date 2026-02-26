@@ -162,18 +162,18 @@
         <div class="grid">
             <div class="card">
                 <h3>AQI 空气质量指数</h3>
-                <div class="value">18<span class="unit"></span></div>
+                <div class="value">31<span class="unit"></span></div>
                 <span class="level level-good">优</span>
             </div>
             
             <div class="card">
                 <h3>PM2.5</h3>
-                <div class="value">9<span class="unit"> μg/m³</span></div>
+                <div class="value">16.33<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>PM10</h3>
-                <div class="value">17.17<span class="unit"> μg/m³</span></div>
+                <div class="value">30.83<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
@@ -190,7 +190,7 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-26 08:01:02</p>
+        <p class="update-time">最后更新: 2026-02-26 20:00:15</p>
     </div>
     
     <script>
@@ -198,10 +198,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ["12:03", "00:00"],
+                labels: ["12:03", "06:02", "12:00"],
                 datasets: [{
                     label: 'AQI',
-                    data: [54, 18],
+                    data: [54, 29, 31],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -224,10 +224,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ["12:03", "00:00"],
+                labels: ["12:03", "06:02", "12:00"],
                 datasets: [{
                     label: 'PM2.5',
-                    data: [36.67, 9],
+                    data: [36.67, 16.33, 16.33],
                     borderColor: '#f093fb',
                     backgroundColor: 'rgba(240, 147, 251, 0.1)',
                     tension: 0.4,
