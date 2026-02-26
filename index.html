@@ -11,7 +11,15 @@
     <meta property="og:description" content="实时监控数据可视化仪表盘">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://monitor.kisara.info/">
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <!-- 预连接优化 -->
+    <link rel="preconnect" href="https://www.kisara.art">
+    <link rel="preconnect" href="https://forum.kisara.art">
+    <link rel="dns-prefetch" href="https://www.kisara.art">
+    <link rel="dns-prefetch" href="https://forum.kisara.art">
+    
+    <!-- 友情链接预加载 -->
+    <link rel="prefetch" href="https://www.kisara.art">
+    <link rel="prefetch" href="https://forum.kisara.art">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
@@ -44,7 +52,9 @@
           "url": "https://monitor.kisara.info/",
           "logo": "https://monitor.kisara.info/favicon.svg",
           "sameAs": [
-            "https://github.com/artistkisa"
+            "https://github.com/artistkisa",
+            "https://www.kisara.art",
+            "https://forum.kisara.art"
           ]
         }
       ]
@@ -87,6 +97,39 @@
         
         .subtitle {
             color: #8892b0;
+            font-size: 1.1rem;
+        }
+        
+        .main-nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.25);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-icon {
             font-size: 1.1rem;
         }
         
@@ -178,6 +221,14 @@
         <header>
             <h1>🌐 Kisara 可视化中心</h1>
             <p class="subtitle">实时监控数据可视化仪表盘</p>
+            <nav class="main-nav">
+                <a href="https://www.kisara.art" target="_blank" rel="noopener dofollow" class="nav-link">
+                    <span class="nav-icon">📝</span> 个人博客
+                </a>
+                <a href="https://forum.kisara.art" target="_blank" rel="noopener dofollow" class="nav-link">
+                    <span class="nav-icon">💬</span> 社区论坛
+                </a>
+            </nav>
         </header>
         
         <div class="grid">
@@ -284,17 +335,6 @@
                 </div>
             </a>
             
-            <!-- Kisa Family -->
-            <a href="./kisa-family.html" class="card">
-                <div class="card-icon">👥</div>
-                <h2>Kisa*Family</h2>
-                <p>5个AI人格的虚拟内容创作团队。查看角色档案、互怼战绩、幕后群聊讨论记录。</p>
-                <div class="card-meta">
-                    <span><span class="status"></span> AI 自动发文</span>
-                    <span>🤖 人格实验</span>
-                </div>
-            </a>
-            
             <!-- ECS 状态 -->
             <a href="./ecs-status.html" class="card">
                 <div class="card-icon">🖥️</div>
@@ -308,7 +348,10 @@
         </div>
         
         <footer>
-            <p>Powered by OpenClaw · 数据来自和风天气 / Bangumi 番组计划 · <a href="https://www.kisara.art" target="_blank" style="color: #64ffda; text-decoration: none;">📝 个人博客</a></p>
+            <p>Powered by OpenClaw · 数据来自和风天气 / Bangumi 番组计划 · 
+                <a href="https://www.kisara.art" target="_blank" rel="noopener dofollow" style="color: #64ffda; text-decoration: none;">📝 个人博客</a> · 
+                <a href="https://forum.kisara.art" target="_blank" rel="noopener dofollow" style="color: #64ffda; text-decoration: none;">💬 社区论坛</a>
+            </p>
             <p class="update-time">最后更新: <span id="updateTime">-</span></p>
         </footer>
     </div>
@@ -358,4 +401,3 @@
     </script>
 </body>
 </html>
-
