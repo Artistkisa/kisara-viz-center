@@ -123,15 +123,15 @@
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">0%</div>
+                    <div class="metric-value">100.0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">623ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">485.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -150,15 +150,15 @@
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">0%</div>
+                    <div class="metric-value">100.0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">623ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">623.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-28 01:05:02</p>
+        <p class="update-time">最后更新: 2026-02-28 01:35:02</p>
     </div>
     
     <script>
@@ -175,10 +175,10 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: [],
+                labels: ["17:30", "17:30"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [],
+                    data: [347, 623],
                     borderColor: '#00c853',
                     backgroundColor: 'rgba(0, 200, 83, 0.1)',
                     tension: 0.4,
@@ -210,10 +210,10 @@
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: [],
+                labels: ["17:30", "17:30"],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [],
+                    data: [623, 0],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
