@@ -33,7 +33,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #7f8c8d 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #3498db 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #fff;
@@ -56,7 +56,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #95a5a6;
+            background: #3498db;
             border-radius: 50%;
             opacity: 0.3;
             animation: float 15s infinite;
@@ -117,7 +117,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(149, 165, 166, 0.5);
+            text-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
         }
         
         .subtitle {
@@ -133,14 +133,14 @@
             padding: 40px;
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(52, 152, 219, 0.5);
             text-align: center;
             transition: all 0.3s ease;
         }
         
         .current-weather:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(52, 152, 219, 0.5);
         }
         
         .weather-icon {
@@ -187,7 +187,7 @@
         .detail-value {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #95a5a6;
+            color: #3498db;
         }
         
         .detail-label {
@@ -252,7 +252,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #95a5a6;
+            color: #3498db;
         }
         
         .stat-label {
@@ -298,7 +298,7 @@
         
         .bar {
             width: 40px;
-            background: linear-gradient(to top, #95a5a6, rgba(255,255,255,0.3));
+            background: linear-gradient(to top, #3498db, rgba(255,255,255,0.3));
             border-radius: 10px 10px 0 0;
             transition: all 0.3s;
             position: relative;
@@ -443,10 +443,10 @@
       },
       "humidity": {
         "@type": "QuantitativeValue",
-        "value": "90",
+        "value": "94",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-27T04:41:25.408317",
+      "observationDate": "2026-02-28T11:12:40.929944",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -468,33 +468,33 @@
     <div class="particles" id="particles"></div>
     
     <!-- 雨天特效 -->
-    <div class="rain " id="rain"></div>
+    <div class="rain active" id="rain"></div>
     
     <div class="container">
         <a href="../" class="back-link">← 返回监控中心</a>
         <header>
             <h1>🌤️ 广州天气 · 带伞提醒</h1>
-            <p class="subtitle">2026-02-27 更新 · 保留一年历史数据</p>
+            <p class="subtitle">2026-02-28 更新 · 保留一年历史数据</p>
             <a href="./take-umbrella-history.html" class="history-link">📊 查看历史数据</a>
         </header>
         
         <!-- 当前天气 -->
         <div class="current-weather">
         
-            <span class="weather-icon">☁️</span>
+            <span class="weather-icon">🌦️</span>
             <div class="temperature">21<span>°C</span></div>
-            <div class="weather-desc">阴 · 体感 22°C</div>
+            <div class="weather-desc">阵雨 · 体感 22°C</div>
             <div class="weather-details">
                 <div class="detail-item">
-                    <div class="detail-value">90% </div>
+                    <div class="detail-value">94% </div>
                     <div class="detail-label">湿度</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">1级</div>
+                    <div class="detail-value">2级</div>
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">04:41:25</div>
+                    <div class="detail-value">11:12:40</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -506,7 +506,7 @@
         
             <div class="umbrella-icon">☂️</div>
             <div class="umbrella-text">今天记得带伞喵~</div>
-            <div class="umbrella-sub">阴 · 21°C · 湿度90%</div>
+            <div class="umbrella-sub">阵雨 · 21°C · 湿度94% · 已发送提醒</div>
         
         </div>
         
@@ -514,7 +514,7 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon">🌧️</div>
-                <div class="stat-value">0</div>
+                <div class="stat-value">1</div>
                 <div class="stat-label">下雨天数</div>
             </div>
             <div class="stat-card">
@@ -529,7 +529,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">☂️</div>
-                <div class="stat-value">12</div>
+                <div class="stat-value">13</div>
                 <div class="stat-label">带伞提醒次数</div>
             </div>
         </div>
@@ -574,6 +574,12 @@
                             <span class="bar-temp">21°</span>
                         </div>
                         <div class="bar-label">02/27<br>周四</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar rain" style="height: 63px;">
+                            <span class="bar-temp">21°</span>
+                        </div>
+                        <div class="bar-label">02/28<br>周五</div>
                     </div>
                     
             </div>
@@ -623,11 +629,11 @@
                         <div class="day-weather">阴 ☂️</div>
                     </div>
                     
-                    <div class="day-card ">
+                    <div class="day-card alert">
                         <div class="day-date">02/28 周五</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
+                        <div class="day-icon">🌦️</div>
+                        <div class="day-temp">21°C</div>
+                        <div class="day-weather">阵雨 ☂️</div>
                     </div>
                     
             </div>
@@ -639,7 +645,7 @@
             <div class="stats-grid" style="margin-top: 20px;">
                 <div class="stat-card">
                     <div class="stat-icon">🌧️</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">1</div>
                     <div class="stat-label">雨天</div>
                 </div>
                 <div class="stat-card">
@@ -649,12 +655,12 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">☁️</div>
-                    <div class="stat-value">6</div>
+                    <div class="stat-value">5</div>
                     <div class="stat-label">多云</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🌫️</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">1</div>
                     <div class="stat-label">其他</div>
                 </div>
             </div>
@@ -662,7 +668,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-02-28 11:04:58</p>
+            <p>生成时间: 2026-02-28 11:13:01</p>
         </footer>
     </div>
     
@@ -679,13 +685,13 @@
         }
         
         // 雨天特效
-        
-        
+        const rainContainer = document.getElementById("rain");
+        for (let i = 0; i < 50; i++) { const drop = document.createElement("div"); drop.className = "rain-drop"; drop.style.left = Math.random() * 100 + "%"; drop.style.animationDuration = (0.5 + Math.random() * 0.5) + "s"; drop.style.animationDelay = Math.random() * 2 + "s"; rainContainer.appendChild(drop); }
     </script>
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
+         data-weather-level="rain-light"
          data-need-umbrella="true"
     ></div>
     
