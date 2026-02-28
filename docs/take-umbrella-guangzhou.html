@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州天气带伞提醒 - 实时监控与历史数据 | Kisara 可视化中心</title>
+    <meta name="description" content="广州天气实时监控，自动检测雨天并发送带伞提醒。查看温度、湿度趋势，一年历史数据查询，支持邮件订阅提醒服务。">
+    <meta name="keywords" content="广州天气,带伞提醒,雨天预警,温度湿度,天气预报,实时监控">
+    <link rel="canonical" href="https://monitor.kisara.info/weather/take-umbrella-guangzhou.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="广州天气带伞提醒 - 实时监控">
+    <meta property="og:description" content="广州天气实时监控，自动检测雨天并发送带伞提醒">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/weather/take-umbrella-guangzhou.html">
+    <meta property="og:image" content="https://monitor.kisara.info/og-weather.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="广州天气带伞提醒">
+    <meta name="twitter:description" content="实时监控广州天气，雨天自动提醒带伞">
+    
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    
+    <!-- 订阅组件样式 -->
+    <link rel="stylesheet" href="https://monitor.kisara.info/umbrella/umbrella-subscribe.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #7f8c8d 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* 动态背景粒子效果 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #95a5a6;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* 雨天特效 */
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        
+        .rain.active {
+            opacity: 1;
+        }
+        
+        .rain-drop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, rgba(174, 194, 224, 0.6));
+            animation: rain-fall linear infinite;
+        }
+        
+        @keyframes rain-fall {
+            to { transform: translateY(100vh); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* 头部 */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(149, 165, 166, 0.5);
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* 当前天气卡片 */
+        .current-weather {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.5);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .current-weather:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.5);
+        }
+        
+        .weather-icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .temperature {
+            font-size: 5rem;
+            font-weight: 200;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .temperature span {
+            font-size: 2rem;
+            vertical-align: top;
+        }
+        
+        .weather-desc {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .weather-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #95a5a6;
+        }
+        
+        .detail-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 5px;
+        }
+        
+        /* 带伞提醒 */
+        .umbrella-alert {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.3));
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .umbrella-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .umbrella-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .umbrella-sub {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #95a5a6;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+        
+        /* 7天趋势 */
+        .trend-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trend-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 150px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .trend-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 80px;
+        }
+        
+        .bar {
+            width: 40px;
+            background: linear-gradient(to top, #95a5a6, rgba(255,255,255,0.3));
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .bar:hover {
+            opacity: 0.8;
+        }
+        
+        .bar.rain {
+            background: linear-gradient(to top, #3498db, rgba(52, 152, 219, 0.3));
+        }
+        
+        .bar-label {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
+        
+        .bar-temp {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* 7天卡片 */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .day-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .day-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .day-card.alert {
+            border-color: rgba(231, 76, 60, 0.5);
+            background: rgba(231, 76, 60, 0.1);
+        }
+        
+        .day-date {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 5px;
+        }
+        
+        .day-icon {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+        
+        .day-temp {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .day-weather {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .temperature { font-size: 3.5rem; }
+            .weather-icon { font-size: 4rem; }
+            .weather-details { gap: 20px; }
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: #fff; }
+        .history-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            border-radius: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .history-link:hover {
+            background: rgba(102, 126, 234, 0.4);
+            color: #fff;
+        }
+    </style>
+    
+    <!-- Schema.org 结构化数据 - WeatherObservation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WeatherObservation",
+      "name": "广州天气监测 - 带伞提醒",
+      "description": "广州天气实时监控，自动检测雨天并发送带伞提醒",
+      "observationAbout": {
+        "@type": "City",
+        "name": "广州",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "广州",
+          "addressRegion": "广东",
+          "addressCountry": "CN"
+        }
+      },
+      "temperature": {
+        "@type": "QuantitativeValue",
+        "value": "21",
+        "unitCode": "CEL"
+      },
+      "humidity": {
+        "@type": "QuantitativeValue",
+        "value": "90",
+        "unitCode": "P1"
+      },
+      "observationDate": "2026-02-27T04:41:25.408317",
+      "provider": {
+        "@type": "Organization",
+        "name": "Kisara 可视化中心",
+        "url": "https://monitor.kisara.info"
+      }
+    }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JLQB2PE73Z');
+    </script>
+</head>
+<body>
+    <!-- 背景粒子 -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- 雨天特效 -->
+    <div class="rain " id="rain"></div>
+    
+    <div class="container">
+        <a href="../" class="back-link">← 返回监控中心</a>
+        <header>
+            <h1>🌤️ 广州天气 · 带伞提醒</h1>
+            <p class="subtitle">2026-02-27 更新 · 保留一年历史数据</p>
+            <a href="./take-umbrella-history.html" class="history-link">📊 查看历史数据</a>
+        </header>
+        
+        <!-- 当前天气 -->
+        <div class="current-weather">
+        
+            <span class="weather-icon">☁️</span>
+            <div class="temperature">21<span>°C</span></div>
+            <div class="weather-desc">阴 · 体感 22°C</div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <div class="detail-value">90% </div>
+                    <div class="detail-label">湿度</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-value">1级</div>
+                    <div class="detail-label">风力</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-value">04:41:25</div>
+                    <div class="detail-label">更新时间</div>
+                </div>
+            </div>
+        
+        </div>
+        
+        <!-- 带伞提醒 -->
+        <div class="umbrella-alert">
+        
+            <div class="umbrella-icon">☂️</div>
+            <div class="umbrella-text">今天记得带伞喵~</div>
+            <div class="umbrella-sub">阴 · 21°C · 湿度90%</div>
+        
+        </div>
+        
+        <!-- 统计 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🌧️</div>
+                <div class="stat-value">0</div>
+                <div class="stat-label">下雨天数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">☀️</div>
+                <div class="stat-value">0</div>
+                <div class="stat-label">晴朗天数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">☁️</div>
+                <div class="stat-value">6</div>
+                <div class="stat-label">多云天数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">☂️</div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">带伞提醒次数</div>
+            </div>
+        </div>
+        
+        <!-- 7天趋势 -->
+        <div class="trend-section">
+            <h2 class="section-title">📈 近7天温度趋势</h2>
+            
+            <div class="trend-chart">
+                <div class="trend-bar">
+                        <div class="bar " style="height: 54px;">
+                            <span class="bar-temp">18°</span>
+                        </div>
+                        <div class="bar-label">02/22<br>周六</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar " style="height: 63px;">
+                            <span class="bar-temp">21°</span>
+                        </div>
+                        <div class="bar-label">02/23<br>周日</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar " style="height: 66px;">
+                            <span class="bar-temp">22°</span>
+                        </div>
+                        <div class="bar-label">02/24<br>周一</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar rain" style="height: 66px;">
+                            <span class="bar-temp">22°</span>
+                        </div>
+                        <div class="bar-label">02/25<br>周二</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar rain" style="height: 66px;">
+                            <span class="bar-temp">22°</span>
+                        </div>
+                        <div class="bar-label">02/26<br>周三</div>
+                    </div>
+                    <div class="trend-bar">
+                        <div class="bar rain" style="height: 63px;">
+                            <span class="bar-temp">21°</span>
+                        </div>
+                        <div class="bar-label">02/27<br>周四</div>
+                    </div>
+                    
+            </div>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 1.1rem;">📅 7天概览</h3>
+            <div class="days-grid">
+                
+                    <div class="day-card alert">
+                        <div class="day-date">02/22 周六</div>
+                        <div class="day-icon">☀️</div>
+                        <div class="day-temp">18°C</div>
+                        <div class="day-weather">晴 ☂️</div>
+                    </div>
+                    
+                    <div class="day-card alert">
+                        <div class="day-date">02/23 周日</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">21°C</div>
+                        <div class="day-weather">阴 ☂️</div>
+                    </div>
+                    
+                    <div class="day-card ">
+                        <div class="day-date">02/24 周一</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">22°C</div>
+                        <div class="day-weather">阴</div>
+                    </div>
+                    
+                    <div class="day-card alert">
+                        <div class="day-date">02/25 周二</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">22°C</div>
+                        <div class="day-weather">阴 ☂️</div>
+                    </div>
+                    
+                    <div class="day-card alert">
+                        <div class="day-date">02/26 周三</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">22°C</div>
+                        <div class="day-weather">阴 ☂️</div>
+                    </div>
+                    
+                    <div class="day-card alert">
+                        <div class="day-date">02/27 周四</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">21°C</div>
+                        <div class="day-weather">阴 ☂️</div>
+                    </div>
+                    
+                    <div class="day-card ">
+                        <div class="day-date">02/28 周五</div>
+                        <div class="day-icon">❓</div>
+                        <div class="day-temp">None°C</div>
+                        <div class="day-weather">无数据</div>
+                    </div>
+                    
+            </div>
+        </div>
+        
+        <!-- 月度统计 -->
+        <div class="trend-section">
+            <h2 class="section-title">📊 近30天统计</h2>
+            <div class="stats-grid" style="margin-top: 20px;">
+                <div class="stat-card">
+                    <div class="stat-icon">🌧️</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">雨天</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">☀️</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">晴天</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">☁️</div>
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">多云</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌫️</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">其他</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
+            <p>生成时间: 2026-02-28 11:04:58</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 生成背景粒子
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+        
+        // 雨天特效
+        
+        
+    </script>
+    
+    <!-- 订阅组件容器 -->
+    <div id="umbrella-subscribe-container" 
+         data-weather-level="cloudy"
+         data-need-umbrella="true"
+    ></div>
+    
+    <!-- 订阅组件脚本 -->
+    <script src="https://monitor.kisara.info/umbrella/umbrella-subscribe.js"></script>
+</body>
+</html>
