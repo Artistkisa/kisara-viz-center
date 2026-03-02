@@ -1954,6 +1954,7 @@
           }
         }
       }
+<<<<<<< HEAD
     },
     {
       "timestamp": "2026-02-24T22:00:29.423393",
@@ -13444,6 +13445,8 @@
           }
         }
       }
+=======
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
     }
   ],
   "multi_source": true,
@@ -13454,6 +13457,7 @@
   "nanhui_detection": {
     "status": "risk",
     "level": "watch",
+<<<<<<< HEAD
     "confidence": 0.44999999999999996,
     "message": "\u56de\u5357\u5929\u98ce\u9669\uff1a\u4e2a\u522b\u6761\u4ef6\u6ee1\u8db3\uff0c\u5173\u6ce8\u8d8b\u52bf",
     "current": {
@@ -13464,17 +13468,34 @@
       "windDir": 17,
       "windSpeed": 7.1,
       "timestamp": "2026-03-03T03:00:11.694862"
+=======
+    "confidence": 0.5499999999999999,
+    "message": "\u56de\u5357\u5929\u98ce\u9669\uff1a\u4e2a\u522b\u6761\u4ef6\u6ee1\u8db3\uff0c\u5173\u6ce8\u8d8b\u52bf",
+    "current": {
+      "temp": 22.3,
+      "humidity": 81.5,
+      "dew": 17.5,
+      "pressure": 1006.1,
+      "windDir": 51,
+      "windSpeed": 2.9,
+      "timestamp": "2026-02-24T20:01:10.944781"
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
     },
     "conditions": {
       "cold_base": {
         "satisfied": false,
         "level": "not_cold",
+<<<<<<< HEAD
         "avg_temp": 21.7,
+=======
+        "avg_temp": 21.5,
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
         "window_hours": 48,
         "reason": "\u4e0d\u591f\u51b7\uff0848h\u5747\u6e29>14\u2103\uff09"
       },
       "rapid_warming": {
         "satisfied": false,
+<<<<<<< HEAD
         "temp_rise": -6.0,
         "threshold": 8,
         "reason": "24\u5c0f\u65f6\u5347\u6e29-6.0\u2103 < 8\u2103\uff08not_cold\uff09"
@@ -13486,11 +13507,25 @@
         "offset": 3.0,
         "dew_diff": 0.4,
         "reason": "\u9732\u70b913.5\u2103 vs \u8868\u9762\u4f30\u8ba113.1\u2103(\u504f\u79fb-3.0\u2103) \u5dee0.4\u2103"
+=======
+        "temp_rise": -0.6,
+        "threshold": 8,
+        "reason": "24\u5c0f\u65f6\u5347\u6e29-0.6\u2103 < 8\u2103\uff08not_cold\uff09"
+      },
+      "dew_close_surface": {
+        "satisfied": true,
+        "dew_point": 17.5,
+        "surface_temp_est": 19.3,
+        "offset": 3.0,
+        "dew_diff": -1.8,
+        "reason": "\u9732\u70b917.5\u2103 vs \u8868\u9762\u4f30\u8ba119.3\u2103(\u504f\u79fb-3.0\u2103) \u5dee-1.8\u2103"
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
       },
       "warm_moist": {
         "satisfied": false,
         "high_temp": false,
         "high_humidity": false,
+<<<<<<< HEAD
         "reason": "\u6e29\u5ea616.1\u2103\u226420\u2103, \u6e7f\u5ea679.5%<85%"
       },
       "warm_transport": {
@@ -13503,23 +13538,53 @@
         "pressure_change": 2.4,
         "threshold": -2,
         "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316+2.4hPa \u2265 -2hPa"
+=======
+        "reason": "\u6e29\u5ea622.3\u2103>20\u2103, \u6e7f\u5ea681.5%<85%"
+      },
+      "warm_transport": {
+        "satisfied": true,
+        "method": "south_wind",
+        "ratio": 59.0,
+        "reason": "\u5357\u98ce\u8bb0\u5f5536/61 (59%) \u2265 50%"
+      },
+      "pressure_falling": {
+        "satisfied": false,
+        "pressure_change": -1.4,
+        "threshold": -2,
+        "reason": "6\u5c0f\u65f6\u6c14\u538b\u53d8\u5316-1.4hPa \u2265 -2hPa"
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
       }
     },
     "prediction": {
       "available": true,
       "6h": {
+<<<<<<< HEAD
         "humidity": 78.5,
         "temp": 15.8,
         "dew": 13.2,
+=======
+        "humidity": 85.4,
+        "temp": 21.6,
+        "dew": 17.4,
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
         "may_trigger": false,
         "confidence": 0.3
       },
       "trends": {
+<<<<<<< HEAD
         "humidity_per_6h": -0.95,
         "temp_per_6h": -0.27
+=======
+        "humidity_per_6h": 3.88,
+        "temp_per_6h": -0.72
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
       },
       "warnings": []
     }
   },
+<<<<<<< HEAD
   "lastCheck": "2026-03-03T03:15:48.124311"
+=======
+  "lastCheck": "2026-02-24T21:06:18.505557"
+>>>>>>> 76d92f01 (Update push log visualization - 2026-02-25 20:14:32)
 }
