@@ -198,7 +198,7 @@
         
         /* 带伞提醒 */
         .umbrella-alert {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(39, 174, 96, 0.3));
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.3));
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
@@ -438,15 +438,15 @@
       },
       "temperature": {
         "@type": "QuantitativeValue",
-        "value": "22",
+        "value": "13",
         "unitCode": "CEL"
       },
       "humidity": {
         "@type": "QuantitativeValue",
-        "value": "80",
+        "value": "91",
         "unitCode": "P1"
       },
-      "observationDate": "2026-02-24T19:41:25.249182",
+      "observationDate": "2026-03-03T21:11:26.192556",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -474,7 +474,7 @@
         <a href="../" class="back-link">← 返回监控中心</a>
         <header>
             <h1>🌤️ 广州天气 · 带伞提醒</h1>
-            <p class="subtitle">2026-02-24 更新 · 保留一年历史数据</p>
+            <p class="subtitle">2026-03-03 更新 · 保留一年历史数据</p>
             <a href="./take-umbrella-history.html" class="history-link">📊 查看历史数据</a>
         </header>
         
@@ -482,11 +482,11 @@
         <div class="current-weather">
         
             <span class="weather-icon">☁️</span>
-            <div class="temperature">22<span>°C</span></div>
-            <div class="weather-desc">阴 · 体感 27°C</div>
+            <div class="temperature">13<span>°C</span></div>
+            <div class="weather-desc">雨 · 体感 15°C</div>
             <div class="weather-details">
                 <div class="detail-item">
-                    <div class="detail-value">80% </div>
+                    <div class="detail-value">91% </div>
                     <div class="detail-label">湿度</div>
                 </div>
                 <div class="detail-item">
@@ -494,7 +494,7 @@
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">19:41:25</div>
+                    <div class="detail-value">21:11:26</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -504,9 +504,9 @@
         <!-- 带伞提醒 -->
         <div class="umbrella-alert">
         
-            <div class="umbrella-icon">🌤️</div>
-            <div class="umbrella-text">今天不用带伞</div>
-            <div class="umbrella-sub">阴 · 22°C · 湿度80%</div>
+            <div class="umbrella-icon">☂️</div>
+            <div class="umbrella-text">今天记得带伞喵~</div>
+            <div class="umbrella-sub">雨 · 13°C · 湿度91% · 已发送提醒</div>
         
         </div>
         
@@ -529,7 +529,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">☂️</div>
-                <div class="stat-value">2</div>
+                <div class="stat-value">3</div>
                 <div class="stat-label">带伞提醒次数</div>
             </div>
         </div>
@@ -539,7 +539,13 @@
             <h2 class="section-title">📈 近7天温度趋势</h2>
             
             <div class="trend-chart">
-                
+                <div class="trend-bar">
+                        <div class="bar rain" style="height: 39px;">
+                            <span class="bar-temp">13°</span>
+                        </div>
+                        <div class="bar-label">03/03<br>周一</div>
+                    </div>
+                    
             </div>
             
             <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 1.1rem;">📅 7天概览</h3>
@@ -587,11 +593,11 @@
                         <div class="day-weather">无数据</div>
                     </div>
                     
-                    <div class="day-card ">
+                    <div class="day-card alert">
                         <div class="day-date">03/03 周一</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
+                        <div class="day-icon">☁️</div>
+                        <div class="day-temp">13°C</div>
+                        <div class="day-weather">雨 ☂️</div>
                     </div>
                     
             </div>
@@ -613,12 +619,12 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">☁️</div>
-                    <div class="stat-value">3</div>
+                    <div class="stat-value">2</div>
                     <div class="stat-label">多云</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🌫️</div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">2</div>
                     <div class="stat-label">其他</div>
                 </div>
             </div>
@@ -626,7 +632,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-03-03 21:09:52</p>
+            <p>生成时间: 2026-03-03 21:35:05</p>
         </footer>
     </div>
     
@@ -649,8 +655,8 @@
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
-         data-need-umbrella="false"
+         data-weather-level="unknown"
+         data-need-umbrella="true"
     ></div>
     
     <!-- 订阅组件脚本 -->
