@@ -1,75 +1,5 @@
 [
   {
-    "timestamp": "2026-03-03T15:00:15.664193",
-    "city": "\u5e7f\u5dde",
-    "sources": {
-      "qweather": {
-        "source": "qweather",
-        "timestamp": "2026-03-03T15:00:04.195217",
-        "temp": 14.0,
-        "humidity": 92,
-        "dew": 13.0,
-        "pressure": 1008,
-        "windDir": 124,
-        "windSpeed": 4.0,
-        "raw": {
-          "obsTime": "2026-03-03T14:56+08:00",
-          "temp": "14",
-          "feelsLike": "14",
-          "icon": "399",
-          "text": "\u96e8",
-          "wind360": "124",
-          "windDir": "\u4e1c\u5357\u98ce",
-          "windScale": "1",
-          "windSpeed": "4",
-          "humidity": "92",
-          "precip": "1.4",
-          "pressure": "1008",
-          "vis": "8",
-          "cloud": "100",
-          "dew": "13"
-        }
-      },
-      "openmeteo": {
-        "source": "openmeteo",
-        "timestamp": "2026-03-03T15:00:07.839401",
-        "temp": 15.9,
-        "humidity": 82,
-        "dew": 12.8,
-        "pressure": 1013,
-        "windDir": 4,
-        "windSpeed": 14.8,
-        "raw": {
-          "time": "2026-03-03T15:00",
-          "interval": 900,
-          "temperature_2m": 15.9,
-          "relative_humidity_2m": 82,
-          "dew_point_2m": 12.8,
-          "surface_pressure": 1013.8,
-          "wind_direction_10m": 4,
-          "wind_speed_10m": 14.8
-        }
-      },
-      "yrno": {
-        "source": "yrno",
-        "timestamp": "2026-03-03T15:00:15.664070",
-        "temp": 16.5,
-        "humidity": 82.4,
-        "pressure": 1015.2,
-        "windDir": 15.6,
-        "windSpeed": 4.1,
-        "raw": {
-          "air_pressure_at_sea_level": 1015.2,
-          "air_temperature": 16.5,
-          "cloud_area_fraction": 100.0,
-          "relative_humidity": 82.4,
-          "wind_from_direction": 15.6,
-          "wind_speed": 4.1
-        }
-      }
-    }
-  },
-  {
     "timestamp": "2026-03-03T16:01:10.823305",
     "city": "\u5e7f\u5dde",
     "sources": {
@@ -11635,6 +11565,76 @@
           "relative_humidity": 64.5,
           "wind_from_direction": 6.1,
           "wind_speed": 4.5
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-03-09T16:01:07.312674",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-03-09T16:01:03.739586",
+        "temp": 23.0,
+        "humidity": 58,
+        "dew": 14.0,
+        "pressure": 1012,
+        "windDir": 31,
+        "windSpeed": 11.0,
+        "raw": {
+          "obsTime": "2026-03-09T15:58+08:00",
+          "temp": "23",
+          "feelsLike": "19",
+          "icon": "104",
+          "text": "\u9634",
+          "wind360": "31",
+          "windDir": "\u4e1c\u5317\u98ce",
+          "windScale": "2",
+          "windSpeed": "11",
+          "humidity": "58",
+          "precip": "0.0",
+          "pressure": "1012",
+          "vis": "30",
+          "cloud": "96",
+          "dew": "14"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-03-09T16:01:06.475322",
+        "temp": 19.7,
+        "humidity": 65,
+        "dew": 12.9,
+        "pressure": 1019,
+        "windDir": 10,
+        "windSpeed": 19.0,
+        "raw": {
+          "time": "2026-03-09T16:00",
+          "interval": 900,
+          "temperature_2m": 19.7,
+          "relative_humidity_2m": 65,
+          "dew_point_2m": 12.9,
+          "surface_pressure": 1019.5,
+          "wind_direction_10m": 10,
+          "wind_speed_10m": 19.0
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-03-09T16:01:07.312525",
+        "temp": 23.2,
+        "humidity": 56.6,
+        "pressure": 1020.3,
+        "windDir": 12.7,
+        "windSpeed": 4.3,
+        "raw": {
+          "air_pressure_at_sea_level": 1020.3,
+          "air_temperature": 23.2,
+          "cloud_area_fraction": 100.0,
+          "relative_humidity": 56.6,
+          "wind_from_direction": 12.7,
+          "wind_speed": 4.3
         }
       }
     }
