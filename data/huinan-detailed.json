@@ -1,174 +1,19 @@
 {
   "records": [
     {
-      "timestamp": "2026-04-08T11:00:15.687649",
-      "temp": 25.2,
-      "humidity": 76.5,
-      "dew": 20.9,
-      "windDir": 146,
-      "windSpeed": 11.8,
-      "pressure": 1008.0,
-      "source_validity": {
-        "qweather": true,
-        "openmeteo": true,
-        "yrno": true
-      },
+      "time": "2026-02-26 00:32:01",
+      "humidity": 79.5,
+      "temp": 22.1,
+      "dew": 18.9,
+      "windDir": 176,
+      "windSpeed": 9.4,
+      "pressure": 1008.5,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
       "confidence": "high",
-      "source_diff": {
-        "humidity": 1,
-        "dew": 0.1
-      },
-      "raw_sources": {
-        "qweather": {
-          "source": "qweather",
-          "timestamp": "2026-04-08T11:00:09.320237",
-          "temp": 25.0,
-          "humidity": 77,
-          "dew": 21.0,
-          "pressure": 1005,
-          "windDir": 151,
-          "windSpeed": 4.0,
-          "raw": {
-            "obsTime": "2026-04-08T10:56+08:00",
-            "temp": "25",
-            "feelsLike": "28",
-            "icon": "104",
-            "text": "\u9634",
-            "wind360": "151",
-            "windDir": "\u4e1c\u5357\u98ce",
-            "windScale": "1",
-            "windSpeed": "4",
-            "humidity": "77",
-            "precip": "0.0",
-            "pressure": "1005",
-            "vis": "30",
-            "cloud": "100",
-            "dew": "21"
-          }
-        },
-        "openmeteo": {
-          "source": "openmeteo",
-          "timestamp": "2026-04-08T11:00:14.550793",
-          "temp": 25.4,
-          "humidity": 76,
-          "dew": 20.9,
-          "pressure": 1011,
-          "windDir": 142,
-          "windSpeed": 19.5,
-          "raw": {
-            "time": "2026-04-08T11:00",
-            "interval": 900,
-            "temperature_2m": 25.4,
-            "relative_humidity_2m": 76,
-            "dew_point_2m": 20.9,
-            "surface_pressure": 1011.1,
-            "wind_direction_10m": 142,
-            "wind_speed_10m": 19.5
-          }
-        },
-        "yrno": {
-          "source": "yrno",
-          "timestamp": "2026-04-08T11:00:15.687483",
-          "temp": 25.1,
-          "humidity": 82.5,
-          "pressure": 1012.6,
-          "windDir": 139.1,
-          "windSpeed": 6.1,
-          "raw": {
-            "air_pressure_at_sea_level": 1012.6,
-            "air_temperature": 25.1,
-            "cloud_area_fraction": 100.0,
-            "relative_humidity": 82.5,
-            "wind_from_direction": 139.1,
-            "wind_speed": 6.1
-          }
-        }
-      }
-    },
-    {
-      "timestamp": "2026-04-08T11:00:22.740654",
-      "temp": 25.2,
-      "humidity": 76.5,
-      "dew": 20.9,
-      "windDir": 146,
-      "windSpeed": 11.8,
-      "pressure": 1008.0,
-      "source_validity": {
-        "qweather": true,
-        "openmeteo": true,
-        "yrno": true
-      },
-      "confidence": "high",
-      "source_diff": {
-        "humidity": 1,
-        "dew": 0.1
-      },
-      "raw_sources": {
-        "qweather": {
-          "source": "qweather",
-          "timestamp": "2026-04-08T11:00:17.215657",
-          "temp": 25.0,
-          "humidity": 77,
-          "dew": 21.0,
-          "pressure": 1005,
-          "windDir": 151,
-          "windSpeed": 4.0,
-          "raw": {
-            "obsTime": "2026-04-08T10:56+08:00",
-            "temp": "25",
-            "feelsLike": "28",
-            "icon": "104",
-            "text": "\u9634",
-            "wind360": "151",
-            "windDir": "\u4e1c\u5357\u98ce",
-            "windScale": "1",
-            "windSpeed": "4",
-            "humidity": "77",
-            "precip": "0.0",
-            "pressure": "1005",
-            "vis": "30",
-            "cloud": "100",
-            "dew": "21"
-          }
-        },
-        "openmeteo": {
-          "source": "openmeteo",
-          "timestamp": "2026-04-08T11:00:21.232259",
-          "temp": 25.4,
-          "humidity": 76,
-          "dew": 20.9,
-          "pressure": 1011,
-          "windDir": 142,
-          "windSpeed": 19.5,
-          "raw": {
-            "time": "2026-04-08T11:00",
-            "interval": 900,
-            "temperature_2m": 25.4,
-            "relative_humidity_2m": 76,
-            "dew_point_2m": 20.9,
-            "surface_pressure": 1011.1,
-            "wind_direction_10m": 142,
-            "wind_speed_10m": 19.5
-          }
-        },
-        "yrno": {
-          "source": "yrno",
-          "timestamp": "2026-04-08T11:00:22.740472",
-          "temp": 25.1,
-          "humidity": 82.5,
-          "pressure": 1012.6,
-          "windDir": 139.1,
-          "windSpeed": 6.1,
-          "raw": {
-            "air_pressure_at_sea_level": 1012.6,
-            "air_temperature": 25.1,
-            "cloud_area_fraction": 100.0,
-            "relative_humidity": 82.5,
-            "wind_from_direction": 139.1,
-            "wind_speed": 6.1
-          }
-        }
-      }
+      "intensity": {},
+      "source": "ecs"
     },
     {
       "timestamp": "2026-04-08T12:00:14.337982",
@@ -14194,6 +14039,176 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-04-11T23:00:28.163865",
+      "temp": 26.1,
+      "humidity": 83.5,
+      "dew": 23.0,
+      "windDir": 140,
+      "windSpeed": 6.9,
+      "pressure": 1002.5,
+      "source_validity": {
+        "qweather": true,
+        "openmeteo": true,
+        "yrno": true
+      },
+      "confidence": "high",
+      "source_diff": {
+        "humidity": 1,
+        "dew": 0.0
+      },
+      "raw_sources": {
+        "qweather": {
+          "source": "qweather",
+          "timestamp": "2026-04-11T23:00:10.302335",
+          "temp": 26.0,
+          "humidity": 84,
+          "dew": 23.0,
+          "pressure": 1000,
+          "windDir": 112,
+          "windSpeed": 2.0,
+          "raw": {
+            "obsTime": "2026-04-11T22:58+08:00",
+            "temp": "26",
+            "feelsLike": "30",
+            "icon": "151",
+            "text": "\u591a\u4e91",
+            "wind360": "112",
+            "windDir": "\u4e1c\u5357\u98ce",
+            "windScale": "1",
+            "windSpeed": "2",
+            "humidity": "84",
+            "precip": "0.0",
+            "pressure": "1000",
+            "vis": "30",
+            "cloud": "10",
+            "dew": "23"
+          }
+        },
+        "openmeteo": {
+          "source": "openmeteo",
+          "timestamp": "2026-04-11T23:00:15.551760",
+          "temp": 26.1,
+          "humidity": 83,
+          "dew": 23.0,
+          "pressure": 1005,
+          "windDir": 168,
+          "windSpeed": 11.8,
+          "raw": {
+            "time": "2026-04-11T23:00",
+            "interval": 900,
+            "temperature_2m": 26.1,
+            "relative_humidity_2m": 83,
+            "dew_point_2m": 23.0,
+            "surface_pressure": 1005.6,
+            "wind_direction_10m": 168,
+            "wind_speed_10m": 11.8
+          }
+        },
+        "yrno": {
+          "source": "yrno",
+          "timestamp": "2026-04-11T23:00:28.163726",
+          "temp": 25.2,
+          "humidity": 92.5,
+          "pressure": 1007.9,
+          "windDir": 158.5,
+          "windSpeed": 4.2,
+          "raw": {
+            "air_pressure_at_sea_level": 1007.9,
+            "air_temperature": 25.2,
+            "cloud_area_fraction": 100.0,
+            "relative_humidity": 92.5,
+            "wind_from_direction": 158.5,
+            "wind_speed": 4.2
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-11T23:01:14.367235",
+      "temp": 26.1,
+      "humidity": 83.5,
+      "dew": 23.0,
+      "windDir": 140,
+      "windSpeed": 6.9,
+      "pressure": 1002.5,
+      "source_validity": {
+        "qweather": true,
+        "openmeteo": true,
+        "yrno": true
+      },
+      "confidence": "high",
+      "source_diff": {
+        "humidity": 1,
+        "dew": 0.0
+      },
+      "raw_sources": {
+        "qweather": {
+          "source": "qweather",
+          "timestamp": "2026-04-11T23:01:10.074549",
+          "temp": 26.0,
+          "humidity": 84,
+          "dew": 23.0,
+          "pressure": 1000,
+          "windDir": 112,
+          "windSpeed": 2.0,
+          "raw": {
+            "obsTime": "2026-04-11T22:58+08:00",
+            "temp": "26",
+            "feelsLike": "30",
+            "icon": "151",
+            "text": "\u591a\u4e91",
+            "wind360": "112",
+            "windDir": "\u4e1c\u5357\u98ce",
+            "windScale": "1",
+            "windSpeed": "2",
+            "humidity": "84",
+            "precip": "0.0",
+            "pressure": "1000",
+            "vis": "30",
+            "cloud": "10",
+            "dew": "23"
+          }
+        },
+        "openmeteo": {
+          "source": "openmeteo",
+          "timestamp": "2026-04-11T23:01:12.024523",
+          "temp": 26.1,
+          "humidity": 83,
+          "dew": 23.0,
+          "pressure": 1005,
+          "windDir": 168,
+          "windSpeed": 11.8,
+          "raw": {
+            "time": "2026-04-11T23:00",
+            "interval": 900,
+            "temperature_2m": 26.1,
+            "relative_humidity_2m": 83,
+            "dew_point_2m": 23.0,
+            "surface_pressure": 1005.6,
+            "wind_direction_10m": 168,
+            "wind_speed_10m": 11.8
+          }
+        },
+        "yrno": {
+          "source": "yrno",
+          "timestamp": "2026-04-11T23:01:14.367092",
+          "temp": 25.2,
+          "humidity": 92.5,
+          "pressure": 1007.9,
+          "windDir": 158.5,
+          "windSpeed": 4.2,
+          "raw": {
+            "air_pressure_at_sea_level": 1007.9,
+            "air_temperature": 25.2,
+            "cloud_area_fraction": 100.0,
+            "relative_humidity": 92.5,
+            "wind_from_direction": 158.5,
+            "wind_speed": 4.2
+          }
+        }
+      }
     }
   ],
   "multi_source": true,
@@ -14214,9 +14229,9 @@
       "pressure_drop": false
     },
     "reason": "1/3\u6838\u5fc3\u6ee1\u8db3",
-    "timestamp": "2026-04-11T23:00:06.843511",
+    "timestamp": "2026-04-11T23:30:06.018124",
     "message": "\u6709\u98ce\u9669\uff0c\u5173\u6ce8\u5929\u6c14\u53d8\u5316",
     "avg_temp_72h": 26.1
   },
-  "lastCheck": "2026-04-11T23:00:06.870284"
+  "lastCheck": "2026-04-11T23:30:06.044468"
 }
