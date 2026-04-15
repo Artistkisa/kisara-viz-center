@@ -1,46 +1,16 @@
 {
-  "generated_at": "2026-04-15T18:00:02.587433",
+  "generated_at": "2026-04-15T18:30:02.844177",
   "total_points": 720,
   "statistics": {
-    "cpu_avg": 74.5,
+    "cpu_avg": 72.0,
     "cpu_max": 100.0,
-    "cpu_min": 0.5,
-    "memory_avg": 23.7,
+    "cpu_min": 0.0,
+    "memory_avg": 23.4,
     "memory_max": 28.3,
     "memory_min": 15.0,
     "total_points": 56
   },
   "data_points": [
-    {
-      "timestamp": "2026-04-13T12:00:02.302136",
-      "cpu": {
-        "percent": 100.0,
-        "load1": 0.0,
-        "load5": 0.0,
-        "load15": 0.0
-      },
-      "memory": {
-        "percent": 22.3
-      },
-      "disk": {
-        "percent": 35
-      }
-    },
-    {
-      "timestamp": "2026-04-13T13:00:01.758506",
-      "cpu": {
-        "percent": 65.2,
-        "load1": 0.04,
-        "load5": 0.03,
-        "load15": 0.0
-      },
-      "memory": {
-        "percent": 21.8
-      },
-      "disk": {
-        "percent": 35
-      }
-    },
     {
       "timestamp": "2026-04-13T14:00:01.528457",
       "cpu": {
@@ -885,6 +855,60 @@
         "bytes_recv": 329880301,
         "packets_sent": 16108,
         "packets_recv": 236730
+      }
+    },
+    {
+      "timestamp": "2026-04-15T18:15:02.500115",
+      "hour": 18,
+      "minute": 15,
+      "cpu": {
+        "percent": 0.0,
+        "load1": 0.0,
+        "load5": 0.0,
+        "load15": 0.0
+      },
+      "memory": {
+        "percent": 15.1,
+        "used_gb": 0.85,
+        "total_gb": 7.76
+      },
+      "disk": {
+        "percent": 30.9,
+        "used_gb": 11.57,
+        "total_gb": 39.07
+      },
+      "network": {
+        "bytes_sent": 11700903,
+        "bytes_recv": 330901818,
+        "packets_sent": 17913,
+        "packets_recv": 238570
+      }
+    },
+    {
+      "timestamp": "2026-04-15T18:30:02.843815",
+      "hour": 18,
+      "minute": 30,
+      "cpu": {
+        "percent": 23.6,
+        "load1": 0.01,
+        "load5": 0.02,
+        "load15": 0.0
+      },
+      "memory": {
+        "percent": 15.9,
+        "used_gb": 0.91,
+        "total_gb": 7.76
+      },
+      "disk": {
+        "percent": 30.9,
+        "used_gb": 11.57,
+        "total_gb": 39.07
+      },
+      "network": {
+        "bytes_sent": 12302751,
+        "bytes_recv": 331056465,
+        "packets_sent": 18935,
+        "packets_recv": 239478
       }
     }
   ]
