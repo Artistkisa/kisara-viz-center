@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic Sniffer 监控面板</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; }
+  .card h3 { color: #94a3b8; font-size: 0.875rem; margin-bottom: 8px; }
+  .card .value { font-size: 1.875rem; font-weight: 700; color: #f8fafc; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+  th { color: #94a3b8; font-weight: 500; }
+  tr:hover td { background: #27354d; }
+  input { background: #1e293b; border: 1px solid #475569; color: #f8fafc; padding: 8px 12px; border-radius: 6px; outline: none; width: 100%; }
+  input:focus { border-color: #60a5fa; }
+  button { background: #3b82f6; color: white; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; white-space: nowrap; }
+  button:hover { background: #2563eb; }
+  .result-item { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+  .result-item a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .result-item a:hover { text-decoration: underline; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; background: #334155; color: #cbd5e1; margin-right: 4px; }
+</style>
+</head>
+<body class="min-h-screen p-6">
+<div class="max-w-7xl mx-auto">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-white">Topic Sniffer 监控面板</h1>
+      <p class="text-slate-400 text-sm mt-1">实时数据概览 · 今日新增统计 · 查询测试</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="api-status" class="text-xs px-2 py-1 rounded bg-slate-700 text-slate-300">检测中...</span>
+      <button onclick="loadAll()">🔄 刷新</button>
+    </div>
+  </div>
+
+  <!-- API Config -->
+  <div class="mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+    <label class="text-sm text-slate-400 whitespace-nowrap">API 地址:</label>
+    <input type="text" id="api-base" value="http://47.116.201.2:9000" class="sm:w-80 text-sm">
+    <span class="text-xs text-slate-500">修改后自动保存到 localStorage</span>
+  </div>
+
+  <!-- Overview Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="overview">
+    <div class="card"><h3>Content Pool 总量</h3><div class="value" id="pool-total">-</div></div>
+    <div class="card"><h3>Topic Index 总量</h3><div class="value" id="idx-total">-</div></div>
+    <div class="card"><h3>今日新增 (Pool)</h3><div class="value" id="pool-today">-</div></div>
+    <div class="card"><h3>数据库大小</h3><div class="value" id="db-size">-</div></div>
+  </div>
+
+  <!-- Daily Stats Tables -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+    <div class="card">
+      <h3 class="text-white font-semibold mb-3">Content Pool 今日/昨日新增</h3>
+      <div id="pool-today-table"><div class="text-slate-500 text-center py-8">加载中...</div></div>
+    </div>
+    <div class="card">
+      <h3 class="text-white font-semibold mb-3">Topic Index 今日/昨日新增</h3>
+      <div id="idx-today-table"><div class="text-slate-500 text-center py-8">加载中...</div></div>
+    </div>
+  </div>
+
+  <!-- Crawl Log -->
+  <div class="card mb-6">
+    <h3 class="text-white font-semibold mb-3">今日抓取任务</h3>
+    <div id="crawl-log-table"><div class="text-slate-500 text-center py-8">加载中...</div></div>
+  </div>
+
+  <!-- Query Test & Hot Topics -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+    <div class="card">
+      <h3 class="text-white font-semibold mb-3">查询测试 (/v1/query/topic)</h3>
+      <div class="flex gap-2 mb-4">
+        <input type="text" id="query-input" placeholder="输入话题，如：机器学习" onkeydown="if(event.key==='Enter')doQuery()">
+        <button onclick="doQuery()">查询</button>
+      </div>
+      <div id="query-result"><div class="text-slate-500 text-center py-4">输入话题后点击查询</div></div>
+    </div>
+    <div class="card">
+      <h3 class="text-white font-semibold mb-3">热门话题 (/v1/query/hot)</h3>
+      <div id="hot-topics"><div class="text-slate-500 text-center py-8">加载中...</div></div>
+    </div>
+  </div>
+
+  <!-- Recent Records -->
+  <div class="card mb-6">
+    <h3 class="text-white font-semibold mb-3">最近入库记录 (/v1/query/recent)</h3>
+    <div id="recent-records"><div class="text-slate-500 text-center py-8">加载中...</div></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center text-slate-600 text-sm py-4">
+    Topic Sniffer Dashboard · 数据实时从 API 获取 · 每 30 秒自动刷新
+  </div>
+</div>
+
+<script>
+let API_BASE = localStorage.getItem('ts_api_base') || 'http://47.116.201.2:9000';
+document.getElementById('api-base').value = API_BASE;
+document.getElementById('api-base').addEventListener('change', e => {
+  API_BASE = e.target.value.trim();
+  localStorage.setItem('ts_api_base', API_BASE);
+  loadAll();
+});
+
+async function api(path) {
+  const res = await fetch(API_BASE + path);
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  return res.json();
+}
+
+function fmtNum(n) { return n?.toLocaleString?.() ?? n; }
+
+async function loadStats() {
+  const data = await api('/v1/admin/stats');
+  document.getElementById('pool-total').textContent = fmtNum(data.total_pool_records);
+  document.getElementById('idx-total').textContent = fmtNum(data.total_index_records);
+  document.getElementById('db-size').textContent = data.db_size_mb + ' MB';
+}
+
+async function loadDaily() {
+  const data = await api('/v1/admin/daily');
+
+  const poolToday = Object.values(data.content_pool.today || {}).reduce((a, b) => a + b, 0);
+  document.getElementById('pool-today').textContent = fmtNum(poolToday);
+
+  const allSources = new Set([
+    ...Object.keys(data.content_pool.today || {}),
+    ...Object.keys(data.content_pool.yesterday || {})
+  ]);
+  document.getElementById('pool-today-table').innerHTML = renderTable(
+    ['来源', '今日', '昨日'],
+    Array.from(allSources).map(k => [
+      k, data.content_pool.today[k] || 0, data.content_pool.yesterday[k] || 0
+    ])
+  );
+
+  const allIdxSources = new Set([
+    ...Object.keys(data.topic_index.today || {}),
+    ...Object.keys(data.topic_index.yesterday || {})
+  ]);
+  document.getElementById('idx-today-table').innerHTML = renderTable(
+    ['来源', '今日', '昨日'],
+    Array.from(allIdxSources).map(k => [
+      k, data.topic_index.today[k] || 0, data.topic_index.yesterday[k] || 0
+    ])
+  );
+
+  const logs = data.crawl_log?.today || [];
+  document.getElementById('crawl-log-table').innerHTML = renderTable(
+    ['任务', '执行次数', 'Found', 'Saved'],
+    logs.map(l => [l.task, l.runs, l.found, l.saved])
+  );
+}
+
+async function loadHot() {
+  const data = await api('/v1/query/hot?app_id=ghost&limit=10');
+  const topics = data.topics || [];
+  if (!topics.length) {
+    document.getElementById('hot-topics').innerHTML = '<div class="text-slate-500 text-center py-4">暂无热门话题</div>';
+    return;
+  }
+  document.getElementById('hot-topics').innerHTML = renderTable(
+    ['话题', '提及次数', '最后提及'],
+    topics.map(t => [t.topic, t.mention_count, t.last_mentioned?.slice(0, 16) || '-'])
+  );
+}
+
+async function loadRecent() {
+  const data = await api('/v1/query/recent?app_id=ghost&limit=10');
+  const records = data.records || [];
+  if (!records.length) {
+    document.getElementById('recent-records').innerHTML = '<div class="text-slate-500 text-center py-4">暂无记录</div>';
+    return;
+  }
+  document.getElementById('recent-records').innerHTML = renderTable(
+    ['话题', '标题', '来源', '更新时间'],
+    records.map(r => [r.topic, r.title?.slice(0, 40) || '-', r.source_type, r.updated_at?.slice(0, 16) || '-'])
+  );
+}
+
+async function doQuery() {
+  const q = document.getElementById('query-input').value.trim();
+  if (!q) return;
+  const el = document.getElementById('query-result');
+  el.innerHTML = '<div class="text-slate-500 text-center py-4">查询中...</div>';
+  try {
+    const data = await api(`/v1/query/topic?topic=${encodeURIComponent(q)}&app_id=ghost&limit=5`);
+    if (!data.hit || !data.results?.length) {
+      el.innerHTML = '<div class="text-slate-500 text-center py-4">未命中</div>';
+      return;
+    }
+    el.innerHTML = data.results.map(r => `
+      <div class="result-item">
+        <div class="font-medium text-white mb-1">${r.title || r.topic}</div>
+        <div class="text-sm text-slate-400 mb-1">${(r.summary || '').slice(0, 120)}...</div>
+        <div class="text-xs text-slate-500 mb-1">
+          <span class="tag">${r.source_type}</span>
+          <span class="tag">相关度: ${r.relevance_score}</span>
+        </div>
+        ${r.url ? `<a href="${r.url}" target="_blank">${r.url.slice(0, 60)}...</a>` : ''}
+      </div>
+    `).join('');
+  } catch (e) {
+    el.innerHTML = `<div class="text-red-400 text-center py-4">查询失败: ${e.message}</div>`;
+  }
+}
+
+function renderTable(headers, rows) {
+  if (!rows.length) return '<div class="text-slate-500 text-center py-4">无数据</div>';
+  return `<div class="overflow-x-auto"><table>
+    <thead><tr>${headers.map(h => `<th class="whitespace-nowrap">${h}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(row => `<tr>${row.map(c => `<td class="whitespace-nowrap">${fmtNum(c)}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
+}
+
+async function loadAll() {
+  document.getElementById('api-status').textContent = '加载中...';
+  document.getElementById('api-status').className = 'text-xs px-2 py-1 rounded bg-yellow-600 text-white';
+  try {
+    await Promise.all([loadStats(), loadDaily(), loadHot(), loadRecent()]);
+    document.getElementById('api-status').textContent = 'API 正常';
+    document.getElementById('api-status').className = 'text-xs px-2 py-1 rounded bg-green-600 text-white';
+  } catch (e) {
+    document.getElementById('api-status').textContent = 'API 异常: ' + e.message;
+    document.getElementById('api-status').className = 'text-xs px-2 py-1 rounded bg-red-600 text-white';
+  }
+}
+
+loadAll();
+setInterval(loadAll, 30000);
+</script>
+</body>
+</html>
