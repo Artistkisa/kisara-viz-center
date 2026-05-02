@@ -1,75 +1,5 @@
 [
   {
-    "timestamp": "2026-04-28T23:00:22.006165",
-    "city": "\u5e7f\u5dde",
-    "sources": {
-      "qweather": {
-        "source": "qweather",
-        "timestamp": "2026-04-28T23:00:03.159218",
-        "temp": 24.0,
-        "humidity": 92,
-        "dew": 23.0,
-        "pressure": 1001,
-        "windDir": 196,
-        "windSpeed": 3.0,
-        "raw": {
-          "obsTime": "2026-04-28T22:50+08:00",
-          "temp": "24",
-          "feelsLike": "26",
-          "icon": "104",
-          "text": "\u9634",
-          "wind360": "196",
-          "windDir": "\u5357\u98ce",
-          "windScale": "1",
-          "windSpeed": "3",
-          "humidity": "92",
-          "precip": "0.0",
-          "pressure": "1001",
-          "vis": "15",
-          "cloud": "96",
-          "dew": "23"
-        }
-      },
-      "openmeteo": {
-        "source": "openmeteo",
-        "timestamp": "2026-04-28T23:00:14.986732",
-        "temp": 22.1,
-        "humidity": 98,
-        "dew": 21.9,
-        "pressure": 1008,
-        "windDir": 59,
-        "windSpeed": 1.0,
-        "raw": {
-          "time": "2026-04-28T23:00",
-          "interval": 900,
-          "temperature_2m": 22.1,
-          "relative_humidity_2m": 98,
-          "dew_point_2m": 21.9,
-          "surface_pressure": 1008.4,
-          "wind_direction_10m": 59,
-          "wind_speed_10m": 1.0
-        }
-      },
-      "yrno": {
-        "source": "yrno",
-        "timestamp": "2026-04-28T23:00:22.005977",
-        "temp": 22.1,
-        "humidity": 97.9,
-        "pressure": 1010.9,
-        "windDir": 97.5,
-        "windSpeed": 2.1,
-        "raw": {
-          "air_pressure_at_sea_level": 1010.9,
-          "air_temperature": 22.1,
-          "cloud_area_fraction": 100.0,
-          "relative_humidity": 97.9,
-          "wind_from_direction": 97.5,
-          "wind_speed": 2.1
-        }
-      }
-    }
-  },
-  {
     "timestamp": "2026-04-28T23:00:34.540198",
     "city": "\u5e7f\u5dde",
     "sources": {
@@ -11715,6 +11645,76 @@
           "relative_humidity": 74.8,
           "wind_from_direction": 174.8,
           "wind_speed": 4.3
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-05-02T11:00:36.103478",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-02T11:00:33.033834",
+        "temp": 25.0,
+        "humidity": 76,
+        "dew": 22.0,
+        "pressure": 1005,
+        "windDir": 163,
+        "windSpeed": 4.0,
+        "raw": {
+          "obsTime": "2026-05-02T10:58+08:00",
+          "temp": "25",
+          "feelsLike": "26",
+          "icon": "104",
+          "text": "\u9634",
+          "wind360": "163",
+          "windDir": "\u5357\u98ce",
+          "windScale": "1",
+          "windSpeed": "4",
+          "humidity": "76",
+          "precip": "0.0",
+          "pressure": "1005",
+          "vis": "30",
+          "cloud": "91",
+          "dew": "22"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-05-02T11:00:34.973119",
+        "temp": 27.6,
+        "humidity": 71,
+        "dew": 21.8,
+        "pressure": 1009,
+        "windDir": 180,
+        "windSpeed": 13.0,
+        "raw": {
+          "time": "2026-05-02T11:00",
+          "interval": 900,
+          "temperature_2m": 27.6,
+          "relative_humidity_2m": 71,
+          "dew_point_2m": 21.8,
+          "surface_pressure": 1009.6,
+          "wind_direction_10m": 180,
+          "wind_speed_10m": 13.0
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-02T11:00:36.103328",
+        "temp": 27.5,
+        "humidity": 71.2,
+        "pressure": 1012.1,
+        "windDir": 177.4,
+        "windSpeed": 4.0,
+        "raw": {
+          "air_pressure_at_sea_level": 1012.1,
+          "air_temperature": 27.5,
+          "cloud_area_fraction": 72.7,
+          "relative_humidity": 71.2,
+          "wind_from_direction": 177.4,
+          "wind_speed": 4.0
         }
       }
     }
