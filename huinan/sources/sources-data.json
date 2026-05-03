@@ -1,75 +1,5 @@
 [
   {
-    "timestamp": "2026-04-30T16:00:21.482832",
-    "city": "\u5e7f\u5dde",
-    "sources": {
-      "qweather": {
-        "source": "qweather",
-        "timestamp": "2026-04-30T16:00:10.577185",
-        "temp": 25.0,
-        "humidity": 48,
-        "dew": 16.0,
-        "pressure": 1007,
-        "windDir": 208,
-        "windSpeed": 3.0,
-        "raw": {
-          "obsTime": "2026-04-30T15:50+08:00",
-          "temp": "25",
-          "feelsLike": "27",
-          "icon": "100",
-          "text": "\u6674",
-          "wind360": "208",
-          "windDir": "\u897f\u5357\u98ce",
-          "windScale": "1",
-          "windSpeed": "3",
-          "humidity": "48",
-          "precip": "0.0",
-          "pressure": "1007",
-          "vis": "30",
-          "cloud": "10",
-          "dew": "16"
-        }
-      },
-      "openmeteo": {
-        "source": "openmeteo",
-        "timestamp": "2026-04-30T16:00:19.721342",
-        "temp": 24.5,
-        "humidity": 57,
-        "dew": 15.4,
-        "pressure": 1010,
-        "windDir": 343,
-        "windSpeed": 12.1,
-        "raw": {
-          "time": "2026-04-30T16:00",
-          "interval": 900,
-          "temperature_2m": 24.5,
-          "relative_humidity_2m": 57,
-          "dew_point_2m": 15.4,
-          "surface_pressure": 1010.9,
-          "wind_direction_10m": 343,
-          "wind_speed_10m": 12.1
-        }
-      },
-      "yrno": {
-        "source": "yrno",
-        "timestamp": "2026-04-30T16:00:21.482360",
-        "temp": 24.6,
-        "humidity": 56.5,
-        "pressure": 1013.2,
-        "windDir": 338.3,
-        "windSpeed": 3.8,
-        "raw": {
-          "air_pressure_at_sea_level": 1013.2,
-          "air_temperature": 24.6,
-          "cloud_area_fraction": 76.6,
-          "relative_humidity": 56.5,
-          "wind_from_direction": 338.3,
-          "wind_speed": 3.8
-        }
-      }
-    }
-  },
-  {
     "timestamp": "2026-04-30T17:01:08.078989",
     "city": "\u5e7f\u5dde",
     "sources": {
@@ -11735,6 +11665,76 @@
           "relative_humidity": 78.7,
           "wind_from_direction": 6.8,
           "wind_speed": 3.4
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-05-04T05:00:15.208821",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-04T05:00:05.961424",
+        "temp": 20.0,
+        "humidity": 82,
+        "dew": 16.0,
+        "pressure": 1006,
+        "windDir": 344,
+        "windSpeed": 3.0,
+        "raw": {
+          "obsTime": "2026-05-04T04:50+08:00",
+          "temp": "20",
+          "feelsLike": "23",
+          "icon": "104",
+          "text": "\u9634",
+          "wind360": "344",
+          "windDir": "\u5317\u98ce",
+          "windScale": "1",
+          "windSpeed": "3",
+          "humidity": "82",
+          "precip": "0.0",
+          "pressure": "1006",
+          "vis": "30",
+          "cloud": "100",
+          "dew": "16"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-05-04T05:00:14.108438",
+        "temp": 20.0,
+        "humidity": 78,
+        "dew": 16.1,
+        "pressure": 1011,
+        "windDir": 6,
+        "windSpeed": 10.1,
+        "raw": {
+          "time": "2026-05-04T05:00",
+          "interval": 900,
+          "temperature_2m": 20.0,
+          "relative_humidity_2m": 78,
+          "dew_point_2m": 16.1,
+          "surface_pressure": 1011.4,
+          "wind_direction_10m": 6,
+          "wind_speed_10m": 10.1
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-04T05:00:15.208142",
+        "temp": 19.9,
+        "humidity": 78.1,
+        "pressure": 1013.9,
+        "windDir": 6.9,
+        "windSpeed": 3.3,
+        "raw": {
+          "air_pressure_at_sea_level": 1013.9,
+          "air_temperature": 19.9,
+          "cloud_area_fraction": 96.9,
+          "relative_humidity": 78.1,
+          "wind_from_direction": 6.9,
+          "wind_speed": 3.3
         }
       }
     }
