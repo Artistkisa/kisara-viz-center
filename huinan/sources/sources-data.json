@@ -1,75 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T03:00:14.367320",
-    "city": "\u5e7f\u5dde",
-    "sources": {
-      "qweather": {
-        "source": "qweather",
-        "timestamp": "2026-05-02T03:00:05.348407",
-        "temp": 22.0,
-        "humidity": 86,
-        "dew": 21.0,
-        "pressure": 1005,
-        "windDir": 171,
-        "windSpeed": 5.0,
-        "raw": {
-          "obsTime": "2026-05-02T02:58+08:00",
-          "temp": "22",
-          "feelsLike": "24",
-          "icon": "104",
-          "text": "\u9634",
-          "wind360": "171",
-          "windDir": "\u5357\u98ce",
-          "windScale": "1",
-          "windSpeed": "5",
-          "humidity": "86",
-          "precip": "0.0",
-          "pressure": "1005",
-          "vis": "30",
-          "cloud": "91",
-          "dew": "21"
-        }
-      },
-      "openmeteo": {
-        "source": "openmeteo",
-        "timestamp": "2026-05-02T03:00:13.513317",
-        "temp": 21.8,
-        "humidity": 93,
-        "dew": 20.6,
-        "pressure": 1009,
-        "windDir": 96,
-        "windSpeed": 5.4,
-        "raw": {
-          "time": "2026-05-02T03:00",
-          "interval": 900,
-          "temperature_2m": 21.8,
-          "relative_humidity_2m": 93,
-          "dew_point_2m": 20.6,
-          "surface_pressure": 1009.3,
-          "wind_direction_10m": 96,
-          "wind_speed_10m": 5.4
-        }
-      },
-      "yrno": {
-        "source": "yrno",
-        "timestamp": "2026-05-02T03:00:14.367172",
-        "temp": 21.6,
-        "humidity": 93.0,
-        "pressure": 1012.1,
-        "windDir": 95.6,
-        "windSpeed": 1.8,
-        "raw": {
-          "air_pressure_at_sea_level": 1012.1,
-          "air_temperature": 21.6,
-          "cloud_area_fraction": 97.7,
-          "relative_humidity": 93.0,
-          "wind_from_direction": 95.6,
-          "wind_speed": 1.8
-        }
-      }
-    }
-  },
-  {
     "timestamp": "2026-05-02T03:01:08.492565",
     "city": "\u5e7f\u5dde",
     "sources": {
@@ -11743,6 +11673,76 @@
       "yrno": {
         "source": "yrno",
         "timestamp": "2026-05-05T15:00:17.829813",
+        "temp": 24.5,
+        "humidity": 74.8,
+        "pressure": 1012.0,
+        "windDir": 104.4,
+        "windSpeed": 1.8,
+        "raw": {
+          "air_pressure_at_sea_level": 1012.0,
+          "air_temperature": 24.5,
+          "cloud_area_fraction": 100.0,
+          "relative_humidity": 74.8,
+          "wind_from_direction": 104.4,
+          "wind_speed": 1.8
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-05-05T15:00:25.170262",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-05T15:00:17.761024",
+        "temp": 21.0,
+        "humidity": 94,
+        "dew": 20.0,
+        "pressure": 1006,
+        "windDir": 35,
+        "windSpeed": 5.0,
+        "raw": {
+          "obsTime": "2026-05-05T14:50+08:00",
+          "temp": "21",
+          "feelsLike": "21",
+          "icon": "300",
+          "text": "\u9635\u96e8",
+          "wind360": "35",
+          "windDir": "\u4e1c\u5317\u98ce",
+          "windScale": "1",
+          "windSpeed": "5",
+          "humidity": "94",
+          "precip": "0.0",
+          "pressure": "1006",
+          "vis": "4",
+          "cloud": "100",
+          "dew": "20"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-05-05T15:00:23.120979",
+        "temp": 24.6,
+        "humidity": 75,
+        "dew": 19.9,
+        "pressure": 1009,
+        "windDir": 108,
+        "windSpeed": 4.7,
+        "raw": {
+          "time": "2026-05-05T15:00",
+          "interval": 900,
+          "temperature_2m": 24.6,
+          "relative_humidity_2m": 75,
+          "dew_point_2m": 19.9,
+          "surface_pressure": 1009.6,
+          "wind_direction_10m": 108,
+          "wind_speed_10m": 4.7
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-05T15:00:25.169950",
         "temp": 24.5,
         "humidity": 74.8,
         "pressure": 1012.0,
