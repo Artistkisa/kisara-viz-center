@@ -1,75 +1,5 @@
 [
   {
-    "timestamp": "2026-05-02T10:01:09.080788",
-    "city": "\u5e7f\u5dde",
-    "sources": {
-      "qweather": {
-        "source": "qweather",
-        "timestamp": "2026-05-02T10:01:07.310082",
-        "temp": 24.0,
-        "humidity": 79,
-        "dew": 22.0,
-        "pressure": 1005,
-        "windDir": 125,
-        "windSpeed": 3.0,
-        "raw": {
-          "obsTime": "2026-05-02T09:57+08:00",
-          "temp": "24",
-          "feelsLike": "25",
-          "icon": "104",
-          "text": "\u9634",
-          "wind360": "125",
-          "windDir": "\u4e1c\u5357\u98ce",
-          "windScale": "1",
-          "windSpeed": "3",
-          "humidity": "79",
-          "precip": "0.0",
-          "pressure": "1005",
-          "vis": "30",
-          "cloud": "91",
-          "dew": "22"
-        }
-      },
-      "openmeteo": {
-        "source": "openmeteo",
-        "timestamp": "2026-05-02T10:01:08.234651",
-        "temp": 26.5,
-        "humidity": 75,
-        "dew": 21.6,
-        "pressure": 1010,
-        "windDir": 174,
-        "windSpeed": 14.1,
-        "raw": {
-          "time": "2026-05-02T10:00",
-          "interval": 900,
-          "temperature_2m": 26.5,
-          "relative_humidity_2m": 75,
-          "dew_point_2m": 21.6,
-          "surface_pressure": 1010.0,
-          "wind_direction_10m": 174,
-          "wind_speed_10m": 14.1
-        }
-      },
-      "yrno": {
-        "source": "yrno",
-        "timestamp": "2026-05-02T10:01:09.080278",
-        "temp": 26.3,
-        "humidity": 74.8,
-        "pressure": 1012.5,
-        "windDir": 174.8,
-        "windSpeed": 4.3,
-        "raw": {
-          "air_pressure_at_sea_level": 1012.5,
-          "air_temperature": 26.3,
-          "cloud_area_fraction": 97.7,
-          "relative_humidity": 74.8,
-          "wind_from_direction": 174.8,
-          "wind_speed": 4.3
-        }
-      }
-    }
-  },
-  {
     "timestamp": "2026-05-02T11:00:36.103478",
     "city": "\u5e7f\u5dde",
     "sources": {
@@ -11754,6 +11684,76 @@
           "cloud_area_fraction": 100.0,
           "relative_humidity": 94.1,
           "wind_from_direction": 115.7,
+          "wind_speed": 2.5
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-05-05T23:00:18.249570",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-05T23:00:04.824505",
+        "temp": 20.0,
+        "humidity": 92,
+        "dew": 20.0,
+        "pressure": 1005,
+        "windDir": 32,
+        "windSpeed": 2.0,
+        "raw": {
+          "obsTime": "2026-05-05T22:50+08:00",
+          "temp": "20",
+          "feelsLike": "24",
+          "icon": "151",
+          "text": "\u591a\u4e91",
+          "wind360": "32",
+          "windDir": "\u4e1c\u5317\u98ce",
+          "windScale": "1",
+          "windSpeed": "2",
+          "humidity": "92",
+          "precip": "0.0",
+          "pressure": "1005",
+          "vis": "30",
+          "cloud": "10",
+          "dew": "20"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-05-05T23:00:16.059768",
+        "temp": 21.8,
+        "humidity": 92,
+        "dew": 20.4,
+        "pressure": 1010,
+        "windDir": 107,
+        "windSpeed": 6.9,
+        "raw": {
+          "time": "2026-05-05T23:00",
+          "interval": 900,
+          "temperature_2m": 21.8,
+          "relative_humidity_2m": 92,
+          "dew_point_2m": 20.4,
+          "surface_pressure": 1010.8,
+          "wind_direction_10m": 107,
+          "wind_speed_10m": 6.9
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-05T23:00:18.249416",
+        "temp": 21.6,
+        "humidity": 92.6,
+        "pressure": 1013.4,
+        "windDir": 107.7,
+        "windSpeed": 2.5,
+        "raw": {
+          "air_pressure_at_sea_level": 1013.4,
+          "air_temperature": 21.6,
+          "cloud_area_fraction": 100.0,
+          "relative_humidity": 92.6,
+          "wind_from_direction": 107.7,
           "wind_speed": 2.5
         }
       }
