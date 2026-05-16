@@ -9238,5 +9238,55 @@
         }
       }
     }
+  },
+  {
+    "timestamp": "2026-05-17T02:00:12.387096",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-17T02:00:03.208484",
+        "temp": 23.0,
+        "humidity": 87,
+        "dew": 22.0,
+        "pressure": 1003,
+        "windDir": 135,
+        "windSpeed": 24.0,
+        "raw": {
+          "obsTime": "2026-05-17T01:48+08:00",
+          "temp": "23",
+          "feelsLike": "22",
+          "icon": "104",
+          "text": "\u9634",
+          "wind360": "135",
+          "windDir": "\u4e1c\u5357\u98ce",
+          "windScale": "4",
+          "windSpeed": "24",
+          "humidity": "87",
+          "precip": "0.0",
+          "pressure": "1003",
+          "vis": "30",
+          "cloud": "98",
+          "dew": "22"
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-17T02:00:12.386942",
+        "temp": 23.6,
+        "humidity": 81.7,
+        "pressure": 1010.5,
+        "windDir": 101.9,
+        "windSpeed": 4.1,
+        "raw": {
+          "air_pressure_at_sea_level": 1010.5,
+          "air_temperature": 23.6,
+          "cloud_area_fraction": 62.5,
+          "relative_humidity": 81.7,
+          "wind_from_direction": 101.9,
+          "wind_speed": 4.1
+        }
+      }
+    }
   }
 ]
