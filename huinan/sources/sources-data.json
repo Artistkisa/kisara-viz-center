@@ -7488,5 +7488,75 @@
         }
       }
     }
+  },
+  {
+    "timestamp": "2026-05-16T13:00:29.225518",
+    "city": "\u5e7f\u5dde",
+    "sources": {
+      "qweather": {
+        "source": "qweather",
+        "timestamp": "2026-05-16T13:00:16.699073",
+        "temp": 27.0,
+        "humidity": 75,
+        "dew": 23.0,
+        "pressure": 1003,
+        "windDir": 135,
+        "windSpeed": 21.0,
+        "raw": {
+          "obsTime": "2026-05-16T12:50+08:00",
+          "temp": "27",
+          "feelsLike": "27",
+          "icon": "104",
+          "text": "\u9634",
+          "wind360": "135",
+          "windDir": "\u4e1c\u5357\u98ce",
+          "windScale": "4",
+          "windSpeed": "21",
+          "humidity": "75",
+          "precip": "0.0",
+          "pressure": "1003",
+          "vis": "30",
+          "cloud": "91",
+          "dew": "23"
+        }
+      },
+      "openmeteo": {
+        "source": "openmeteo",
+        "timestamp": "2026-05-16T13:00:22.945970",
+        "temp": 28.5,
+        "humidity": 69,
+        "dew": 22.3,
+        "pressure": 1006,
+        "windDir": 117,
+        "windSpeed": 16.9,
+        "raw": {
+          "time": "2026-05-16T13:00",
+          "interval": 900,
+          "temperature_2m": 28.5,
+          "relative_humidity_2m": 69,
+          "dew_point_2m": 22.3,
+          "surface_pressure": 1006.8,
+          "wind_direction_10m": 117,
+          "wind_speed_10m": 16.9
+        }
+      },
+      "yrno": {
+        "source": "yrno",
+        "timestamp": "2026-05-16T13:00:29.225355",
+        "temp": 28.5,
+        "humidity": 68.8,
+        "pressure": 1009.2,
+        "windDir": 115.6,
+        "windSpeed": 5.3,
+        "raw": {
+          "air_pressure_at_sea_level": 1009.2,
+          "air_temperature": 28.5,
+          "cloud_area_fraction": 100.0,
+          "relative_humidity": 68.8,
+          "wind_from_direction": 115.6,
+          "wind_speed": 5.3
+        }
+      }
+    }
   }
 ]
