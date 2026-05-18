@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>广州天气 · 带伞提醒</title>
+    <title>广州天气带伞提醒 - 实时监控与历史数据 | Kisara 可视化中心</title>
+    <meta name="description" content="广州天气实时监控，自动检测雨天并发送带伞提醒。查看温度、湿度趋势，一年历史数据查询，支持邮件订阅提醒服务。">
+    <meta name="keywords" content="广州天气,带伞提醒,雨天预警,温度湿度,天气预报,实时监控">
+    <link rel="canonical" href="https://monitor.kisara.info/weather/take-umbrella-guangzhou.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="广州天气带伞提醒 - 实时监控">
+    <meta property="og:description" content="广州天气实时监控，自动检测雨天并发送带伞提醒">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/weather/take-umbrella-guangzhou.html">
+    <meta property="og:image" content="https://monitor.kisara.info/og-weather.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="广州天气带伞提醒">
+    <meta name="twitter:description" content="实时监控广州天气，雨天自动提醒带伞">
+    
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     
     <!-- 订阅组件样式 -->
     <link rel="stylesheet" href="https://monitor.kisara.info/umbrella/umbrella-subscribe.css">
@@ -181,7 +198,7 @@
         
         /* 带伞提醒 */
         .umbrella-alert {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(39, 174, 96, 0.3));
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.3));
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
@@ -375,7 +392,76 @@
             .weather-icon { font-size: 4rem; }
             .weather-details { gap: 20px; }
         }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: #fff; }
+        .history-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            border-radius: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .history-link:hover {
+            background: rgba(102, 126, 234, 0.4);
+            color: #fff;
+        }
     </style>
+    
+    <!-- Schema.org 结构化数据 - WeatherObservation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WeatherObservation",
+      "name": "广州天气监测 - 带伞提醒",
+      "description": "广州天气实时监控，自动检测雨天并发送带伞提醒",
+      "observationAbout": {
+        "@type": "City",
+        "name": "广州",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "广州",
+          "addressRegion": "广东",
+          "addressCountry": "CN"
+        }
+      },
+      "temperature": {
+        "@type": "QuantitativeValue",
+        "value": "28",
+        "unitCode": "CEL"
+      },
+      "humidity": {
+        "@type": "QuantitativeValue",
+        "value": "68",
+        "unitCode": "P1"
+      },
+      "observationDate": "2026-05-18T15:57:53.141017",
+      "provider": {
+        "@type": "Organization",
+        "name": "Kisara 可视化中心",
+        "url": "https://monitor.kisara.info"
+      }
+    }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JLQB2PE73Z');
+    </script>
 </head>
 <body>
     <!-- 背景粒子 -->
@@ -385,28 +471,30 @@
     <div class="rain " id="rain"></div>
     
     <div class="container">
+        <a href="../" class="back-link">← 返回监控中心</a>
         <header>
-            <h1>🌤️ 广州天气 · 带伞提醒</h1>
-            <p class="subtitle">2026-02-22 更新 · 保留一年历史数据</p>
+            <h1>🌤️ 广州天气 &middot; 带伞提醒</h1>
+            <p class="subtitle">2026-05-18 更新 &middot; 保留一年历史数据</p>
+            <a href="./take-umbrella-history.html" class="history-link">📊 查看历史数据</a>
         </header>
         
         <!-- 当前天气 -->
         <div class="current-weather">
         
             <span class="weather-icon">☁️</span>
-            <div class="temperature">26<span>°C</span></div>
-            <div class="weather-desc">多云 · 体感 26°C</div>
+            <div class="temperature">28<span>&deg;C</span></div>
+            <div class="weather-desc">阴 &middot; 体感 28&deg;C</div>
             <div class="weather-details">
                 <div class="detail-item">
-                    <div class="detail-value">60% </div>
+                    <div class="detail-value">68% </div>
                     <div class="detail-label">湿度</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">1级</div>
+                    <div class="detail-value">3级</div>
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">13:41</div>
+                    <div class="detail-value">15:57:53</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -416,9 +504,9 @@
         <!-- 带伞提醒 -->
         <div class="umbrella-alert">
         
-            <div class="umbrella-icon">🌤️</div>
-            <div class="umbrella-text">今天不用带伞</div>
-            <div class="umbrella-sub">多云 · 26°C · 湿度60%</div>
+            <div class="umbrella-icon">☂️</div>
+            <div class="umbrella-text">今天记得带伞喵~</div>
+            <div class="umbrella-sub">阴 &middot; 28&deg;C &middot; 湿度68% &middot; 已发送提醒</div>
         
         </div>
         
@@ -441,7 +529,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">☂️</div>
-                <div class="stat-value">0</div>
+                <div class="stat-value">2</div>
                 <div class="stat-label">带伞提醒次数</div>
             </div>
         </div>
@@ -451,67 +539,68 @@
             <h2 class="section-title">📈 近7天温度趋势</h2>
             
             <div class="trend-chart">
-                <div class="trend-bar">
-                        <div class="bar " style="height: 78px;">
-                            <span class="bar-temp">26°</span>
-                        </div>
-                        <div class="bar-label">02/22<br>周六</div>
-                    </div>
-                    
+                
+            <div class="trend-bar">
+                <div class="bar rain" style="height: 84px;">
+                    <span class="bar-temp">28&deg;</span>
+                </div>
+                <div class="bar-label">05/18<br>周日</div>
+            </div>
+        
             </div>
             
             <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 1.1rem;">📅 7天概览</h3>
             <div class="days-grid">
                 
-                    <div class="day-card ">
-                        <div class="day-date">02/16 周日</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/17 周一</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/18 周二</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/19 周三</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/20 周四</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/21 周五</div>
-                        <div class="day-icon">❓</div>
-                        <div class="day-temp">None°C</div>
-                        <div class="day-weather">无数据</div>
-                    </div>
-                    
-                    <div class="day-card ">
-                        <div class="day-date">02/22 周六</div>
-                        <div class="day-icon">☁️</div>
-                        <div class="day-temp">26°C</div>
-                        <div class="day-weather">多云</div>
-                    </div>
-                    
+            <div class="day-card ">
+                <div class="day-date">05/12 周一</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card ">
+                <div class="day-date">05/13 周二</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card ">
+                <div class="day-date">05/14 周三</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card ">
+                <div class="day-date">05/15 周四</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card ">
+                <div class="day-date">05/16 周五</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card ">
+                <div class="day-date">05/17 周六</div>
+                <div class="day-icon">❓</div>
+                <div class="day-temp">None&deg;C</div>
+                <div class="day-weather">无数据</div>
+            </div>
+        
+            <div class="day-card alert">
+                <div class="day-date">05/18 周日</div>
+                <div class="day-icon">☁️</div>
+                <div class="day-temp">28&deg;C</div>
+                <div class="day-weather">阴 ☂️</div>
+            </div>
+        
             </div>
         </div>
         
@@ -543,8 +632,8 @@
         </div>
         
         <footer>
-            <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-02-22 14:47:21</p>
+            <p>广州天气监控 &middot; 带伞提醒系统 &middot; 数据保留一年</p>
+            <p>生成时间: 2026-05-18 15:58:40</p>
         </footer>
     </div>
     
@@ -567,8 +656,8 @@
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
-         data-need-umbrella="false"
+         data-weather-level="unknown"
+         data-need-umbrella="true"
     ></div>
     
     <!-- 订阅组件脚本 -->
