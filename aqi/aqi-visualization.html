@@ -5,21 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>广州空气质量监控 - AQI实时监测 | Kisara 可视化中心</title>
     <meta name="description" content="广州空气质量实时监控，AQI、PM2.5、PM10指数监测，24小时趋势分析，紫外线指数预警，保护您的健康。">
-    <meta name="keywords" content="广州空气质量,AQI,PM2.5,PM10,空气污染,紫外线指数,空气质量监测">
     <link rel="canonical" href="https://monitor.kisara.info/aqi/aqi-visualization.html">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="广州空气质量监控 - AQI实时监测">
-    <meta property="og:description" content="广州空气质量实时监控，AQI、PM2.5、PM10指数监测">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://monitor.kisara.info/aqi/aqi-visualization.html">
-    <meta property="og:image" content="https://monitor.kisara.info/og-aqi.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="广州空气质量监控">
-    <meta name="twitter:description" content="AQI、PM2.5实时监测，保护您的健康">
-    
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -51,11 +37,13 @@
             padding: 20px;
             border: 1px solid rgba(255,255,255,0.1);
             text-align: center;
+            transition: transform 0.2s;
         }
+        .card:hover { transform: translateY(-2px); }
         .card h3 { margin-bottom: 10px; color: #8892b0; font-size: 0.9rem; }
         .value { font-size: 2.5rem; font-weight: bold; }
         .unit { font-size: 1rem; color: #8892b0; }
-        .level { 
+        .level {
             display: inline-block;
             padding: 4px 12px;
             border-radius: 20px;
@@ -66,6 +54,8 @@
         .level-moderate { background: #ffd600; color: #000; }
         .level-unhealthy { background: #ff9100; }
         .level-bad { background: #ff1744; }
+        .level-severe { background: #7b1fa2; }
+        .level-unknown { background: #888; }
         .chart-container {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
@@ -73,6 +63,15 @@
             border: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 20px;
         }
+        .info-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid #667eea;
+        }
+        .info-box p { margin: 5px 0; color: #8892b0; font-size: 0.9rem; }
+        .info-box strong { color: #fff; }
         .update-time {
             text-align: center;
             color: #8892b0;
@@ -86,73 +85,11 @@
             text-decoration: none;
         }
         .back-link:hover { color: #fff; }
-    </style>
-    
-    <!-- Schema.org 结构化数据 - FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "什么是AQI？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AQI（Air Quality Index，空气质量指数）是定量描述空气质量状况的无量纲指数。它将复杂的空气质量数据简化为一个数值，范围0-500，数值越高表示空气污染越严重，对健康影响越大。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "AQI等级如何划分？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AQI分为6个等级：0-50优（绿色）、51-100良（黄色）、101-150轻度污染（橙色）、151-200中度污染（红色）、201-300重度污染（紫色）、300以上严重污染（褐红色）。等级越高，建议减少户外活动。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "PM2.5和PM10有什么区别？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PM2.5是直径≤2.5微米的细颗粒物，可深入肺泡进入血液，对健康危害最大。PM10是直径≤10微米的可吸入颗粒物，主要沉积在上呼吸道。PM2.5通常比PM10更难防护，需要N95口罩才能有效过滤。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "紫外线指数怎么看？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "紫外线指数0-2为低（安全）、3-5中等（需防护）、6-7高（避免正午外出）、8-10很高（必须防护）、11+极高（尽量避免外出）。指数≥3时建议涂抹防晒霜，指数≥6时建议戴太阳镜和遮阳帽。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "空气质量数据从哪里来？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "数据来自和风天气API，整合中国环境监测总站和各地环保部门的实时监测数据。系统每2小时更新一次，保留24小时历史记录用于趋势分析。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "免责声明",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "本系统仅供参考，数据来源于第三方气象服务，可能存在延迟或误差。空气质量监测结果不代表官方发布，重要健康决策请以中国环境监测总站官方数据为准。因使用本系统数据造成的任何损失，开发者不承担责任。"
-          }
+        @media (max-width: 600px) {
+            .value { font-size: 2rem; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
         }
-      ]
-    }
-    </script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JLQB2PE73Z');
-    </script>
+    </style>
 </head>
 <body>
     <div class="container">
@@ -162,25 +99,28 @@
         <div class="grid">
             <div class="card">
                 <h3>AQI 空气质量指数</h3>
-                <div class="value">31<span class="unit"></span></div>
+                <div class="value">19<span class="unit"></span></div>
                 <span class="level level-good">优</span>
             </div>
             
             <div class="card">
                 <h3>PM2.5</h3>
-                <div class="value">16.33<span class="unit"> μg/m³</span></div>
+                <div class="value">13.0<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>PM10</h3>
-                <div class="value">30.83<span class="unit"> μg/m³</span></div>
+                <div class="value">17.0<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>紫外线指数</h3>
-                <div class="value">2<span class="unit"></span></div>
+                <div class="value">3.0<span class="unit"></span></div>
+                <span class="level level-moderate">中等</span>
             </div>
         </div>
+        
+        <div class="info-box"><p><strong>首要污染物：</strong>None</p><p><strong>健康影响：</strong>空气质量令人满意，基本无空气污染。</p></div>
         
         <div class="chart-container">
             <canvas id="aqiChart"></canvas>
@@ -190,20 +130,43 @@
             <canvas id="pm25Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 2026-02-26 20:00:15</p>
+        <div class="chart-container">
+            <canvas id="pm10Chart"></canvas>
+        </div>
+        
+        <p class="update-time">最后更新: 05-20 21:17 | 数据来源: 和风天气 | 更新频率: 每2小时</p>
     </div>
     
     <script>
-        const ctx1 = document.getElementById('aqiChart').getContext('2d');
-        new Chart(ctx1, {
+        const labels = ["05-20 21:17"];
+        const aqiData = [19];
+        const pm25Data = [13.0];
+        const pm10Data = [17.0];
+        const uvData = [3.0];
+        
+        // AQI 颜色映射
+        function getAQIColor(value) {
+            if (value <= 50) return '#00c853';
+            if (value <= 100) return '#ffd600';
+            if (value <= 150) return '#ff9100';
+            if (value <= 200) return '#ff1744';
+            if (value <= 300) return '#7b1fa2';
+            return '#4a0000';
+        }
+        
+        const aqiColors = aqiData.map(v => getAQIColor(v));
+        
+        new Chart(document.getElementById('aqiChart'), {
             type: 'line',
             data: {
-                labels: ["12:03", "06:02", "12:00"],
+                labels: labels,
                 datasets: [{
                     label: 'AQI',
-                    data: [54, 29, 31],
+                    data: aqiData,
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    pointBackgroundColor: aqiColors,
+                    pointRadius: 5,
                     tension: 0.4,
                     fill: true
                 }]
@@ -211,23 +174,23 @@
             options: {
                 responsive: true,
                 plugins: {
-                    title: { display: true, text: '24小时 AQI 趋势', color: '#fff' }
+                    title: { display: true, text: '24小时 AQI 趋势', color: '#fff', font: { size: 16 } },
+                    legend: { labels: { color: '#8892b0' } }
                 },
                 scales: {
                     y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' } },
-                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' } }
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxRotation: 45 } }
                 }
             }
         });
         
-        const ctx2 = document.getElementById('pm25Chart').getContext('2d');
-        new Chart(ctx2, {
+        new Chart(document.getElementById('pm25Chart'), {
             type: 'line',
             data: {
-                labels: ["12:03", "06:02", "12:00"],
+                labels: labels,
                 datasets: [{
-                    label: 'PM2.5',
-                    data: [36.67, 16.33, 16.33],
+                    label: 'PM2.5 (μg/m³)',
+                    data: pm25Data,
                     borderColor: '#f093fb',
                     backgroundColor: 'rgba(240, 147, 251, 0.1)',
                     tension: 0.4,
@@ -237,11 +200,38 @@
             options: {
                 responsive: true,
                 plugins: {
-                    title: { display: true, text: '24小时 PM2.5 趋势', color: '#fff' }
+                    title: { display: true, text: '24小时 PM2.5 趋势', color: '#fff', font: { size: 16 } },
+                    legend: { labels: { color: '#8892b0' } }
                 },
                 scales: {
                     y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' } },
-                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' } }
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxRotation: 45 } }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('pm10Chart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'PM10 (μg/m³)',
+                    data: pm10Data,
+                    borderColor: '#4fc3f7',
+                    backgroundColor: 'rgba(79, 195, 247, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: { display: true, text: '24小时 PM10 趋势', color: '#fff', font: { size: 16 } },
+                    legend: { labels: { color: '#8892b0' } }
+                },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' } },
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxRotation: 45 } }
                 }
             }
         });
