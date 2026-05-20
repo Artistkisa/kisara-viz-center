@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心</title>
     <meta name="description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测。">
-    <meta name="keywords" content="网站监控,可用性监测,响应时间,服务器状态,网站运行状态">
     <link rel="canonical" href="https://monitor.kisara.info/website/website-visualization.html">
-    <meta property="og:title" content="网站运行状态监控 - 实时监测">
-    <meta property="og:description" content="网站可用率、响应时间实时监控">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://monitor.kisara.info/website/website-visualization.html">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -50,10 +45,7 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        .website-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
+        .website-name { font-size: 1.3rem; font-weight: bold; }
         .status {
             display: inline-flex;
             align-items: center;
@@ -76,16 +68,8 @@
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
         }
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #fff;
-        }
-        .metric-label {
-            font-size: 0.85rem;
-            color: #8892b0;
-            margin-top: 5px;
-        }
+        .metric-value { font-size: 1.8rem; font-weight: bold; color: #fff; }
+        .metric-label { font-size: 0.85rem; color: #8892b0; margin-top: 5px; }
         .chart-container {
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
@@ -98,40 +82,34 @@
             font-size: 0.9rem;
             margin-top: 30px;
         }
+        @media (max-width: 600px) {
+            .website-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+        }
     </style>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JLQB2PE73Z');
-    </script>
 </head>
 <body>
     <div class="container">
         <a href="../" class="back-link">← 返回可视化中心</a>
         <h1>🌐 网站运行状态</h1>
         
-        <!-- Kisara 主站 -->
         <div class="website-card">
             <div class="website-header">
                 <span class="website-name">🌐 kisara.art (主站)</span>
-                <span class="status status-offline">
-                    ● 离线
+                <span class="status status-online">
+                    ● 在线
                 </span>
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">0.0%</div>
+                    <div class="metric-value">100.0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">Nonems</div>
+                    <div class="metric-value">4630ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">3278.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -140,25 +118,24 @@
             </div>
         </div>
         
-        <!-- Kisara 论坛 -->
         <div class="website-card">
             <div class="website-header">
                 <span class="website-name">💬 forum.kisara.art (论坛)</span>
-                <span class="status status-offline">
-                    ● 离线
+                <span class="status status-online">
+                    ● 在线
                 </span>
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">0.0%</div>
+                    <div class="metric-value">100.0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">Nonems</div>
+                    <div class="metric-value">4630ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">0ms</div>
+                    <div class="metric-value">4630.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -167,18 +144,21 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-04-15 16:32:01</p>
+        <p class="update-time">最后更新: 2026-05-20 21:29:43</p>
     </div>
     
     <script>
-        const ctx1 = document.getElementById('kisaraChart').getContext('2d');
-        new Chart(ctx1, {
+        const labels = ["21:29", "21:29"];
+        const kisaraData = [1927, 4630];
+        const forumData = [4630, 0];
+        
+        new Chart(document.getElementById('kisaraChart'), {
             type: 'line',
             data: {
-                labels: ["12:00", "12:00", "12:30", "12:30", "13:00", "13:00", "13:30", "13:30", "14:00", "14:00", "14:30", "14:30", "15:00", "15:00", "15:30", "15:30", "16:00", "16:00", "16:30", "16:30"],
+                labels: labels,
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: kisaraData,
                     borderColor: '#00c853',
                     backgroundColor: 'rgba(0, 200, 83, 0.1)',
                     tension: 0.4,
@@ -189,31 +169,21 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: { 
-                        grid: { color: 'rgba(255,255,255,0.1)' }, 
-                        ticks: { color: '#8892b0' },
-                        title: { display: true, text: '响应时间 (ms)', color: '#8892b0' }
-                    },
-                    x: { 
-                        grid: { color: 'rgba(255,255,255,0.1)' }, 
-                        ticks: { color: '#8892b0', maxTicksLimit: 8 }
-                    }
+                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' }, title: { display: true, text: '响应时间 (ms)', color: '#8892b0' } },
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxTicksLimit: 8 } }
                 }
             }
         });
         
-        const ctx2 = document.getElementById('forumChart').getContext('2d');
-        new Chart(ctx2, {
+        new Chart(document.getElementById('forumChart'), {
             type: 'line',
             data: {
-                labels: ["12:00", "12:00", "12:30", "12:30", "13:00", "13:00", "13:30", "13:30", "14:00", "14:00", "14:30", "14:30", "15:00", "15:00", "15:30", "15:30", "16:00", "16:00", "16:30", "16:30"],
+                labels: labels,
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: forumData,
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -224,19 +194,10 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: { 
-                        grid: { color: 'rgba(255,255,255,0.1)' }, 
-                        ticks: { color: '#8892b0' },
-                        title: { display: true, text: '响应时间 (ms)', color: '#8892b0' }
-                    },
-                    x: { 
-                        grid: { color: 'rgba(255,255,255,0.1)' }, 
-                        ticks: { color: '#8892b0', maxTicksLimit: 8 }
-                    }
+                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' }, title: { display: true, text: '响应时间 (ms)', color: '#8892b0' } },
+                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxTicksLimit: 8 } }
                 }
             }
         });
