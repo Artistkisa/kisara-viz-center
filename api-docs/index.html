@@ -529,11 +529,11 @@
                 <span class="path">/api/system</span>
                 <button class="test-btn" onclick="testEndpoint('/api/system')">▶ 测试</button>
             </div>
-            <p class="endpoint-desc">系统负载（近实时 /proc）</p>
+            <p class="endpoint-desc">系统负载（近实时 /proc）· 含死机预测字段</p>
             
             <div class="example">
                 <div class="example-label">示例响应</div>
-                <pre>{"realtime": true, "cpu_percent": 7.4, "memory_percent": 55.5, "load1": 0.28, "temperatures": {"soc": 47.5}}</pre>
+                <pre>{"realtime": true, "cpu_percent": 7.4, "iowait_percent": 0.1, "cpu_freq_mhz": 1536, "cpu_throttle_ratio": 1.0, "memory_available_percent": 43.8, "swap_total_kb": 506584, "swap_type": "zram", "swap_used_percent": 0.2, "load5": 0.27, "load15": 0.32, "temperatures": {"soc": 47.5}}</pre>
             </div>
             <div class="test-result" id="result-api-system"></div>
         </div>
