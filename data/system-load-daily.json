@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T01:05:02.989741",
+  "generated_at": "2026-05-21T01:20:02.411394",
   "host": "CasaOS-ARM",
   "data_points": [
     {
@@ -545,27 +545,59 @@
       "temperatures": {
         "soc": 44.1
       }
+    },
+    {
+      "timestamp": "2026-05-21T01:20:01.387860",
+      "hour": 1,
+      "minute": 20,
+      "cpu": {
+        "percent": 3.5,
+        "load1": 0.24,
+        "load5": 0.36,
+        "load15": 0.34
+      },
+      "memory": {
+        "percent": 54.4,
+        "used_gb": 0.53,
+        "total_gb": 0.97
+      },
+      "disk": {
+        "percent": 43.4,
+        "used_gb": 2.84,
+        "total_gb": 6.54
+      },
+      "network": {
+        "bytes_sent": 48055611,
+        "bytes_recv": 531967107,
+        "packets_sent": 274988,
+        "packets_recv": 717138
+      },
+      "processes": 162,
+      "uptime_seconds": 140268,
+      "temperatures": {
+        "soc": 45.3
+      }
     }
   ],
   "statistics": {
-    "cpu_avg": 17.3,
+    "cpu_avg": 16.6,
     "cpu_max": 90.5,
     "cpu_min": 0.5,
-    "memory_avg": 56.3,
+    "memory_avg": 56.2,
     "memory_max": 59.6,
     "memory_min": 54.3,
-    "load_avg": 0.46,
-    "total_points": 17
+    "load_avg": 0.45,
+    "total_points": 18
   },
   "current": {
-    "cpu_percent": 0.5,
-    "memory_percent": 55.1,
+    "cpu_percent": 3.5,
+    "memory_percent": 54.4,
     "disk_percent": 43.4,
-    "load1": 0.27,
-    "processes": 160,
-    "uptime_hours": 38.7,
+    "load1": 0.24,
+    "processes": 162,
+    "uptime_hours": 39.0,
     "temperatures": {
-      "soc": 44.1
+      "soc": 45.3
     }
   }
 }
