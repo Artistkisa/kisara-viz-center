@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-05-20T20:52:24.614417",
+  "host": "CasaOS-ARM",
+  "data_points": [
+    {
+      "timestamp": "2026-05-20T20:52:23.608962",
+      "hour": 20,
+      "minute": 52,
+      "cpu": {
+        "percent": 2.2,
+        "load1": 0.4,
+        "load5": 0.27,
+        "load15": 0.28
+      },
+      "memory": {
+        "percent": 51.5,
+        "used_gb": 0.5,
+        "total_gb": 0.97
+      },
+      "disk": {
+        "percent": 42.5,
+        "used_gb": 2.78,
+        "total_gb": 6.54
+      },
+      "network": {
+        "bytes_sent": 29205151,
+        "bytes_recv": 316307174,
+        "packets_sent": 125192,
+        "packets_recv": 471060
+      },
+      "processes": 156,
+      "uptime_seconds": 124210,
+      "temperatures": {
+        "soc": 46.9
+      }
+    }
+  ],
+  "current": {
+    "cpu_percent": 2.2,
+    "memory_percent": 51.5,
+    "disk_percent": 42.5,
+    "load1": 0.4,
+    "processes": 156,
+    "uptime_hours": 34.5,
+    "temperatures": {
+      "soc": 46.9
+    }
+  }
+}
