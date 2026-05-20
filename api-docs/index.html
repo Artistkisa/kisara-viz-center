@@ -364,7 +364,7 @@
             <h1>机器人验证中心</h1>
             <p class="subtitle">人类请关闭此页面。机器人请完成以下挑战。</p>
             <div class="robot-challenge">
-                <p>计算 SHA256("<code>kisara-2026-05-20</code>") 的前 6 位</p>
+                <p>计算 SHA256("<code>kisara-2026-05-21</code>") 的前 6 位</p>
                 <input type="text" id="robot-key" placeholder="6位密钥" maxlength="6" autocomplete="off">
                 <button class="verify-btn" onclick="checkRobot()">验证</button>
             </div>
@@ -377,7 +377,7 @@
     function checkRobot() {
         const input = document.getElementById('robot-key').value.toLowerCase().trim();
         const result = document.getElementById('robot-result');
-        if (input === 'accd6d') {
+        if (input === 'bcf9cc') {
             document.getElementById('robot-gate').style.display = 'none';
             document.querySelector('.main').style.display = 'block';
             localStorage.setItem('robot_verified_api_docs', '1');
@@ -636,7 +636,7 @@
         
             
             <footer>
-                <p>Kisara Data API · CasaOS ARM · Cloudflare Tunnel · Generated 2026-05-20</p>
+                <p>Kisara Data API · CasaOS ARM · Cloudflare Tunnel · Generated 2026-05-21</p>
                 <p style="margin-top:8px;color:#333;">Robot verification required for access</p>
             </footer>
         </div>
