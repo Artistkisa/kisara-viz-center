@@ -406,6 +406,10 @@
                 <h1>⚡ Kisara API</h1>
                 <p style="color:#888;font-size:14px;">CasaOS ARM 统一数据接口 · 实时监控</p>
                 <div class="api-url">https://api.kisara.info</div>
+                <div style="margin-top:16px;">
+                    <input type="password" id="api-token" placeholder="Bearer Token (鉴权端点需要)" style="padding:10px 16px;font-size:13px;width:320px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:#fff;border-radius:8px;font-family:monospace;" onchange="localStorage.setItem('kisara_api_token', this.value)">
+                    <span style="color:#666;font-size:12px;margin-left:8px;">Read Token 前缀: <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:4px;">232836b7...</code></span>
+                </div>
             </header>
             
             <div class="stats-bar">
@@ -443,10 +447,11 @@
             
             <h2 class="section-title">📡 端点列表</h2>
             
-        <div class="endpoint-card" data-path="/health">
+        <div class="endpoint-card" data-path="/health" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/health</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/health')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">服务健康检查</p>
@@ -459,10 +464,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/weather">
+        <div class="endpoint-card" data-path="/api/weather" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/weather</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/weather')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">广州实时天气</p>
@@ -475,10 +481,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/aqi">
+        <div class="endpoint-card" data-path="/api/aqi" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/aqi</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/aqi')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">AQI 空气质量 + UV</p>
@@ -491,10 +498,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/huinan">
+        <div class="endpoint-card" data-path="/api/huinan" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/huinan</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/huinan')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">回南天监测（本地 SQLite）</p>
@@ -507,10 +515,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/huinan-remote">
+        <div class="endpoint-card" data-path="/api/huinan-remote" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/huinan-remote</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/huinan-remote')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">回南天远程数据库查询（透传）</p>
@@ -523,10 +532,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/system">
+        <div class="endpoint-card" data-path="/api/system" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/system</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/system')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">系统负载（近实时 /proc）· 含死机预测字段。实时值每5s采样，24h统计来自历史JSON</p>
@@ -539,10 +549,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/website">
+        <div class="endpoint-card" data-path="/api/website" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/website</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/website')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">网站可用性监控</p>
@@ -555,10 +566,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/typhoon">
+        <div class="endpoint-card" data-path="/api/typhoon" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/typhoon</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/typhoon')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">台风监控</p>
@@ -571,10 +583,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/bangumi">
+        <div class="endpoint-card" data-path="/api/bangumi" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/bangumi</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/bangumi')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">Bangumi 番组更新</p>
@@ -587,10 +600,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/security">
+        <div class="endpoint-card" data-path="/api/security" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/security</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/security')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">安全监控状态</p>
@@ -603,10 +617,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/weather-history">
+        <div class="endpoint-card" data-path="/api/weather-history" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/weather-history</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/weather-history')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">天气历史数据（透传 PHP）</p>
@@ -619,10 +634,11 @@
         </div>
         
 
-        <div class="endpoint-card" data-path="/api/all">
+        <div class="endpoint-card" data-path="/api/all" data-auth="false">
             <div class="endpoint-header">
                 <span class="method">GET</span>
                 <span class="path">/api/all</span>
+                <span class="public-badge">🌐 Public</span>
                 <button class="test-btn" onclick="testEndpoint('/api/all')">▶ 测试</button>
             </div>
             <p class="endpoint-desc">所有数据汇总</p>
@@ -632,6 +648,125 @@
                 <pre>{"server": {...}, "weather": {...}, "aqi": {...}, ...}</pre>
             </div>
             <div class="test-result" id="result-api-all"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/processes" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/processes</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/processes')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">Top 10 OOM 候选进程（pid, cmdline, mem_mb, oom_score）</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"oom_candidates": [{"pid": 1847, "cmdline": "python3 /app/...", "mem_mb": 234, "oom_score": 312}], "total_checked": 385}</pre>
+            </div>
+            <div class="test-result" id="result-api-processes"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/zram" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/zram</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/zram')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">Zram 压缩统计（压缩率、算法、节省空间%）</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"device": "zram0", "comp_algorithm": "lzo", "compression_ratio": 2.84, "space_saved_percent": 64.8}</pre>
+            </div>
+            <div class="test-result" id="result-api-zram"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/dmesg" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/dmesg</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/dmesg')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">内核日志过滤（thermal, oom-kill, Out of memory, killed process）</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"filtered_lines": [...], "filtered_count": 5, "total_lines": 128}</pre>
+            </div>
+            <div class="test-result" id="result-api-dmesg"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/containers" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/containers</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/containers')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">Docker 容器状态（name, status, cpu%, mem%, pids）</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"containers": [{"name": "alist", "state": "running", "cpu_percent": "0.66", "mem_percent": "2.29"}], "running_count": 3}</pre>
+            </div>
+            <div class="test-result" id="result-api-containers"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/io" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/io</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/io')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">磁盘 I/O 速率（read/write MB/s）+ 累计扇区统计</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"read_mbps": 0.0, "write_mbps": 0.5, "mmcblk1": {"read_mb": 1343.14, "write_mb": 6043.66}}</pre>
+            </div>
+            <div class="test-result" id="result-api-io"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/network" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/network</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/network')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">TCP 连接统计（established, time_wait, total）</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"tcp_established": 9, "tcp_time_wait": 37, "total_conns": 70}</pre>
+            </div>
+            <div class="test-result" id="result-api-network"></div>
+        </div>
+        
+
+        <div class="endpoint-card" data-path="/api/services" data-auth="true">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">/api/services</span>
+                <span class="auth-badge">🔐 Auth</span>
+                <button class="test-btn" onclick="testEndpoint('/api/services')">▶ 测试</button>
+            </div>
+            <p class="endpoint-desc">systemd 失败服务列表</p>
+            
+            <div class="example">
+                <div class="example-label">示例响应</div>
+                <pre>{"failed_services": ["smartmontools.service"], "failed_count": 1}</pre>
+            </div>
+            <div class="test-result" id="result-api-services"></div>
         </div>
         
             
