@@ -331,22 +331,6 @@
                     <span>📍 广州</span>
                 </div>
             </a>
-            
-            <!-- 推送日志 -->
-            <div class="card" style="cursor: default;">
-                <div class="card-icon">📋</div>
-                <h2>推送日志监控</h2>
-                <p>服务器推送记录监控，包含 ECS 和主服务器的推送状态、成功率统计。</p>
-                <div class="card-meta" style="flex-direction: column; align-items: flex-start; gap: 10px;">
-                    <a href="./logs/push-log-visualization.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span class="status"></span> ECS 推送日志 →
-                    </a>
-                    <a href="./logs/heartbeat-monitor.html" style="color: #64ffda; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                        <span class="status"></span> 💓 双向心跳监控 →
-                    </a>
-                </div>
-            </div>
-            
             <!-- 追番列表 -->
             <a href="./anime/anime-visualization.html" class="card">
                 <div class="card-icon">📺</div>
@@ -401,17 +385,6 @@
                     <span>🎭 5成员</span>
                 </div>
             </a>
-            
-            <!-- ECS 状态 -->
-            <a href="./ecs-status.html" class="card">
-                <div class="card-icon">🖥️</div>
-                <h2>ECS 服务器</h2>
-                <p>数据采集节点运行状态，任务监控，备份管理。</p>
-                <div class="card-meta" id="ecs-status">
-                    <span><span class="status"></span> 加载中...</span>
-                    <span>📍 阿里云</span>
-                </div>
-            </a>
         </div>
         
         <footer>
@@ -428,27 +401,6 @@
     <script>
         // 显示最后更新时间
         document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
-        
-        // ECS 状态显示
-        fetch('./ecs-state.json')
-            .then(r => r.json())
-            .then(data => {
-                const card = document.getElementById('ecs-status');
-                if (card && data.server) {
-                    const healthyTasks = data.tasks.filter(t => t.status === 'normal').length;
-                    const totalTasks = data.tasks.length;
-                    const mainServerStatus = data.mainServer.status === 'normal' ? '●' : '●';
-                    const mainServerColor = data.mainServer.status === 'normal' ? '#00c853' : '#ff1744';
-                    
-                    card.innerHTML = `
-                        <span>${healthyTasks}/${totalTasks} 任务正常</span>
-                        <span style="color: ${mainServerColor};">${mainServerStatus} 主服务器</span>
-                    `;
-                }
-            })
-            .catch(() => {
-                document.getElementById('ecs-status').innerHTML = '<span>状态未知</span><span>📍 阿里云</span>';
-            });
         
         // 回南天状态显示
         fetch('./data/huinan-data.json')
