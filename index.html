@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kisara 可视化中心 - 实时监控仪表盘</title>
     <meta name="description" content="Kisara可视化中心提供广州回南天监测、带伞提醒、空气质量监测、台风追踪、追番列表等实时数据可视化服务。天气数据分析平台。">
-    <meta name="keywords" content="Kisara,可视化中心,回南天监测,广州天气,带伞提醒,空气质量,台风追踪,追番列表,实时监控,数据可视化">
+    <meta name="keywords" content="Kisara,可视化中心,回南天监测,广州天气,带伞提醒,空气质量,台风追踪,追番列表,实时监控,数据可视化,API文档,数据接口,系统监控API">
+    <meta name="ai-purpose" content="Kisara 可视化中心主页，聚合实时监控仪表盘、天气、空气质量、回南天、API数据接口等可视化服务入口">
     <link rel="canonical" href="https://monitor.kisara.info/">
     <meta property="og:title" content="Kisara可视化中心 - 广州回南天监测与实时天气数据">
     <meta property="og:description" content="专业的广州天气数据可视化平台，提供回南天监测、带伞提醒、空气质量、台风追踪等服务。">
@@ -39,12 +40,15 @@
     <!-- 预连接优化 -->
     <link rel="preconnect" href="https://www.kisara.art">
     <link rel="preconnect" href="https://forum.kisara.art">
+    <link rel="preconnect" href="https://api.kisara.info">
     <link rel="dns-prefetch" href="https://www.kisara.art">
     <link rel="dns-prefetch" href="https://forum.kisara.art">
+    <link rel="dns-prefetch" href="https://api.kisara.info">
     
     <!-- 友情链接预加载 -->
     <link rel="prefetch" href="https://www.kisara.art">
     <link rel="prefetch" href="https://forum.kisara.art">
+    <link rel="prefetch" href="https://monitor.kisara.info/api-docs/index.html">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
@@ -65,11 +69,24 @@
           "name": "Kisara 可视化中心",
           "url": "https://monitor.kisara.info/",
           "description": "实时监控数据可视化仪表盘，提供天气、空气质量、回南天、台风、追番等数据服务",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://monitor.kisara.info/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": "https://monitor.kisara.info/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            {
+              "@type": "ReadAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://monitor.kisara.info/api-docs/index.html",
+                "actionPlatform": [
+                  "http://schema.org/DesktopWebPlatform",
+                  "http://schema.org/MobileWebPlatform"
+                ]
+              }
+            }
+          ]
         },
         {
           "@type": "Organization",
@@ -253,10 +270,24 @@
                 <a href="https://forum.kisara.art" target="_blank" rel="noopener dofollow" class="nav-link">
                     <span class="nav-icon">💬</span> 社区论坛
                 </a>
+                <a href="./api-docs/index.html" class="nav-link">
+                    <span class="nav-icon">🔌</span> API 文档
+                </a>
             </nav>
         </header>
         
         <div class="grid">
+            <!-- API 文档 -->
+            <a href="./api-docs/index.html" class="card">
+                <div class="card-icon">🔌</div>
+                <h2>API 文档</h2>
+                <p>统一数据接口文档，系统监控、天气、回南天、空气质量等实时数据端点，支持 Token 鉴权访问。</p>
+                <div class="card-meta">
+                    <span><span class="status"></span> 实时接口</span>
+                    <span>🔑 Token 鉴权</span>
+                </div>
+            </a>
+            
             <!-- 台风监控 -->
             <a href="./typhoon/" class="card">
                 <div class="card-icon">🌀</div>
@@ -387,6 +418,7 @@
             <p>Powered by OpenClaw · 数据来自和风天气 / Bangumi 番组计划 · 
                 <a href="https://www.kisara.art" target="_blank" rel="noopener dofollow" style="color: #64ffda; text-decoration: none;">📝 个人博客</a> · 
                 <a href="https://forum.kisara.art" target="_blank" rel="noopener dofollow" style="color: #64ffda; text-decoration: none;">💬 社区论坛</a> · 
+                <a href="./api-docs/index.html" style="color: #64ffda; text-decoration: none;">🔌 API 文档</a> · 
                 <a href="./about-us" style="color: #64ffda; text-decoration: none;">关于我们</a>
             </p>
             <p class="update-time">最后更新: <span id="updateTime">-</span></p>
