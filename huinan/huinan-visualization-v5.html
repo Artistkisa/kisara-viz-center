@@ -358,7 +358,7 @@
         "value": "N/A",
         "unitCode": "P1"
       },
-      "observationDate": "2026-05-21T13:23:01.822978",
+      "observationDate": "2026-05-21T14:23:01.784834",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -476,15 +476,15 @@
         <!-- 统计数据 -->
         <div class="stats-grid">
             <div class="stat-box">
-                <div class="stat-value">26.7°C</div>
+                <div class="stat-value">25.9°C</div>
                 <div class="stat-label">当前温度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">90.6%</div>
+                <div class="stat-value">94.0%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">25.8°C</div>
+                <div class="stat-value">25.4°C</div>
                 <div class="stat-label">露点温度</div>
             </div>
             <div class="stat-box">
@@ -522,7 +522,7 @@
                 <div class="cond-item">
                     <div>
                         <div class="cond-name">露点接近</div>
-                        <div class="cond-detail">气温-露点=0.9°C <= 3.0°C</div>
+                        <div class="cond-detail">气温-露点=0.5°C <= 3.0°C</div>
                     </div>
                     <span class="cond-status ok">✓</span>
                 </div>
@@ -604,7 +604,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-05-21 13:23</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-05-21 14:23</p>
         </div>
         
         <!-- 订阅区域 -->
@@ -800,7 +800,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11"],
+                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11", "05-21 14:11"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', rotate: 45 }
             },
@@ -814,7 +814,7 @@
                 {
                     name: '湿度',
                     type: 'line',
-                    data: [94.0, 94.0, 91.6, 93.5, 93.0, 93.0, 92.0, 91.1, 84.8, 90.6],
+                    data: [94.0, 94.0, 91.6, 93.5, 93.0, 93.0, 92.0, 91.1, 84.8, 90.6, 94.0],
                     smooth: true,
                     lineStyle: { color: '#00d9ff', width: 3 },
                     itemStyle: { color: '#00d9ff' }
@@ -822,7 +822,7 @@
                 {
                     name: '温度',
                     type: 'line',
-                    data: [25.4, 25.4, 25.5, 25.2, 25.2, 25.3, 25.9, 26.5, 27.8, 26.7],
+                    data: [25.4, 25.4, 25.5, 25.2, 25.2, 25.3, 25.9, 26.5, 27.8, 26.7, 25.9],
                     smooth: true,
                     lineStyle: { color: '#91cc75' },
                     itemStyle: { color: '#91cc75' }
@@ -830,7 +830,7 @@
                 {
                     name: '露点',
                     type: 'line',
-                    data: [24.9, 24.9, 25.5, 25.1, 25.1, 25.1, 25.4, 25.7, 25.8, 25.8],
+                    data: [24.9, 24.9, 25.5, 25.1, 25.1, 25.1, 25.4, 25.7, 25.8, 25.8, 25.4],
                     smooth: true,
                     lineStyle: { color: '#fac858' },
                     itemStyle: { color: '#fac858' }
@@ -847,7 +847,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11"],
+                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11", "05-21 14:11"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', fontSize: 10 }
             },
@@ -862,7 +862,7 @@
             series: [{
                 name: '气压',
                 type: 'line',
-                data: [1002.0, 1002.0, 1004.0, 1005.0, 1005.0, 1005.0, 1006.0, 1005.0, 1004.0, 1004.0],
+                data: [1002.0, 1002.0, 1004.0, 1005.0, 1005.0, 1005.0, 1006.0, 1005.0, 1004.0, 1004.0, 1004.0],
                 smooth: true,
                 lineStyle: { color: '#a78bfa', width: 2 },
                 itemStyle: { color: '#a78bfa' },
@@ -878,8 +878,8 @@
         
         // 风向风速图
         const windChart = echarts.init(document.getElementById('windChart'));
-        const windDir = [158.0, 158.0, 110.0, 124.0, 124.0, 108.0, 111.0, 124.0, 160.0, 178.0];
-        const windSpeed = [10.8, 10.9, 9.2, 8.1, 8.1, 9.2, 7.8, 11.0, 22.5, 23.1];
+        const windDir = [158.0, 158.0, 110.0, 124.0, 124.0, 108.0, 111.0, 124.0, 160.0, 178.0, 190.0];
+        const windSpeed = [10.8, 10.9, 9.2, 8.1, 8.1, 9.2, 7.8, 11.0, 22.5, 23.1, 16.7];
         const windOption = {
             backgroundColor: 'transparent',
             tooltip: { trigger: 'axis' },
@@ -887,7 +887,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11"],
+                data: ["05-20 20:08", "05-20 20:18", "05-21 08:46", "05-21 08:50", "05-21 08:54", "05-21 09:11", "05-21 10:11", "05-21 11:11", "05-21 12:11", "05-21 13:11", "05-21 14:11"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', fontSize: 10 }
             },
