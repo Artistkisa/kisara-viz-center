@@ -1,0 +1,45 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.kisara.info/",
+      "rel": "service",
+      "href": "https://api.kisara.info/"
+    },
+    {
+      "anchor": "https://api.kisara.info/",
+      "rel": "service-doc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "Kisara API 文档"
+    },
+    {
+      "anchor": "https://api.kisara.info/api/system",
+      "rel": "service-desc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "系统监控端点"
+    },
+    {
+      "anchor": "https://api.kisara.info/api/weather",
+      "rel": "service-desc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "天气数据端点"
+    },
+    {
+      "anchor": "https://api.kisara.info/api/aqi",
+      "rel": "service-desc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "空气质量端点"
+    },
+    {
+      "anchor": "https://api.kisara.info/api/huinan",
+      "rel": "service-desc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "回南天监测端点"
+    },
+    {
+      "anchor": "https://api.kisara.info/api/processes",
+      "rel": "service-desc",
+      "href": "https://monitor.kisara.info/api-docs/index.html",
+      "title": "进程监控端点（需鉴权）"
+    }
+  ]
+}
