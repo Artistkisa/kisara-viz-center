@@ -971,6 +971,87 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-05-21T16:11:04.524362",
+      "time": "2026-05-21 16:11:04",
+      "temp": 27.1,
+      "humidity": 89.0,
+      "dew": 25.5,
+      "pressure": 1004.0,
+      "windDir": 182.0,
+      "windSpeed": 13.2,
+      "confidence": "high",
+      "source_diff": {
+        "humidity": 0,
+        "dew": 1.0
+      },
+      "raw_sources": {
+        "qweather": {
+          "source": "qweather",
+          "timestamp": "2026-05-21T16:11:02.851565",
+          "temp": 27.0,
+          "humidity": 89,
+          "dew": 26.0,
+          "pressure": 1001,
+          "windDir": 180,
+          "windSpeed": 20.0,
+          "raw": {
+            "obsTime": "2026-05-21T16:00+08:00",
+            "temp": "27",
+            "feelsLike": "28",
+            "icon": "305",
+            "text": "小雨",
+            "wind360": "180",
+            "windDir": "南风",
+            "windScale": "4",
+            "windSpeed": "20",
+            "humidity": "89",
+            "precip": "0.0",
+            "pressure": "1001",
+            "vis": "20",
+            "cloud": "99",
+            "dew": "26"
+          }
+        },
+        "openmeteo": {
+          "source": "openmeteo",
+          "timestamp": "2026-05-21T16:11:03.640922",
+          "temp": 27.1,
+          "humidity": 89,
+          "dew": 25.0,
+          "pressure": 1006,
+          "windDir": 185,
+          "windSpeed": 6.3,
+          "raw": {
+            "time": "2026-05-21T16:00",
+            "interval": 900,
+            "temperature_2m": 27.1,
+            "relative_humidity_2m": 89,
+            "dew_point_2m": 25.0,
+            "surface_pressure": 1006.8,
+            "wind_direction_10m": 185,
+            "wind_speed_10m": 6.3
+          }
+        },
+        "yrno": {
+          "source": "yrno",
+          "timestamp": "2026-05-21T16:11:04.503307",
+          "temp": 27.0,
+          "humidity": 89.0,
+          "pressure": 1009.3,
+          "windDir": 192.3,
+          "windSpeed": 3.6,
+          "raw": {
+            "air_pressure_at_sea_level": 1009.3,
+            "air_temperature": 27.0,
+            "cloud_area_fraction": 100.0,
+            "relative_humidity": 89.0,
+            "wind_from_direction": 192.3,
+            "wind_speed": 3.6
+          }
+        }
+      }
     }
   ],
   "events": [],
@@ -983,8 +1064,8 @@
     "conditions": {
       "cold_base": {
         "satisfied": false,
-        "reason": "48h均温 26.1°C ≥ 12.0°C",
-        "avg_temp": 26.1,
+        "reason": "48h均温 26.2°C ≥ 12.0°C",
+        "avg_temp": 26.2,
         "window_hours": 48
       },
       "rapid_warming": {
@@ -994,23 +1075,23 @@
       },
       "dew_close": {
         "satisfied": true,
-        "reason": "气温-露点=2.5°C <= 3.0°C",
-        "diff": 2.5,
+        "reason": "气温-露点=1.6°C <= 3.0°C",
+        "diff": 1.6,
         "surface_offset": 3.0
       },
       "warm_humid": {
         "satisfied": true,
         "reason": "暖湿气流满足",
-        "humidity": 84.9,
-        "windDir": 177,
-        "windSpeed": 15.1
+        "humidity": 89.0,
+        "windDir": 182,
+        "windSpeed": 13.2
       },
       "warm_transport": {
         "satisfied": true,
         "reason": "暖湿输送满足",
-        "humidity": 84.9,
-        "temp": 28.4,
-        "windDir": 177
+        "humidity": 89.0,
+        "temp": 27.1,
+        "windDir": 182
       },
       "pressure_drop": {
         "satisfied": false,
@@ -1020,7 +1101,7 @@
       }
     }
   },
-  "lastCheck": "2026-05-21T15:11:03.811077",
+  "lastCheck": "2026-05-21T16:11:04.558188",
   "multi_source": true,
   "source_weights": {
     "qweather": 0.7,
