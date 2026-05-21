@@ -143,18 +143,18 @@
         <div class="grid">
             <div class="card">
                 <h3>AQI 空气质量指数</h3>
-                <div class="value">21<span class="unit"></span></div>
+                <div class="value">18<span class="unit"></span></div>
                 <span class="level level-good">优</span>
             </div>
             
             <div class="card">
                 <h3>PM2.5</h3>
-                <div class="value">12.0<span class="unit"> μg/m³</span></div>
+                <div class="value">10.0<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
                 <h3>PM10</h3>
-                <div class="value">21.0<span class="unit"> μg/m³</span></div>
+                <div class="value">18.0<span class="unit"> μg/m³</span></div>
             </div>
             
             <div class="card">
@@ -178,15 +178,15 @@
             <canvas id="pm10Chart"></canvas>
         </div>
         
-        <p class="update-time">最后更新: 05-21 10:19 | 数据来源: 和风天气 | 更新频率: 每2小时</p>
+        <p class="update-time">最后更新: 05-21 12:19 | 数据来源: 和风天气 | 更新频率: 每2小时</p>
     </div>
     
     <script>
-        const labels = ["05-20 21:17", "05-20 22:19", "05-21 00:19", "05-21 02:19", "05-21 04:19", "05-21 06:19", "05-21 08:19", "05-21 10:19"];
-        const aqiData = [19, 21, 16, 11, 10, 11, 15, 21];
-        const pm25Data = [13.0, 15.0, 9.0, 5.0, 6.0, 5.0, 8.0, 12.0];
-        const pm10Data = [17.0, 18.0, 16.0, 10.0, 10.0, 9.0, 14.0, 21.0];
-        const uvData = [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0];
+        const labels = ["05-20 21:17", "05-20 22:19", "05-21 00:19", "05-21 02:19", "05-21 04:19", "05-21 06:19", "05-21 08:19", "05-21 10:19", "05-21 12:19"];
+        const aqiData = [19, 21, 16, 11, 10, 11, 15, 21, 18];
+        const pm25Data = [13.0, 15.0, 9.0, 5.0, 6.0, 5.0, 8.0, 12.0, 10.0];
+        const pm10Data = [17.0, 18.0, 16.0, 10.0, 10.0, 9.0, 14.0, 21.0, 18.0];
+        const uvData = [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0];
         
         // AQI 颜色映射
         function getAQIColor(value) {
