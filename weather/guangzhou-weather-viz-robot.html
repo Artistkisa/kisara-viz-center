@@ -119,7 +119,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(149, 165, 166, 0.5);
+            text-shadow: 0 0 20px rgba(149, 165, 166, 0.3);
         }
         
         .subtitle {
@@ -135,14 +135,14 @@
             padding: 40px;
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.3);
             text-align: center;
             transition: all 0.3s ease;
         }
         
         .current-weather:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.3);
         }
         
         .weather-icon {
@@ -448,7 +448,7 @@
         "value": "94",
         "unitCode": "P1"
       },
-      "observationDate": "2026-05-21T17:33:18.127044",
+      "observationDate": "2026-05-21T18:03:13.209542",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -483,9 +483,9 @@
         <!-- 当前天气 -->
         <div class="current-weather">
         
-            <span class="weather-icon">☁️</span>
+            <span class="weather-icon">🌫️</span>
             <div class="temperature">27<span>&deg;C</span></div>
-            <div class="weather-desc">阴 &middot; 体感 31&deg;C</div>
+            <div class="weather-desc">雾 &middot; 体感 31&deg;C</div>
             <div class="weather-details">
                 <div class="detail-item">
                     <div class="detail-value">94% </div>
@@ -496,7 +496,7 @@
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">17:33:18</div>
+                    <div class="detail-value">18:03:13</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -508,7 +508,7 @@
         
             <div class="umbrella-icon">☂️</div>
             <div class="umbrella-text">今天记得带伞喵~</div>
-            <div class="umbrella-sub">阴 &middot; 27&deg;C &middot; 湿度94% &middot; 已发送提醒</div>
+            <div class="umbrella-sub">雾 &middot; 27&deg;C &middot; 湿度94% &middot; 已发送提醒</div>
         
         </div>
         
@@ -531,7 +531,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">☂️</div>
-                <div class="stat-value">66</div>
+                <div class="stat-value">67</div>
                 <div class="stat-label">带伞提醒次数</div>
             </div>
         </div>
@@ -633,9 +633,9 @@
         
             <div class="day-card alert">
                 <div class="day-date">05/21 周三</div>
-                <div class="day-icon">☁️</div>
+                <div class="day-icon">🌫️</div>
                 <div class="day-temp">27&deg;C</div>
-                <div class="day-weather">阴 ☂️</div>
+                <div class="day-weather">雾 ☂️</div>
             </div>
         
             </div>
@@ -670,7 +670,7 @@
         
         <footer>
             <p>广州天气监控 &middot; 带伞提醒系统 &middot; 数据保留一年</p>
-            <p>生成时间: 2026-05-21 17:34:33</p>
+            <p>生成时间: 2026-05-21 18:05:19</p>
         </footer>
     </div>
     
@@ -693,7 +693,7 @@
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
+         data-weather-level="fog"
          data-need-umbrella="true"
     ></div>
     
