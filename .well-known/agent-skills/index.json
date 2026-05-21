@@ -1,0 +1,71 @@
+{
+  "$schema": "https://agentskills.io/schemas/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "get_guangzhou_weather",
+      "type": "api",
+      "description": "获取广州实时天气数据，包括温度、湿度、天气状况和带伞建议",
+      "url": "https://api.kisara.info/api/weather",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_guangzhou_aqi",
+      "type": "api",
+      "description": "获取广州实时空气质量指数（AQI）、PM2.5、PM10 和紫外线指数",
+      "url": "https://api.kisara.info/api/aqi",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_huinan_status",
+      "type": "api",
+      "description": "获取广州回南天监测数据，包括湿度、露点温度和回南天风险等级",
+      "url": "https://api.kisara.info/api/huinan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_system_status",
+      "type": "api",
+      "description": "获取 CasaOS ARM 服务器的实时系统状态，包括 CPU、内存、磁盘、负载和温度",
+      "url": "https://api.kisara.info/api/system",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_website_health",
+      "type": "api",
+      "description": "获取 Kisara 主站和论坛的可用率与响应时间监控数据",
+      "url": "https://api.kisara.info/api/website",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "browse_api_docs",
+      "type": "webpage",
+      "description": "浏览 Kisara 统一 API 网关的完整文档，包含所有端点、参数说明和鉴权方式",
+      "url": "https://monitor.kisara.info/api-docs/index.html",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  ]
+}
