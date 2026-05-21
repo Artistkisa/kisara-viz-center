@@ -6,6 +6,48 @@
     <title>网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心</title>
     <meta name="description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测。">
     <link rel="canonical" href="https://monitor.kisara.info/website/website-visualization.html">
+    <meta name="keywords" content="网站监控,可用性监测,网站状态,响应时间,Kisara监控, uptime监控,网站可用率">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="ai-purpose" content="Kisara 网站实时运行状态监控面板，展示主站和论坛的可用率、响应时间趋势及24小时监测历史">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心">
+    <meta property="og:description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/website/website-visualization.html">
+    <meta property="og:image" content="https://monitor.kisara.info/og-website.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="网站运行状态监控 - 实时可用性监测">
+    <meta name="twitter:description" content="Kisara 网站实时运行状态监控，可用率、响应时间趋势分析">
+    
+    <!-- Schema.org - WebPage + Dataset -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "网站运行状态监控 - 实时可用性监测",
+      "description": "Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析",
+      "url": "https://monitor.kisara.info/website/website-visualization.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kisara 可视化中心",
+        "url": "https://monitor.kisara.info"
+      },
+      "mainEntity": {
+        "@type": "Dataset",
+        "name": "网站可用性监测数据",
+        "description": "24小时不间断网站可用率和响应时间监测数据",
+        "creator": {
+          "@type": "Organization",
+          "name": "Kisara 可视化中心",
+          "url": "https://monitor.kisara.info"
+        }
+      }
+    }
+    </script>
+    
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -105,11 +147,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">1937ms</div>
+                    <div class="metric-value">1715ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">2504.0ms</div>
+                    <div class="metric-value">2495.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -131,11 +173,11 @@
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">1937ms</div>
+                    <div class="metric-value">1715ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">2338.0ms</div>
+                    <div class="metric-value">2330.0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -144,13 +186,13 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-05-21 09:57:02</p>
+        <p class="update-time">最后更新: 2026-05-21 10:03:33</p>
     </div>
     
     <script>
-        const labels = ["08:21", "08:21", "08:31", "08:31", "08:41", "08:41", "08:51", "08:51", "09:01", "09:01", "09:11", "09:11", "09:21", "09:21", "09:31", "09:31", "09:41", "09:41", "09:51", "09:51"];
-        const kisaraData = [1827, 1829, 1835, 1830, 2252, 1754, 1825, 1842, 1997, 1797, 2016, 1828, 1838, 1778, 2378, 1687, 16827, 7061, 2313, 1937];
-        const forumData = [1943, 1929, 1813, 1726, 1721, 1757, 1666, 1827, 1677, 1831, 1829, 1830, 1754, 1842, 1797, 1828, 1778, 1687, 7061, 1937];
+        const labels = ["08:31", "08:31", "08:41", "08:41", "08:51", "08:51", "09:01", "09:01", "09:11", "09:11", "09:21", "09:21", "09:31", "09:31", "09:41", "09:41", "09:51", "09:51", "10:01", "10:01"];
+        const kisaraData = [1835, 1830, 2252, 1754, 1825, 1842, 1997, 1797, 2016, 1828, 1838, 1778, 2378, 1687, 16827, 7061, 2313, 1937, 1933, 1715];
+        const forumData = [1929, 1813, 1726, 1721, 1757, 1666, 1827, 1677, 1831, 1829, 1830, 1754, 1842, 1797, 1828, 1778, 1687, 7061, 1937, 1715];
         
         new Chart(document.getElementById('kisaraChart'), {
             type: 'line',
