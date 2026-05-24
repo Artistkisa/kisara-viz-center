@@ -22,17 +22,48 @@
       "confidence": {
         "score": 2,
         "reasons": [
-          "\u6709\u98ce\u6d41\u52a8",
-          "\u6c14\u538b\u4e0b\u964d"
+          "有风流动",
+          "气压下降"
         ]
       },
       "intensity": {
         "level": "none",
-        "by": "\u6e7f\u5ea6"
+        "by": "湿度"
+      }
+    },
+    {
+      "time": "2026-05-24T07:00:03.713Z",
+      "humidity": 71,
+      "temp": 32,
+      "dew": 25,
+      "windDir": 0,
+      "windSpeed": 31,
+      "pressure": 1000,
+      "trends": {
+        "humidityChange3h": 5,
+        "pressureDrop6h": 6
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 7
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
       }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-24T05:25:08.090Z"
+  "lastCheck": "2026-05-24T07:00:03.714Z"
 }
