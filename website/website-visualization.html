@@ -5,49 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心</title>
     <meta name="description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测。">
+    <meta name="keywords" content="网站监控,可用性监测,响应时间,服务器状态,网站运行状态">
     <link rel="canonical" href="https://monitor.kisara.info/website/website-visualization.html">
-    <meta name="keywords" content="网站监控,可用性监测,网站状态,响应时间,Kisara监控, uptime监控,网站可用率">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <meta name="ai-purpose" content="Kisara 网站实时运行状态监控面板，展示主站和论坛的可用率、响应时间趋势及24小时监测历史">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="网站运行状态监控 - 实时可用性监测 | Kisara 可视化中心">
-    <meta property="og:description" content="Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析，24小时不间断监测">
+    <meta property="og:title" content="网站运行状态监控 - 实时监测">
+    <meta property="og:description" content="网站可用率、响应时间实时监控">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://monitor.kisara.info/website/website-visualization.html">
-    <meta property="og:image" content="https://monitor.kisara.info/og-website.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="网站运行状态监控 - 实时可用性监测">
-    <meta name="twitter:description" content="Kisara 网站实时运行状态监控，可用率、响应时间趋势分析">
-    
-    <!-- Schema.org - WebPage + Dataset -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "网站运行状态监控 - 实时可用性监测",
-      "description": "Kisara 网站实时运行状态监控，包含主站和论坛的可用率、响应时间趋势分析",
-      "url": "https://monitor.kisara.info/website/website-visualization.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Kisara 可视化中心",
-        "url": "https://monitor.kisara.info"
-      },
-      "mainEntity": {
-        "@type": "Dataset",
-        "name": "网站可用性监测数据",
-        "description": "24小时不间断网站可用率和响应时间监测数据",
-        "creator": {
-          "@type": "Organization",
-          "name": "Kisara 可视化中心",
-          "url": "https://monitor.kisara.info"
-        }
-      }
-    }
-    </script>
-    
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -87,7 +50,10 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        .website-name { font-size: 1.3rem; font-weight: bold; }
+        .website-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
         .status {
             display: inline-flex;
             align-items: center;
@@ -110,8 +76,16 @@
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
         }
-        .metric-value { font-size: 1.8rem; font-weight: bold; color: #fff; }
-        .metric-label { font-size: 0.85rem; color: #8892b0; margin-top: 5px; }
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .metric-label {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-top: 5px;
+        }
         .chart-container {
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
@@ -124,16 +98,22 @@
             font-size: 0.9rem;
             margin-top: 30px;
         }
-        @media (max-width: 600px) {
-            .website-header { flex-direction: column; gap: 10px; align-items: flex-start; }
-        }
     </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLQB2PE73Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JLQB2PE73Z');
+    </script>
 </head>
 <body>
     <div class="container">
         <a href="../" class="back-link">← 返回可视化中心</a>
         <h1>🌐 网站运行状态</h1>
         
+        <!-- Kisara 主站 -->
         <div class="website-card">
             <div class="website-header">
                 <span class="website-name">🌐 kisara.art (主站)</span>
@@ -143,15 +123,15 @@
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">100.0%</div>
+                    <div class="metric-value">0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">1746ms</div>
+                    <div class="metric-value">0ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">2230.0ms</div>
+                    <div class="metric-value">0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -160,6 +140,7 @@
             </div>
         </div>
         
+        <!-- Kisara 论坛 -->
         <div class="website-card">
             <div class="website-header">
                 <span class="website-name">💬 forum.kisara.art (论坛)</span>
@@ -169,15 +150,15 @@
             </div>
             <div class="metrics">
                 <div class="metric">
-                    <div class="metric-value">100.0%</div>
+                    <div class="metric-value">0%</div>
                     <div class="metric-label">24小时可用率</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">1746ms</div>
+                    <div class="metric-value">0ms</div>
                     <div class="metric-label">当前响应时间</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">2036.0ms</div>
+                    <div class="metric-value">0ms</div>
                     <div class="metric-label">平均响应时间</div>
                 </div>
             </div>
@@ -186,21 +167,18 @@
             </div>
         </div>
         
-        <p class="update-time">最后更新: 2026-05-21 20:27:01</p>
+        <p class="update-time">最后更新: 2026-05-24 13:30:01</p>
     </div>
     
     <script>
-        const labels = ["18:51", "18:51", "19:01", "19:01", "19:11", "19:11", "19:21", "19:21", "19:31", "19:31", "19:41", "19:41", "19:51", "19:51", "20:01", "20:01", "20:11", "20:11", "20:21", "20:21"];
-        const kisaraData = [1954, 1897, 1925, 1784, 1977, 1689, 16859, 7194, 4355, 1902, 1895, 3214, 1901, 1702, 3808, 1871, 1934, 1793, 1960, 1746];
-        const forumData = [1773, 1792, 1796, 3246, 1678, 1782, 1676, 1775, 1757, 1862, 1897, 1784, 1689, 7194, 1902, 3214, 1702, 1871, 1793, 1746];
-        
-        new Chart(document.getElementById('kisaraChart'), {
+        const ctx1 = document.getElementById('kisaraChart').getContext('2d');
+        new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: [],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: kisaraData,
+                    data: [],
                     borderColor: '#00c853',
                     backgroundColor: 'rgba(0, 200, 83, 0.1)',
                     tension: 0.4,
@@ -211,21 +189,31 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: { display: false }
+                },
                 scales: {
-                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' }, title: { display: true, text: '响应时间 (ms)', color: '#8892b0' } },
-                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxTicksLimit: 8 } }
+                    y: { 
+                        grid: { color: 'rgba(255,255,255,0.1)' }, 
+                        ticks: { color: '#8892b0' },
+                        title: { display: true, text: '响应时间 (ms)', color: '#8892b0' }
+                    },
+                    x: { 
+                        grid: { color: 'rgba(255,255,255,0.1)' }, 
+                        ticks: { color: '#8892b0', maxTicksLimit: 8 }
+                    }
                 }
             }
         });
         
-        new Chart(document.getElementById('forumChart'), {
+        const ctx2 = document.getElementById('forumChart').getContext('2d');
+        new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: [],
                 datasets: [{
                     label: '响应时间 (ms)',
-                    data: forumData,
+                    data: [],
                     borderColor: '#667eea',
                     backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     tension: 0.4,
@@ -236,10 +224,19 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: { display: false }
+                },
                 scales: {
-                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0' }, title: { display: true, text: '响应时间 (ms)', color: '#8892b0' } },
-                    x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#8892b0', maxTicksLimit: 8 } }
+                    y: { 
+                        grid: { color: 'rgba(255,255,255,0.1)' }, 
+                        ticks: { color: '#8892b0' },
+                        title: { display: true, text: '响应时间 (ms)', color: '#8892b0' }
+                    },
+                    x: { 
+                        grid: { color: 'rgba(255,255,255,0.1)' }, 
+                        ticks: { color: '#8892b0', maxTicksLimit: 8 }
+                    }
                 }
             }
         });
