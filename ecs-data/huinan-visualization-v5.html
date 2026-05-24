@@ -356,7 +356,7 @@
         "value": "N/A",
         "unitCode": "P1"
       },
-      "observationDate": "2026-05-25T06:00:01.802674",
+      "observationDate": "2026-05-25T07:00:02.154503",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -474,11 +474,11 @@
         <!-- 统计数据 -->
         <div class="stats-grid">
             <div class="stat-box">
-                <div class="stat-value">28.0°C</div>
+                <div class="stat-value">27.0°C</div>
                 <div class="stat-label">当前温度</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">85.0%</div>
+                <div class="stat-value">88.0%</div>
                 <div class="stat-label">当前湿度</div>
             </div>
             <div class="stat-box">
@@ -602,7 +602,7 @@
         </div>
         
         <div class="footer">
-            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-05-25 06:00</p>
+            <p>数据来源：和风天气 + Open-Meteo + yr.no | 算法版本：V5.1 | 更新于 2026-05-25 07:00</p>
         </div>
         
         <!-- 订阅区域 -->
@@ -798,7 +798,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00"],
+                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00", "05-24 22:00"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', rotate: 45 }
             },
@@ -812,7 +812,7 @@
                 {
                     name: '湿度',
                     type: 'line',
-                    data: [73, 71, 80, 84, 85, 83, 84, 85, 85],
+                    data: [73, 71, 80, 84, 85, 83, 84, 85, 85, 88],
                     smooth: true,
                     lineStyle: { color: '#00d9ff', width: 3 },
                     itemStyle: { color: '#00d9ff' }
@@ -820,7 +820,7 @@
                 {
                     name: '温度',
                     type: 'line',
-                    data: [31, 32, 30, 28, 28, 28, 28, 28, 28],
+                    data: [31, 32, 30, 28, 28, 28, 28, 28, 28, 27],
                     smooth: true,
                     lineStyle: { color: '#91cc75' },
                     itemStyle: { color: '#91cc75' }
@@ -828,7 +828,7 @@
                 {
                     name: '露点',
                     type: 'line',
-                    data: [25, 25, 25, 25, 25, 25, 25, 25, 26],
+                    data: [25, 25, 25, 25, 25, 25, 25, 25, 26, 26],
                     smooth: true,
                     lineStyle: { color: '#fac858' },
                     itemStyle: { color: '#fac858' }
@@ -845,7 +845,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00"],
+                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00", "05-24 22:00"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', fontSize: 10 }
             },
@@ -860,7 +860,7 @@
             series: [{
                 name: '气压',
                 type: 'line',
-                data: [1000, 1000, 998, 999, 999, 999, 1000, 999, 999],
+                data: [1000, 1000, 998, 999, 999, 999, 1000, 999, 999, 999],
                 smooth: true,
                 lineStyle: { color: '#a78bfa', width: 2 },
                 itemStyle: { color: '#a78bfa' },
@@ -876,8 +876,8 @@
         
         // 风向风速图
         const windChart = echarts.init(document.getElementById('windChart'));
-        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        const windSpeed = [24, 31, 32, 28, 21, 35, 22, 27, 28];
+        const windDir = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const windSpeed = [24, 31, 32, 28, 21, 35, 22, 27, 28, 15];
         const windOption = {
             backgroundColor: 'transparent',
             tooltip: { trigger: 'axis' },
@@ -885,7 +885,7 @@
             grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
             xAxis: {
                 type: 'category',
-                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00"],
+                data: ["05-24 05:25", "05-24 07:00", "05-24 11:00", "05-24 13:00", "05-24 14:00", "05-24 15:00", "05-24 17:00", "05-24 18:00", "05-24 19:00", "05-24 22:00"],
                 axisLine: { lineStyle: { color: '#333' } },
                 axisLabel: { color: '#666', fontSize: 10 }
             },
