@@ -209,7 +209,7 @@
         </div>
         
         <div class="footer">
-            <p>数据实时读取自 MySQL 数据库 | 算法版本：V5.1 | 更新频率：30分钟</p>
+            <p>数据实时读取自 huinan-merged.json | 算法版本：V5.1</p>
             <p><a href="huinan-visualization-v5.html" style="color: #00d9ff;">← 返回主监测页面</a></p>
         </div>
     </div>
@@ -217,20 +217,15 @@
     <script>
         let records = [];
         let idx = 0;
-        // 使用 PHP API 替代 JSON 文件
-        const API_URL = 'https://li.kisara.art/query.php';
+        const JSON_URL = 'https://monitor.kisara.info/huinan/huinan-merged.json';
         
         // 加载数据
         async function fetchData() {
             document.getElementById('content').innerHTML = '<div class="loading">正在加载数据...</div>';
             
             try {
-                const response = await fetch(API_URL + '?action=latest&limit=168&t=' + Date.now());
+                const response = await fetch(JSON_URL + '?t=' + Date.now()); // 防止缓存
                 const data = await response.json();
-                
-                if (!data.success) {
-                    throw new Error(data.error || 'Unknown error');
-                }
                 
                 // 处理数据
                 records = (data.records || []).map(r => ({
@@ -244,6 +239,9 @@
                     qw: (r.raw_sources && r.raw_sources.qweather) || {},
                     om: (r.raw_sources && r.raw_sources.openmeteo) || {},
                     yr: (r.raw_sources && r.raw_sources.yrno) || {},
+                    qw_check: (r.outlier_check && r.outlier_check.qweather) || {},
+                    om_check: (r.outlier_check && r.outlier_check.openmeteo) || {},
+                    yr_check: (r.outlier_check && r.outlier_check.yrno) || {},
                     weights: r.weights || {}
                 }));
                 
@@ -303,22 +301,21 @@
             if (records.length === 0) return;
             
             const r = records[idx];
-            const qw = r.qw || {};
-            const om = r.om || {};
-            const yr = r.yr || {};
+            const qw = r.qw;
+            const om = r.om;
+            const yr = r.yr;
+            const qwC = r.qw_check;
+            const omC = r.om_check;
+            const yrC = r.yr_check;
+            const w = r.weights;
             
-            // 检查源是否有效（根据是否有数据）
-            const qwV = qw && qw.temp !== undefined;
-            const omV = om && om.temp !== undefined;
-            const yrV = yr && yr.temp !== undefined;
+            const qwV = qwC.valid !== false;
+            const omV = omC.valid !== false;
+            const yrV = yrC.valid !== false;
             
-            // 权重计算（根据置信度）
-            let qwW = 0.7, omW = 0.3, yrW = 0;
-            if (r.confidence === 'high') {
-                qwW = 0.5; omW = 0.5;
-            } else if (r.confidence === 'low') {
-                qwW = 0.85; omW = 0.15;
-            }
+            const qwW = w.qweather || 0.7;
+            const omW = w.openmeteo || 0.3;
+            const yrW = w.yrno || 0;
             
             let html = '<div class="sources-grid">';
             
@@ -327,13 +324,14 @@
             html += '<div class="source-header"><div class="source-name qw">🌤️ 和风天气</div>';
             html += '<span class="source-status ' + (qwV ? 'ok' : 'err') + '">' + (qwV ? '✓ 正常' : '✗ 异常') + '</span></div>';
             html += '<div class="source-data">';
-            html += '<div class="data-item"><div class="data-label">温度</div><div class="data-value">' + (qw.temp !== undefined ? qw.temp : '--') + '°C</div></div>';
-            html += '<div class="data-item"><div class="data-label">湿度</div><div class="data-value">' + (qw.humidity !== undefined ? qw.humidity : '--') + '%</div></div>';
-            html += '<div class="data-item"><div class="data-label">露点</div><div class="data-value">' + (qw.dew !== undefined ? qw.dew : '--') + '°C</div></div>';
-            html += '<div class="data-item"><div class="data-label">气压</div><div class="data-value">' + (qw.pressure !== undefined ? qw.pressure : '--') + 'hPa</div></div>';
-            html += '<div class="data-item"><div class="data-label">风向</div><div class="data-value">' + (qw.windDir !== undefined ? qw.windDir : '--') + '°</div></div>';
-            html += '<div class="data-item"><div class="data-label">风速</div><div class="data-value">' + (qw.windSpeed !== undefined ? qw.windSpeed : '--') + 'm/s</div></div>';
+            html += '<div class="data-item"><div class="data-label">温度</div><div class="data-value">' + (qw.temp || '--') + '°C</div></div>';
+            html += '<div class="data-item"><div class="data-label">湿度</div><div class="data-value">' + (qw.humidity || '--') + '%</div></div>';
+            html += '<div class="data-item"><div class="data-label">露点</div><div class="data-value">' + (qw.dew || '--') + '°C</div></div>';
+            html += '<div class="data-item"><div class="data-label">气压</div><div class="data-value">' + (qw.pressure || '--') + 'hPa</div></div>';
+            html += '<div class="data-item"><div class="data-label">风向</div><div class="data-value">' + (qw.windDir || '--') + '°</div></div>';
+            html += '<div class="data-item"><div class="data-label">风速</div><div class="data-value">' + (qw.windSpeed || '--') + 'm/s</div></div>';
             html += '</div>';
+            if (qwC.note) html += '<div class="source-note">⚠️ ' + qwC.note + '</div>';
             html += '</div>';
             
             // OM
@@ -341,13 +339,14 @@
             html += '<div class="source-header"><div class="source-name om">🌍 Open-Meteo</div>';
             html += '<span class="source-status ' + (omV ? 'ok' : 'warn') + '">' + (omV ? '✓ 正常' : '⚠️ 降权') + '</span></div>';
             html += '<div class="source-data">';
-            html += '<div class="data-item"><div class="data-label">温度</div><div class="data-value">' + (om.temp !== undefined ? om.temp : '--') + '°C</div></div>';
-            html += '<div class="data-item"><div class="data-label">湿度</div><div class="data-value">' + (om.humidity !== undefined ? om.humidity : '--') + '%</div></div>';
-            html += '<div class="data-item"><div class="data-label">露点</div><div class="data-value">' + (om.dew !== undefined ? om.dew : '--') + '°C</div></div>';
-            html += '<div class="data-item"><div class="data-label">气压</div><div class="data-value">' + (om.pressure !== undefined ? om.pressure : '--') + 'hPa</div></div>';
-            html += '<div class="data-item"><div class="data-label">风向</div><div class="data-value">' + (om.windDir !== undefined ? om.windDir : '--') + '°</div></div>';
-            html += '<div class="data-item"><div class="data-label">风速</div><div class="data-value">' + (om.windSpeed !== undefined ? om.windSpeed : '--') + 'm/s</div></div>';
+            html += '<div class="data-item"><div class="data-label">温度</div><div class="data-value">' + (om.temp || '--') + '°C</div></div>';
+            html += '<div class="data-item"><div class="data-label">湿度</div><div class="data-value">' + (om.humidity || '--') + '%</div></div>';
+            html += '<div class="data-item"><div class="data-label">露点</div><div class="data-value">' + (om.dew || '--') + '°C</div></div>';
+            html += '<div class="data-item"><div class="data-label">气压</div><div class="data-value">' + (om.pressure || '--') + 'hPa</div></div>';
+            html += '<div class="data-item"><div class="data-label">风向</div><div class="data-value">' + (om.windDir || '--') + '°</div></div>';
+            html += '<div class="data-item"><div class="data-label">风速</div><div class="data-value">' + (om.windSpeed || '--') + 'm/s</div></div>';
             html += '</div>';
+            if (omC.note) html += '<div class="source-note">⚠️ ' + omC.note + '</div>';
             html += '</div>';
             
             // yr.no
@@ -362,6 +361,7 @@
             html += '<div class="data-item"><div class="data-label">风向</div><div class="data-value">' + (yr.windDir !== undefined ? yr.windDir : '--') + '°</div></div>';
             html += '<div class="data-item"><div class="data-label">风速</div><div class="data-value">' + (yr.windSpeed !== undefined ? yr.windSpeed : '--') + 'm/s</div></div>';
             html += '</div>';
+            if (yrC.note) html += '<div class="source-note">⚠️ ' + yrC.note + '</div>';
             html += '<div class="source-note">💡 仅参与气压校验</div>';
             html += '</div>';
             
