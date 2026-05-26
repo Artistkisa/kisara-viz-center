@@ -784,7 +784,7 @@
     const API_BASE = 'https://api.kisara.info';
     
     async function testEndpoint(path) {
-        const resultId = 'result-' + path.replace(/[?=&]/g, '-').replace(/\//g, '-').replace(/^-+/, '');
+        const resultId = 'result-' + path.split('?')[0].replace(/\//g, '-').replace(/^-+/, '');
         const el = document.getElementById(resultId);
         if (!el) return;
         el.className = 'test-result active loading';
