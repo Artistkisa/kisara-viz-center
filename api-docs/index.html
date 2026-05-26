@@ -758,22 +758,7 @@
                 <div class="test-result" id="result-website-checks"></div>
             </div>
             
-            <div class="endpoint-card" data-path="/ip/records" data-auth="false">
-                <div class="endpoint-header">
-                    <span class="method">GET</span>
-                    <span class="path">/ip/records?limit=1</span>
-                    <button class="test-btn" onclick="testEndpoint('/ip/records?limit=1')">▶ 测试</button>
-                </div>
-                <p class="endpoint-desc">IP 一致性检查记录</p>
-                <div class="params">参数: ?limit=100 (最大1000)</div>
-                <div class="example">
-                    <div class="example-label">示例响应</div>
-                    <pre>{"count": 1, "records": [{"hostname": "VM-45-5-ubuntu", "ifconfig_me": "82.157.11.118", "is_consistent": 1, "timestamp": "..."}]}</pre>
-                </div>
-                <div class="test-result" id="result-ip-records"></div>
-            </div>
-            
-            <div class="endpoint-card" data-path="/all" data-auth="false">
+<div class="endpoint-card" data-path="/all" data-auth="false">
                 <div class="endpoint-header">
                     <span class="method">GET</span>
                     <span class="path">/all</span>
