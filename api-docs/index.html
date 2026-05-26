@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisara API 文档 - 实时天气/回南天/AQI数据接口 | 免费REST API</title>
+    <meta name="description" content="Kisara免费实时数据API：天气、回南天监测、空气质量AQI、系统负载、网站监控。基于MariaDB+Python，支持CORS跨域，无需注册即可调用。提供广州天气、PM2.5、湿度、温度等JSON数据端点。">
+    <meta name="keywords" content="免费API,天气API,空气质量API,AQI接口,PM2.5数据,回南天监测,湿度API,REST API,JSON接口,实时数据,广州天气,开源API,开发者工具,数据可视化">
+    <link rel="canonical" href="https://monitor.kisara.info/api-docs/">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- AI Engine Optimization (AIGEO) -->
+    <meta name="ai-purpose" content="Kisara统一API Gateway技术文档与交互式 playground。展示所有可用REST端点、请求参数、响应格式及实时系统监控数据接口。支持前端直接测试调用。">
+    <meta name="ai-target" content="开发者,数据工程师,物联网工程师,前端开发者,气象数据用户">
+    <meta name="ai-created" content="2026-05-26">
+    <meta name="ai-updated" content="2026-05-26">
+    <meta name="ai-content-type" content="technical-documentation,api-reference,interactive-tool">
+    
+    <!-- 语言与地区 -->
+    <meta property="og:locale" content="zh_CN">
+    <link rel="alternate" hreflang="zh-CN" href="https://monitor.kisara.info/api-docs/">
+    <link rel="alternate" hreflang="x-default" href="https://monitor.kisara.info/api-docs/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kisara API - 免费实时天气/空气质量/回南天数据接口">
+    <meta property="og:description" content="免费REST API：天气、AQI空气质量、回南天监测、系统监控。支持CORS，无需注册，JSON格式返回。基于MariaDB+Python构建。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://monitor.kisara.info/api-docs/">
+    <meta property="og:image" content="https://monitor.kisara.info/og-api.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Kisara API 统一数据接口文档页面">
+    <meta property="og:site_name" content="Kisara Data API">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kisara API - 免费天气/AQI/回南天数据接口">
+    <meta name="twitter:description" content="开发者免费API：实时天气、空气质量AQI、回南天监测、系统负载监控。CORS支持，JSON格式。">
+    <meta name="twitter:image" content="https://monitor.kisara.info/og-api.png">
+    
+    <!-- 作者与版权 -->
+    <meta name="author" content="Kisara">
+    <meta name="copyright" content="© 2026 Kisara Data">
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://api.kisara.info">
+    <link rel="dns-prefetch" href="https://api.kisara.info">
+    
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    
+    <!-- Schema.org 结构化数据 - 多重类型 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "headline": "Kisara API 文档 - 实时天气/空气质量/回南天数据接口",
+          "description": "Kisara统一数据接口API文档，包含天气、AQI空气质量、回南天监测、系统监控等9个REST端点。支持前端在线测试，CORS跨域，JSON格式返回。",
+          "url": "https://monitor.kisara.info/api-docs/",
+          "datePublished": "2026-05-21T00:00:00+08:00",
+          "dateModified": "2026-05-26T00:00:00+08:00",
+          "inLanguage": "zh-CN",
+          "author": {
+            "@type": "Organization",
+            "name": "Kisara 数据服务",
+            "url": "https://kisara.info"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Kisara 数据服务",
+            "url": "https://kisara.info",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://monitor.kisara.info/favicon.svg"
+            }
+          },
+          "about": {
+            "@type": "SoftwareApplication",
+            "name": "Kisara API Gateway",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "CNY"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "ratingCount": "1"
+            },
+            "featureList": [
+              "实时天气数据API",
+              "空气质量AQI查询",
+              "回南天监测接口",
+              "系统负载监控",
+              "网站可用性检测",
+              "Open-Meteo逐小时数据",
+              "IP一致性检查",
+              "CORS跨域支持",
+              "无需注册即可调用"
+            ]
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://monitor.kisara.info/api-docs/"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Kisara API 是免费的吗？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "是的，Kisara API 完全免费，无需注册或申请 API Key 即可调用公开端点。支持 CORS 跨域访问。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "支持哪些数据类型？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "目前支持：广州实时天气、Open-Meteo逐小时预报、空气质量AQI（PM2.5/PM10）、回南天监测状态、系统负载监控（CPU/内存/磁盘）、网站可用性检测、IP一致性检查。所有数据以 JSON 格式返回。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "如何调用 API？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "所有端点支持 GET 请求，基础地址为 https://api.kisara.info。例如：GET /weather/current 返回最新天气，GET /aqi/current 返回空气质量。可在本文档页面直接点击'测试'按钮在线调用。"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Kisara",
+              "item": "https://kisara.info/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "API 文档",
+              "item": "https://monitor.kisara.info/api-docs/"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Kisara Data API",
+          "url": "https://monitor.kisara.info/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://monitor.kisara.info/api-docs/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', monospace;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* ===== Robot Gate ===== */
+        #robot-gate {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .robot-box {
+            text-align: center;
+            max-width: 480px;
+            padding: 40px 20px;
+        }
+        
+        .robot-emoji { font-size: 72px; margin-bottom: 24px; filter: grayscale(0.3); }
+        .robot-box h1 { font-size: 28px; margin-bottom: 12px; font-weight: 300; letter-spacing: 2px; }
+        .robot-box .subtitle { color: #888; font-size: 14px; margin-bottom: 36px; }
+        
+        .robot-challenge {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .robot-challenge p { margin: 0 0 18px; font-size: 14px; color: #aaa; }
+        .robot-challenge code {
+            background: rgba(102,126,234,0.15);
+            padding: 3px 10px;
+            border-radius: 6px;
+            color: #667eea;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+        }
+        
+        #robot-key {
+            padding: 14px;
+            font-size: 20px;
+            width: 180px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            border-radius: 10px;
+            letter-spacing: 6px;
+            font-family: monospace;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #robot-key:focus { border-color: #667eea; }
+        
+        .verify-btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            margin-left: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .verify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102,126,234,0.4);
+        }
+        
+        #robot-result { min-height: 28px; font-size: 14px; margin-top: 16px; }
+        .robot-hint { font-size: 12px; color: #444; margin-top: 24px; }
+        
+        /* ===== Main Content ===== */
+        .main { display: none; }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 200;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .api-url {
+            font-family: 'SF Mono', Monaco, monospace;
+            background: rgba(102,126,234,0.1);
+            padding: 10px 24px;
+            border-radius: 8px;
+            color: #667eea;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 12px;
+            border: 1px solid rgba(102,126,234,0.2);
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-pill {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-pill:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+        }
+        
+        .stat-pill .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-pill .label { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 40px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .endpoint-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        
+        .endpoint-card:hover {
+            border-color: rgba(102,126,234,0.3);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .method {
+            background: rgba(46,204,113,0.15);
+            color: #2ecc71;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        
+        .path {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 15px;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .test-btn {
+            margin-left: auto;
+            padding: 6px 16px;
+            background: rgba(102,126,234,0.15);
+            color: #667eea;
+            border: 1px solid rgba(102,126,234,0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: monospace;
+            transition: all 0.2s;
+        }
+        
+        .test-btn:hover {
+            background: rgba(102,126,234,0.3);
+            color: #fff;
+        }
+        
+        .endpoint-desc { color: #aaa; font-size: 14px; margin-bottom: 12px; }
+        
+        .params {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 12px;
+            font-family: monospace;
+        }
+        
+        .example {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 16px;
+            overflow-x: auto;
+        }
+        
+        .example-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .example pre {
+            margin: 0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: #b0b0b0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .test-result {
+            margin-top: 12px;
+            padding: 16px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            display: none;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+        
+        .test-result.active { display: block; }
+        .test-result.loading { color: #667eea; }
+        .test-result.error { color: #e74c3c; }
+        .test-result.ok { color: #2ecc71; }
+        
+        .live-monitor {
+            background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08));
+            border: 1px solid rgba(102,126,234,0.15);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+        
+        .live-monitor h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+        }
+        
+        .live-item {
+            text-align: center;
+            padding: 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        .live-val {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            font-family: monospace;
+        }
+        
+        .live-label { font-size: 11px; color: #888; margin-top: 4px; text-transform: uppercase; }
+        
+        .live-time {
+            text-align: right;
+            font-size: 11px;
+            color: #555;
+            margin-top: 16px;
+            font-family: monospace;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: #444;
+            font-size: 12px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 60px;
+        }
+        
+        .pulse {
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; box-shadow: 0 0 0 0 rgba(46,204,113,0.4); }
+            70% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(46,204,113,0); }
+            100% { opacity: 1; box-shadow: 0 0 0 0 rgba(46,204,113,0); }
+        }
+        
+        @media (max-width: 640px) {
+            header h1 { font-size: 1.6rem; }
+            .api-url { font-size: 12px; }
+            .endpoint-header { flex-direction: column; align-items: flex-start; }
+            .test-btn { margin-left: 0; margin-top: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Robot Verification Gate ===== -->
+    <div id="robot-gate">
+        <div class="robot-box">
+            <div class="robot-emoji">🤖</div>
+            <h1>机器人验证中心</h1>
+            <p class="subtitle">人类请关闭此页面。机器人请完成以下挑战。</p>
+            <div class="robot-challenge">
+                <p>计算 SHA256("<code>kisara-2026-05-21</code>") 的前 6 位</p>
+                <input type="text" id="robot-key" placeholder="6位密钥" maxlength="6" autocomplete="off">
+                <button class="verify-btn" onclick="checkRobot()">验证</button>
+            </div>
+            <div id="robot-result"></div>
+            <p class="robot-hint">提示：只有能执行 SHA256 哈希计算的实体才能通过此验证</p>
+        </div>
+    </div>
+    
+    <script>
+    function checkRobot() {
+        const input = document.getElementById('robot-key').value.toLowerCase().trim();
+        const result = document.getElementById('robot-result');
+        if (input === 'bcf9cc') {
+            document.getElementById('robot-gate').style.display = 'none';
+            document.querySelector('.main').style.display = 'block';
+            localStorage.setItem('robot_verified_api_docs', '1');
+            startLiveMonitor();
+        } else {
+            result.innerHTML = '<span style="color:#e74c3c;">❌ 验证失败</span>';
+            setTimeout(() => result.innerHTML = '', 2000);
+        }
+    }
+    document.getElementById('robot-key').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') checkRobot();
+    });
+    if (localStorage.getItem('robot_verified_api_docs') === '1') {
+        document.getElementById('robot-gate').style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.main').style.display = 'block';
+            startLiveMonitor();
+        });
+    }
+    </script>
+    
+    <!-- ===== API Docs Content ===== -->
+    <div class="main">
+        <div class="container">
+            <header>
+                <h1>⚡ Kisara API</h1>
+                <p style="color:#888;font-size:14px;">Cloud 统一数据接口 · MariaDB + Python</p>
+                <div class="api-url">https://api.kisara.info</div>
+            </header>
+            
+            <div class="stats-bar">
+                <div class="stat-pill">
+                    <div class="num">9</div>
+                    <div class="label">Endpoints</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="num">0</div>
+                    <div class="label">Auth Required</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="num">CORS</div>
+                    <div class="label">Enabled</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="num">JSON</div>
+                    <div class="label">Format</div>
+                </div>
+            </div>
+            
+            <!-- Live System Monitor -->
+            <div class="live-monitor">
+                <h2><span class="pulse"></span>Live · 系统实时状态</h2>
+                <div class="live-grid" id="live-grid">
+                    <div class="live-item"><div class="live-val" id="live-cpu">--</div><div class="live-label">CPU %</div></div>
+                    <div class="live-item"><div class="live-val" id="live-mem">--</div><div class="live-label">Mem %</div></div>
+                    <div class="live-item"><div class="live-val" id="live-load">--</div><div class="live-label">Load</div></div>
+                    <div class="live-item"><div class="live-val" id="live-disk">--</div><div class="live-label">Disk %</div></div>
+                    <div class="live-item"><div class="live-val" id="live-records">--</div><div class="live-label">Records</div></div>
+                    <div class="live-item"><div class="live-val" id="live-aqi">--</div><div class="live-label">AQI</div></div>
+                </div>
+                <div class="live-time" id="live-time">--</div>
+            </div>
+            
+            <h2 class="section-title">📡 端点列表</h2>
+            
+            <div class="endpoint-card" data-path="/health" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/health</span>
+                    <button class="test-btn" onclick="testEndpoint('/health')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">服务健康检查</p>
+                
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"status": "ok", "time": "2026-05-26T10:00:00"}</pre>
+                </div>
+                <div class="test-result" id="result-health"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/weather/current" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/weather/current</span>
+                    <button class="test-btn" onclick="testEndpoint('/weather/current')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">广州实时天气</p>
+                
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"current": {"temp": 30, "humidity": 60, "weather": "多云", "need_umbrella": false}}</pre>
+                </div>
+                <div class="test-result" id="result-weather-current"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/weather/history" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/weather/history?days=7</span>
+                    <button class="test-btn" onclick="testEndpoint('/weather/history?days=7')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">天气历史数据</p>
+                <div class="params">参数: ?days=7 (默认7天, 最大365)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 24, "history": [{"record_date": "2026-05-26", "temp": 30, ...}]}</pre>
+                </div>
+                <div class="test-result" id="result-weather-history"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/weather/openmeteo" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/weather/openmeteo?hours=0&limit=10</span>
+                    <button class="test-btn" onclick="testEndpoint('/weather/openmeteo?hours=0&limit=10')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">Open-Meteo 逐小时预报数据（hours=0 查全部）</p>
+                <div class="params">参数: ?hours=24&limit=100 (hours=0 不限时间)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 10, "records": [{"datetime": "2026-02-18 20:00", "temperature": 15.6, ...}]}</pre>
+                </div>
+                <div class="test-result" id="result-weather-openmeteo"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/huinan/states" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/huinan/states</span>
+                    <button class="test-btn" onclick="testEndpoint('/huinan/states')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">回南天最新状态</p>
+                
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"state": {"state": "unknown", "level": "none", "confidence": 0.0, "timestamp": "..."}}</pre>
+                </div>
+                <div class="test-result" id="result-huinan-states"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/huinan/records" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/huinan/records?action=latest&limit=100</span>
+                    <button class="test-btn" onclick="testEndpoint('/huinan/records?action=latest&limit=10')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">回南天记录查询（latest / range / stats）</p>
+                <div class="params">参数: ?action=latest&limit=100<br>?action=stats<br>?action=range&start=...&end=...</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"success": true, "total": 10, "records": [{"timestamp": "...", "temp": 26.5, "humidity": 85, ...}]}</pre>
+                </div>
+                <div class="test-result" id="result-huinan-records"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/aqi/current" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/aqi/current</span>
+                    <button class="test-btn" onclick="testEndpoint('/aqi/current')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">最新空气质量（AQI / PM2.5 / PM10 / NO2 / SO2 / CO / O3 / UV）</p>
+                
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"current": {"aqi": 26, "pm25": 18.0, "pm10": 35.0, "level": "优", "record_time": "..."}}</pre>
+                </div>
+                <div class="test-result" id="result-aqi-current"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/aqi/history" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/aqi/history?limit=100</span>
+                    <button class="test-btn" onclick="testEndpoint('/aqi/history?limit=5')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">空气质量历史</p>
+                <div class="params">参数: ?limit=100 (最大1000)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 5, "records": [{"aqi": 26, "pm25": 18.0, "record_time": "..."}]}</pre>
+                </div>
+                <div class="test-result" id="result-aqi-history"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/system/load" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/system/load?limit=1</span>
+                    <button class="test-btn" onclick="testEndpoint('/system/load?limit=1')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">系统负载（CPU / 内存 / 磁盘 / 网络）</p>
+                <div class="params">参数: ?limit=1 (返回条数, 最大1000)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 1, "records": [{"cpu_percent": 5.2, "memory_percent": 43.1, "load1": 0.05, "disk_percent": 15.0, "record_time": "..."}]}</pre>
+                </div>
+                <div class="test-result" id="result-system-load"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/website/checks" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/website/checks?limit=10</span>
+                    <button class="test-btn" onclick="testEndpoint('/website/checks?limit=5')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">网站可用性监控</p>
+                <div class="params">参数: ?limit=100&site=xxx (按站点筛选)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 5, "records": [{"site_name": "kisara.art", "status_code": 200, "response_time_ms": 230, "is_up": 1}]}</pre>
+                </div>
+                <div class="test-result" id="result-website-checks"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/ip/records" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/ip/records?limit=1</span>
+                    <button class="test-btn" onclick="testEndpoint('/ip/records?limit=1')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">IP 一致性检查记录</p>
+                <div class="params">参数: ?limit=100 (最大1000)</div>
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"count": 1, "records": [{"hostname": "VM-45-5-ubuntu", "ifconfig_me": "82.157.11.118", "is_consistent": 1, "timestamp": "..."}]}</pre>
+                </div>
+                <div class="test-result" id="result-ip-records"></div>
+            </div>
+            
+            <div class="endpoint-card" data-path="/all" data-auth="false">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/all</span>
+                    <button class="test-btn" onclick="testEndpoint('/all')">▶ 测试</button>
+                </div>
+                <p class="endpoint-desc">所有数据汇总（天气 + OpenMeteo + 回南天 + AQI + 系统负载 + 网站监控 + IP）</p>
+                
+                <div class="example">
+                    <div class="example-label">示例响应</div>
+                    <pre>{"server": {"api_time": "..."}, "weather": {...}, "openmeteo": {...}, "huinan": {...}, "aqi": {...}, "systemLoad": {...}, "websiteChecks": [...], "ipRecord": {...}}</pre>
+                </div>
+                <div class="test-result" id="result-all"></div>
+            </div>
+            
+            <footer>
+                <p>Kisara Data API · Cloud T6 · MariaDB · Python · Cloudflare Tunnel</p>
+                <p style="margin-top:8px;color:#333;">Robot verification required for access</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+    const API_BASE = 'https://api.kisara.info';
+    
+    async function testEndpoint(path) {
+        const resultId = 'result-' + path.replace(/[?=&]/g, '-').replace(/\//g, '-').replace(/^-+/, '');
+        const el = document.getElementById(resultId);
+        if (!el) return;
+        el.className = 'test-result active loading';
+        el.textContent = 'Loading...';
+        try {
+            const resp = await fetch(API_BASE + path, { cache: 'no-store' });
+            const data = await resp.json();
+            el.className = 'test-result active ok';
+            el.innerHTML = '<div style="color:#2ecc71;margin-bottom:8px;">HTTP ' + resp.status + ' · ' + (new Date()).toLocaleTimeString() + '</div><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        } catch (err) {
+            el.className = 'test-result active error';
+            el.textContent = 'Error: ' + err.message;
+        }
+    }
+    
+    async function fetchLive() {
+        try {
+            const [sysResp, allResp] = await Promise.all([
+                fetch(API_BASE + '/system/load?limit=1', { cache: 'no-store' }).then(r => r.json()).catch(() => ({records: [{}]})),
+                fetch(API_BASE + '/all', { cache: 'no-store' }).then(r => r.json()).catch(() => ({})),
+            ]);
+            
+            const sys = sysResp.records && sysResp.records[0] ? sysResp.records[0] : {};
+            const all = allResp || {};
+            
+            document.getElementById('live-cpu').textContent = sys.cpu_percent ?? '--';
+            document.getElementById('live-mem').textContent = sys.memory_percent ?? '--';
+            document.getElementById('live-load').textContent = sys.load1 ?? '--';
+            document.getElementById('live-disk').textContent = sys.disk_percent ?? '--';
+            
+            const aqi = all.aqi || {};
+            document.getElementById('live-aqi').textContent = aqi.aqi ?? '--';
+            
+            const huinan = all.huinan || {};
+            const latest = huinan.latest || {};
+            const totalRecords = all.huinan && all.huinan.latest ? 'OK' : '--';
+            document.getElementById('live-records').textContent = latest.humidity ?? totalRecords;
+            
+            document.getElementById('live-time').textContent = 'Last update: ' + (sys.record_time || new Date().toLocaleTimeString());
+        } catch (e) {
+            document.getElementById('live-time').textContent = 'Connection error · ' + new Date().toLocaleTimeString();
+        }
+    }
+    
+    function startLiveMonitor() {
+        fetchLive();
+        setInterval(fetchLive, 5000);
+    }
+    </script>
+</body>
+</html>
