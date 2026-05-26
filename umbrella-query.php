@@ -1,12 +1,32 @@
 <?php
 /**
  * Umbrella 天气记录查询 API
- * 部署位置: www.kisara.art/umbrella/query.php
- * 支持 action: stats | latest | range
+ * 部署位置: www.kisara.art/umbrella/umbrella-query.php
+ * 支持 action: stats | latest | range | date
  */
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
+
+// --- 自动加载 .env ---
+function loadEnv() {
+    $envPath = __DIR__ . '/.env';
+    if (!file_exists($envPath)) return;
+    $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if (empty($line) || strpos($line, '#') === 0) continue;
+        $eq = strpos($line, '=');
+        if ($eq === false) continue;
+        $key = trim(substr($line, 0, $eq));
+        $val = trim(substr($line, $eq + 1));
+        if (!isset($_ENV[$key])) {
+            $_ENV[$key] = $val;
+            putenv("{$key}={$val}");
+        }
+    }
+}
+loadEnv();
 
 // --- 配置 ---
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
