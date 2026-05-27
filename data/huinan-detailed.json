@@ -1715,6 +1715,37 @@
       }
     },
     {
+      "time": "2026-05-26T23:00:07.150Z",
+      "humidity": 86,
+      "temp": 28,
+      "dew": 26,
+      "windDir": 0,
+      "windSpeed": 11,
+      "pressure": 1000,
+      "trends": {
+        "humidityChange3h": 20,
+        "pressureDrop6h": 5
+      },
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "allOK": true,
+        "tempDewDiff": 2
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "moderate",
+        "by": "露点差"
+      }
+    },
+    {
       "time": "2026-05-27 00:00:01",
       "humidity": 82,
       "temp": 29,
@@ -1925,23 +1956,21 @@
       "source": "main"
     },
     {
-      "time": "2026-05-26T23:00:07.150Z",
-      "humidity": 86,
-      "temp": 28,
+      "time": "2026-05-27 07:00:02",
+      "humidity": 82,
+      "temp": 29,
       "dew": 26,
       "windDir": 0,
-      "windSpeed": 11,
-      "pressure": 1000,
-      "trends": {
-        "humidityChange3h": 20,
-        "pressureDrop6h": 5
-      },
+      "windSpeed": 27,
+      "pressure": 999,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
       "coreTrigger": {
-        "humidityOK": true,
-        "dewDiffOK": true,
-        "humidityTrendOK": true,
-        "allOK": true,
-        "tempDewDiff": 2
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 3
       },
       "confidence": {
         "score": 2,
@@ -1951,12 +1980,44 @@
         ]
       },
       "intensity": {
-        "level": "moderate",
-        "by": "露点差"
+        "level": "none",
+        "by": "湿度"
+      },
+      "source": "main"
+    },
+    {
+      "time": "2026-05-27T00:00:06.188Z",
+      "humidity": 81,
+      "temp": 29,
+      "dew": 26,
+      "windDir": 0,
+      "windSpeed": 15,
+      "pressure": 1001,
+      "trends": {
+        "humidityChange3h": 19,
+        "pressureDrop6h": 3
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 3
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
       }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-26T23:00:07.152Z"
+  "lastCheck": "2026-05-27T00:00:06.189Z"
 }
