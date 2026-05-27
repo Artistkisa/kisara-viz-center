@@ -2196,6 +2196,36 @@
       "source": "main"
     },
     {
+      "time": "2026-05-27 17:00:01",
+      "humidity": 56,
+      "temp": 35,
+      "dew": 25,
+      "windDir": 0,
+      "windSpeed": 17,
+      "pressure": 999,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 10
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8",
+          "\u6c14\u538b\u4e0b\u964d"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "main"
+    },
+    {
       "time": "2026-05-27T00:00:06.188Z",
       "humidity": 81,
       "temp": 29,
