@@ -2288,9 +2288,40 @@
         "level": "none",
         "by": "湿度"
       }
+    },
+    {
+      "time": "2026-05-27T08:00:06.657Z",
+      "humidity": 56,
+      "temp": 35,
+      "dew": 25,
+      "windDir": 0,
+      "windSpeed": 17,
+      "pressure": 999,
+      "trends": {
+        "humidityChange3h": -12,
+        "pressureDrop6h": 8
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 10
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-27T07:00:04.554Z"
+  "lastCheck": "2026-05-27T08:00:06.658Z"
 }
