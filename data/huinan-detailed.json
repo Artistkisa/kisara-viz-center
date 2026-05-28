@@ -3201,6 +3201,36 @@
       "source": "main"
     },
     {
+      "time": "2026-05-28 17:00:01",
+      "humidity": 52,
+      "temp": 35,
+      "dew": 24,
+      "windDir": 0,
+      "windSpeed": 16,
+      "pressure": 999,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 11
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8",
+          "\u6c14\u538b\u4e0b\u964d"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      },
+      "source": "main"
+    },
+    {
       "time": "2026-05-28T00:00:09.810Z",
       "humidity": 73,
       "temp": 30,
@@ -3384,9 +3414,40 @@
         "level": "none",
         "by": "\u6e7f\u5ea6"
       }
+    },
+    {
+      "time": "2026-05-28T09:00:16.063Z",
+      "humidity": 50,
+      "temp": 36,
+      "dew": 24,
+      "windDir": 0,
+      "windSpeed": 11,
+      "pressure": 998,
+      "trends": {
+        "humidityChange3h": -13,
+        "pressureDrop6h": 9
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 12
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "\u6709\u98ce\u6d41\u52a8",
+          "\u6c14\u538b\u4e0b\u964d"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "\u6e7f\u5ea6"
+      }
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-28T08:00:05.293Z"
+  "lastCheck": "2026-05-28T09:00:16.064Z"
 }
