@@ -2810,6 +2810,37 @@
       }
     },
     {
+      "time": "2026-05-27T23:00:08.612Z",
+      "humidity": 79,
+      "temp": 29,
+      "dew": 26,
+      "windDir": 0,
+      "windSpeed": 14,
+      "pressure": 1002,
+      "trends": {
+        "humidityChange3h": 14,
+        "pressureDrop6h": 2
+      },
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 3
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      }
+    },
+    {
       "time": "2026-05-28 00:00:01",
       "humidity": 84,
       "temp": 29,
@@ -2930,12 +2961,42 @@
       "source": "main"
     },
     {
-      "time": "2026-05-27T23:00:08.612Z",
-      "humidity": 79,
+      "time": "2026-05-28 07:00:02",
+      "humidity": 84,
       "temp": 29,
       "dew": 26,
       "windDir": 0,
-      "windSpeed": 14,
+      "windSpeed": 23,
+      "pressure": 1001,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 3
+      },
+      "confidence": {
+        "score": 2,
+        "reasons": [
+          "有风流动",
+          "气压下降"
+        ]
+      },
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source": "main"
+    },
+    {
+      "time": "2026-05-28T00:00:09.810Z",
+      "humidity": 73,
+      "temp": 30,
+      "dew": 26,
+      "windDir": 0,
+      "windSpeed": 11,
       "pressure": 1002,
       "trends": {
         "humidityChange3h": 14,
@@ -2946,7 +3007,7 @@
         "dewDiffOK": false,
         "humidityTrendOK": true,
         "allOK": false,
-        "tempDewDiff": 3
+        "tempDewDiff": 4
       },
       "confidence": {
         "score": 2,
@@ -2963,5 +3024,5 @@
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-27T23:00:08.613Z"
+  "lastCheck": "2026-05-28T00:00:09.811Z"
 }
