@@ -33,7 +33,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #7f8c8d 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #f39c12 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #fff;
@@ -56,7 +56,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #95a5a6;
+            background: #f39c12;
             border-radius: 50%;
             opacity: 0.3;
             animation: float 15s infinite;
@@ -117,7 +117,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(149, 165, 166, 0.5);
+            text-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
         }
         
         .subtitle {
@@ -133,14 +133,14 @@
             padding: 40px;
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(243, 156, 18, 0.5);
             text-align: center;
             transition: all 0.3s ease;
         }
         
         .current-weather:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(149, 165, 166, 0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(243, 156, 18, 0.5);
         }
         
         .weather-icon {
@@ -187,7 +187,7 @@
         .detail-value {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #95a5a6;
+            color: #f39c12;
         }
         
         .detail-label {
@@ -252,7 +252,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #95a5a6;
+            color: #f39c12;
         }
         
         .stat-label {
@@ -298,7 +298,7 @@
         
         .bar {
             width: 40px;
-            background: linear-gradient(to top, #95a5a6, rgba(255,255,255,0.3));
+            background: linear-gradient(to top, #f39c12, rgba(255,255,255,0.3));
             border-radius: 10px 10px 0 0;
             transition: all 0.3s;
             position: relative;
@@ -438,15 +438,15 @@
       },
       "temperature": {
         "@type": "QuantitativeValue",
-        "value": "28",
+        "value": "29",
         "unitCode": "CEL"
       },
       "humidity": {
         "@type": "QuantitativeValue",
-        "value": "90",
+        "value": "85",
         "unitCode": "P1"
       },
-      "observationDate": "2026-05-29T02:00:06.972339",
+      "observationDate": "2026-05-29T03:00:02.612487",
       "provider": {
         "@type": "Organization",
         "name": "Kisara 可视化中心",
@@ -481,12 +481,12 @@
         <!-- 当前天气 -->
         <div class="current-weather">
         
-            <span class="weather-icon">☁️</span>
-            <div class="temperature">28<span>°C</span></div>
-            <div class="weather-desc">多云 · 体感 32°C</div>
+            <span class="weather-icon">☀️</span>
+            <div class="temperature">29<span>°C</span></div>
+            <div class="weather-desc">晴 · 体感 32°C</div>
             <div class="weather-details">
                 <div class="detail-item">
-                    <div class="detail-value">90% </div>
+                    <div class="detail-value">85% </div>
                     <div class="detail-label">湿度</div>
                 </div>
                 <div class="detail-item">
@@ -494,7 +494,7 @@
                     <div class="detail-label">风力</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value">02:00:06</div>
+                    <div class="detail-value">03:00:02</div>
                     <div class="detail-label">更新时间</div>
                 </div>
             </div>
@@ -506,7 +506,7 @@
         
             <div class="umbrella-icon">🌤️</div>
             <div class="umbrella-text">今天不用带伞</div>
-            <div class="umbrella-sub">多云 · 28°C · 湿度90%</div>
+            <div class="umbrella-sub">晴 · 29°C · 湿度85%</div>
         
         </div>
         
@@ -570,8 +570,8 @@
                         <div class="bar-label">05/28<br>周三</div>
                     </div>
                     <div class="trend-bar">
-                        <div class="bar " style="height: 84px;">
-                            <span class="bar-temp">28°</span>
+                        <div class="bar " style="height: 87px;">
+                            <span class="bar-temp">29°</span>
                         </div>
                         <div class="bar-label">05/29<br>周四</div>
                     </div>
@@ -625,9 +625,9 @@
                     
                     <div class="day-card ">
                         <div class="day-date">05/29 周四</div>
-                        <div class="day-icon">☁️</div>
-                        <div class="day-temp">28°C</div>
-                        <div class="day-weather">多云</div>
+                        <div class="day-icon">☀️</div>
+                        <div class="day-temp">29°C</div>
+                        <div class="day-weather">晴</div>
                     </div>
                     
             </div>
@@ -662,7 +662,7 @@
         
         <footer>
             <p>广州天气监控 · 带伞提醒系统 · 数据保留一年</p>
-            <p>生成时间: 2026-05-29 03:00:01</p>
+            <p>生成时间: 2026-05-29 04:00:02</p>
         </footer>
     </div>
     
@@ -685,7 +685,7 @@
     
     <!-- 订阅组件容器 -->
     <div id="umbrella-subscribe-container" 
-         data-weather-level="cloudy"
+         data-weather-level="sunny"
          data-need-umbrella="false"
     ></div>
     
