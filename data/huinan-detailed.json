@@ -4193,9 +4193,9 @@
       },
       "source_diff": {
         "temp": -4.2,
-        "humidity": 6.0,
+        "humidity": 6,
         "dew": -0.5,
-        "windDir": -77.0,
+        "windDir": -77,
         "windSpeed": 12.3,
         "pressure": -8.1
       },
@@ -4222,9 +4222,70 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-29T22:05:02.105286"
+    },
+    {
+      "time": "2026-05-29T15:00:06.371Z",
+      "temp": 24.47,
+      "humidity": 92.0,
+      "dew": 25.03,
+      "windDir": 21.0,
+      "windSpeed": 9.84,
+      "pressure": 1005.34,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "allOK": true,
+        "tempDewDiff": -2
+      },
+      "confidence": "low",
+      "intensity": {
+        "level": "severe",
+        "by": "露点差"
+      },
+      "source_diff": {
+        "temp": -4.9,
+        "humidity": 10.0,
+        "dew": -0.1,
+        "windDir": -70.0,
+        "windSpeed": 7.2,
+        "pressure": -7.8
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 23,
+          "humidity": 95,
+          "dew": 25,
+          "windDir": 0,
+          "windSpeed": 12,
+          "pressure": 1003
+        },
+        "openmeteo": {
+          "temp": 27.9,
+          "humidity": 85,
+          "dew": 25.1,
+          "windDir": 70,
+          "windSpeed": 4.8,
+          "pressure": 1010.8
+        }
+      },
+      "fusion_confidence": "low",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-29T23:05:02.774143"
     }
   ],
   "events": [],
-  "currentEvent": null,
-  "lastCheck": "2026-05-29T22:05:02.105305"
+  "currentEvent": {
+    "startTime": "2026-05-29T15:00:06.372Z",
+    "level": "severe",
+    "maxHumidity": 95,
+    "minDewDiff": -2,
+    "maxLevel": "severe",
+    "confidenceAtStart": 2
+  },
+  "lastCheck": "2026-05-29T23:05:02.774162"
 }
