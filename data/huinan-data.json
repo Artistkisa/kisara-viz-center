@@ -1,10 +1,10 @@
 {
-  "humidity": 93.3,
+  "humidity": 93.6,
   "dew": 24.55,
-  "temp": 23.87,
-  "windDir": 14.7,
-  "windSpeed": 7.8,
-  "pressure": 1004.34,
+  "temp": 23.78,
+  "windDir": 15.6,
+  "windSpeed": 6.49,
+  "pressure": 1004.25,
   "coreTrigger": {
     "humidityOK": true,
     "dewDiffOK": true,
@@ -17,31 +17,31 @@
     "level": "severe",
     "by": "湿度"
   },
-  "updatedAt": "2026-05-30T04:05:01.820893",
+  "updatedAt": "2026-05-30T05:05:02.620500",
   "raw_sources": {
     "qweather": {
       "temp": 23,
       "humidity": 96,
       "dew": 25,
       "windDir": 0,
-      "windSpeed": 9,
+      "windSpeed": 7,
       "pressure": 1002
     },
     "openmeteo": {
-      "temp": 25.9,
-      "humidity": 87,
+      "temp": 25.6,
+      "humidity": 88,
       "dew": 23.5,
-      "windDir": 49,
-      "windSpeed": 5.0,
-      "pressure": 1009.8
+      "windDir": 52,
+      "windSpeed": 5.3,
+      "pressure": 1009.5
     }
   },
   "source_diff": {
-    "temp": -2.9,
-    "humidity": 9.0,
+    "temp": -2.6,
+    "humidity": 8.0,
     "dew": 1.5,
-    "windDir": -49.0,
-    "windSpeed": 4.0,
-    "pressure": -7.8
+    "windDir": -52.0,
+    "windSpeed": 1.7,
+    "pressure": -7.5
   }
 }
