@@ -3952,9 +3952,63 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-29T10:05:02.103827"
+    },
+    {
+      "time": "2026-05-29T03:00:04.293Z",
+      "temp": 32.24,
+      "humidity": 69.9,
+      "dew": 25.12,
+      "windDir": 102.0,
+      "windSpeed": 8.78,
+      "pressure": 1004.61,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 7
+      },
+      "confidence": "medium",
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -0.8,
+        "humidity": 7.0,
+        "dew": -0.4,
+        "windDir": -340.0,
+        "windSpeed": 7.4,
+        "pressure": -8.7
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 32,
+          "humidity": 72,
+          "dew": 25,
+          "windDir": 0,
+          "windSpeed": 11,
+          "pressure": 1002
+        },
+        "openmeteo": {
+          "temp": 32.8,
+          "humidity": 65,
+          "dew": 25.4,
+          "windDir": 340,
+          "windSpeed": 3.6,
+          "pressure": 1010.7
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-29T11:05:02.447707"
     }
   ],
   "events": [],
   "currentEvent": null,
-  "lastCheck": "2026-05-29T10:05:02.103844"
+  "lastCheck": "2026-05-29T11:05:02.447726"
 }
