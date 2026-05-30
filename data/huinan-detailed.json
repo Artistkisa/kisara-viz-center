@@ -5218,10 +5218,10 @@
         "by": "露点差"
       },
       "source_diff": {
-        "temp": 1.0,
-        "humidity": -4.0,
+        "temp": 1,
+        "humidity": -4,
         "dew": 0.4,
-        "windDir": -315.0,
+        "windDir": -315,
         "windSpeed": 20.7,
         "pressure": -8.3
       },
@@ -5235,7 +5235,7 @@
           "pressure": 1001
         },
         "openmeteo": {
-          "temp": 26.0,
+          "temp": 26,
           "humidity": 92,
           "dew": 24.6,
           "windDir": 315,
@@ -5248,6 +5248,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-31T02:05:02.312715"
+    },
+    {
+      "time": "2026-05-30T19:00:06.610Z",
+      "temp": 26.12,
+      "humidity": 91.4,
+      "dew": 24.18,
+      "windDir": 27.9,
+      "windSpeed": 5.98,
+      "pressure": 1002.76,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 2
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "moderate",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -0.4,
+        "humidity": 2.0,
+        "dew": -0.6,
+        "windDir": -93.0,
+        "windSpeed": 3.4,
+        "pressure": -9.2
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 26,
+          "humidity": 92,
+          "dew": 24,
+          "windDir": 0,
+          "windSpeed": 7,
+          "pressure": 1000
+        },
+        "openmeteo": {
+          "temp": 26.4,
+          "humidity": 90,
+          "dew": 24.6,
+          "windDir": 93,
+          "windSpeed": 3.6,
+          "pressure": 1009.2
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-31T03:05:01.873933"
     }
   ],
   "events": [
@@ -5263,5 +5317,5 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-05-31T02:05:02.312733"
+  "lastCheck": "2026-05-31T03:05:01.873951"
 }
