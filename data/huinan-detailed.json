@@ -4711,12 +4711,12 @@
     },
     {
       "time": "2026-05-30T02:00:21.389Z",
-      "temp": 29.48,
-      "humidity": 67.6,
-      "dew": 23.58,
-      "windDir": 7.2,
-      "windSpeed": 8.36,
-      "pressure": 1006.28,
+      "temp": 30.24,
+      "humidity": 64.12,
+      "dew": 23.11,
+      "windDir": 74.34,
+      "windSpeed": 6.21,
+      "pressure": 1007.76,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {
@@ -4726,42 +4726,42 @@
         "allOK": false,
         "tempDewDiff": 5
       },
-      "confidence": "medium",
+      "confidence": "low",
       "intensity": {
         "level": "none",
         "by": "湿度"
       },
       "source_diff": {
-        "temp": -1.6,
-        "humidity": 8.0,
-        "dew": 1.4,
-        "windDir": -24.0,
-        "windSpeed": 8.8,
-        "pressure": -7.6
+        "temp": -2.52,
+        "humidity": 11.6,
+        "dew": 1.58,
+        "windDir": -223.8,
+        "windSpeed": 7.16,
+        "pressure": -4.92
       },
       "raw_sources": {
         "qweather": {
-          "temp": 29,
-          "humidity": 70,
-          "dew": 24,
-          "windDir": 0,
-          "windSpeed": 11,
-          "pressure": 1004
+          "temp": 29.48,
+          "humidity": 67.6,
+          "dew": 23.58,
+          "windDir": 7.2,
+          "windSpeed": 8.36,
+          "pressure": 1006.28
         },
         "openmeteo": {
-          "temp": 30.6,
-          "humidity": 62,
-          "dew": 22.6,
-          "windDir": 24,
-          "windSpeed": 2.2,
-          "pressure": 1011.6
+          "temp": 32.0,
+          "humidity": 56,
+          "dew": 22.0,
+          "windDir": 231,
+          "windSpeed": 1.2,
+          "pressure": 1011.2
         }
       },
-      "fusion_confidence": "medium",
+      "fusion_confidence": "low",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-05-30T10:05:02.409014"
+      "created_at": "2026-05-30T11:05:03.167307"
     }
   ],
   "events": [],
@@ -4773,5 +4773,5 @@
     "maxLevel": "severe",
     "confidenceAtStart": 2
   },
-  "lastCheck": "2026-05-30T10:05:02.409035"
+  "lastCheck": "2026-05-30T11:05:03.167327"
 }
