@@ -5360,7 +5360,7 @@
     {
       "time": "2026-05-30T21:00:05.473Z",
       "temp": 25.18,
-      "humidity": 94.0,
+      "humidity": 94,
       "dew": 24.15,
       "windDir": 39.3,
       "windSpeed": 5.44,
@@ -5381,9 +5381,9 @@
       },
       "source_diff": {
         "temp": -0.6,
-        "humidity": 0.0,
+        "humidity": 0,
         "dew": -0.5,
-        "windDir": -131.0,
+        "windDir": -131,
         "windSpeed": -4.8,
         "pressure": -9.4
       },
@@ -5410,6 +5410,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-31T05:05:02.543457"
+    },
+    {
+      "time": "2026-05-30T22:00:05.701Z",
+      "temp": 25.82,
+      "humidity": 93.7,
+      "dew": 24.06,
+      "windDir": 41.1,
+      "windSpeed": 7.03,
+      "pressure": 1003.58,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "allOK": true,
+        "tempDewDiff": 2
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "moderate",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": 0.6,
+        "humidity": 1.0,
+        "dew": -0.2,
+        "windDir": -137.0,
+        "windSpeed": -0.1,
+        "pressure": -8.6
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 26,
+          "humidity": 94,
+          "dew": 24,
+          "windDir": 0,
+          "windSpeed": 7,
+          "pressure": 1001
+        },
+        "openmeteo": {
+          "temp": 25.4,
+          "humidity": 93,
+          "dew": 24.2,
+          "windDir": 137,
+          "windSpeed": 7.1,
+          "pressure": 1009.6
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-31T06:05:02.455228"
     }
   ],
   "events": [
@@ -5432,5 +5486,5 @@
     "maxLevel": "moderate",
     "confidenceAtStart": 2
   },
-  "lastCheck": "2026-05-31T05:05:02.543477"
+  "lastCheck": "2026-05-31T06:05:02.455248"
 }
