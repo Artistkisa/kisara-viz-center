@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T08:00:02.959854",
+  "generated_at": "2026-05-30T09:00:02.375409",
   "scheduled_times": [
     "00:03",
     "00:18",
@@ -59,114 +59,6 @@
     "23:48"
   ],
   "data_points": [
-    {
-      "timestamp": "2026-05-29T18:15:02.334115",
-      "hour": 18,
-      "minute": 15,
-      "cpu": {
-        "percent": 7.7,
-        "load1": 0.0,
-        "load5": 0.05,
-        "load15": 0.03
-      },
-      "memory": {
-        "percent": 20.3,
-        "used_gb": 1.16,
-        "total_gb": 7.44
-      },
-      "disk": {
-        "percent": 43.0,
-        "used_gb": 16.15,
-        "total_gb": 39.26
-      },
-      "network": {
-        "bytes_sent": 11890397700,
-        "bytes_recv": 10928424190,
-        "packets_sent": 28368761,
-        "packets_recv": 27493918
-      }
-    },
-    {
-      "timestamp": "2026-05-29T18:30:02.759902",
-      "hour": 18,
-      "minute": 30,
-      "cpu": {
-        "percent": 10.8,
-        "load1": 0.0,
-        "load5": 0.02,
-        "load15": 0.0
-      },
-      "memory": {
-        "percent": 20.3,
-        "used_gb": 1.16,
-        "total_gb": 7.44
-      },
-      "disk": {
-        "percent": 43.0,
-        "used_gb": 16.15,
-        "total_gb": 39.26
-      },
-      "network": {
-        "bytes_sent": 11891148804,
-        "bytes_recv": 10929096519,
-        "packets_sent": 28373218,
-        "packets_recv": 27498310
-      }
-    },
-    {
-      "timestamp": "2026-05-29T18:45:03.068142",
-      "hour": 18,
-      "minute": 45,
-      "cpu": {
-        "percent": 10.3,
-        "load1": 0.0,
-        "load5": 0.0,
-        "load15": 0.0
-      },
-      "memory": {
-        "percent": 20.3,
-        "used_gb": 1.16,
-        "total_gb": 7.44
-      },
-      "disk": {
-        "percent": 43.0,
-        "used_gb": 16.15,
-        "total_gb": 39.26
-      },
-      "network": {
-        "bytes_sent": 11891897511,
-        "bytes_recv": 10929788377,
-        "packets_sent": 28377693,
-        "packets_recv": 27502714
-      }
-    },
-    {
-      "timestamp": "2026-05-29T19:00:02.558800",
-      "hour": 19,
-      "minute": 0,
-      "cpu": {
-        "percent": 21.4,
-        "load1": 0.0,
-        "load5": 0.0,
-        "load15": 0.0
-      },
-      "memory": {
-        "percent": 21.3,
-        "used_gb": 1.24,
-        "total_gb": 7.44
-      },
-      "disk": {
-        "percent": 43.0,
-        "used_gb": 16.16,
-        "total_gb": 39.26
-      },
-      "network": {
-        "bytes_sent": 11892655850,
-        "bytes_recv": 10930462701,
-        "packets_sent": 28382228,
-        "packets_recv": 27507144
-      }
-    },
     {
       "timestamp": "2026-05-29T19:15:02.326186",
       "hour": 19,
@@ -1570,14 +1462,122 @@
         "packets_sent": 28738327,
         "packets_recv": 27914588
       }
+    },
+    {
+      "timestamp": "2026-05-30T08:15:02.209396",
+      "hour": 8,
+      "minute": 15,
+      "cpu": {
+        "percent": 9.0,
+        "load1": 0.02,
+        "load5": 0.04,
+        "load15": 0.03
+      },
+      "memory": {
+        "percent": 20.3,
+        "used_gb": 1.16,
+        "total_gb": 7.44
+      },
+      "disk": {
+        "percent": 43.6,
+        "used_gb": 16.36,
+        "total_gb": 39.26
+      },
+      "network": {
+        "bytes_sent": 12013046238,
+        "bytes_recv": 11142253259,
+        "packets_sent": 28745515,
+        "packets_recv": 27921403
+      }
+    },
+    {
+      "timestamp": "2026-05-30T08:30:02.268994",
+      "hour": 8,
+      "minute": 30,
+      "cpu": {
+        "percent": 7.5,
+        "load1": 0.0,
+        "load5": 0.0,
+        "load15": 0.0
+      },
+      "memory": {
+        "percent": 20.4,
+        "used_gb": 1.16,
+        "total_gb": 7.44
+      },
+      "disk": {
+        "percent": 43.6,
+        "used_gb": 16.37,
+        "total_gb": 39.26
+      },
+      "network": {
+        "bytes_sent": 12013962057,
+        "bytes_recv": 11142997161,
+        "packets_sent": 28750395,
+        "packets_recv": 27926136
+      }
+    },
+    {
+      "timestamp": "2026-05-30T08:45:02.372866",
+      "hour": 8,
+      "minute": 45,
+      "cpu": {
+        "percent": 11.8,
+        "load1": 0.06,
+        "load5": 0.02,
+        "load15": 0.0
+      },
+      "memory": {
+        "percent": 20.2,
+        "used_gb": 1.15,
+        "total_gb": 7.44
+      },
+      "disk": {
+        "percent": 43.6,
+        "used_gb": 16.35,
+        "total_gb": 39.26
+      },
+      "network": {
+        "bytes_sent": 12014931159,
+        "bytes_recv": 11144203665,
+        "packets_sent": 28755731,
+        "packets_recv": 27931376
+      }
+    },
+    {
+      "timestamp": "2026-05-30T09:00:02.374659",
+      "hour": 9,
+      "minute": 0,
+      "cpu": {
+        "percent": 56.5,
+        "load1": 0.01,
+        "load5": 0.0,
+        "load15": 0.0
+      },
+      "memory": {
+        "percent": 25.2,
+        "used_gb": 1.52,
+        "total_gb": 7.44
+      },
+      "disk": {
+        "percent": 43.6,
+        "used_gb": 16.36,
+        "total_gb": 39.26
+      },
+      "network": {
+        "bytes_sent": 12015860605,
+        "bytes_recv": 11144915818,
+        "packets_sent": 28760651,
+        "packets_recv": 27936127
+      }
     }
   ],
   "statistics": {
-    "cpu_avg": 12.4,
-    "cpu_max": 31.5,
+    "cpu_avg": 13.0,
+    "cpu_max": 56.5,
     "cpu_min": 5.0,
-    "memory_avg": 20.4,
-    "memory_max": 22.5,
+    "memory_avg": 20.5,
+    "memory_max": 25.2,
     "memory_min": 19.2,
     "total_points": 56
   }
