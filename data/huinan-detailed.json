@@ -5305,10 +5305,10 @@
     },
     {
       "time": "2026-05-30T20:00:02.470Z",
-      "temp": 26.0,
+      "temp": 26,
       "humidity": 92.7,
       "dew": 24.15,
-      "windDir": 36.0,
+      "windDir": 36,
       "windSpeed": 7.21,
       "pressure": 1002.76,
       "humidityChange3h": 0,
@@ -5326,10 +5326,10 @@
         "by": "湿度"
       },
       "source_diff": {
-        "temp": 0.0,
-        "humidity": 1.0,
+        "temp": 0,
+        "humidity": 1,
         "dew": -0.5,
-        "windDir": -120.0,
+        "windDir": -120,
         "windSpeed": -0.7,
         "pressure": -9.2
       },
@@ -5343,7 +5343,7 @@
           "pressure": 1000
         },
         "openmeteo": {
-          "temp": 26.0,
+          "temp": 26,
           "humidity": 92,
           "dew": 24.5,
           "windDir": 120,
@@ -5356,6 +5356,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-31T04:05:02.724915"
+    },
+    {
+      "time": "2026-05-30T21:00:05.473Z",
+      "temp": 25.18,
+      "humidity": 94.0,
+      "dew": 24.15,
+      "windDir": 39.3,
+      "windSpeed": 5.44,
+      "pressure": 1002.82,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "allOK": true,
+        "tempDewDiff": 1
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "moderate",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -0.6,
+        "humidity": 0.0,
+        "dew": -0.5,
+        "windDir": -131.0,
+        "windSpeed": -4.8,
+        "pressure": -9.4
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 25,
+          "humidity": 94,
+          "dew": 24,
+          "windDir": 0,
+          "windSpeed": 4,
+          "pressure": 1000
+        },
+        "openmeteo": {
+          "temp": 25.6,
+          "humidity": 94,
+          "dew": 24.5,
+          "windDir": 131,
+          "windSpeed": 8.8,
+          "pressure": 1009.4
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-31T05:05:02.543457"
     }
   ],
   "events": [
@@ -5370,6 +5424,13 @@
       "duration": 14
     }
   ],
-  "currentEvent": null,
-  "lastCheck": "2026-05-31T04:05:02.724934"
+  "currentEvent": {
+    "startTime": "2026-05-30T21:00:05.474Z",
+    "level": "moderate",
+    "maxHumidity": 94,
+    "minDewDiff": 1,
+    "maxLevel": "moderate",
+    "confidenceAtStart": 2
+  },
+  "lastCheck": "2026-05-31T05:05:02.543477"
 }
