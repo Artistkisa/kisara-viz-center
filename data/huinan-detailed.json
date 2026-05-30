@@ -4678,11 +4678,11 @@
         "by": "湿度"
       },
       "source_diff": {
-        "temp": -2.0,
-        "humidity": 9.0,
+        "temp": -2,
+        "humidity": 9,
         "dew": 0.8,
-        "windDir": -38.0,
-        "windSpeed": 6.0,
+        "windDir": -38,
+        "windSpeed": 6,
         "pressure": -8.5
       },
       "raw_sources": {
@@ -4695,11 +4695,11 @@
           "pressure": 1003
         },
         "openmeteo": {
-          "temp": 29.0,
+          "temp": 29,
           "humidity": 71,
           "dew": 23.2,
           "windDir": 38,
-          "windSpeed": 5.0,
+          "windSpeed": 5,
           "pressure": 1011.5
         }
       },
@@ -4708,6 +4708,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-30T09:05:02.718979"
+    },
+    {
+      "time": "2026-05-30T02:00:21.389Z",
+      "temp": 29.48,
+      "humidity": 67.6,
+      "dew": 23.58,
+      "windDir": 7.2,
+      "windSpeed": 8.36,
+      "pressure": 1006.28,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 5
+      },
+      "confidence": "medium",
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -1.6,
+        "humidity": 8.0,
+        "dew": 1.4,
+        "windDir": -24.0,
+        "windSpeed": 8.8,
+        "pressure": -7.6
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 29,
+          "humidity": 70,
+          "dew": 24,
+          "windDir": 0,
+          "windSpeed": 11,
+          "pressure": 1004
+        },
+        "openmeteo": {
+          "temp": 30.6,
+          "humidity": 62,
+          "dew": 22.6,
+          "windDir": 24,
+          "windSpeed": 2.2,
+          "pressure": 1011.6
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-30T10:05:02.409014"
     }
   ],
   "events": [],
@@ -4719,5 +4773,5 @@
     "maxLevel": "severe",
     "confidenceAtStart": 2
   },
-  "lastCheck": "2026-05-30T09:05:02.719002"
+  "lastCheck": "2026-05-30T10:05:02.409035"
 }
