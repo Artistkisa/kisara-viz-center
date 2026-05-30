@@ -4762,16 +4762,74 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-30T13:05:02.859651"
+    },
+    {
+      "time": "2026-05-30T06:00:02.848Z",
+      "temp": 33.09,
+      "humidity": 57.1,
+      "dew": 24.4,
+      "windDir": 90.6,
+      "windSpeed": 15.22,
+      "pressure": 1004.04,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 8
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -0.3,
+        "humidity": 3.0,
+        "dew": 2.0,
+        "windDir": -302.0,
+        "windSpeed": 12.6,
+        "pressure": -6.8
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 33,
+          "humidity": 58,
+          "dew": 25,
+          "windDir": 0,
+          "windSpeed": 19,
+          "pressure": 1002
+        },
+        "openmeteo": {
+          "temp": 33.3,
+          "humidity": 55,
+          "dew": 23.0,
+          "windDir": 302,
+          "windSpeed": 6.4,
+          "pressure": 1008.8
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-30T14:05:03.268726"
     }
   ],
-  "events": [],
-  "currentEvent": {
-    "startTime": "2026-05-29T15:00:06.372Z",
-    "level": "severe",
-    "maxHumidity": 96,
-    "minDewDiff": -2,
-    "maxLevel": "severe",
-    "confidenceAtStart": 2
-  },
-  "lastCheck": "2026-05-30T13:05:02.859670"
+  "events": [
+    {
+      "startTime": "2026-05-29T15:00:06.372Z",
+      "level": "severe",
+      "maxHumidity": 96,
+      "minDewDiff": -2,
+      "maxLevel": "severe",
+      "confidenceAtStart": 2,
+      "endTime": "2026-05-30T06:00:02.849Z",
+      "duration": 14
+    }
+  ],
+  "currentEvent": null,
+  "lastCheck": "2026-05-30T14:05:03.268746"
 }
