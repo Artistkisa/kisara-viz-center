@@ -5921,11 +5921,11 @@
       },
       "source_diff": {
         "temp": 0.2,
-        "humidity": -8.0,
+        "humidity": -8,
         "dew": 0.3,
-        "windDir": -154.0,
+        "windDir": -154,
         "windSpeed": 5.6,
-        "pressure": -8.0
+        "pressure": -8
       },
       "raw_sources": {
         "qweather": {
@@ -5942,7 +5942,7 @@
           "dew": 25.7,
           "windDir": 154,
           "windSpeed": 5.4,
-          "pressure": 1008.0
+          "pressure": 1008
         }
       },
       "fusion_confidence": "medium",
@@ -5950,6 +5950,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-05-31T20:05:03.176350"
+    },
+    {
+      "time": "2026-05-31T13:00:03.291Z",
+      "temp": 27.88,
+      "humidity": 84.5,
+      "dew": 25.85,
+      "windDir": 50.7,
+      "windSpeed": 10.75,
+      "pressure": 1002.76,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": true,
+        "humidityTrendOK": false,
+        "allOK": false,
+        "tempDewDiff": 2
+      },
+      "confidence": "medium",
+      "intensity": {
+        "level": "moderate",
+        "by": "露点差"
+      },
+      "source_diff": {
+        "temp": 0.4,
+        "humidity": -5.0,
+        "dew": 0.5,
+        "windDir": -169.0,
+        "windSpeed": 7.5,
+        "pressure": -9.2
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 28,
+          "humidity": 83,
+          "dew": 26,
+          "windDir": 0,
+          "windSpeed": 13,
+          "pressure": 1000
+        },
+        "openmeteo": {
+          "temp": 27.6,
+          "humidity": 88,
+          "dew": 25.5,
+          "windDir": 169,
+          "windSpeed": 5.5,
+          "pressure": 1009.2
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-05-31T21:05:02.496780"
     }
   ],
   "events": [
@@ -5975,5 +6029,5 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-05-31T20:05:03.176369"
+  "lastCheck": "2026-05-31T21:05:02.496799"
 }
