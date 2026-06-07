@@ -155,10 +155,11 @@ async function loadDataComparison() {
         container.innerHTML = html;
         
     } catch (err) {
+        const errMsg = err.message ? err.message.replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c])) : '未知错误';
         container.innerHTML = `
         <div style="text-align: center; padding: 30px;">
-            <p style="color: #e94560; margin-bottom: 15px;">❌ 加载失败: ${err.message}</p>
-            <button onclick="loadDataComparison()" 
+            <p style="color: #e94560; margin-bottom: 15px;">❌ 加载失败: ${errMsg}</p>
+            <button onclick="loadDataComparison()"
                     style="padding: 10px 20px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
                 🔄 重试加载
             </button>

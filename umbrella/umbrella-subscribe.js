@@ -162,7 +162,8 @@
                     
                     const note = document.querySelector('.subscribe-note');
                     if (note) {
-                        note.innerHTML = `✅ 您已订阅 (${email}) · <a href="${API_BASE}/unsubscribe.php" target="_blank">退订</a>`;
+                        const safeEmail = email.replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
+                        note.innerHTML = `✅ 您已订阅 (${safeEmail}) · <a href="${API_BASE}/unsubscribe.php" target="_blank">退订</a>`;
                     }
                 }
             } else {
