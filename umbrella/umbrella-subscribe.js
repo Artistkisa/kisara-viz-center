@@ -162,8 +162,15 @@
                     
                     const note = document.querySelector('.subscribe-note');
                     if (note) {
-                        const safeEmail = email.replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
-                        note.innerHTML = `✅ 您已订阅 (${safeEmail}) · <a href="${API_BASE}/unsubscribe.php" target="_blank">退订</a>`;
+                        note.textContent = '';
+                        note.appendChild(document.createTextNode('✅ 您已订阅 ('));
+                        note.appendChild(document.createTextNode(email));
+                        note.appendChild(document.createTextNode(') · '));
+                        const link = document.createElement('a');
+                        link.href = `${API_BASE}/unsubscribe.php`;
+                        link.target = '_blank';
+                        link.textContent = '退订';
+                        note.appendChild(link);
                     }
                 }
             } else {
