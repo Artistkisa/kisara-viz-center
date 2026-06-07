@@ -155,15 +155,19 @@ async function loadDataComparison() {
         container.innerHTML = html;
         
     } catch (err) {
-        container.innerHTML = `
-        <div style="text-align: center; padding: 30px;">
-            <p style="color: #e94560; margin-bottom: 15px;">❌ 加载失败: ${err.message}</p>
-            <button onclick="loadDataComparison()" 
-                    style="padding: 10px 20px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
-                🔄 重试加载
-            </button>
-        </div>
-        `;
+        container.innerHTML = '';
+        const wrapper = document.createElement('div');
+        wrapper.style.cssText = 'text-align: center; padding: 30px;';
+        const msg = document.createElement('p');
+        msg.style.cssText = 'color: #e94560; margin-bottom: 15px;';
+        msg.textContent = '❌ 加载失败: ' + (err.message || '未知错误');
+        const btn = document.createElement('button');
+        btn.style.cssText = 'padding: 10px 20px; background: #667eea; color: #fff; border: none; border-radius: 6px; cursor: pointer;';
+        btn.textContent = '🔄 重试加载';
+        btn.onclick = loadDataComparison;
+        wrapper.appendChild(msg);
+        wrapper.appendChild(btn);
+        container.appendChild(wrapper);
     }
 }
 
