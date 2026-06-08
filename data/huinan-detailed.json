@@ -1,37 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-05-24T11:00:02.931Z",
-      "humidity": 80,
-      "temp": 30,
-      "dew": 25,
-      "windDir": 0,
-      "windSpeed": 32,
-      "pressure": 998,
-      "trends": {
-        "humidityChange3h": -3,
-        "pressureDrop6h": 6
-      },
-      "coreTrigger": {
-        "humidityOK": false,
-        "dewDiffOK": false,
-        "humidityTrendOK": false,
-        "allOK": false,
-        "tempDewDiff": 5
-      },
-      "confidence": {
-        "score": 2,
-        "reasons": [
-          "有风流动",
-          "气压下降"
-        ]
-      },
-      "intensity": {
-        "level": "none",
-        "by": "湿度"
-      }
-    },
-    {
       "time": "2026-05-24T13:00:03.165Z",
       "humidity": 84,
       "temp": 28,
@@ -6271,7 +6240,7 @@
     {
       "time": "2026-06-08T11:00:03.397Z",
       "temp": 27.58,
-      "humidity": 91.0,
+      "humidity": 91,
       "dew": 26.06,
       "windDir": 42.9,
       "windSpeed": 10.9,
@@ -6292,10 +6261,10 @@
       },
       "source_diff": {
         "temp": 1.4,
-        "humidity": -10.0,
+        "humidity": -10,
         "dew": -0.2,
-        "windDir": -143.0,
-        "windSpeed": 7.0,
+        "windDir": -143,
+        "windSpeed": 7,
         "pressure": -9.9
       },
       "raw_sources": {
@@ -6312,7 +6281,7 @@
           "humidity": 98,
           "dew": 26.2,
           "windDir": 143,
-          "windSpeed": 6.0,
+          "windSpeed": 6,
           "pressure": 1001.9
         }
       },
@@ -6321,6 +6290,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-08T19:05:02.259135"
+    },
+    {
+      "time": "2026-06-08T12:00:05.558Z",
+      "temp": 26.67,
+      "humidity": 93.1,
+      "dew": 25.88,
+      "windDir": 38.1,
+      "windSpeed": 17.11,
+      "pressure": 995.82,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": true,
+        "dewDiffOK": true,
+        "humidityTrendOK": true,
+        "allOK": true,
+        "tempDewDiff": 1
+      },
+      "confidence": "medium",
+      "intensity": {
+        "level": "moderate",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": 1.1,
+        "humidity": -7.0,
+        "dew": 0.4,
+        "windDir": -127.0,
+        "windSpeed": 16.3,
+        "pressure": -9.4
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 27,
+          "humidity": 91,
+          "dew": 26,
+          "windDir": 0,
+          "windSpeed": 22,
+          "pressure": 993
+        },
+        "openmeteo": {
+          "temp": 25.9,
+          "humidity": 98,
+          "dew": 25.6,
+          "windDir": 127,
+          "windSpeed": 5.7,
+          "pressure": 1002.4
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-08T20:05:01.885662"
     }
   ],
   "events": [
@@ -6346,5 +6369,5 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-08T19:05:02.259155"
+  "lastCheck": "2026-06-08T20:05:01.885682"
 }
