@@ -6708,12 +6708,12 @@
     },
     {
       "time": "2026-06-09T12:00:02.650Z",
-      "temp": 25.24,
-      "humidity": 72.5,
-      "dew": 21.79,
-      "windDir": 13.2,
-      "windSpeed": 22.16,
-      "pressure": 999.49,
+      "temp": 25.17,
+      "humidity": 74.75,
+      "dew": 21.64,
+      "windDir": 20.04,
+      "windSpeed": 17.82,
+      "pressure": 1001.47,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {
@@ -6729,36 +6729,36 @@
         "by": "湿度"
       },
       "source_diff": {
-        "temp": -0.8,
-        "humidity": -5.0,
-        "dew": 0.7,
-        "windDir": -44.0,
-        "windSpeed": 22.8,
-        "pressure": -8.3
+        "temp": 0.24,
+        "humidity": -7.5,
+        "dew": 0.49,
+        "windDir": -22.8,
+        "windSpeed": 14.46,
+        "pressure": -6.61
       },
       "raw_sources": {
         "qweather": {
-          "temp": 25,
-          "humidity": 71,
-          "dew": 22,
-          "windDir": 0,
-          "windSpeed": 29,
-          "pressure": 997
+          "temp": 25.24,
+          "humidity": 72.5,
+          "dew": 21.79,
+          "windDir": 13.2,
+          "windSpeed": 22.16,
+          "pressure": 999.49
         },
         "openmeteo": {
-          "temp": 25.8,
-          "humidity": 76,
+          "temp": 25.0,
+          "humidity": 80,
           "dew": 21.3,
-          "windDir": 44,
-          "windSpeed": 6.2,
-          "pressure": 1005.3
+          "windDir": 36,
+          "windSpeed": 7.7,
+          "pressure": 1006.1
         }
       },
       "fusion_confidence": "medium",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-06-09T20:05:02.094233"
+      "created_at": "2026-06-09T21:05:02.578285"
     }
   ],
   "events": [
@@ -6794,5 +6794,5 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-09T20:05:02.094253"
+  "lastCheck": "2026-06-09T21:05:02.578302"
 }
