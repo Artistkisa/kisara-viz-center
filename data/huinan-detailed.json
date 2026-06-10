@@ -1,36 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-05-26 06:00:02",
-      "humidity": 83,
-      "temp": 28,
-      "dew": 25,
-      "windDir": 0,
-      "windSpeed": 25,
-      "pressure": 998,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {
-        "humidityOK": false,
-        "dewDiffOK": false,
-        "humidityTrendOK": false,
-        "allOK": false,
-        "tempDewDiff": 3
-      },
-      "confidence": {
-        "score": 2,
-        "reasons": [
-          "有风流动",
-          "气压下降"
-        ]
-      },
-      "intensity": {
-        "level": "none",
-        "by": "湿度"
-      },
-      "source": "main"
-    },
-    {
       "time": "2026-05-26 07:00:01",
       "humidity": 83,
       "temp": 28,
@@ -6971,6 +6941,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-10T08:05:02.381649"
+    },
+    {
+      "time": "2026-06-10T01:00:05.988Z",
+      "temp": 25.06,
+      "humidity": 70.8,
+      "dew": 19.67,
+      "windDir": 4.5,
+      "windSpeed": 13.78,
+      "pressure": 1003.67,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 5
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -0.2,
+        "humidity": 4.0,
+        "dew": 1.1,
+        "windDir": -15.0,
+        "windSpeed": 7.4,
+        "pressure": -8.9
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 25,
+          "humidity": 72,
+          "dew": 20,
+          "windDir": 0,
+          "windSpeed": 16,
+          "pressure": 1001
+        },
+        "openmeteo": {
+          "temp": 25.2,
+          "humidity": 68,
+          "dew": 18.9,
+          "windDir": 15,
+          "windSpeed": 8.6,
+          "pressure": 1009.9
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-10T09:05:01.904419"
     }
   ],
   "events": [
@@ -7013,5 +7037,5 @@
     "maxLevel": "moderate",
     "confidenceAtStart": 2
   },
-  "lastCheck": "2026-06-10T08:05:02.381666"
+  "lastCheck": "2026-06-10T09:05:01.904438"
 }
