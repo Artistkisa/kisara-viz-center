@@ -1,36 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-05-26 13:00:01",
-      "humidity": 69,
-      "temp": 33,
-      "dew": 26,
-      "windDir": 0,
-      "windSpeed": 26,
-      "pressure": 999,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {
-        "humidityOK": false,
-        "dewDiffOK": false,
-        "humidityTrendOK": true,
-        "allOK": false,
-        "tempDewDiff": 7
-      },
-      "confidence": {
-        "score": 2,
-        "reasons": [
-          "有风流动",
-          "气压下降"
-        ]
-      },
-      "intensity": {
-        "level": "none",
-        "by": "湿度"
-      },
-      "source": "main"
-    },
-    {
       "time": "2026-05-26 14:00:01",
       "humidity": 69,
       "temp": 33,
@@ -7110,9 +7080,9 @@
       },
       "source_diff": {
         "temp": -2.8,
-        "humidity": 9.0,
+        "humidity": 9,
         "dew": -0.3,
-        "windDir": -97.0,
+        "windDir": -97,
         "windSpeed": 6.5,
         "pressure": -8.2
       },
@@ -7139,6 +7109,60 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-10T18:05:02.382828"
+    },
+    {
+      "time": "2026-06-10T11:00:03.812Z",
+      "temp": 26.54,
+      "humidity": 74.1,
+      "dew": 21.39,
+      "windDir": 22.8,
+      "windSpeed": 7.91,
+      "pressure": 1003.25,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {
+        "humidityOK": false,
+        "dewDiffOK": false,
+        "humidityTrendOK": true,
+        "allOK": false,
+        "tempDewDiff": 5
+      },
+      "confidence": "high",
+      "intensity": {
+        "level": "none",
+        "by": "湿度"
+      },
+      "source_diff": {
+        "temp": -1.8,
+        "humidity": 3.0,
+        "dew": -1.3,
+        "windDir": -76.0,
+        "windSpeed": 10.3,
+        "pressure": -7.5
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 26,
+          "humidity": 75,
+          "dew": 21,
+          "windDir": 0,
+          "windSpeed": 11,
+          "pressure": 1001
+        },
+        "openmeteo": {
+          "temp": 27.8,
+          "humidity": 72,
+          "dew": 22.3,
+          "windDir": 76,
+          "windSpeed": 0.7,
+          "pressure": 1008.5
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-10T19:05:01.976754"
     }
   ],
   "events": [
@@ -7184,5 +7208,5 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-10T18:05:02.382847"
+  "lastCheck": "2026-06-10T19:05:01.976774"
 }
