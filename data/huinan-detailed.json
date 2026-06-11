@@ -3351,6 +3351,51 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-11T16:05:01.899895"
+    },
+    {
+      "time": "2026-06-11T15:00",
+      "temp": 31.66,
+      "humidity": 51.7,
+      "dew": 20.54,
+      "windDir": 334.1,
+      "windSpeed": 3.81,
+      "pressure": 1009.9,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "high",
+      "intensity": {},
+      "source_diff": {
+        "temp": -0.2,
+        "humidity": 1.0,
+        "dew": 0.2,
+        "windDir": 33.0,
+        "windSpeed": 0.3,
+        "pressure": 1.0
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 31.6,
+          "humidity": 52,
+          "dew": 20.6,
+          "windDir": 344,
+          "windSpeed": 3.9,
+          "pressure": 1010.2
+        },
+        "openmeteo": {
+          "temp": 31.8,
+          "humidity": 51,
+          "dew": 20.4,
+          "windDir": 311,
+          "windSpeed": 3.6,
+          "pressure": 1009.2
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-11T17:05:09.899133"
     }
   ],
   "events": [
@@ -3396,7 +3441,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-11T16:05:01.899914",
+  "lastCheck": "2026-06-11T17:05:09.899151",
   "nanhui_detection": {
     "status": "warning",
     "level": "warning",
