@@ -3218,6 +3218,51 @@
       "created_at": "2026-06-11T15:05:02.244637"
     },
     {
+      "time": "2026-06-11 19:00:02",
+      "temp": 29.18,
+      "humidity": 65.7,
+      "dew": 21.92,
+      "windDir": 223.6,
+      "windSpeed": 4.45,
+      "pressure": 1007.42,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "low",
+      "intensity": {},
+      "source_diff": {
+        "temp": 2.4,
+        "humidity": -19.0,
+        "dew": -2.4,
+        "windDir": -2.0,
+        "windSpeed": 4.5,
+        "pressure": -4.4
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 29.9,
+          "humidity": 60.0,
+          "dew": 21.2,
+          "windDir": 223.0,
+          "windSpeed": 5.8,
+          "pressure": 1006.1
+        },
+        "openmeteo": {
+          "temp": 27.5,
+          "humidity": 79,
+          "dew": 23.6,
+          "windDir": 225,
+          "windSpeed": 1.3,
+          "pressure": 1010.5
+        }
+      },
+      "fusion_confidence": "low",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-11T19:05:02.435774"
+    },
+    {
       "time": "2026-06-11T07:00",
       "temp": 24.62,
       "humidity": 79.5,
@@ -3398,49 +3443,49 @@
       "created_at": "2026-06-11T18:05:02.137844"
     },
     {
-      "time": "2026-06-11 19:00:02",
-      "temp": 29.18,
-      "humidity": 65.7,
-      "dew": 21.92,
-      "windDir": 223.6,
-      "windSpeed": 4.45,
-      "pressure": 1007.42,
+      "time": "2026-06-11 20:00:09",
+      "temp": 27.01,
+      "humidity": 78.92,
+      "dew": 22.8,
+      "windDir": 90.45,
+      "windSpeed": 5.18,
+      "pressure": 1007.46,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {},
-      "confidence": "low",
+      "confidence": "high",
       "intensity": {},
       "source_diff": {
-        "temp": 2.4,
-        "humidity": -19.0,
-        "dew": -2.4,
-        "windDir": -2.0,
-        "windSpeed": 4.5,
-        "pressure": -4.4
+        "temp": 0.3,
+        "humidity": -4.4,
+        "dew": -1.0,
+        "windDir": -76.5,
+        "windSpeed": 0.4,
+        "pressure": -5.2
       },
       "raw_sources": {
         "qweather": {
-          "temp": 29.9,
-          "humidity": 60.0,
-          "dew": 21.2,
-          "windDir": 223.0,
-          "windSpeed": 5.8,
-          "pressure": 1006.1
+          "temp": 27.1,
+          "humidity": 77.6,
+          "dew": 22.5,
+          "windDir": 67.5,
+          "windSpeed": 5.3,
+          "pressure": 1005.9
         },
         "openmeteo": {
-          "temp": 27.5,
-          "humidity": 79,
-          "dew": 23.6,
-          "windDir": 225,
-          "windSpeed": 1.3,
-          "pressure": 1010.5
+          "temp": 26.8,
+          "humidity": 82,
+          "dew": 23.5,
+          "windDir": 144,
+          "windSpeed": 4.9,
+          "pressure": 1011.1
         }
       },
-      "fusion_confidence": "low",
+      "fusion_confidence": "high",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-06-11T19:05:02.435774"
+      "created_at": "2026-06-11T20:05:02.255876"
     }
   ],
   "events": [
@@ -3486,13 +3531,13 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-11T19:05:02.435791",
+  "lastCheck": "2026-06-11T20:05:02.255893",
   "nanhui_detection": {
-    "status": "warning",
-    "level": "warning",
+    "status": "watch",
+    "level": "watch",
     "confidence": 0.2,
-    "core_count": 2,
-    "enhance_count": 2,
+    "core_count": 1,
+    "enhance_count": 1,
     "conditions": {
       "cold_base": {
         "satisfied": false,
@@ -3503,42 +3548,42 @@
         "duration_needed": 6
       },
       "rapid_warming": {
-        "satisfied": true,
-        "reason": "24h升温7.4℃（最低22.54℃→现在29.9℃）",
-        "temp_rise": 7.359999999999999,
+        "satisfied": false,
+        "reason": "24h升温4.6℃（最低22.54℃→现在27.1℃）",
+        "temp_rise": 4.560000000000002,
         "min_past_temp": 22.54,
         "threshold": 6.0
       },
       "dew_close": {
         "satisfied": true,
         "strict": false,
-        "reason": "表面温度24.5℃，露点21.2℃，差3.3℃（阈值4.0℃）",
+        "reason": "表面温度24.5℃，露点22.5℃，差2.0℃（阈值4.0℃）",
         "surface_temp": 24.5,
-        "dew_diff": 3.3,
+        "dew_diff": 2.0,
         "threshold": 4.0,
         "strict_threshold": 2.0
       },
       "warm_humid": {
         "satisfied": false,
-        "reason": "温度29.9℃（需≥18.0），湿度60.0%（需≥85%）",
-        "temp": 29.9,
-        "humidity": 60.0
+        "reason": "温度27.1℃（需≥18.0），湿度77.6%（需≥85%）",
+        "temp": 27.1,
+        "humidity": 77.6
       },
       "warm_transport": {
-        "satisfied": true,
-        "reason": "风向223.0°（需135-225°）",
-        "wind_dir": 223.0
+        "satisfied": false,
+        "reason": "风向67.5°（需135-225°）",
+        "wind_dir": 67.5
       },
       "pressure_drop": {
         "satisfied": true,
-        "reason": "气压从1009.9hPa降至1006.1hPa，下降3.8hPa（阈值2.0）",
-        "pressure_drop": 3.8,
+        "reason": "气压从1009.9hPa降至1005.9hPa，下降4.0hPa（阈值2.0）",
+        "pressure_drop": 4.0,
         "max_past_pressure": 1009.9,
         "threshold": 2.0
       }
     },
-    "fusion_confidence": "low_both_anomaly",
+    "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (2/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ✅ 24h升温7.4℃（最低22.54℃→现在29.9℃）\n  3️⃣ 露点接近: ✅ 表面温度24.5℃，露点21.2℃，差3.3℃（阈值4.0℃）\n\n增强条件 (2/3):\n  4️⃣ 暖湿环境: ❌ 温度29.9℃（需≥18.0），湿度60.0%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向223.0°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1009.9hPa降至1006.1hPa，下降3.8hPa（阈值2.0）\n\n状态: WARNING\n置信度: 20%\n数据源: QW50% + OM50% [low_both_anomaly]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温4.6℃（最低22.54℃→现在27.1℃）\n  3️⃣ 露点接近: ✅ 表面温度24.5℃，露点22.5℃，差2.0℃（阈值4.0℃）\n\n增强条件 (1/3):\n  4️⃣ 暖湿环境: ❌ 温度27.1℃（需≥18.0），湿度77.6%（需≥85%）\n  5️⃣ 南风输送: ❌ 风向67.5°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1009.9hPa降至1005.9hPa，下降4.0hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
