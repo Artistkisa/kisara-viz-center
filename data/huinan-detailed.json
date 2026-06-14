@@ -6548,6 +6548,51 @@
       "created_at": "2026-06-14T18:05:02.317666"
     },
     {
+      "time": "2026-06-14 19:00:01",
+      "temp": 26.11,
+      "humidity": 92.9,
+      "dew": 25.28,
+      "windDir": 210.3,
+      "windSpeed": 18.03,
+      "pressure": 999.61,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "high",
+      "intensity": {},
+      "source_diff": {
+        "temp": -0.7,
+        "humidity": -3.0,
+        "dew": -0.6,
+        "windDir": 19.0,
+        "windSpeed": 15.9,
+        "pressure": -6.7
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 25.9,
+          "humidity": 92.0,
+          "dew": 25.1,
+          "windDir": 216.0,
+          "windSpeed": 22.8,
+          "pressure": 997.6
+        },
+        "openmeteo": {
+          "temp": 26.6,
+          "humidity": 95,
+          "dew": 25.7,
+          "windDir": 197,
+          "windSpeed": 6.9,
+          "pressure": 1004.3
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-14T19:05:02.774223"
+    },
+    {
       "time": "2026-06-14T07:00",
       "temp": 26.82,
       "humidity": 95.2,
@@ -6638,49 +6683,49 @@
       "created_at": "2026-06-14T12:05:02.379709"
     },
     {
-      "time": "2026-06-14 19:00:01",
-      "temp": 26.11,
-      "humidity": 92.9,
-      "dew": 25.28,
-      "windDir": 210.3,
-      "windSpeed": 18.03,
-      "pressure": 999.61,
+      "time": "2026-06-14 20:00:05",
+      "temp": 25.8,
+      "humidity": 95.49,
+      "dew": 25.35,
+      "windDir": 247.92,
+      "windSpeed": 8.01,
+      "pressure": 1000.33,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {},
       "confidence": "high",
       "intensity": {},
       "source_diff": {
-        "temp": -0.7,
-        "humidity": -3.0,
-        "dew": -0.6,
-        "windDir": 19.0,
-        "windSpeed": 15.9,
-        "pressure": -6.7
+        "temp": -1.0,
+        "humidity": 0.7,
+        "dew": -0.5,
+        "windDir": 105.6,
+        "windSpeed": 1.3,
+        "pressure": -6.1
       },
       "raw_sources": {
         "qweather": {
-          "temp": 25.9,
-          "humidity": 92.0,
-          "dew": 25.1,
-          "windDir": 216.0,
-          "windSpeed": 22.8,
-          "pressure": 997.6
+          "temp": 25.5,
+          "humidity": 95.7,
+          "dew": 25.2,
+          "windDir": 279.6,
+          "windSpeed": 8.4,
+          "pressure": 998.5
         },
         "openmeteo": {
-          "temp": 26.6,
+          "temp": 26.5,
           "humidity": 95,
           "dew": 25.7,
-          "windDir": 197,
-          "windSpeed": 6.9,
-          "pressure": 1004.3
+          "windDir": 174,
+          "windSpeed": 7.1,
+          "pressure": 1004.6
         }
       },
       "fusion_confidence": "high",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-06-14T19:05:02.774223"
+      "created_at": "2026-06-14T20:05:02.107588"
     }
   ],
   "events": [
@@ -6726,59 +6771,59 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-14T19:05:02.774241",
+  "lastCheck": "2026-06-14T20:05:02.107605",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
     "confidence": 0.2,
     "core_count": 1,
-    "enhance_count": 3,
+    "enhance_count": 2,
     "conditions": {
       "cold_base": {
         "satisfied": false,
         "reason": "最长连续低温0h（需≥6h）",
-        "min_temp": 26.34,
+        "min_temp": 26.11,
         "cold_hours": 0,
         "threshold": 12.0,
         "duration_needed": 6
       },
       "rapid_warming": {
         "satisfied": false,
-        "reason": "24h升温-0.4℃（最低26.34℃→现在25.9℃）",
-        "temp_rise": -0.4400000000000013,
-        "min_past_temp": 26.34,
+        "reason": "24h升温-0.6℃（最低26.11℃→现在25.5℃）",
+        "temp_rise": -0.6099999999999994,
+        "min_past_temp": 26.11,
         "threshold": 6.0
       },
       "dew_close": {
         "satisfied": true,
         "strict": false,
-        "reason": "表面温度28.3℃，露点25.1℃，差3.2℃（阈值4.0℃）",
-        "surface_temp": 28.3,
-        "dew_diff": 3.2,
+        "reason": "表面温度28.1℃，露点25.2℃，差2.9℃（阈值4.0℃）",
+        "surface_temp": 28.1,
+        "dew_diff": 2.9,
         "threshold": 4.0,
         "strict_threshold": 2.0
       },
       "warm_humid": {
         "satisfied": true,
-        "reason": "温度25.9℃（需≥18.0），湿度92.0%（需≥85%）",
-        "temp": 25.9,
-        "humidity": 92.0
+        "reason": "温度25.5℃（需≥18.0），湿度95.7%（需≥85%）",
+        "temp": 25.5,
+        "humidity": 95.7
       },
       "warm_transport": {
-        "satisfied": true,
-        "reason": "风向216.0°（需135-225°）",
-        "wind_dir": 216.0
+        "satisfied": false,
+        "reason": "风向279.6°（需135-225°）",
+        "wind_dir": 279.6
       },
       "pressure_drop": {
         "satisfied": true,
-        "reason": "气压从1002.46hPa降至997.6hPa，下降4.9hPa（阈值2.0）",
-        "pressure_drop": 4.9,
-        "max_past_pressure": 1002.46,
+        "reason": "气压从1001.72hPa降至998.5hPa，下降3.2hPa（阈值2.0）",
+        "pressure_drop": 3.2,
+        "max_past_pressure": 1001.72,
         "threshold": 2.0
       }
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温-0.4℃（最低26.34℃→现在25.9℃）\n  3️⃣ 露点接近: ✅ 表面温度28.3℃，露点25.1℃，差3.2℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度25.9℃（需≥18.0），湿度92.0%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向216.0°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1002.46hPa降至997.6hPa，下降4.9hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温-0.6℃（最低26.11℃→现在25.5℃）\n  3️⃣ 露点接近: ✅ 表面温度28.1℃，露点25.2℃，差2.9℃（阈值4.0℃）\n\n增强条件 (2/3):\n  4️⃣ 暖湿环境: ✅ 温度25.5℃（需≥18.0），湿度95.7%（需≥85%）\n  5️⃣ 南风输送: ❌ 风向279.6°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1001.72hPa降至998.5hPa，下降3.2hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
