@@ -1,51 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-06-18 06:00:10",
-      "temp": 25.48,
-      "humidity": 95.46,
-      "dew": 24.28,
-      "windDir": 165.45,
-      "windSpeed": 12.71,
-      "pressure": 1004.33,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": 0.4,
-        "humidity": -2.2,
-        "dew": -0.6,
-        "windDir": 3.5,
-        "windSpeed": 9.3,
-        "pressure": -6.1
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 25.6,
-          "humidity": 94.8,
-          "dew": 24.1,
-          "windDir": 166.5,
-          "windSpeed": 15.5,
-          "pressure": 1002.5
-        },
-        "openmeteo": {
-          "temp": 25.2,
-          "humidity": 97,
-          "dew": 24.7,
-          "windDir": 163,
-          "windSpeed": 6.2,
-          "pressure": 1008.6
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-18T06:05:02.008887"
-    },
-    {
       "time": "2026-06-18 07:00:02",
       "temp": 25.31,
       "humidity": 95.12,
@@ -7559,6 +7514,51 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-25T05:05:02.339641"
+    },
+    {
+      "time": "2026-06-25 06:00:09",
+      "temp": 27.12,
+      "humidity": 92.52,
+      "dew": 25.4,
+      "windDir": 118.53,
+      "windSpeed": 10.79,
+      "pressure": 999.81,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "medium",
+      "intensity": {},
+      "source_diff": {
+        "temp": 2.6,
+        "humidity": -6.4,
+        "dew": 1.0,
+        "windDir": 137.9,
+        "windSpeed": 3.7,
+        "pressure": -6.7
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 27.9,
+          "humidity": 90.6,
+          "dew": 25.7,
+          "windDir": 159.9,
+          "windSpeed": 11.9,
+          "pressure": 997.8
+        },
+        "openmeteo": {
+          "temp": 25.3,
+          "humidity": 97,
+          "dew": 24.7,
+          "windDir": 22,
+          "windSpeed": 8.2,
+          "pressure": 1004.5
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-25T06:05:02.574033"
     }
   ],
   "events": [
@@ -7604,7 +7604,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-25T05:05:02.339658",
+  "lastCheck": "2026-06-25T06:05:02.574050",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
@@ -7630,33 +7630,33 @@
       "dew_close": {
         "satisfied": true,
         "strict": false,
-        "reason": "表面温度28.9℃，露点25.1℃，差3.8℃（阈值4.0℃）",
+        "reason": "表面温度28.9℃，露点25.7℃，差3.2℃（阈值4.0℃）",
         "surface_temp": 28.9,
-        "dew_diff": 3.8,
+        "dew_diff": 3.2,
         "threshold": 4.0,
         "strict_threshold": 2.0
       },
       "warm_humid": {
         "satisfied": true,
-        "reason": "温度27.9℃（需≥18.0），湿度89.2%（需≥85%）",
+        "reason": "温度27.9℃（需≥18.0），湿度90.6%（需≥85%）",
         "temp": 27.9,
-        "humidity": 89.2
+        "humidity": 90.6
       },
       "warm_transport": {
         "satisfied": true,
-        "reason": "风向166.5°（需135-225°）",
-        "wind_dir": 166.5
+        "reason": "风向159.9°（需135-225°）",
+        "wind_dir": 159.9
       },
       "pressure_drop": {
         "satisfied": true,
-        "reason": "气压从1000.28hPa降至997.7hPa，下降2.6hPa（阈值2.0）",
-        "pressure_drop": 2.6,
+        "reason": "气压从1000.28hPa降至997.8hPa，下降2.5hPa（阈值2.0）",
+        "pressure_drop": 2.5,
         "max_past_pressure": 1000.28,
         "threshold": 2.0
       }
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温1.0℃（最低26.87℃→现在27.9℃）\n  3️⃣ 露点接近: ✅ 表面温度28.9℃，露点25.1℃，差3.8℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度27.9℃（需≥18.0），湿度89.2%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向166.5°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1000.28hPa降至997.7hPa，下降2.6hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温1.0℃（最低26.87℃→现在27.9℃）\n  3️⃣ 露点接近: ✅ 表面温度28.9℃，露点25.7℃，差3.2℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度27.9℃（需≥18.0），湿度90.6%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向159.9°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1000.28hPa降至997.8hPa，下降2.5hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
