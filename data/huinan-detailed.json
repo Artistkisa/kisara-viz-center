@@ -1,51 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-06-19 23:00:02",
-      "temp": 27.16,
-      "humidity": 89.07,
-      "dew": 25.58,
-      "windDir": 174.81,
-      "windSpeed": 15.14,
-      "pressure": 1005.2,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": -0.2,
-        "humidity": 0.1,
-        "dew": 0.4,
-        "windDir": 8.3,
-        "windSpeed": 2.2,
-        "pressure": -6.0
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 27.1,
-          "humidity": 89.1,
-          "dew": 25.7,
-          "windDir": 177.3,
-          "windSpeed": 15.8,
-          "pressure": 1003.4
-        },
-        "openmeteo": {
-          "temp": 27.3,
-          "humidity": 89,
-          "dew": 25.3,
-          "windDir": 169,
-          "windSpeed": 13.6,
-          "pressure": 1009.4
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-19T23:05:03.010667"
-    },
-    {
       "time": "2026-06-20 00:00:06",
       "temp": 27.16,
       "humidity": 89.98,
@@ -7381,6 +7336,51 @@
       "created_at": "2026-06-26T21:05:02.183312"
     },
     {
+      "time": "2026-06-26 22:00:04",
+      "temp": 25.67,
+      "humidity": 97.23,
+      "dew": 25.02,
+      "windDir": 46.5,
+      "windSpeed": 6.46,
+      "pressure": 1001.26,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "high",
+      "intensity": {},
+      "source_diff": {
+        "temp": -0.9,
+        "humidity": -1.1,
+        "dew": -1.4,
+        "windDir": -45.0,
+        "windSpeed": 1.8,
+        "pressure": -6.2
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 25.4,
+          "humidity": 96.9,
+          "dew": 24.6,
+          "windDir": 33.0,
+          "windSpeed": 7.0,
+          "pressure": 999.4
+        },
+        "openmeteo": {
+          "temp": 26.3,
+          "humidity": 98,
+          "dew": 26.0,
+          "windDir": 78,
+          "windSpeed": 5.2,
+          "pressure": 1005.6
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-26T22:05:02.156393"
+    },
+    {
       "time": "2026-06-26T07:00",
       "temp": 27.05,
       "humidity": 96.1,
@@ -7516,13 +7516,13 @@
       "created_at": "2026-06-26T17:05:02.797654"
     },
     {
-      "time": "2026-06-26 22:00:04",
+      "time": "2026-06-26 23:00:02",
       "temp": 25.67,
-      "humidity": 97.23,
+      "humidity": 97.32,
       "dew": 25.02,
-      "windDir": 46.5,
-      "windSpeed": 6.46,
-      "pressure": 1001.26,
+      "windDir": 43.38,
+      "windSpeed": 6.94,
+      "pressure": 1001.55,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {},
@@ -7530,35 +7530,35 @@
       "intensity": {},
       "source_diff": {
         "temp": -0.9,
-        "humidity": -1.1,
+        "humidity": -2.4,
         "dew": -1.4,
-        "windDir": -45.0,
-        "windSpeed": 1.8,
-        "pressure": -6.2
+        "windDir": -66.6,
+        "windSpeed": 3.2,
+        "pressure": -6.5
       },
       "raw_sources": {
         "qweather": {
           "temp": 25.4,
-          "humidity": 96.9,
+          "humidity": 96.6,
           "dew": 24.6,
-          "windDir": 33.0,
-          "windSpeed": 7.0,
-          "pressure": 999.4
+          "windDir": 23.4,
+          "windSpeed": 7.9,
+          "pressure": 999.6
         },
         "openmeteo": {
           "temp": 26.3,
-          "humidity": 98,
+          "humidity": 99,
           "dew": 26.0,
-          "windDir": 78,
-          "windSpeed": 5.2,
-          "pressure": 1005.6
+          "windDir": 90,
+          "windSpeed": 4.7,
+          "pressure": 1006.1
         }
       },
       "fusion_confidence": "high",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-06-26T22:05:02.156393"
+      "created_at": "2026-06-26T23:05:06.627716"
     }
   ],
   "events": [
@@ -7604,7 +7604,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-26T22:05:02.156411",
+  "lastCheck": "2026-06-26T23:05:06.627733",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
@@ -7638,25 +7638,25 @@
       },
       "warm_humid": {
         "satisfied": true,
-        "reason": "温度25.4℃（需≥18.0），湿度96.9%（需≥85%）",
+        "reason": "温度25.4℃（需≥18.0），湿度96.6%（需≥85%）",
         "temp": 25.4,
-        "humidity": 96.9
+        "humidity": 96.6
       },
       "warm_transport": {
         "satisfied": false,
-        "reason": "风向33.0°（需135-225°）",
-        "wind_dir": 33.0
+        "reason": "风向23.4°（需135-225°）",
+        "wind_dir": 23.4
       },
       "pressure_drop": {
         "satisfied": false,
-        "reason": "气压从1000.94hPa降至999.4hPa，下降1.5hPa（阈值2.0）",
-        "pressure_drop": 1.5,
-        "max_past_pressure": 1000.94,
+        "reason": "气压从1001.26hPa降至999.6hPa，下降1.7hPa（阈值2.0）",
+        "pressure_drop": 1.7,
+        "max_past_pressure": 1001.26,
         "threshold": 2.0
       }
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.3℃（最低25.13℃→现在25.4℃）\n  3️⃣ 露点接近: ✅ 表面温度27.1℃，露点24.6℃，差2.5℃（阈值4.0℃）\n\n增强条件 (1/3):\n  4️⃣ 暖湿环境: ✅ 温度25.4℃（需≥18.0），湿度96.9%（需≥85%）\n  5️⃣ 南风输送: ❌ 风向33.0°（需135-225°）\n  6️⃣ 气压下降: ❌ 气压从1000.94hPa降至999.4hPa，下降1.5hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.3℃（最低25.13℃→现在25.4℃）\n  3️⃣ 露点接近: ✅ 表面温度27.1℃，露点24.6℃，差2.5℃（阈值4.0℃）\n\n增强条件 (1/3):\n  4️⃣ 暖湿环境: ✅ 温度25.4℃（需≥18.0），湿度96.6%（需≥85%）\n  5️⃣ 南风输送: ❌ 风向23.4°（需135-225°）\n  6️⃣ 气压下降: ❌ 气压从1001.26hPa降至999.6hPa，下降1.7hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
