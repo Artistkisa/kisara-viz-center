@@ -1,51 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-06-22 02:00:06",
-      "temp": 27.27,
-      "humidity": 90.4,
-      "dew": 25.35,
-      "windDir": 154.26,
-      "windSpeed": 11.79,
-      "pressure": 1004.73,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "medium",
-      "intensity": {},
-      "source_diff": {
-        "temp": 1.1,
-        "humidity": -8.0,
-        "dew": -0.5,
-        "windDir": -28.2,
-        "windSpeed": 4.7,
-        "pressure": -5.1
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 27.6,
-          "humidity": 88.0,
-          "dew": 25.2,
-          "windDir": 145.8,
-          "windSpeed": 13.2,
-          "pressure": 1003.2
-        },
-        "openmeteo": {
-          "temp": 26.5,
-          "humidity": 96,
-          "dew": 25.7,
-          "windDir": 174,
-          "windSpeed": 8.5,
-          "pressure": 1008.3
-        }
-      },
-      "fusion_confidence": "medium",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-22T02:05:02.712450"
-    },
-    {
       "time": "2026-06-22 03:00:03",
       "temp": 27.14,
       "humidity": 90.61,
@@ -7559,6 +7514,51 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-06-29T01:05:02.751792"
+    },
+    {
+      "time": "2026-06-29 02:00:04",
+      "temp": 26.01,
+      "humidity": 95.21,
+      "dew": 25.11,
+      "windDir": 147.0,
+      "windSpeed": 8.18,
+      "pressure": 1002.58,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "high",
+      "intensity": {},
+      "source_diff": {
+        "temp": 0.3,
+        "humidity": 0.3,
+        "dew": 0.3,
+        "windDir": -10.0,
+        "windSpeed": 3.4,
+        "pressure": -4.6
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 26.1,
+          "humidity": 95.3,
+          "dew": 25.2,
+          "windDir": 144.0,
+          "windSpeed": 9.2,
+          "pressure": 1001.2
+        },
+        "openmeteo": {
+          "temp": 25.8,
+          "humidity": 95,
+          "dew": 24.9,
+          "windDir": 154,
+          "windSpeed": 5.8,
+          "pressure": 1005.8
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-06-29T02:05:01.847981"
     }
   ],
   "events": [
@@ -7604,13 +7604,13 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-06-29T01:05:02.751810",
+  "lastCheck": "2026-06-29T02:05:01.847998",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
     "confidence": 0.2,
     "core_count": 1,
-    "enhance_count": 2,
+    "enhance_count": 3,
     "conditions": {
       "cold_base": {
         "satisfied": false,
@@ -7643,9 +7643,9 @@
         "humidity": 95.3
       },
       "warm_transport": {
-        "satisfied": false,
-        "reason": "风向106.2°（需135-225°）",
-        "wind_dir": 106.2
+        "satisfied": true,
+        "reason": "风向144.0°（需135-225°）",
+        "wind_dir": 144.0
       },
       "pressure_drop": {
         "satisfied": true,
@@ -7657,6 +7657,6 @@
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温1.5℃（最低24.6℃→现在26.1℃）\n  3️⃣ 露点接近: ✅ 表面温度26.6℃，露点25.2℃，差1.4℃（阈值4.0℃）\n\n增强条件 (2/3):\n  4️⃣ 暖湿环境: ✅ 温度26.1℃（需≥18.0），湿度95.3%（需≥85%）\n  5️⃣ 南风输送: ❌ 风向106.2°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1006.57hPa降至1001.2hPa，下降5.4hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温1.5℃（最低24.6℃→现在26.1℃）\n  3️⃣ 露点接近: ✅ 表面温度26.6℃，露点25.2℃，差1.4℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度26.1℃（需≥18.0），湿度95.3%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向144.0°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1006.57hPa降至1001.2hPa，下降5.4hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
