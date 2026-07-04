@@ -7423,28 +7423,28 @@
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-07-04T08:05:31.847506"
+      "created_at": "2026-07-04T11:05:31.601938"
     },
     {
       "time": "2026-07-04T07:00",
-      "temp": 25.0,
-      "humidity": 98.0,
-      "dew": 24.6,
-      "windDir": 127.0,
-      "windSpeed": 14.1,
-      "pressure": 1008.9,
+      "temp": 25.87,
+      "humidity": 94.1,
+      "dew": 24.75,
+      "windDir": 132.7,
+      "windSpeed": 14.19,
+      "pressure": 1009.23,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {},
-      "confidence": "high",
+      "confidence": "low",
       "intensity": {},
       "source_diff": {
-        "temp": 0.0,
-        "humidity": 0.0,
-        "dew": 0.0,
-        "windDir": 0.0,
-        "windSpeed": 0.0,
-        "pressure": 0.0
+        "temp": -2.9,
+        "humidity": 13.0,
+        "dew": -0.5,
+        "windDir": -19.0,
+        "windSpeed": -0.3,
+        "pressure": -1.1
       },
       "raw_sources": {
         "qweather": {
@@ -7456,19 +7456,19 @@
           "pressure": 1008.9
         },
         "openmeteo": {
-          "temp": 25.0,
-          "humidity": 98,
-          "dew": 24.6,
-          "windDir": 127,
-          "windSpeed": 14.1,
-          "pressure": 1008.9
+          "temp": 27.9,
+          "humidity": 85,
+          "dew": 25.1,
+          "windDir": 146,
+          "windSpeed": 14.4,
+          "pressure": 1010.0
         }
       },
-      "fusion_confidence": "high",
+      "fusion_confidence": "low",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-07-04T11:05:31.601938"
+      "created_at": "2026-07-04T12:05:03.160917"
     }
   ],
   "events": [
@@ -7514,7 +7514,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-07-04T11:05:31.601956",
+  "lastCheck": "2026-07-04T12:05:03.160936",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
