@@ -1,38 +1,38 @@
 {
-  "humidity": 90.73,
-  "dew": 25.62,
-  "temp": 26.28,
-  "windDir": 141.42,
-  "windSpeed": 20.31,
-  "pressure": 1004.48,
+  "humidity": 88.3,
+  "dew": 25.14,
+  "temp": 27.28,
+  "windDir": 149.8,
+  "windSpeed": 15.04,
+  "pressure": 1007.64,
   "coreTrigger": {},
   "confidence": "high",
   "intensity": {},
-  "updatedAt": "2026-07-04T17:05:02.494488",
+  "updatedAt": "2026-07-04T18:05:03.178886",
   "raw_sources": {
     "qweather": {
-      "temp": 25.8,
-      "humidity": 91.9,
-      "dew": 25.8,
-      "windDir": 138.6,
-      "windSpeed": 22.8,
-      "pressure": 1003.1
-    },
-    "openmeteo": {
       "temp": 27.4,
       "humidity": 88,
       "dew": 25.2,
       "windDir": 148,
       "windSpeed": 14.5,
       "pressure": 1007.7
+    },
+    "openmeteo": {
+      "temp": 27.0,
+      "humidity": 89,
+      "dew": 25.0,
+      "windDir": 154,
+      "windSpeed": 16.3,
+      "pressure": 1007.5
     }
   },
   "source_diff": {
-    "temp": -1.6,
-    "humidity": 3.9,
-    "dew": 0.6,
-    "windDir": -9.4,
-    "windSpeed": 8.3,
-    "pressure": -4.6
+    "temp": 0.4,
+    "humidity": -1.0,
+    "dew": 0.2,
+    "windDir": -6.0,
+    "windSpeed": -1.8,
+    "pressure": 0.2
   }
 }
