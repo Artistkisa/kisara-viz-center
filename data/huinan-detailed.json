@@ -631,51 +631,6 @@
       "created_at": "2026-06-29T23:05:02.229199"
     },
     {
-      "time": "2026-06-29T05:00",
-      "temp": 24.81,
-      "humidity": 97.6,
-      "dew": 24.4,
-      "windDir": 122.8,
-      "windSpeed": 10.27,
-      "pressure": 1006.08,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": 0.3,
-        "humidity": -2.0,
-        "dew": 0.0,
-        "windDir": -16.0,
-        "windSpeed": 1.1,
-        "pressure": -0.6
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 24.9,
-          "humidity": 97,
-          "dew": 24.4,
-          "windDir": 118,
-          "windSpeed": 10.6,
-          "pressure": 1005.9
-        },
-        "openmeteo": {
-          "temp": 24.6,
-          "humidity": 99,
-          "dew": 24.4,
-          "windDir": 134,
-          "windSpeed": 9.5,
-          "pressure": 1006.5
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-29T06:05:02.509932"
-    },
-    {
       "time": "2026-06-29T07:00",
       "temp": 25.56,
       "humidity": 95.2,
@@ -7424,6 +7379,51 @@
       "om_valid": true,
       "yr_valid": false,
       "created_at": "2026-07-06T04:05:02.647371"
+    },
+    {
+      "time": "2026-07-06 05:00:02",
+      "temp": 25.58,
+      "humidity": 93.22,
+      "dew": 24.73,
+      "windDir": 146.7,
+      "windSpeed": 13.56,
+      "pressure": 1002.61,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "medium",
+      "intensity": {},
+      "source_diff": {
+        "temp": 1.4,
+        "humidity": -5.4,
+        "dew": 0.9,
+        "windDir": -19.0,
+        "windSpeed": 0.8,
+        "pressure": -4.7
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 26.0,
+          "humidity": 91.6,
+          "dew": 25.0,
+          "windDir": 141.0,
+          "windSpeed": 13.8,
+          "pressure": 1001.2
+        },
+        "openmeteo": {
+          "temp": 24.6,
+          "humidity": 97,
+          "dew": 24.1,
+          "windDir": 160,
+          "windSpeed": 13.0,
+          "pressure": 1005.9
+        }
+      },
+      "fusion_confidence": "medium",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-07-06T05:05:02.486814"
     }
   ],
   "events": [
@@ -7469,7 +7469,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-07-06T04:05:02.647387",
+  "lastCheck": "2026-07-06T05:05:02.486831",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
@@ -7503,14 +7503,14 @@
       },
       "warm_humid": {
         "satisfied": true,
-        "reason": "温度26.0℃（需≥18.0），湿度91.2%（需≥85%）",
+        "reason": "温度26.0℃（需≥18.0），湿度91.6%（需≥85%）",
         "temp": 26.0,
-        "humidity": 91.2
+        "humidity": 91.6
       },
       "warm_transport": {
         "satisfied": true,
-        "reason": "风向172.8°（需135-225°）",
-        "wind_dir": 172.8
+        "reason": "风向141.0°（需135-225°）",
+        "wind_dir": 141.0
       },
       "pressure_drop": {
         "satisfied": true,
@@ -7522,6 +7522,6 @@
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.8℃（最低25.25℃→现在26.0℃）\n  3️⃣ 露点接近: ✅ 表面温度27.2℃，露点25.0℃，差2.2℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度26.0℃（需≥18.0），湿度91.2%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向172.8°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1003.92hPa降至1001.2hPa，下降2.7hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.8℃（最低25.25℃→现在26.0℃）\n  3️⃣ 露点接近: ✅ 表面温度27.2℃，露点25.0℃，差2.2℃（阈值4.0℃）\n\n增强条件 (3/3):\n  4️⃣ 暖湿环境: ✅ 温度26.0℃（需≥18.0），湿度91.6%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向141.0°（需135-225°）\n  6️⃣ 气压下降: ✅ 气压从1003.92hPa降至1001.2hPa，下降2.7hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
