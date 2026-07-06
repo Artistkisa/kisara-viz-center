@@ -1,141 +1,6 @@
 {
   "records": [
     {
-      "time": "2026-06-29 22:00:07",
-      "temp": 26.78,
-      "humidity": 89.85,
-      "dew": 25.65,
-      "windDir": 130.8,
-      "windSpeed": 8.48,
-      "pressure": 1003.51,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": 0.4,
-        "humidity": -4.5,
-        "dew": 0.5,
-        "windDir": 4.0,
-        "windSpeed": -2.6,
-        "pressure": -6.7
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 26.9,
-          "humidity": 88.5,
-          "dew": 25.8,
-          "windDir": 132.0,
-          "windSpeed": 7.7,
-          "pressure": 1001.5
-        },
-        "openmeteo": {
-          "temp": 26.5,
-          "humidity": 93,
-          "dew": 25.3,
-          "windDir": 128,
-          "windSpeed": 10.3,
-          "pressure": 1008.2
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-29T22:05:03.622040"
-    },
-    {
-      "time": "2026-06-29 23:00:04",
-      "temp": 26.16,
-      "humidity": 91.04,
-      "dew": 25.62,
-      "windDir": 87.63,
-      "windSpeed": 8.36,
-      "pressure": 1004.33,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": -0.2,
-        "humidity": -2.8,
-        "dew": 0.6,
-        "windDir": -59.1,
-        "windSpeed": -1.2,
-        "pressure": -6.1
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 26.1,
-          "humidity": 90.2,
-          "dew": 25.8,
-          "windDir": 69.9,
-          "windSpeed": 8.0,
-          "pressure": 1002.5
-        },
-        "openmeteo": {
-          "temp": 26.3,
-          "humidity": 93,
-          "dew": 25.2,
-          "windDir": 129,
-          "windSpeed": 9.2,
-          "pressure": 1008.6
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-29T23:05:02.229199"
-    },
-    {
-      "time": "2026-06-29T23:00",
-      "temp": 26.24,
-      "humidity": 93.3,
-      "dew": 25.17,
-      "windDir": 129.9,
-      "windSpeed": 9.05,
-      "pressure": 1008.66,
-      "humidityChange3h": 0,
-      "pressureDrop6h": 0,
-      "coreTrigger": {},
-      "confidence": "high",
-      "intensity": {},
-      "source_diff": {
-        "temp": 0.2,
-        "humidity": -1.0,
-        "dew": 0.1,
-        "windDir": -3.0,
-        "windSpeed": 0.5,
-        "pressure": -0.2
-      },
-      "raw_sources": {
-        "qweather": {
-          "temp": 26.3,
-          "humidity": 93,
-          "dew": 25.2,
-          "windDir": 129,
-          "windSpeed": 9.2,
-          "pressure": 1008.6
-        },
-        "openmeteo": {
-          "temp": 26.1,
-          "humidity": 94,
-          "dew": 25.1,
-          "windDir": 132,
-          "windSpeed": 8.7,
-          "pressure": 1008.8
-        }
-      },
-      "fusion_confidence": "high",
-      "qw_valid": true,
-      "om_valid": true,
-      "yr_valid": false,
-      "created_at": "2026-06-30T00:05:02.816667"
-    },
-    {
       "time": "2026-06-30 01:00:07",
       "temp": 25.97,
       "humidity": 91.85,
@@ -7201,6 +7066,51 @@
       "created_at": "2026-07-06T21:05:02.868929"
     },
     {
+      "time": "2026-07-06 22:00:01",
+      "temp": 25.87,
+      "humidity": 92.72,
+      "dew": 24.81,
+      "windDir": 146.82,
+      "windSpeed": 15.39,
+      "pressure": 1003.04,
+      "humidityChange3h": 0,
+      "pressureDrop6h": 0,
+      "coreTrigger": {},
+      "confidence": "high",
+      "intensity": {},
+      "source_diff": {
+        "temp": 0.1,
+        "humidity": -0.4,
+        "dew": 0.3,
+        "windDir": -17.4,
+        "windSpeed": 4.7,
+        "pressure": -5.8
+      },
+      "raw_sources": {
+        "qweather": {
+          "temp": 25.9,
+          "humidity": 92.6,
+          "dew": 24.9,
+          "windDir": 141.6,
+          "windSpeed": 16.8,
+          "pressure": 1001.3
+        },
+        "openmeteo": {
+          "temp": 25.8,
+          "humidity": 93,
+          "dew": 24.6,
+          "windDir": 159,
+          "windSpeed": 12.1,
+          "pressure": 1007.1
+        }
+      },
+      "fusion_confidence": "high",
+      "qw_valid": true,
+      "om_valid": true,
+      "yr_valid": false,
+      "created_at": "2026-07-06T22:05:02.575689"
+    },
+    {
       "time": "2026-07-06T07:00",
       "temp": 26.1,
       "humidity": 91.5,
@@ -7426,49 +7336,49 @@
       "created_at": "2026-07-06T17:05:02.643997"
     },
     {
-      "time": "2026-07-06 22:00:01",
-      "temp": 25.87,
-      "humidity": 92.72,
-      "dew": 24.81,
-      "windDir": 146.82,
-      "windSpeed": 15.39,
-      "pressure": 1003.04,
+      "time": "2026-07-06 23:00:06",
+      "temp": 25.75,
+      "humidity": 93.41,
+      "dew": 24.84,
+      "windDir": 148.74,
+      "windSpeed": 16.72,
+      "pressure": 1003.23,
       "humidityChange3h": 0,
       "pressureDrop6h": 0,
       "coreTrigger": {},
       "confidence": "high",
       "intensity": {},
       "source_diff": {
-        "temp": 0.1,
-        "humidity": -0.4,
-        "dew": 0.3,
-        "windDir": -17.4,
-        "windSpeed": 4.7,
-        "pressure": -5.8
+        "temp": 0.5,
+        "humidity": -3.7,
+        "dew": 0.2,
+        "windDir": -21.8,
+        "windSpeed": 7.6,
+        "pressure": -6.1
       },
       "raw_sources": {
         "qweather": {
           "temp": 25.9,
-          "humidity": 92.6,
+          "humidity": 92.3,
           "dew": 24.9,
-          "windDir": 141.6,
-          "windSpeed": 16.8,
-          "pressure": 1001.3
+          "windDir": 142.2,
+          "windSpeed": 19.0,
+          "pressure": 1001.4
         },
         "openmeteo": {
-          "temp": 25.8,
-          "humidity": 93,
-          "dew": 24.6,
-          "windDir": 159,
-          "windSpeed": 12.1,
-          "pressure": 1007.1
+          "temp": 25.4,
+          "humidity": 96,
+          "dew": 24.7,
+          "windDir": 164,
+          "windSpeed": 11.4,
+          "pressure": 1007.5
         }
       },
       "fusion_confidence": "high",
       "qw_valid": true,
       "om_valid": true,
       "yr_valid": false,
-      "created_at": "2026-07-06T22:05:02.575689"
+      "created_at": "2026-07-06T23:05:02.860233"
     }
   ],
   "events": [
@@ -7514,7 +7424,7 @@
     }
   ],
   "currentEvent": null,
-  "lastCheck": "2026-07-06T22:05:02.575707",
+  "lastCheck": "2026-07-06T23:05:02.860251",
   "nanhui_detection": {
     "status": "watch",
     "level": "watch",
@@ -7548,25 +7458,25 @@
       },
       "warm_humid": {
         "satisfied": true,
-        "reason": "温度25.9℃（需≥18.0），湿度92.6%（需≥85%）",
+        "reason": "温度25.9℃（需≥18.0），湿度92.3%（需≥85%）",
         "temp": 25.9,
-        "humidity": 92.6
+        "humidity": 92.3
       },
       "warm_transport": {
         "satisfied": true,
-        "reason": "风向141.6°（需135-225°）",
-        "wind_dir": 141.6
+        "reason": "风向142.2°（需135-225°）",
+        "wind_dir": 142.2
       },
       "pressure_drop": {
         "satisfied": false,
-        "reason": "气压从1002.95hPa降至1001.3hPa，下降1.7hPa（阈值2.0）",
-        "pressure_drop": 1.7,
-        "max_past_pressure": 1002.95,
+        "reason": "气压从1003.04hPa降至1001.4hPa，下降1.6hPa（阈值2.0）",
+        "pressure_drop": 1.6,
+        "max_past_pressure": 1003.04,
         "threshold": 2.0
       }
     },
     "fusion_confidence": "high",
     "is_active_season": false,
-    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.5℃（最低25.39℃→现在25.9℃）\n  3️⃣ 露点接近: ✅ 表面温度27.4℃，露点24.9℃，差2.5℃（阈值4.0℃）\n\n增强条件 (2/3):\n  4️⃣ 暖湿环境: ✅ 温度25.9℃（需≥18.0），湿度92.6%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向141.6°（需135-225°）\n  6️⃣ 气压下降: ❌ 气压从1002.95hPa降至1001.3hPa，下降1.7hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
+    "message": "🌫️ V5回南天检测 （非高发季，阈值放宽）\n\n核心条件 (1/3):\n  1️⃣ 冷基条件: ❌ 最长连续低温0h（需≥6h）\n  2️⃣ 快速升温: ❌ 24h升温0.5℃（最低25.39℃→现在25.9℃）\n  3️⃣ 露点接近: ✅ 表面温度27.4℃，露点24.9℃，差2.5℃（阈值4.0℃）\n\n增强条件 (2/3):\n  4️⃣ 暖湿环境: ✅ 温度25.9℃（需≥18.0），湿度92.3%（需≥85%）\n  5️⃣ 南风输送: ✅ 风向142.2°（需135-225°）\n  6️⃣ 气压下降: ❌ 气压从1003.04hPa降至1001.4hPa，下降1.6hPa（阈值2.0）\n\n状态: WATCH\n置信度: 20%\n数据源: QW70% + OM30% [high]"
   }
 }
